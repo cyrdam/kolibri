@@ -6,8 +6,6 @@ import type {
 	PropAriaDescription,
 	PropAriaExpanded,
 	PropAriaOwns,
-	PropButtonVariant,
-	PropCustomClass,
 	PropDisabled,
 	PropDownload,
 	PropHideLabel,
