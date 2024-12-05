@@ -48,5 +48,5 @@
 		border-bottom-right-radius: var(--border-radius);
 	}
 
-	@include kol-button;
+	@include kol-button('kol-button');
 }

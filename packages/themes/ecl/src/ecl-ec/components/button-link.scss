@@ -1,34 +1,8 @@
 @import '../../mixins/rem';
+@import '../mixins/link';
 
 @layer kol-theme-component {
-	.kol-button {
-		color: var(--color-primary);
-		font-style: normal;
-		font-weight: 400;
-		text-decoration-line: underline;
-		font-size: inherit;
-
-		:focus {
-			outline: none;
-		}
-
-		&:hover {
-			&:visited {
-				color: var(--visited);
-			}
-		}
-
-		&__text {
-			border-radius: var(--border-radius);
-			outline: calc(var(--border-width) * 2) solid;
-
-			&:hover {
-				.span-label {
-					text-decoration-thickness: 0.25em;
-				}
-			}
-		}
-	}
+	@include kol-link('kol-button');
 
 	.badge-text-hint {
 		background-color: var(--color-mute-variant);

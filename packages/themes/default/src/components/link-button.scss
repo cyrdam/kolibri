@@ -1,155 +1,41 @@
 @import '../mixins/rem';
+@import '../mixins/button';
 
 @layer kol-theme-component {
+	@include kol-button('kol-link');
+
 	:host {
 		font-family: var(--font-family);
 	}
 
-	:is(a, .button) {
-		:focus {
+	.kol-link {
+		$root: &;
+
+		&:focus {
 			outline: none;
 		}
 
-		//temp fix for underline until link refactor
-		display: inline-flex;
-		place-items: center;
-		text-align: center;
-		text-decoration-line: none;
-	}
+		&__text {
+			font-weight: 700;
+			border-style: solid;
+			border-radius: var(--a11y-min-size);
+			outline-width: calc(var(--border-width) * 2);
 
-	:is(a, button):focus .kol-span {
-		outline-color: var(--color-primary-variant);
-		outline-offset: rem(2);
-		outline-style: solid;
-		outline-width: calc(var(--border-width) * 2);
-		transition: outline-offset 0.2s linear;
-	}
+			@at-root #{$root}:focus & {
+				outline-color: var(--color-primary-variant);
+				outline-offset: rem(2);
+				outline-style: solid;
+				outline-width: calc(var(--border-width) * 2);
+				transition: outline-offset 0.2s linear;
+			}
 
-	:is(a, button) > .kol-span {
-		font-weight: 700;
-		border-radius: var(--a11y-min-size);
-		border-style: solid;
-		outline-width: calc(var(--border-width) * 2);
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		padding: rem(8) rem(14);
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-	}
+			@at-root #{$root}:disabled:hover & {
+				box-shadow: none;
+			}
 
-	.primary :is(a, button) > .kol-span,
-	.primary :is(a, button):disabled:hover > .kol-span {
-		background-color: var(--color-primary);
-		border-color: var(--color-primary);
-		color: var(--color-light);
-	}
-
-	.secondary :is(a, button) > .kol-span,
-	.secondary :is(a, button):disabled:hover > .kol-span,
-	.normal :is(a, button) > .kol-span,
-	.normal :is(a, button):disabled:hover > .kol-span {
-		background-color: var(--color-light);
-		border-color: var(--color-primary);
-		color: var(--color-primary);
-	}
-
-	.danger :is(a, button) > .kol-span,
-	.danger :is(a, button):disabled:hover > .kol-span {
-		background-color: var(--color-danger);
-		border-color: var(--color-danger);
-		color: var(--color-light);
-	}
-
-	.ghost :is(a, button) > .kol-span,
-	.ghost :is(a, button):disabled:hover > .kol-span {
-		border-color: var(--color-light);
-		background-color: var(--color-light);
-		box-shadow: none;
-		color: var(--color-primary);
-	}
-
-	/*-----------*/
-	.primary :is(a, button):active > .kol-span,
-	.primary :is(a, button):hover > .kol-span,
-	.secondary :is(a, button):active > .kol-span,
-	.secondary :is(a, button):hover > .kol-span,
-	.normal :is(a, button):active > .kol-span,
-	.normal :is(a, button):hover > .kol-span,
-	.danger :is(a, button):active > .kol-span,
-	.danger :is(a, button):hover > .kol-span,
-	.ghost :is(a, button):active > .kol-span,
-	.ghost :is(a, button):hover > .kol-span {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
-		color: var(--color-light);
-	}
-
-	.danger :is(a, button):active > .kol-span,
-	.danger :is(a, button):hover > .kol-span {
-		background-color: var(--color-danger);
-		border-color: var(--color-danger);
-	}
-
-	:is(a, button):disabled:hover > .kol-span,
-	:is(a, button):focus:hover > .kol-span {
-		box-shadow: none;
-	}
-
-	.primary :is(a, button):active > .kol-span,
-	.secondary :is(a, button):active > .kol-span,
-	.normal :is(a, button):active > .kol-span,
-	.danger :is(a, button):active > .kol-span,
-	.ghost :is(a, button):active > .kol-span {
-		border-color: var(--color-light);
-		box-shadow: none;
-		outline: none;
-	}
-
-	:is(a, button).hide-label > .kol-spa {
-		padding: rem(12.8);
-		width: unset;
-	}
-
-	:is(a, button).hide-label > .kol-span__label {
-		display: none;
-	}
-
-	:is(a, button).loading > .kol-span .kol-icon {
-		animation: spin 5s infinite linear;
-	}
-
-	/** small ghost button */
-	.ghost :is(a, button).small > .kol-span {
-		border: none;
-		background-color: transparent;
-		box-shadow: none;
-	}
-
-	.ghost :is(a, button).small > .kol-span__container {
-		border-radius: 1.5em;
-		border-style: solid;
-		border-width: var(--border-width);
-		border-color: var(--color-light);
-		background-color: var(--color-light);
-	}
-
-	.ghost :is(a, button).small:active > .kol-span__container,
-	.ghost :is(a, button).small:hover > .kol-span__container,
-	.ghost :is(a, button).small.transparent:active > .kol-span__container,
-	.ghost :is(a, button).small.transparent:hover > .kol-span__container {
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
-		color: var(--color-light);
-	}
-
-	/** :is(a,button) with transparent background */
-	:is(a, button).transparent > .kol-span__container,
-	.ghost :is(a, button).small.transparent > .kol-span__container,
-	:is(a, button).transparent > .kol-span {
-		background-color: transparent;
-		border-color: transparent;
+			@at-root #{$root}:focus:hover & {
+				box-shadow: none;
+			}
+		}
 	}
 }

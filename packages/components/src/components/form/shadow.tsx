@@ -59,6 +59,7 @@ export class KolForm implements FormAPI {
 						{errorList?.map((error, index) => (
 							<li key={index}>
 								<KolLinkWcTag
+									class="kol-form__link"
 									_href={error.selector}
 									_label={error.message}
 									_on={{ onClick: this.handleLinkClick }}

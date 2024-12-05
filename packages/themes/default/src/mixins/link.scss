@@ -1,44 +1,32 @@
 @import './rem';
 
-@mixin kol-link {
-	:is(a, button) {
+@mixin kol-link($block-classname) {
+	.#{$block-classname} {
+		$root: &;
+
 		color: var(--color-primary);
 		font-style: normal;
 		font-weight: 400;
-		line-height: 1;
-	}
 
-	:is(a, button):focus {
-		outline: none;
-	}
-
-	:is(a, button):focus kol-span {
-		border-radius: var(--border-radius);
-		outline: var(--border-width) solid;
-	}
-
-	a:is(:focus, :hover):not([aria-disabled]),
-	button:is(:focus, :hover):not([disabled]) {
-		.kol-span__label {
-			text-decoration-thickness: 0.25em;
+		&:focus {
+			outline: none;
 		}
-	}
 
-	:is(a, button):visited {
-		color: var(--visited);
-	}
+		&:visited {
+			color: var(--visited);
+		}
 
-	.skip {
-		left: rem(-99999);
-		overflow: hidden;
-		position: absolute;
-		z-index: 9999999;
-		line-height: 1;
-	}
+		&__text {
+			@at-root #{$root}:focus & {
+				border-radius: var(--border-radius);
+				outline: var(--border-width) solid;
+			}
 
-	.skip:focus {
-		background-color: white;
-		left: unset;
-		position: unset;
+			.span-label {
+				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+					text-decoration-thickness: 0.25em;
+				}
+			}
+		}
 	}
 }
