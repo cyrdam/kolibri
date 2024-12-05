@@ -15,7 +15,7 @@
 		text-decoration-line: none;
 
 		.kol-span {
-			.&__label {
+			&__label {
 				text-decoration-line: underline;
 			}
 		}
@@ -24,7 +24,7 @@
 	a:is(:focus, :hover):not([aria-disabled]),
 	button:is(:focus, :hover):not([disabled]) {
 		.kol-span {
-			.&__label {
+			&__label {
 				text-decoration-thickness: 0.2em;
 			}
 		}
