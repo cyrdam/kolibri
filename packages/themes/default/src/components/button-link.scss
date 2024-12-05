@@ -24,9 +24,10 @@
 		}
 
 		&__text {
-			border-radius: var(--text-border-radius);
-			outline: var(--text-outline);
-
+			@at-root #{$root}:focus & {
+				border-radius: var(--text-border-radius);
+				outline: var(--text-outline);
+			}
 			.span-label {
 				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
 					text-decoration-thickness: 0.25em;
