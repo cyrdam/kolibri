@@ -33,6 +33,7 @@ import {
 	watchString,
 } from '../../../schema';
 
+import type { KoliBriEventType } from '../../../utils/events';
 import { dispatchDomEvent, stopPropagation } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
@@ -179,7 +180,7 @@ export class InputController extends ControlledInputController implements Watche
 		validateAccessAndShortKey(this.component._accessKey, this.component._shortKey);
 	}
 
-	private emitEvent(type: string): void {
+	private emitEvent(type: KoliBriEventType): void {
 		if (this.host) {
 			dispatchDomEvent(this.host, type);
 		}

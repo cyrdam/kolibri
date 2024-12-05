@@ -1,5 +1,5 @@
 // TODO: Should be synchronized with enums/events.ts
-type KoliBriEventType = 'blur' | 'change' | 'click' | 'focus' | 'input' | 'toggle' | 'selection-change';
+export type KoliBriEventType = 'blur' | 'close' | 'change' | 'click' | 'focus' | 'input' | 'toggle' | 'selection-change' | 'mousedown';
 
 export function stopPropagation(event: Event): void {
 	event.stopImmediatePropagation();
@@ -28,7 +28,7 @@ export function tryToDispatchKoliBriEvent<T>(type: KoliBriEventType, target?: Ev
 	target && dispatchKoliBriEvent(target, type, detail);
 }
 
-export function dispatchDomEvent(target: HTMLElement, type: string) {
+export function dispatchDomEvent(target: HTMLElement, type: KoliBriEventType) {
 	target.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
 }
 
