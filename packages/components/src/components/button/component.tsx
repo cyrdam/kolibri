@@ -46,7 +46,7 @@ import {
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent, stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -105,13 +105,17 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 			}
 		}
 
-		this.host?.dispatchEvent(new Event('click', { bubbles: true, composed: true }));
+		if (this.host) {
+			dispatchDomEvent(this.host, 'click');
+		}
 	};
 
 	private readonly onMouseDown = (event: MouseEvent) => {
 		stopPropagation(event);
 		this.state?._on?.onMouseDown?.(event);
-		this.host?.dispatchEvent(new Event('mousedown', { bubbles: true, composed: true }));
+		if (this.host) {
+			dispatchDomEvent(this.host, 'mousedown');
+		}
 	};
 
 	public render(): JSX.Element {

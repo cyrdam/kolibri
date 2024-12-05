@@ -21,8 +21,15 @@ function dispatchKoliBriEvent<T>(target: EventTarget, type: KoliBriEventType, de
 	return dispatch;
 }
 
+/**
+ * @deprecated
+ */
 export function tryToDispatchKoliBriEvent<T>(type: KoliBriEventType, target?: EventTarget, detail?: T): void {
 	target && dispatchKoliBriEvent(target, type, detail);
+}
+
+export function dispatchDomEvent(target: HTMLElement, type: string) {
+	target.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
 }
 
 export function preventDefaultAndStopPropagation(event: Event) {

@@ -33,7 +33,7 @@ import {
 	watchString,
 } from '../../../schema';
 
-import { stopPropagation } from '../../../utils/events';
+import { dispatchDomEvent, stopPropagation } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
@@ -180,7 +180,9 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	private emitEvent(type: string): void {
-		this.host?.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
+		if (this.host) {
+			dispatchDomEvent(this.host, type);
+		}
 	}
 
 	protected onBlur(event: Event): void {
