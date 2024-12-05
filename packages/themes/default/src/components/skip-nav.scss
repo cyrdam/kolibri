@@ -5,16 +5,18 @@
 		font-family: var(--font-family);
 	}
 
-	.kol-link-wc > a > .kol-span-wc {
-		border-radius: var(--a11y-min-size);
-		border-style: solid;
-		border-width: var(--border-width);
-		gap: calc(var(--spacing) * 2);
-		line-height: 1;
-		padding: rem(8) rem(14);
-		background-color: var(--color-primary-variant);
-		border-color: var(--color-primary-variant);
-		color: var(--color-light);
-		cursor: pointer;
+	.kol-link {
+		&__text {
+			border-radius: var(--a11y-min-size);
+			border-style: solid;
+			border-width: var(--border-width);
+			gap: calc(var(--spacing) * 2);
+			line-height: 1;
+			padding: rem(8) rem(14);
+			background-color: var(--color-primary-variant);
+			border-color: var(--color-primary-variant);
+			color: var(--color-light);
+			cursor: pointer;
+		}
 	}
 }
