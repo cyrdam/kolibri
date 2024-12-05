@@ -10,23 +10,40 @@ import clsx from 'clsx';
 import type { AlignPropType, InternMsgPropType } from '../../schema';
 import { buildBadgeTextString, showExpertSlot } from '../../schema';
 
-function getModifierClassNameByMsgType(msg?: { type?: string }) {
+function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	if (msg?.type) {
-		return {
-			default: 'msg-type-default',
-			info: 'msg-type-info',
-			success: 'msg-type-success',
-			warning: 'msg-type-warning',
-			error: 'msg-type-error',
-		}[msg?.type];
+		return (
+			{
+				default: 'msg-type-default',
+				info: 'msg-type-info',
+				success: 'msg-type-success',
+				warning: 'msg-type-warning',
+				error: 'msg-type-error',
+			}[msg?.type] || ''
+		);
 	}
+
+	return '';
 }
 
-function checkHasError(msg?: InternMsgPropType, touched?: boolean, readOnly?: boolean): boolean {
-	const isMessageValidError = Boolean(msg?.type === 'error' && msg.description && msg.description?.length > 0);
-	const hasError = !readOnly && isMessageValidError && touched === true;
+function checkHasError(msg?: InternMsgPropType, touched?: boolean): boolean {
+	/**
+	 * We support 5 types of messages:
+	 * - default
+	 * - info
+	 * - success
+	 * - warning
+	 * - error
+	 *
+	 * The message is shown if:
+	 * - the message text is not an empty string
+	 * - we show only one message at a time
+	 * - by error messages the input must be touched
+	 */
+	const hasValidMsg = Boolean(msg?.description && msg?.description.length > 0);
+	const showMsg = hasValidMsg && (touched === true || msg?.type !== 'error');
 
-	return hasError;
+	return showMsg;
 }
 
 export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
@@ -91,23 +108,30 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		formFieldCounterProps,
 		...other
 	} = props;
+
 	const showLabel = !renderNoLabel;
 	const showHint = !renderNoHint;
 	const hasExpertSlot = showExpertSlot(label);
-	const hasError = checkHasError(msg, touched, readOnly);
-	const showFormFieldMsg = Boolean(hasError || (msg?.type !== 'error' && msg?.description));
+	const showMsg = checkHasError(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 
-	const stateCssClasses = {
+	let stateCssClasses = {
 		disabled: Boolean(disabled),
 		required: Boolean(required),
 		touched: Boolean(touched),
-		error: hasError,
 		'hide-label': Boolean(hideLabel),
 		'read-only': Boolean(readOnly),
 		'hidden-error': Boolean(hideError),
 	};
+
+	if (showMsg) {
+		stateCssClasses = {
+			...stateCssClasses,
+			[msg?.type || 'error']: true,
+			[getModifierClassNameByMsgType(msg)]: true,
+		};
+	}
 
 	const componentList = [
 		<>
@@ -137,13 +161,9 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	}
 
 	return (
-		<Component
-			class={clsx('kol-input', getModifierClassNameByMsgType(msg), stateCssClasses, classNames)}
-			role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
-			{...other}
-		>
+		<Component class={clsx('kol-input', stateCssClasses, classNames)} role={`presentation` /* Avoid element being read as 'clickable' in NVDA */} {...other}>
 			{componentList}
-			{showFormFieldMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideError={hideError} />}
+			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideError={hideError} />}
 			{counter ? <KolFormFieldCounterFc {...(formFieldCounterProps || {})} {...counter} /> : null}
 			{anotherChildren}
 		</Component>

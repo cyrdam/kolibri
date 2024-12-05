@@ -48,8 +48,16 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 	});
 };
 
-export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
+export function isMsgEmpty(msg?: MsgPropType): boolean {
 	if (!msg) {
+		return true;
+	}
+
+	return msg._type === 'error' && !msg._description;
+}
+
+export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
+	if (!msg || isMsgEmpty(msg)) {
 		return undefined;
 	}
 

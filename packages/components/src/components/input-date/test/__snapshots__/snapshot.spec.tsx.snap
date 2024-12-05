@@ -3,7 +3,7 @@
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _accessKey="V" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           Label
@@ -23,7 +23,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _alert=true 1`] = `
 <kol-input-date _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -42,7 +42,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _disabled=true 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date disabled has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date disabled has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -61,7 +61,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _hint="Hint" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -83,7 +83,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -108,7 +108,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -130,7 +130,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -152,7 +152,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-date _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value hidden-error kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value hidden-error kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -171,7 +171,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -190,7 +190,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _readOnly=true 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error read-only" role="presentation">
+    <div class="date has-value kol-input kol-input-date read-only" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -209,7 +209,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _shortKey="S" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           Label
@@ -229,7 +229,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _touched=true 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error touched" role="presentation">
+    <div class="date has-value kol-input kol-input-date touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -248,7 +248,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date msg-type-error" role="presentation">
+    <div class="date has-value kol-input kol-input-date" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>

@@ -44,6 +44,10 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		shortKey: state._shortKey,
 	};
 
+	if ('_required' in state) {
+		props.required = state._required;
+	}
+
 	if ('_readOnly' in state) {
 		props.readOnly = state._readOnly;
 	}

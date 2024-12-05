@@ -3,7 +3,7 @@
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _accessKey="V" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           Label
@@ -36,7 +36,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _alert=true 1`] = `
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -68,7 +68,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _disabled=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="disabled has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="disabled has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -100,7 +100,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hint="Hint" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -135,7 +135,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -173,7 +173,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -208,7 +208,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -243,7 +243,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-select _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value hidden-error kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value hidden-error kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -275,7 +275,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -307,7 +307,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _accessKey="V" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           Label
@@ -340,7 +340,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _alert=true 1`] = `
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -372,7 +372,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _disabled=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="disabled has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="disabled has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -404,7 +404,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _hint="Hint" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -439,7 +439,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -477,7 +477,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -512,7 +512,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -547,7 +547,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-select _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value hidden-error kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value hidden-error kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -579,7 +579,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -611,7 +611,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _readOnly=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -643,7 +643,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _shortKey="S" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           Label
@@ -676,7 +676,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true _touched=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select touched" role="presentation">
+    <div class="has-value kol-input kol-select select touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -708,7 +708,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _multiple=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -740,7 +740,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _readOnly=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -772,7 +772,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _shortKey="S" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           Label
@@ -805,7 +805,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _touched=true 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select touched" role="presentation">
+    <div class="has-value kol-input kol-select select touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
@@ -837,7 +837,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="has-value kol-input kol-select msg-type-error select" role="presentation">
+    <div class="has-value kol-input kol-select select" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
         <span class="input-label-span">
           <span>
