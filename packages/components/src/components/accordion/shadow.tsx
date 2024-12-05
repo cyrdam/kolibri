@@ -1,5 +1,5 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
 import type {
 	AccordionAPI,
@@ -35,6 +35,8 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	shadow: true,
 })
 export class KolAccordion implements AccordionAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolAccordionElement;
+
 	private readonly nonce = nonce();
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
@@ -66,6 +68,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		 */
 		setTimeout(() => {
 			this.state._on?.onClick?.(event, this._open === true);
+			this.host?.dispatchEvent(new Event('click', { bubbles: true, composed: true }));
 		});
 	};
 

@@ -24,6 +24,32 @@ test.describe('kol-accordion', () => {
 			await page.getByRole('button', { name: 'Accordion label' }).click();
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
+
+		test('should emit "click" event when the title is clicked', async ({ page }) => {
+			const eventPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement) => {
+				return new Promise((resolve) => {
+					element.addEventListener('click', resolve);
+				});
+			});
+			await page.waitForChanges();
+			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await expect(eventPromise).resolves.toBeTruthy();
+		});
+
+		test('should call "onClick" when the title is clicked', async ({ page }) => {
+			const eventPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement) => {
+				return new Promise((resolve) => {
+					element._on = {
+						onClick: (_event: MouseEvent, value?: unknown) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await expect(eventPromise).resolves.toBeTruthy();
+		});
 	});
 
 	test.describe('when accordion is disabled', () => {
