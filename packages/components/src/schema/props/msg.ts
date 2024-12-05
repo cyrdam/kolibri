@@ -3,6 +3,7 @@ import type { AlertProps, InternalAlertProps } from '../components';
 import type { Stringified } from '../types';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject } from '../validators';
+import { transformObjectProperties } from '../../utils/transformObjectProperties';
 
 /* types */
 export type MsgPropType = AlertProps & {
@@ -52,16 +53,5 @@ export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | un
 		return undefined;
 	}
 
-	const internMsg: InternMsgPropType = {};
-
-	if ('_alert' in msg) internMsg.alert = msg._alert;
-	if ('_description' in msg) internMsg.description = msg._description;
-	if ('_hasCloser' in msg) internMsg.hasCloser = msg._hasCloser;
-	if ('_label' in msg) internMsg.label = msg._label;
-	if ('_level' in msg) internMsg.level = msg._level;
-	if ('_on' in msg) internMsg.on = msg._on;
-	if ('_type' in msg) internMsg.type = msg._type;
-	if ('_variant' in msg) internMsg.variant = msg._variant;
-
-	return internMsg;
+	return transformObjectProperties(msg);
 }
