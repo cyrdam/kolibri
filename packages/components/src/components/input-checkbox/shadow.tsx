@@ -134,11 +134,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<div class="input">
-					<div class="checkbox-container">
-						<KolIconFc {...this.getIconProps()} />
-						<KolInputStateWrapperFc {...this.getInputProps()} />
-					</div>
+				<div class="input checkbox-container">
+					<KolIconFc {...this.getIconProps()} />
+					<KolInputStateWrapperFc {...this.getInputProps()} />
 				</div>
 			</KolFormFieldStateWrapperFc>
 		);

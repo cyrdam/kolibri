@@ -19,15 +19,18 @@
 	}
 
 	.checkbox-container {
-		justify-content: flex-start;
+		position: relative;
+		justify-content: center;
+		min-width: initial;
+		width: initial;
 	}
 
 	.kol-input.default {
-		grid-template-columns: rem(36) auto;
+		grid-template-columns: auto 1fr;
 	}
 
 	.kol-input.default[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto rem(36);
+		grid-template-columns: 1fr auto;
 
 		.checkbox-container {
 			justify-content: center;
@@ -124,6 +127,7 @@
 		background-color: white;
 		cursor: pointer;
 		transition: 0.5s;
+		margin: 0;
 	}
 
 	.kol-input input[type='checkbox']:checked {
@@ -144,7 +148,7 @@
 
 	.kol-input.default .icon {
 		color: var(--color-light);
-		margin-left: rem(4);
+		display: flex;
 	}
 
 	.kol-input.switch input[type='checkbox'] {
