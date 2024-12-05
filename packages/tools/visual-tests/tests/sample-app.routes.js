@@ -498,11 +498,6 @@ ROUTES.set('version/context', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('scenarios/appointment-form', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('scenarios/static-form', {
 	axe: {
 		skipFailures: false,
