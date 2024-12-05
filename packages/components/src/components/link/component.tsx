@@ -229,6 +229,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	@Prop() public _ariaOwns?: AriaOwnsPropType;
 
 	/**
+	 * Defines the custom class attribute if _variant="custom" is set.
+	 */
+	@Prop() public _customClass?: CustomClassPropType;
+
+	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -289,6 +294,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
+
+	/**
+	 * Defines which button variant should be used for presentation.
+	 */
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
 
 	@State() public state: LinkStates = {
 		_ariaCurrentValue: 'page',
@@ -401,6 +411,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaOwns(this._ariaOwns);
+		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
@@ -413,6 +424,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTooltipAlign(this._tooltipAlign);
+		this.validateVariant(this._variant);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});
