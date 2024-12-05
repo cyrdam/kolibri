@@ -1,5 +1,5 @@
-@mixin kol-link {
-	.kol-link {
+@mixin kol-link($block-classname) {
+	.#{$block-classname} {
 		font-family: var(--font-family);
 
 		appearance: none;

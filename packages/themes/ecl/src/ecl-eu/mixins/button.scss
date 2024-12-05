@@ -1,11 +1,12 @@
 @import '../../mixins/rem';
 
-@mixin kol-button {
-	.kol-button {
+@mixin kol-button($block-classname) {
+	.#{$block-classname} {
 		$root: &;
-
+		--kolibri-spacing: #{rem(4)};
 		--text-focus-outline-color: var(--color-white);
 
+		font-family: var(--font-family);
 		appearance: none;
 		border-radius: rem(4);
 		text-decoration: none;

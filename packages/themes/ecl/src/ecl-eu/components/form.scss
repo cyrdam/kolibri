@@ -3,7 +3,7 @@
 @import '../mixins/link';
 
 @layer kol-theme-component {
-	@include kol-link;
+	@include kol-link('kol-link');
 
 	:host {
 		font-family: var(--font-family);

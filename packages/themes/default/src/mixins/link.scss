@@ -1,7 +1,7 @@
 @import './rem';
 
-@mixin kol-link {
-	.kol-link {
+@mixin kol-link($block-classname) {
+	.#{$block-classname} {
 		$root: &;
 
 		color: var(--color-primary);

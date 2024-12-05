@@ -1,7 +1,7 @@
 @import './rem';
 
-@mixin kol-button {
-	.kol-button {
+@mixin kol-button($block-classname) {
+	.#{$block-classname} {
 		$root: &;
 
 		background-color: transparent;
