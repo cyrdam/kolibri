@@ -32,8 +32,6 @@ export type OptionalProps = {
 	PropAlternativeButtonLinkRole &
 	PropAriaCurrentValue &
 	PropAriaDescription &
-	PropButtonVariant &
-	PropCustomClass &
 	PropDisabled &
 	PropDownload &
 	PropHideLabel &
