@@ -5,8 +5,16 @@
 		font-family: var(--font-family);
 	}
 
-	:is(a, button):focus {
-		outline: none;
+	:is(a, .button) {
+		:focus {
+			outline: none;
+		}
+
+		//temp fix for underline until link refactor
+		display: inline-flex;
+		place-items: center;
+		text-align: center;
+		text-decoration-line: none;
 	}
 
 	:is(a, button):focus .kol-span-wc {

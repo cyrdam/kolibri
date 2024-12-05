@@ -39,7 +39,7 @@
 			outline-offset: rem(2);
 		}
 
-		.table-sort-button .button {
+		.table-sort-button .kol-button {
 			color: inherit;
 		}
 
@@ -48,7 +48,7 @@
 		th.align-left {
 			text-align: left;
 
-			& .table-sort-button .button-inner {
+			& .table-sort-button .kol-button__text {
 				justify-items: start;
 			}
 		}
@@ -56,7 +56,7 @@
 		th.align-center {
 			text-align: center;
 
-			& .table-sort-button .button-inner {
+			& .table-sort-button .kol-button__text {
 				justify-items: center;
 			}
 		}
@@ -64,7 +64,7 @@
 		th.align-right {
 			text-align: right;
 
-			& .table-sort-button .button-inner {
+			& .table-sort-button .kol-button__text {
 				justify-items: end;
 			}
 		}

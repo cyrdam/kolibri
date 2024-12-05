@@ -6,13 +6,13 @@
 		font-family: var(--font-family);
 	}
 
-	.button {
+	.kol-button {
 		.kol-pagination__button--selected & {
 			opacity: 1;
 		}
 	}
 
-	.button-inner {
+	.kol-button__text {
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
 		border: rem(1) solid var(--color-primary);
@@ -31,18 +31,18 @@
 			border: 0;
 		}
 
-		.button:focus & {
+		.kol-button:focus & {
 			@include focus-outline;
 		}
 
-		.button:is(:active, :hover):not(:disabled) & {
+		.kol-button:is(:active, :hover):not(:disabled) & {
 			background-color: var(--color-primary-variant);
 			border-color: var(--color-primary-variant);
 			box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
 			color: var(--color-light);
 		}
 
-		.button:active & {
+		.kol-button:active & {
 			color: var(--color-light);
 			outline: none;
 		}

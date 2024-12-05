@@ -1,102 +1,109 @@
+@import '../../mixins/rem';
+
 @mixin kol-button {
-	a,
-	button {
+	.kol-button {
+		$root: &;
+
 		appearance: none;
-		background-color: none;
 		outline: none;
 		text-decoration: none;
-	}
+		&:focus {
+			outline-offset: rem(-4);
+			outline: var(--text-focus-outline-color) solid rem(2);
+		}
 
-	a:focus .kol-span-wc,
-	button:focus .kol-span-wc {
-		outline-offset: rem(-4);
-		outline-width: rem(2);
-		outline-style: solid;
-	}
+		--text-focus-outline-color: var(--color-black);
 
-	button.ghost:focus .kol-span-wc {
-		outline-offset: rem(-2);
-	}
+		&--primary {
+			--text-background-color: var(--color-blue);
+			--text-border-color: var(--color-blue);
+			--text-color: var(--color-white);
 
-	.primary a .kol-span-wc,
-	.primary button .kol-span-wc {
-		background-color: var(--color-blue);
-		border-color: var(--color-blue);
-		color: var(--color-white);
-	}
+			&:focus {
+				--text-focus-outline-color: var(--color-white);
+			}
 
-	.primary a:focus .kol-span-wc,
-	.primary button:focus .kol-span-wc {
-		outline-color: var(--color-white);
-	}
+			&:hover {
+				--text-background-color: var(--color-blue-130);
+				--text-border-color: var(--color-blue-130);
+			}
+		}
 
-	.primary a:hover .kol-span-wc,
-	.primary button:hover .kol-span-wc {
-		background-color: var(--color-blue-130);
-		border-color: var(--color-blue-130);
-	}
+		&--secondary {
+			--text-background-color: var(--color-white);
+			--text-border-color: var(--color-blue);
+			--text-color: var(--color-blue);
 
-	.secondary a .kol-span-wc,
-	.secondary button .kol-span-wc {
-		background-color: var(--color-white);
-		border-color: var(--color-blue);
-		color: var(--color-blue);
-	}
+			&:focus {
+				--text-focus-outline-color: var(--color-blue);
+			}
 
-	.secondary a:focus .kol-span-wc,
-	.secondary button:focus .kol-span-wc {
-		outline-color: var(--color-blue);
-		outline-offset: rem(-6);
-	}
+			&:hover {
+				--text-border-color: var(--color-blue-130);
+				--text-color: var(--color-blue-130);
+			}
+		}
 
-	.secondary a:hover .kol-span-wc,
-	.secondary button:hover .kol-span-wc {
-		border-color: var(--color-blue-130);
-		color: var(--color-blue-130);
-	}
+		&--normal {
+			--text-background-color: var(--color-yellow);
+			--text-border-color: var(--color-yellow);
+			--text-color: var(--color-black);
 
-	.normal a .kol-span-wc,
-	/* CTA */
-	.normal button .kol-span-wc {
-		background-color: var(--color-yellow);
-		border-color: var(--color-yellow);
-		color: var(--color-black);
-	}
+			&:hover {
+				--text-background-color: var(--color-yellow-120);
+				--text-border-color: var(--color-yellow-120);
+			}
+		}
 
-	.normal a:hover .kol-span-wc,
-	/* CTA */
-	.normal button:hover .kol-span-wc {
-		background-color: var(--color-yellow-120);
-		border-color: var(--color-yellow-120);
-	}
+		&--danger {
+			--text-background-color: var(--color-red);
+			--text-border-color: var(--color-red);
+			--text-color: var(--color-white);
 
-	.danger a .kol-span-wc,
-	.danger button .kol-span-wc {
-		background-color: var(--color-red);
-		border-color: var(--color-red);
-		color: var(--color-white);
-	}
+			&:focus {
+				--text-focus-outline-color: var(--color-white);
+			}
 
-	.danger a:hover .kol-span-wc,
-	.danger button:hover .kol-span-wc {
-		background-color: var(--color-red);
-		border-color: var(--color-red);
-	}
+			&:hover {
+				--text-background-color: var(--color-red);
+				--text-border-color: var(--color-red);
+			}
+		}
 
-	.ghost a .kol-span-wc,
-	.ghost button .kol-span-wc {
-		background-color: transparent;
-		border-color: transparent;
-		color: var(--color-blue);
-	}
+		&--ghost {
+			--text-background-color: transparent;
+			--text-border-color: transparent;
+			--text-color: var(--color-blue);
 
-	.ghost a:focus .kol-span-wc,
-	.ghost button:focus .kol-span-wc {
-		outline-color: var(--color-blue);
-	}
+			&:focus {
+				--text-focus-outline-color: var(--color-blue);
+			}
 
-	.ghost a:hover .kol-span-wc,
-	.ghost button:hover .kol-span-wc {
-		color: var(--color-blue-130);
+			&:hover {
+				--text-background-color: unset;
+				--text-border-color: transparent;
+				--text-color: var(--color-blue-130);
+			}
+		}
+
+		&__text {
+			background-color: var(--text-background-color);
+			border-color: var(--text-border-color);
+			color: var(--text-color);
+
+			@at-root #{$root}--hide-label & {
+				.span-label {
+					display: none;
+				}
+			}
+
+			@at-root #{$root}--secondary:focus & {
+				outline-offset: rem(-6);
+			}
+
+			@at-root #{$root}--ghost:focus & {
+				outline-offset: rem(-2);
+			}
+		}
 	}
 }

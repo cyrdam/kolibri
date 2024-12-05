@@ -12,22 +12,20 @@
 		}
 
 		&__smart-button {
-			.button {
+			.kol-button {
 				color: inherit;
 				border-top-right-radius: var(--border-radius);
 				border-bottom-right-radius: var(--border-radius);
 				padding: rem(3.2);
+				&:hover {
+					background-color: var(--color-primary-variant);
+					color: var(--color-light);
+				}
 
-				.kol-span-wc {
+				&__text {
 					align-items: center;
 					font-style: normal;
 					padding: rem(4) rem(12);
-				}
-			}
-			&:hover {
-				.button {
-					background-color: var(--color-primary-variant);
-					color: var(--color-light);
 				}
 			}
 		}

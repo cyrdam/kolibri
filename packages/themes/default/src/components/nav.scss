@@ -14,12 +14,12 @@
 		list-style: none;
 	}
 
-	.kol-link-wc {
+	.kol-button__text {
 		display: flex;
 	}
 
 	.entry-item a,
-	.entry-item .button {
+	.entry-item .kol-button {
 		align-items: center;
 		color: var(--color-primary);
 		display: flex;
@@ -55,12 +55,12 @@
 	}
 
 	.active .entry-item a,
-	.active .entry-item .button {
+	.active .entry-item .kol-button {
 		font-weight: bold;
 	}
 
 	.active .list .entry-item a,
-	.active .list .entry-item .button {
+	.active .list .entry-item .kol-button {
 		font-weight: normal;
 		border-left-color: transparent;
 	}
@@ -68,18 +68,16 @@
 	.expand-button {
 		margin-left: rem(8);
 
-		.button {
-			&:hover {
-				background-color: var(--color-primary);
-				color: var(--color-light);
-			}
-
-			&:focus-visible {
-				@include focus-outline;
-			}
+		.kol-button &:hover {
+			background-color: var(--color-primary);
+			color: var(--color-light);
 		}
 
-		.button-inner {
+		&:focus-visible {
+			@include focus-outline;
+		}
+
+		.kol-button__text {
 			justify-content: center;
 		}
 	}
