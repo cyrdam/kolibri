@@ -6,6 +6,8 @@ import type {
 	PropAriaDescription,
 	PropAriaExpanded,
 	PropAriaOwns,
+	PropButtonVariant,
+	PropCustomClass,
 	PropDisabled,
 	PropDownload,
 	PropHideLabel,
@@ -30,6 +32,8 @@ export type OptionalProps = {
 	PropAlternativeButtonLinkRole &
 	PropAriaCurrentValue &
 	PropAriaDescription &
+	PropButtonVariant &
+	PropCustomClass &
 	PropDisabled &
 	PropDownload &
 	PropHideLabel &
