@@ -6,6 +6,10 @@
 		padding-top: calc(0.5em + rem(2));
 	}
 
+	.kol-input-file .input {
+		gap: initial;
+	}
+
 	input[type='file'] {
 		background-color: transparent;
 	}

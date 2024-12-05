@@ -21,6 +21,7 @@ exports[`KolInputContainerFc should render with children 1`] = `
 
 exports[`KolInputContainerFc should render with endAdornment 1`] = `
 <div class="input">
+  <div class="inputAdornment-start"></div>
   <div class="inputAdornment-end">
     <kol-icon _icons="codicon codicon-end-icon" _label=""></kol-icon>
   </div>
@@ -32,5 +33,6 @@ exports[`KolInputContainerFc should render with startAdornment 1`] = `
   <div class="inputAdornment-start">
     <kol-icon _icons="codicon codicon-start-icon" _label=""></kol-icon>
   </div>
+  <div class="inputAdornment-end"></div>
 </div>
 `;

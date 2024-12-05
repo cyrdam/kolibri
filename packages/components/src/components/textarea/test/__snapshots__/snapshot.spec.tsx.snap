@@ -115,6 +115,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
         <div class="inputAdornment-start">
           <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
         </div><textarea autocapitalize="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+        <div class="inputAdornment-end"></div>
       </div>
     </div>
   </template>
@@ -132,7 +133,8 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
           </span>
         </span>
       </label>
-      <div class="input"><textarea autocapitalize="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+      <div class="input">
+        <div class="inputAdornment-start"></div><textarea autocapitalize="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
         <div class="inputAdornment-end">
           <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
         </div>

@@ -121,6 +121,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
           <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
         </div>
         <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
+        <div class="inputAdornment-end"></div>
       </div>
     </div>
   </template>
@@ -139,6 +140,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
         </span>
       </label>
       <div class="input">
+        <div class="inputAdornment-start"></div>
         <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
         <div class="inputAdornment-end">
           <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
@@ -238,6 +240,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
         </span>
       </label>
       <div class="input">
+        <div class="inputAdornment-start"></div>
         <input autocapitalize="off" autocorrect="off" id="id-nonce" name="field" type="file" value="File">
         <div class="inputAdornment-end">
           <kol-button-wc _hidelabel="" _label="einblenden" tabindex="0"></kol-button-wc>

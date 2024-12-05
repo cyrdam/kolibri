@@ -26,7 +26,7 @@ import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputPasswordController } from './controller';
 import { translate } from '../../i18n';
 import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
@@ -133,6 +133,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 					this.inputRef?.focus();
 				}}
 				icon={`codicon codicon-eye-${this._passwordVisible ? 'closed' : 'watch'}`}
+				disabled={this._disabled}
 			/>
 		);
 	}
@@ -140,9 +141,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state} endAdornment={this.getShowPasswordButton()}>
+				<KolInputContainerStateWrapperFc state={this.state} endAdornment={this.getShowPasswordButton()}>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
-				</KolInputContainerFc>
+				</KolInputContainerStateWrapperFc>
 			</KolFormFieldStateWrapperFc>
 		);
 	}

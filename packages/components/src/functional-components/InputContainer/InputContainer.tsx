@@ -21,11 +21,19 @@ function hasItems(items?: InputAdornmentType): boolean {
 const KolInputContainerFc: FC<InputContainerProps> = (props, children) => {
 	const { class: classNames, startAdornment, endAdornment, ...other } = props;
 
+	if (!hasItems(startAdornment) && !hasItems(endAdornment)) {
+		return (
+			<div class={clsx('input', classNames)} {...other}>
+				{children}
+			</div>
+		);
+	}
+
 	return (
 		<div class={clsx('input', classNames)} {...other}>
-			{hasItems(startAdornment) && <InputAdornment position="start">{startAdornment}</InputAdornment>}
+			<InputAdornment position="start">{startAdornment}</InputAdornment>
 			{children}
-			{hasItems(endAdornment) && <InputAdornment position="end">{endAdornment}</InputAdornment>}
+			<InputAdornment position="end">{endAdornment}</InputAdornment>
 		</div>
 	);
 };

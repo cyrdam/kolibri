@@ -199,6 +199,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
             </option>
           </select>
         </form>
+        <div class="inputAdornment-end"></div>
       </div>
     </div>
   </template>
@@ -217,6 +218,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
         </span>
       </label>
       <div class="input">
+        <div class="inputAdornment-start"></div>
         <form class="input-slot">
           <input hidden="" type="submit">
           <select autocapitalize="off" autocorrect="off" id="id-nonce" name="field">
@@ -503,6 +505,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
             </option>
           </select>
         </form>
+        <div class="inputAdornment-end"></div>
       </div>
     </div>
   </template>
@@ -521,6 +524,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
         </span>
       </label>
       <div class="input">
+        <div class="inputAdornment-start"></div>
         <form class="input-slot">
           <input hidden="" type="submit">
           <select autocapitalize="off" autocorrect="off" id="id-nonce" multiple="" name="field">

@@ -33,7 +33,7 @@ export type InputContainerStateWrapperProps = Partial<InputContainerProps> & {
 	state: InputState;
 };
 
-function getInputContainerProps(state: InputState): { icons: KoliBriHorizontalIcons | undefined; smartButton: ButtonProps | undefined } {
+function getInputContainerProps(state: InputState): { icons?: KoliBriHorizontalIcons; smartButton?: ButtonProps; disabled?: boolean } {
 	let icons: KoliBriHorizontalIcons | undefined = undefined;
 	let smartButton: ButtonProps | undefined;
 
@@ -45,11 +45,11 @@ function getInputContainerProps(state: InputState): { icons: KoliBriHorizontalIc
 		smartButton = state._smartButton;
 	}
 
-	return { icons, smartButton };
+	return { icons, smartButton, disabled: state._disabled };
 }
 
 const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ state, endAdornment: defaultEndAdornment }, children) => {
-	const { icons, smartButton } = getInputContainerProps(state);
+	const { icons, smartButton, disabled } = getInputContainerProps(state);
 
 	let leftIconProps: IconOrIconClass | undefined = icons?.left;
 	if (isString(leftIconProps)) {
@@ -77,7 +77,7 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 	}
 
 	if (isObject(smartButton)) {
-		endAdornment.push(<KolIconButtonFc componentName="button" {...smartButton} hideLabel={true} />);
+		endAdornment.push(<KolIconButtonFc componentName="button" {...smartButton} hideLabel={true} disabled={disabled} />);
 	}
 
 	if (rightIconProps) {
