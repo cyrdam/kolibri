@@ -152,8 +152,9 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this._variant as string}`]: this.state._role === 'button' && this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+						[`kol-link--${this.state._variant as string}`]: this.state._role === 'button' && this.state._variant !== 'custom',
+						[this.state._customClass as string]:
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
 					})}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
