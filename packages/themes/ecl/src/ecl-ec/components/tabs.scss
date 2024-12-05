@@ -16,13 +16,13 @@
 		margin-bottom: rem(-1);
 	}
 
-	.tabs-button-group button .kol-span-wc {
+	.tabs-button-group button .kol-span {
 		padding: rem(8);
 		min-height: rem(44);
 		min-width: rem(44);
 	}
 
-	.tabs-button-group button.selected .kol-span-wc {
+	.tabs-button-group button.selected .kol-span {
 		border-color: var(--color-grey-25);
 		border-style: solid;
 		border-width: rem(1);
@@ -33,11 +33,11 @@
 		color: var(--color-blue);
 	}
 
-	.tabs-button-group button:hover:not(:disabled) .kol-span-wc {
+	.tabs-button-group button:hover:not(:disabled) .kol-span {
 		color: var(--color-blue-130);
 	}
 
-	.tabs-button-group button:focus .kol-span-wc {
+	.tabs-button-group button:focus .kol-span {
 		outline-color: var(--color-blue-130);
 		outline-style: solid;
 		outline-width: rem(2);
