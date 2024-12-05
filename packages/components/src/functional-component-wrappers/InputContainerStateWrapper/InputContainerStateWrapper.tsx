@@ -17,7 +17,6 @@ import type {
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { isObject, isString } from 'lodash-es';
-import clsx from 'clsx';
 
 type InputState =
 	| TextareaStates
@@ -85,13 +84,8 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 		endAdornment.push(<KolIconButtonFc componentName="icon" {...(isObject(rightIconProps) ? rightIconProps : {})} />);
 	}
 
-	const classNames = clsx({
-		'icon-left': leftIconProps !== undefined,
-		'icon-right': rightIconProps !== undefined,
-	});
-
 	return (
-		<KolInputContainerFc class={classNames} startAdornment={startAdornment} endAdornment={endAdornment}>
+		<KolInputContainerFc startAdornment={startAdornment} endAdornment={endAdornment}>
 			{children}
 		</KolInputContainerFc>
 	);

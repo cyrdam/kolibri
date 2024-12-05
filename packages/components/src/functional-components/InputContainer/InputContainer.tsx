@@ -4,27 +4,18 @@ import type { JSXBase, VNode } from '@stencil/core/internal';
 import InputAdornment from '../InputAdornment';
 
 type InputAdornmentType = VNode | VNode[] | null;
-type ReturnRenderAdornmentType = VNode | VNode[] | null;
 
 export type InputContainerProps = JSXBase.HTMLAttributes & {
 	startAdornment?: InputAdornmentType;
 	endAdornment?: InputAdornmentType;
 };
 
-function renderInputAdornment(inputAdornment?: InputAdornmentType): ReturnRenderAdornmentType {
-	if (!inputAdornment) {
-		return null;
+function hasItems(items?: InputAdornmentType): boolean {
+	if (!items) {
+		return false;
 	}
 
-	if (Array.isArray(inputAdornment)) {
-		if (!inputAdornment.length) {
-			return null;
-		}
-
-		return inputAdornment.map((item) => <InputAdornment>{item}</InputAdornment>);
-	}
-
-	return <InputAdornment>{inputAdornment}</InputAdornment>;
+	return Array.isArray(items) ? items.length > 0 : Boolean(items);
 }
 
 const KolInputContainerFc: FC<InputContainerProps> = (props, children) => {
@@ -32,9 +23,9 @@ const KolInputContainerFc: FC<InputContainerProps> = (props, children) => {
 
 	return (
 		<div class={clsx('input', classNames)} {...other}>
-			{renderInputAdornment(startAdornment)}
+			{hasItems(startAdornment) && <InputAdornment position="start">{startAdornment}</InputAdornment>}
 			{children}
-			{renderInputAdornment(endAdornment)}
+			{hasItems(endAdornment) && <InputAdornment position="end">{endAdornment}</InputAdornment>}
 		</div>
 	);
 };

@@ -12,8 +12,32 @@
 		gap: rem(16);
 	}
 
-	.kol-input {
-		gap: rem(4);
+	.kol-input .input {
+		gap: rem(8);
+
+		.inputAdornment-start,
+		.inputAdornment-end {
+			display: flex;
+			align-items: center;
+			gap: rem(8);
+			.kol-icon {
+				min-width: rem(16);
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+		.inputAdornment-start {
+			.kol-icon:first-child {
+				margin-left: rem(8);
+			}
+		}
+
+		.inputAdornment-end {
+			.kol-icon:last-child {
+				margin-right: rem(8);
+			}
+		}
 	}
 
 	.kol-input .error:not(.hidden-error) {

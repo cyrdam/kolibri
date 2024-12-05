@@ -91,10 +91,14 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
           </span>
         </span>
       </label>
-      <div class="icon-left icon-right input">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" _tabindex="-1"></kol-icon>
+      <div class="input">
+        <div class="inputAdornment-start">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+        </div>
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" _tabindex="-1"></kol-icon>
+        <div class="inputAdornment-end">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+        </div>
       </div>
     </div>
   </template>
@@ -112,8 +116,10 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
           </span>
         </span>
       </label>
-      <div class="icon-left input">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" _tabindex="-1"></kol-icon>
+      <div class="input">
+        <div class="inputAdornment-start">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+        </div>
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
       </div>
     </div>
@@ -132,9 +138,11 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
           </span>
         </span>
       </label>
-      <div class="icon-right input">
+      <div class="input">
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" _tabindex="-1"></kol-icon>
+        <div class="inputAdornment-end">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+        </div>
       </div>
     </div>
   </template>
@@ -231,7 +239,9 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
       </label>
       <div class="input">
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
-        <kol-button-wc _hidelabel="" _label="einblenden" _tabindex="-1" tabindex="0"></kol-button-wc>
+        <div class="inputAdornment-end">
+          <kol-button-wc _hidelabel="" _label="einblenden" tabindex="0"></kol-button-wc>
+        </div>
       </div>
     </div>
   </template>

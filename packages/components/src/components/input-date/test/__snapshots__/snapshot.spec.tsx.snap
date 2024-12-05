@@ -91,10 +91,14 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
           </span>
         </span>
       </label>
-      <div class="icon-left icon-right input">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" _tabindex="-1"></kol-icon>
+      <div class="input">
+        <div class="inputAdornment-start">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+        </div>
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" _tabindex="-1"></kol-icon>
+        <div class="inputAdornment-end">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+        </div>
       </div>
     </div>
   </template>
@@ -112,8 +116,10 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
           </span>
         </span>
       </label>
-      <div class="icon-left input">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label="" _tabindex="-1"></kol-icon>
+      <div class="input">
+        <div class="inputAdornment-start">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+        </div>
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
       </div>
     </div>
@@ -132,9 +138,11 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
           </span>
         </span>
       </label>
-      <div class="icon-right input">
+      <div class="input">
         <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
-        <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label="" _tabindex="-1"></kol-icon>
+        <div class="inputAdornment-end">
+          <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+        </div>
       </div>
     </div>
   </template>

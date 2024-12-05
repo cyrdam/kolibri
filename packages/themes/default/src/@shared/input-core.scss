@@ -38,19 +38,30 @@
 			border-style: solid;
 			border-width: rem(2);
 			padding: 0 rem(8);
+			gap: rem(8);
 
-			> .kol-icon {
-				width: rem(16);
+			.inputAdornment-start,
+			.inputAdornment-end {
+				display: flex;
+				align-items: center;
+
+				.kol-icon {
+					min-width: rem(16);
+					display: flex;
+					justify-content: center;
+				}
 			}
 
-			&:is(.icon-left, .icon-right) {
-				padding-left: rem(16);
-				padding-right: rem(16);
+			.inputAdornment-start {
+				> .kol-icon {
+					margin-left: rem(8);
+				}
 			}
 
-			&:is(.icon-left, .icon-right) input {
-				padding-left: rem(8);
-				padding-right: rem(8);
+			.inputAdornment-end {
+				> .kol-icon {
+					margin-right: rem(8);
+				}
 			}
 
 			> input:first-child {
