@@ -2,10 +2,5 @@
 @import '../mixins/button';
 
 @layer kol-theme-component {
-	.kol-button {
-		--kolibri-spacing: #{rem(4)};
-		font-family: var(--font-family);
-	}
-
-	@include kol-button;
+	@include kol-button('kol-button');
 }

@@ -1,9 +1,10 @@
 @import '../@shared/mixins';
 @import '../style';
 @import '../input-line';
-@import '../link';
+@import '../@shared/kol-link-mixin';
 
 @include kol-alert-styles;
+@include kol-link-styles('kol-link');
 
 @layer kol-component {
 	:host {
