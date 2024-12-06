@@ -149,11 +149,11 @@ export class KolDrawer implements DrawerAPI {
 		this._on?.onClose?.();
 	}
 
-	private handleClose(): void {
-		async () => {
+	private handleClose() {
+		void (async () => {
 			await this.close();
 			this.handleCloseDialog();
-		};
+		})();
 	}
 
 	private handleAnimationEnd(e: Event): void {
