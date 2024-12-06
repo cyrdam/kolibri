@@ -39,7 +39,7 @@ describe('KolSpanFc', () => {
 
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.classList.contains('hide-label')).toBe(true);
+		expect(page.root?.classList.contains('kol-span--hide-label')).toBe(true);
 		expect(page.root?.textContent).not.toContain('Hidden Label');
 	});
 
