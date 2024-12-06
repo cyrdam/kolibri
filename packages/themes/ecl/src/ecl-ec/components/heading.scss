@@ -6,27 +6,29 @@
 		font-family: var(--font-family);
 	}
 
-	.headline-h1 {
-		@include kol-typography-h1;
-	}
+	.kol-heading {
+		&--h1 {
+			@include kol-typography-h1;
+		}
 
-	.headline-h2 {
-		@include kol-typography-h2;
-	}
+		&--h2 {
+			@include kol-typography-h2;
+		}
 
-	.headline-h3 {
-		@include kol-typography-h3;
-	}
+		&--h3 {
+			@include kol-typography-h3;
+		}
 
-	.headline-h4 {
-		@include kol-typography-h4;
-	}
+		&--h4 {
+			@include kol-typography-h4;
+		}
 
-	.headline-h5 {
-		@include kol-typography-h5;
-	}
+		&--h5 {
+			@include kol-typography-h5;
+		}
 
-	.headline-h6 {
-		color: rgb(234, 0, 255);
+		&--h6 {
+			color: rgb(234, 0, 255);
+		}
 	}
 }
