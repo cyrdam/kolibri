@@ -72,7 +72,7 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
 	const finalVariant = variant || HeadlineTag;
 
 	return (
-		<HeadlineTag class={clsx('kol-heading', `kol-heading--${finalVariant}`, classNames)} {...other}>
+		<HeadlineTag class={clsx('kol-heading__headline', `kol-heading--${finalVariant}`, classNames)} {...other}>
 			{children}
 		</HeadlineTag>
 	);
@@ -111,7 +111,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	if (!secondaryHeadline) {
 		return (
-			<KolHeadlineFc class={clsx(classNames)} {...headlineProps}>
+			<KolHeadlineFc class={clsx('kol-heading', classNames)} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 		);
@@ -119,12 +119,12 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	const { class: groupClassNames, ...groupOthers } = HeadingGroupProps;
 	const headlineGroupProps: HGroupProps = {
-		class: clsx(groupClassNames),
+		class: clsx('kol-heading', groupClassNames),
 		...groupOthers,
 	};
 
 	return (
-		<hgroup {...headlineGroupProps}>
+		<hgroup class="kol-heading" {...headlineGroupProps}>
 			<KolHeadlineFc class={classNames} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>

@@ -3,7 +3,7 @@
 exports[`kol-heading should render with _label="Headline" _level=0 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <strong class="kol-heading kol-heading--strong">
+    <strong class="kol-heading kol-heading--strong kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </strong>
@@ -14,7 +14,7 @@ exports[`kol-heading should render with _label="Headline" _level=0 1`] = `
 exports[`kol-heading should render with _label="Headline" _level=1 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h1">
+    <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -25,7 +25,7 @@ exports[`kol-heading should render with _label="Headline" _level=1 1`] = `
 exports[`kol-heading should render with _label="Headline" _level=2 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h2 class="kol-heading kol-heading--h2">
+    <h2 class="kol-heading kol-heading--h2 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h2>
@@ -36,7 +36,7 @@ exports[`kol-heading should render with _label="Headline" _level=2 1`] = `
 exports[`kol-heading should render with _label="Headline" _level=3 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h3 class="kol-heading kol-heading--h3">
+    <h3 class="kol-heading kol-heading--h3 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h3>
@@ -47,7 +47,7 @@ exports[`kol-heading should render with _label="Headline" _level=3 1`] = `
 exports[`kol-heading should render with _label="Headline" _level=4 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h4 class="kol-heading kol-heading--h4">
+    <h4 class="kol-heading kol-heading--h4 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h4>
@@ -58,7 +58,7 @@ exports[`kol-heading should render with _label="Headline" _level=4 1`] = `
 exports[`kol-heading should render with _label="Headline" _level=5 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h5 class="kol-heading kol-heading--h5">
+    <h5 class="kol-heading kol-heading--h5 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h5>
@@ -69,7 +69,7 @@ exports[`kol-heading should render with _label="Headline" _level=5 1`] = `
 exports[`kol-heading should render with _label="Headline" _level=6 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h6 class="kol-heading kol-heading--h6">
+    <h6 class="kol-heading kol-heading--h6 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h6>
@@ -80,7 +80,7 @@ exports[`kol-heading should render with _label="Headline" _level=6 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="h1" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h1">
+    <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -91,7 +91,7 @@ exports[`kol-heading should render with _label="Headline" _variant="h1" 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="h2" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h2">
+    <h1 class="kol-heading kol-heading--h2 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -102,7 +102,7 @@ exports[`kol-heading should render with _label="Headline" _variant="h2" 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="h3" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h3">
+    <h1 class="kol-heading kol-heading--h3 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -113,7 +113,7 @@ exports[`kol-heading should render with _label="Headline" _variant="h3" 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="h4" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h4">
+    <h1 class="kol-heading kol-heading--h4 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -124,7 +124,7 @@ exports[`kol-heading should render with _label="Headline" _variant="h4" 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="h5" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h5">
+    <h1 class="kol-heading kol-heading--h5 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -135,7 +135,7 @@ exports[`kol-heading should render with _label="Headline" _variant="h5" 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="h6" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h6">
+    <h1 class="kol-heading kol-heading--h6 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -146,7 +146,7 @@ exports[`kol-heading should render with _label="Headline" _variant="h6" 1`] = `
 exports[`kol-heading should render with _label="Headline" _variant="strong" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--strong">
+    <h1 class="kol-heading kol-heading--strong kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
@@ -157,7 +157,7 @@ exports[`kol-heading should render with _label="Headline" _variant="strong" 1`] 
 exports[`kol-heading should render with _label="Headline" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <h1 class="kol-heading kol-heading--h1">
+    <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
       Headline
       <slot name="expert" slot="expert"></slot>
     </h1>
