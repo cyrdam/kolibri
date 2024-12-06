@@ -8,7 +8,7 @@ exports[`KolHeadingFc should apply custom class names 1`] = `
 
 exports[`KolHeadingFc should render with a secondary headline 1`] = `
 <hgroup>
-  <h1 class="kol-heading--h1">
+  <h1 class="kol-heading kol-heading--h1">
     Main Heading
   </h1>
   <h2 class="kol-heading__secondary-headline">
