@@ -6,7 +6,7 @@ exports[`ToastItemFc should render with basic props and status 1`] = `
     <div class="kol-alert__container">
       <kol-icon _icons="codicon codicon-info" _label="kol-info" class="kol-alert__heading-icon"></kol-icon>
       <div class="kol-alert__container-content">
-        <strong class="kol-alert__heading kol-heading kol-heading--strong kol-heading__headline">
+        <strong class="kol-alert__heading kol-heading kol-heading--strong">
           Test Toast
         </strong>
       </div>
