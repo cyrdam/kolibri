@@ -1,10 +1,10 @@
-import { Component, Element, h, Host, Method, Prop, State, Watch, type JSX } from '@stencil/core';
-import type { DetailsCallbacksPropType, DetailsAPI, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
+import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent } from '../../utils/events';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -55,8 +55,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		clearTimeout(this.toggleTimeout);
 
 		this.toggleTimeout = setTimeout(() => {
-			tryToDispatchKoliBriEvent('toggle', this.host, this._open);
-
+			if (this.host) {
+				dispatchDomEvent(this.host, 'toggle');
+			}
 			this.state._on?.onToggle?.(event, Boolean(this._open));
 		}, 25);
 	};
