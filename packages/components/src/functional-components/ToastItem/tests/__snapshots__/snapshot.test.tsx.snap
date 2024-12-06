@@ -10,7 +10,7 @@ exports[`ToastItemFc should render with basic props and status 1`] = `
           Test Toast
         </strong>
       </div>
-      <kol-button-wc _ariadescription="Test Toast" _hidelabel="" _label="kol-close-alert" _tooltipalign="left" class="close kol-alert__close-button"></kol-button-wc>
+      <kol-button-wc _ariadescription="Test Toast" _hidelabel="" _label="kol-close-alert" _tooltipalign="left" class="close kol-alert__close-button" data-testid="alert-close-button"></kol-button-wc>
     </div>
     <div class="kol-alert__content">
       <div>
