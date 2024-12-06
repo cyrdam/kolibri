@@ -81,7 +81,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
     <kol-link-wc>
       <!---->
       <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label" href="https://example.com" rel="noopener" target="self">
-        <span class="hide-label kol-link__text kol-span">
+        <span class="kol-link__text kol-span kol-span--hide-label">
           <span class="kol-span__container">
             <kol-icon _icons="codicon codicon-home" _label="" class="icon left"></kol-icon>
             <span aria-hidden="true" class="kol-span__label" hidden="">

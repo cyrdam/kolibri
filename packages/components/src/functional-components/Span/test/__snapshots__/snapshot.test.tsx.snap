@@ -14,7 +14,7 @@ exports[`KolSpanFc should allow markdown in label 1`] = `
 `;
 
 exports[`KolSpanFc should hide label when hideLabel is true 1`] = `
-<span class="hide-label kol-span">
+<span class="kol-span kol-span--hide-label">
   <span class="kol-span__container">
     <span aria-hidden="true" class="kol-span__label" hidden=""></span>
   </span>
