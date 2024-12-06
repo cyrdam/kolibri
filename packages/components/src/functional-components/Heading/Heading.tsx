@@ -111,7 +111,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	if (!secondaryHeadline) {
 		return (
-			<KolHeadlineFc class={clsx(classNames)} {...headlineProps}>
+			<KolHeadlineFc class={clsx('kol-heading', classNames)} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 		);

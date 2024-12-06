@@ -73,7 +73,7 @@ export class KolHeading implements HeadingAPI {
 		const { _secondaryHeadline, _label, _level, _variant } = this.state;
 
 		return (
-			<KolHeadingFc class="kol-heading" secondaryHeadline={_secondaryHeadline} level={_level} variant={_variant}>
+			<KolHeadingFc secondaryHeadline={_secondaryHeadline} level={_level} variant={_variant}>
 				{_label}
 				<slot name="expert" slot="expert" />
 			</KolHeadingFc>
