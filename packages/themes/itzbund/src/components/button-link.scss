@@ -95,7 +95,7 @@
 			@at-root #{$root}--hide-label & {
 				padding: 0 rem(8);
 
-				.span-label {
+				.kol-span__label {
 					display: none;
 				}
 			}
