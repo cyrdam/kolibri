@@ -29,7 +29,7 @@ exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>
@@ -81,7 +81,7 @@ exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>
@@ -133,7 +133,7 @@ exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>
@@ -185,7 +185,7 @@ exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>
@@ -237,7 +237,7 @@ exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>
@@ -289,7 +289,7 @@ exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>
@@ -341,7 +341,7 @@ exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=t
       <div class="content">
         <slot></slot>
       </div>
-      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close"></kol-button-wc>
+      <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="close" data-testid="card-close-button"></kol-button-wc>
     </div>
   </template>
 </kol-card>

@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
 import type { CardAPI, CardStates, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateHasCloser, validateLabel } from '../../schema';
@@ -8,6 +8,7 @@ import { watchHeadingLevel } from '../heading/validation';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
+import { dispatchDomEvent } from '../../utils/events';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -20,9 +21,14 @@ import { KolHeadingFc } from '../../functional-components';
 	shadow: true,
 })
 export class KolCard implements CardAPI {
+	@Element() private readonly host?: HTMLKolCardElement;
+
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
 			this._on.onClose(new Event('Close'));
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, 'close');
 		}
 	};
 
@@ -43,6 +49,7 @@ export class KolCard implements CardAPI {
 					{this.state._hasCloser && (
 						<KolButtonWcTag
 							class="close"
+							data-testid="card-close-button"
 							_hideLabel
 							_icons={{
 								left: {
