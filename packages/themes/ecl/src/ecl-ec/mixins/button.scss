@@ -1,8 +1,10 @@
 @import '../../mixins/rem';
 
-@mixin kol-button {
-	.kol-button {
+@mixin kol-button($block-classname) {
+	.#{$block-classname} {
 		$root: &;
+
+		font-family: var(--font-family);
 
 		appearance: none;
 		outline: none;
@@ -90,6 +92,16 @@
 			background-color: var(--text-background-color);
 			border-color: var(--text-border-color);
 			color: var(--text-color);
+
+			border-radius: 0;
+			border-style: solid;
+			border-width: rem(2);
+			font-weight: var(--font-weight-bold);
+			margin: 0;
+			min-height: rem(44);
+			min-width: rem(44);
+			padding: 0.25em 0.75em;
+			line-height: 1.2;
 
 			@at-root #{$root}--hide-label & {
 				.span-label {

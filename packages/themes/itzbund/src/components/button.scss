@@ -2,6 +2,7 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
+	@include kol-button('kol-button');
 	.kol-button {
 		font-family: var(--font-family-sans);
 		/* text-transform: uppercase; */
@@ -20,6 +21,4 @@
 			padding: 0 rem(16);
 		}
 	}
-
-	@include kol-button;
 }

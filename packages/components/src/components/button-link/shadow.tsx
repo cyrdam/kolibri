@@ -58,7 +58,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	public render(): JSX.Element {
 		return (
 			<KolButtonWcTag
-				class="kol-button-link"
 				ref={this.catchRef}
 				_accessKey={this._accessKey}
 				_ariaControls={this._ariaControls}

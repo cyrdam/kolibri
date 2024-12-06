@@ -63,4 +63,4 @@ Let's make KoliBri **better** and **more colorful** together!
 - [Get Started](https://public-ui.github.io/en/docs/get-started/first-steps)
 - [Contributing](./CONTRIBUTING.md)
 - [Code of Conduct](./CODE_OF_CONDUCT.md)
-- [Sicherheit](./docs/SECURITY.md)
+- [Security](./docs/SECURITY.md)

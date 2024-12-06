@@ -1,19 +1,14 @@
 @import '../../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
+	.kol-link {
 		--kolibri-spacing: #{rem(4)};
-	}
-
-	a,
-	button {
 		appearance: none;
 		color: var(--color-blue);
 		text-decoration: underline;
-	}
 
-	a:hover,
-	button:hover {
-		color: var(--color-blue-130);
+		&:hover {
+			color: var(--color-blue-130);
+		}
 	}
 }

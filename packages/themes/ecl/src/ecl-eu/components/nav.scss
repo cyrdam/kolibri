@@ -21,7 +21,7 @@
 	}
 
 	.entry .kol-button-wc:first-child,
-	.entry .kol-link-wc,
+	.entry .kol-link,
 	.entry .kol-span-wc {
 		flex-grow: 1;
 	}
@@ -66,12 +66,12 @@
 		text-decoration: none;
 	}
 
-	:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span-wc {
+	:is(.kol-button-wc, .kol-link):focus-within .kol-span-wc {
 		border-color: var(--color-white);
 	}
 
-	:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span-wc,
-	:is(.kol-button-wc, .kol-link-wc):hover .kol-span-wc {
+	:is(.kol-button-wc, .kol-link):focus-within .kol-span-wc,
+	:is(.kol-button-wc, .kol-link):hover .kol-span-wc {
 		text-decoration: underline;
 	}
 

@@ -1,10 +1,12 @@
-import type {
+import {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaOwnsPropType,
+	ButtonVariantPropType,
+	CustomClassPropType,
 	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
@@ -29,6 +31,8 @@ import {
 	validateAriaDescription,
 	validateAriaExpanded,
 	validateAriaOwns,
+	validateButtonVariant,
+	validateCustomClass,
 	validateDisabled,
 	validateDownload,
 	validateHideLabel,
@@ -52,6 +56,7 @@ import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { KolSpanFc } from '../../functional-components';
+import clsx from 'clsx';
 
 /**
  * @internal
@@ -128,7 +133,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 
 		return (
-			<Host class="kol-link-wc">
+			<Host>
 				<a
 					ref={this.catchRef}
 					{...tagAttrs}
@@ -143,11 +148,14 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 							? `${this.state._label}${isExternal ? ` (${translate('kol-open-link-in-tab')})` : ''}`
 							: undefined
 					}
-					class={{
-						disabled: this.state._disabled === true,
-						'external-link': isExternal,
-						'hide-label': this.state._hideLabel === true,
-					}}
+					class={clsx('kol-link', {
+						'kol-link--disabled': this.state._disabled === true,
+						'kol-link--external-link': isExternal,
+						'kol-link--hide-label': this.state._hideLabel === true,
+						[`kol-link--${this.state._variant as string}`]: this.state._role === 'button' && this.state._variant !== 'custom',
+						[this.state._customClass as string]:
+							this.state._variant === 'custom' && typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+					})}
 					{...this.state._on}
 					// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md
 					onClick={this.onClick}
@@ -156,6 +164,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					tabIndex={this.state._disabled ? -1 : this.state._tabIndex}
 				>
 					<KolSpanFc
+						class="kol-link__text"
 						badgeText={this.state._accessKey || this.state._shortKey}
 						icons={this.state._icons}
 						hideLabel={this.state._hideLabel}
@@ -165,7 +174,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					</KolSpanFc>
 					{isExternal && (
 						<KolIconTag
-							class="external-link-icon"
+							class="kol-link__icon"
 							_label={this.state._hideLabel ? '' : translate('kol-open-link-in-tab')}
 							_icons={'codicon codicon-link-external'}
 							aria-hidden={this.state._hideLabel}
@@ -178,6 +187,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 					 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 					 */
 					aria-hidden="true"
+					class="kol-link__tooltip"
 					hidden={hasExpertSlot || !this.state._hideLabel}
 					_badgeText={this.state._accessKey || this.state._shortKey}
 					_align={this.state._tooltipAlign}
@@ -217,6 +227,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	 * Defines the contextual relationship between a parent and its child elements.
 	 */
 	@Prop() public _ariaOwns?: AriaOwnsPropType;
+
+	/**
+	 * Defines the custom class attribute if _variant="custom" is set.
+	 */
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -280,6 +295,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
+	/**
+	 * Defines which button variant should be used for presentation.
+	 */
+	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+
 	@State() public state: LinkStates = {
 		_ariaCurrentValue: 'page',
 		_href: '', // ⚠ required
@@ -310,6 +330,11 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	@Watch('_ariaOwns')
 	public validateAriaOwns(value?: AriaOwnsPropType): void {
 		validateAriaOwns(this, value);
+	}
+
+	@Watch('_customClass')
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_disabled')
@@ -375,12 +400,18 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		validateTooltipAlign(this, value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: ButtonVariantPropType): void {
+		validateButtonVariant(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateAccessKey(this._accessKey);
 		this.validateAriaCurrentValue(this._ariaCurrentValue);
 		this.validateAriaDescription(this._ariaDescription);
 		this.validateAriaExpanded(this._ariaExpanded);
 		this.validateAriaOwns(this._ariaOwns);
+		this.validateCustomClass(this._customClass);
 		this.validateDisabled(this._disabled);
 		this.validateDownload(this._download);
 		this.validateHideLabel(this._hideLabel);
@@ -393,6 +424,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 		this.validateTabIndex(this._tabIndex);
 		this.validateTarget(this._target);
 		this.validateTooltipAlign(this._tooltipAlign);
+		this.validateVariant(this._variant);
 		this.unsubscribeOnLocationChange = onLocationChange((location) => {
 			this.state._ariaCurrent = location === this.state._href ? this.state._ariaCurrentValue : undefined;
 		});

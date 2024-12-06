@@ -5,13 +5,15 @@
 		font-family: var(--font-family);
 	}
 
-	.kol-link-wc > a > .kol-span-wc {
-		border-radius: rem(4);
-		gap: rem(8);
-		line-height: 1;
-		padding: rem(12);
-		background-color: #0e47cb;
-		color: #fff;
-		cursor: pointer;
+	.kol-link {
+		&__text {
+			border-radius: rem(4);
+			gap: rem(8);
+			line-height: 1;
+			padding: rem(12);
+			background-color: #0e47cb;
+			color: #fff;
+			cursor: pointer;
+		}
 	}
 }
