@@ -8,7 +8,7 @@ describe('KolHeadingFc', () => {
 
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.tagName).toBe('H1');
+		expect(page.root?.firstElementChild?.tagName).toBe('H1');
 		expect(page.root?.textContent).toContain('Default Heading');
 		expect(page.root?.classList.contains('kol-heading')).toBe(true);
 	});
@@ -18,7 +18,7 @@ describe('KolHeadingFc', () => {
 
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.tagName).toBe('H3');
+		expect(page.root?.firstElementChild?.tagName).toBe('H3');
 		expect(page.root?.textContent).toContain('Level 3 Heading');
 		expect(page.root?.classList.contains('kol-heading')).toBe(true);
 	});
@@ -44,8 +44,8 @@ describe('KolHeadingFc', () => {
 
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.tagName).toBe('H1');
-		expect(page.root?.classList.contains('custom-class')).toBe(true);
+		expect(page.root?.firstElementChild?.tagName).toBe('H1');
+		expect(page.root?.firstElementChild?.classList.contains('custom-class')).toBe(true);
 		expect(page.root?.classList.contains('kol-heading')).toBe(true);
 		expect(page.root?.textContent).toContain('Custom Class Heading');
 	});

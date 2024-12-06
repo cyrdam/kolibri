@@ -5,9 +5,11 @@ exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <strong class="kol-heading kol-heading--strong kol-heading__headline">
-          Überschrift
-        </strong>
+        <div class="kol-heading">
+          <strong class="kol-heading--strong kol-heading__headline">
+            Überschrift
+          </strong>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -22,9 +24,11 @@ exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <strong class="kol-heading kol-heading--strong kol-heading__headline">
-          Überschrift
-        </strong>
+        <div class="kol-heading">
+          <strong class="kol-heading--strong kol-heading__headline">
+            Überschrift
+          </strong>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -40,9 +44,11 @@ exports[`kol-card should render with _label="Überschrift" _level=0 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <strong class="kol-heading kol-heading--strong kol-heading__headline">
-          Überschrift
-        </strong>
+        <div class="kol-heading">
+          <strong class="kol-heading--strong kol-heading__headline">
+            Überschrift
+          </strong>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -57,9 +63,11 @@ exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
-          Überschrift
-        </h1>
+        <div class="kol-heading">
+          <h1 class="kol-heading--h1 kol-heading__headline">
+            Überschrift
+          </h1>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -74,9 +82,11 @@ exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
-          Überschrift
-        </h1>
+        <div class="kol-heading">
+          <h1 class="kol-heading--h1 kol-heading__headline">
+            Überschrift
+          </h1>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -92,9 +102,11 @@ exports[`kol-card should render with _label="Überschrift" _level=1 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
-          Überschrift
-        </h1>
+        <div class="kol-heading">
+          <h1 class="kol-heading--h1 kol-heading__headline">
+            Überschrift
+          </h1>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -109,9 +121,11 @@ exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h2 class="kol-heading kol-heading--h2 kol-heading__headline">
-          Überschrift
-        </h2>
+        <div class="kol-heading">
+          <h2 class="kol-heading--h2 kol-heading__headline">
+            Überschrift
+          </h2>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -126,9 +140,11 @@ exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h2 class="kol-heading kol-heading--h2 kol-heading__headline">
-          Überschrift
-        </h2>
+        <div class="kol-heading">
+          <h2 class="kol-heading--h2 kol-heading__headline">
+            Überschrift
+          </h2>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -144,9 +160,11 @@ exports[`kol-card should render with _label="Überschrift" _level=2 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h2 class="kol-heading kol-heading--h2 kol-heading__headline">
-          Überschrift
-        </h2>
+        <div class="kol-heading">
+          <h2 class="kol-heading--h2 kol-heading__headline">
+            Überschrift
+          </h2>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -161,9 +179,11 @@ exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h3 class="kol-heading kol-heading--h3 kol-heading__headline">
-          Überschrift
-        </h3>
+        <div class="kol-heading">
+          <h3 class="kol-heading--h3 kol-heading__headline">
+            Überschrift
+          </h3>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -178,9 +198,11 @@ exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h3 class="kol-heading kol-heading--h3 kol-heading__headline">
-          Überschrift
-        </h3>
+        <div class="kol-heading">
+          <h3 class="kol-heading--h3 kol-heading__headline">
+            Überschrift
+          </h3>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -196,9 +218,11 @@ exports[`kol-card should render with _label="Überschrift" _level=3 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h3 class="kol-heading kol-heading--h3 kol-heading__headline">
-          Überschrift
-        </h3>
+        <div class="kol-heading">
+          <h3 class="kol-heading--h3 kol-heading__headline">
+            Überschrift
+          </h3>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -213,9 +237,11 @@ exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h4 class="kol-heading kol-heading--h4 kol-heading__headline">
-          Überschrift
-        </h4>
+        <div class="kol-heading">
+          <h4 class="kol-heading--h4 kol-heading__headline">
+            Überschrift
+          </h4>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -230,9 +256,11 @@ exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h4 class="kol-heading kol-heading--h4 kol-heading__headline">
-          Überschrift
-        </h4>
+        <div class="kol-heading">
+          <h4 class="kol-heading--h4 kol-heading__headline">
+            Überschrift
+          </h4>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -248,9 +276,11 @@ exports[`kol-card should render with _label="Überschrift" _level=4 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h4 class="kol-heading kol-heading--h4 kol-heading__headline">
-          Überschrift
-        </h4>
+        <div class="kol-heading">
+          <h4 class="kol-heading--h4 kol-heading__headline">
+            Überschrift
+          </h4>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -265,9 +295,11 @@ exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h5 class="kol-heading kol-heading--h5 kol-heading__headline">
-          Überschrift
-        </h5>
+        <div class="kol-heading">
+          <h5 class="kol-heading--h5 kol-heading__headline">
+            Überschrift
+          </h5>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -282,9 +314,11 @@ exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h5 class="kol-heading kol-heading--h5 kol-heading__headline">
-          Überschrift
-        </h5>
+        <div class="kol-heading">
+          <h5 class="kol-heading--h5 kol-heading__headline">
+            Überschrift
+          </h5>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -300,9 +334,11 @@ exports[`kol-card should render with _label="Überschrift" _level=5 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h5 class="kol-heading kol-heading--h5 kol-heading__headline">
-          Überschrift
-        </h5>
+        <div class="kol-heading">
+          <h5 class="kol-heading--h5 kol-heading__headline">
+            Überschrift
+          </h5>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -317,9 +353,11 @@ exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=f
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h6 class="kol-heading kol-heading--h6 kol-heading__headline">
-          Überschrift
-        </h6>
+        <div class="kol-heading">
+          <h6 class="kol-heading--h6 kol-heading__headline">
+            Überschrift
+          </h6>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -334,9 +372,11 @@ exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=t
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h6 class="kol-heading kol-heading--h6 kol-heading__headline">
-          Überschrift
-        </h6>
+        <div class="kol-heading">
+          <h6 class="kol-heading--h6 kol-heading__headline">
+            Überschrift
+          </h6>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -352,9 +392,11 @@ exports[`kol-card should render with _label="Überschrift" _level=6 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h6 class="kol-heading kol-heading--h6 kol-heading__headline">
-          Überschrift
-        </h6>
+        <div class="kol-heading">
+          <h6 class="kol-heading--h6 kol-heading__headline">
+            Überschrift
+          </h6>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
@@ -369,9 +411,11 @@ exports[`kol-card should render with _label="Überschrift" 1`] = `
   <template shadowrootmode="open">
     <div class="card">
       <div class="header">
-        <h1 class="kol-heading kol-heading--h1 kol-heading__headline">
-          Überschrift
-        </h1>
+        <div class="kol-heading">
+          <h1 class="kol-heading--h1 kol-heading__headline">
+            Überschrift
+          </h1>
+        </div>
       </div>
       <div class="content">
         <slot></slot>
