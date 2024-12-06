@@ -874,6 +874,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.18.0
         version: 7.18.0(eslint@8.57.1)(typescript@5.6.3)
+      cpy-cli:
+        specifier: 5.0.0
+        version: 5.0.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -919,6 +922,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.18.0
         version: 7.18.0(eslint@8.57.1)(typescript@5.6.3)
+      cpy-cli:
+        specifier: 5.0.0
+        version: 5.0.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -967,6 +973,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.18.0
         version: 7.18.0(eslint@8.57.1)(typescript@5.6.3)
+      cpy-cli:
+        specifier: 5.0.0
+        version: 5.0.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -1015,6 +1024,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.18.0
         version: 7.18.0(eslint@8.57.1)(typescript@5.6.3)
+      cpy-cli:
+        specifier: 5.0.0
+        version: 5.0.0
       eslint:
         specifier: 8.57.1
         version: 8.57.1
