@@ -1,11 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, ToolbarItemPropType } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolLinkTag, KolButtonTag } from '../../core/component-names';
 
-const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar-item';
+const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar--item';
 
 @Component({
 	tag: 'kol-toolbar',
@@ -46,11 +46,9 @@ export class KolToolbar implements ToolbarAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-toolbar">
-				<div class="toolbar" role="toolbar" aria-label={this.state._label}>
-					{this.state._items.map(this.renderItem)}
-				</div>
-			</Host>
+			<div class="kol-toolbar" role="toolbar" aria-label={this.state._label}>
+				{this.state._items.map(this.renderItem)}
+			</div>
 		);
 	}
 
