@@ -1,5 +1,5 @@
 // TODO: Should be synchronized with enums/events.ts
-export type KoliBriEventType = 'blur' | 'close' | 'change' | 'click' | 'focus' | 'input' | 'toggle' | 'selection-change' | 'mousedown';
+export type KoliBriEventType = 'blur' | 'change' | 'click' | 'close' | 'focus' | 'input' | 'mousedown' | 'reset' | 'selection-change' | 'submit' | 'toggle';
 
 export function stopPropagation(event: Event): void {
 	event.stopImmediatePropagation();
