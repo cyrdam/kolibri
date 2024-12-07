@@ -22,12 +22,13 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
+import { dispatchDomEvent } from '../../utils/events';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -62,6 +63,8 @@ const NUMBER_FORMATTER = new Intl.NumberFormat(userLanguage, {
 	shadow: true,
 })
 export class KolPagination implements PaginationAPI {
+	@Element() private readonly host?: HTMLKolTextareaElement;
+
 	private readonly nonce = nonce();
 
 	private readonly calcCount = (total: number, pageSize = 1): number => Math.ceil(total / pageSize);
@@ -255,8 +258,13 @@ export class KolPagination implements PaginationAPI {
 	};
 
 	private onClick = (event: Event, page: number) => {
+		event.stopPropagation();
+
 		if (typeof this.state._on.onClick === 'function') {
 			this.state._on.onClick(event, page);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, 'click');
 		}
 		this.onChangePage(event, page);
 	};
@@ -266,6 +274,9 @@ export class KolPagination implements PaginationAPI {
 			clearTimeout(timeout);
 			if (typeof this.state._on.onChangePage === 'function') {
 				this.state._on.onChangePage(event, page);
+			}
+			if (this.host) {
+				dispatchDomEvent(this.host, 'changePage');
 			}
 		});
 	};
@@ -278,6 +289,9 @@ export class KolPagination implements PaginationAPI {
 				clearTimeout(timeout);
 				if (typeof this.state._on.onChangePageSize === 'function') {
 					this.state._on.onChangePageSize(event, this._pageSize);
+				}
+				if (this.host) {
+					dispatchDomEvent(this.host, 'changePageSize');
 				}
 			});
 		}
