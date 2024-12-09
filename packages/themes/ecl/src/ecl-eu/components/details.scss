@@ -13,7 +13,7 @@
 				cursor: pointer;
 			}
 
-			button .kol-span-wc .span-label {
+			button .kol-span__label {
 				border-bottom-color: #000;
 			}
 
@@ -21,7 +21,7 @@
 				font-size: rem(19.2);
 			}
 
-			.kol-span-wc > span {
+			.kol-span__container {
 				display: flex;
 				text-align: left;
 				gap: 0;

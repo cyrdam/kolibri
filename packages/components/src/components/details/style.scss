@@ -14,11 +14,13 @@
 
 			button {
 				min-height: auto;
-			}
 
-			button .kol-span-wc .span-label {
-				border-bottom-color: grey;
-				border-bottom-style: solid;
+				.kol-span {
+					&__label {
+						border-bottom-color: grey;
+						border-bottom-style: solid;
+					}
+				}
 			}
 		}
 
