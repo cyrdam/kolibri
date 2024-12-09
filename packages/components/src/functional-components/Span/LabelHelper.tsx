@@ -15,7 +15,7 @@ const LabelHelper: FC<{ label: string; hideLabel?: boolean; badgeText?: string; 
 		return null;
 	}
 
-	const defaultClasses = 'span-label';
+	const defaultClasses = 'kol-span__label';
 
 	if (allowMarkdown) {
 		return <span class={clsx(defaultClasses, 'md')} innerHTML={md(label)} />;

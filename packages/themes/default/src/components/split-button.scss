@@ -26,7 +26,7 @@
 		width: rem(1);
 	}
 
-	:is(a, button) > .kol-span-wc {
+	:is(a, button) > .kol-span {
 		font-weight: 700;
 
 		min-height: var(--a11y-min-size);
@@ -38,12 +38,12 @@
 	}
 
 	// Temp-Fix Hover-effect on Button clipping border
-	.main-button :is(a, button) > .kol-span-wc {
+	.main-button :is(a, button) > .kol-span {
 		border-top-left-radius: var(--border-radius);
 		border-bottom-left-radius: var(--border-radius);
 	}
 
-	.secondary-button :is(a, button) > .kol-span-wc {
+	.secondary-button :is(a, button) > .kol-span {
 		border-top-right-radius: var(--border-radius);
 		border-bottom-right-radius: var(--border-radius);
 	}
