@@ -34,6 +34,10 @@
 			height: 100%;
 
 			&--item {
+				width: 100%;
+				/*height: 100%;font-weight: 600;*/
+				display: block;
+
 				@at-root &[part*='vertical'] #{$root}__list-item {
 					border-radius: 0;
 					border-top: 0.1em dotted white;
@@ -51,12 +55,6 @@
 				&[part*='horizontal selected'] {
 					border-bottom: 0.375em solid var(--color-citrin);
 				}
-			}
-
-			.kol-link {
-				width: 100%;
-				/*height: 100%;font-weight: 600;*/
-				display: block;
 
 				a {
 					border-radius: var(--border-radius);

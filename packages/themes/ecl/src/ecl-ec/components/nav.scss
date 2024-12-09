@@ -42,8 +42,8 @@
 		&__list-item &__entry {
 			display: flex;
 
-			.kol-button:first-child,
-			.kol-link,
+			.kol-button-wc:first-child,
+			&--item,
 			.kol-span {
 				flex-grow: 1;
 			}
@@ -59,12 +59,12 @@
 			}
 		}
 
-		:is(.kol-button, .kol-link):focus-within .kol-span {
+		:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span {
 			border-color: var(--color-white);
 		}
 
-		:is(.kol-button, .kol-link):focus-within .kol-span,
-		:is(.kol-button, .kol-link):hover .kol-span {
+		:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span,
+		:is(.kol-button-wc, .kol-link-wc):hover .kol-span {
 			text-decoration: underline;
 		}
 
