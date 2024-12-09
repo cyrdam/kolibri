@@ -17,7 +17,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
@@ -51,33 +51,28 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-link-button">
-				<KolLinkWcTag
-					ref={this.catchRef}
-					class={{
-						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-					}}
-					_accessKey={this._accessKey}
-					_ariaCurrentValue={this._ariaCurrentValue}
-					_ariaDescription={this._ariaDescription}
-					_disabled={this._disabled}
-					_download={this._download}
-					_hideLabel={this._hideLabel}
-					_href={this._href}
-					_icons={this._icons}
-					_label={this._label}
-					_on={this._on}
-					_role="button"
-					_shortKey={this._shortKey}
-					_tabIndex={this._tabIndex}
-					_target={this._target}
-					_tooltipAlign={this._tooltipAlign}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</KolLinkWcTag>
-			</Host>
+			<KolLinkWcTag
+				ref={this.catchRef}
+				_accessKey={this._accessKey}
+				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaDescription={this._ariaDescription}
+				_customClass={this._customClass}
+				_disabled={this._disabled}
+				_download={this._download}
+				_hideLabel={this._hideLabel}
+				_href={this._href}
+				_icons={this._icons}
+				_label={this._label}
+				_on={this._on}
+				_role="button"
+				_shortKey={this._shortKey}
+				_tabIndex={this._tabIndex}
+				_target={this._target}
+				_tooltipAlign={this._tooltipAlign}
+				_variant={this._variant}
+			>
+				<slot name="expert" slot="expert"></slot>
+			</KolLinkWcTag>
 		);
 	}
 

@@ -1,12 +1,11 @@
-@mixin kol-link {
-	a,
-	button {
+@mixin kol-link($block-classname) {
+	.#{$block-classname} {
 		appearance: none;
 		color: var(--color-blue);
 		line-height: 1.2;
-	}
-	a:hover,
-	button:hover {
-		color: var(--color-blue-130);
+
+		&:hover {
+			color: var(--color-blue-130);
+		}
 	}
 }

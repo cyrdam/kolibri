@@ -3,18 +3,18 @@
 @import '../mixins/link';
 
 @layer kol-theme-component {
+	@include kol-alert-theme;
+	@include kol-link('kol-link');
+
 	:host {
 		font-family: var(--font-family);
 	}
 
-	.kol-link-wc {
-		@include kol-link;
+	.kol-form__link {
 		display: inline-block;
 	}
 
 	.mandatory-fields-hint {
 		@include indented-text;
 	}
-
-	@include kol-alert-theme;
 }

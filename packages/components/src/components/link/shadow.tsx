@@ -16,7 +16,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolLinkWcTag } from '../../core/component-names';
 
 @Component({
@@ -50,32 +50,30 @@ export class KolLink implements LinkProps, FocusableElement {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-link">
-				<KolLinkWcTag
-					ref={this.catchRef}
-					_accessKey={this._accessKey}
-					_ariaCurrentValue={this._ariaCurrentValue}
-					_ariaDescription={this._ariaDescription}
-					_disabled={this._disabled}
-					_download={this._download}
-					_hideLabel={this._hideLabel}
-					_href={this._href}
-					_icons={this._icons}
-					_label={this._label}
-					_on={this._on}
-					_role={this._role}
-					_shortKey={this._shortKey}
-					_tabIndex={this._tabIndex}
-					_target={this._target}
-					_tooltipAlign={this._tooltipAlign}
-				>
-					{/*
+			<KolLinkWcTag
+				ref={this.catchRef}
+				_accessKey={this._accessKey}
+				_ariaCurrentValue={this._ariaCurrentValue}
+				_ariaDescription={this._ariaDescription}
+				_disabled={this._disabled}
+				_download={this._download}
+				_hideLabel={this._hideLabel}
+				_href={this._href}
+				_icons={this._icons}
+				_label={this._label}
+				_on={this._on}
+				_role={this._role}
+				_shortKey={this._shortKey}
+				_tabIndex={this._tabIndex}
+				_target={this._target}
+				_tooltipAlign={this._tooltipAlign}
+			>
+				{/*
 						Es ist keine gute Idee hier einen Slot einzufügen, da dadurch ermöglicht wird,
 						die Unterstützung hinsichtlich der Barrierefreiheit der Komponente zu umgehen.
 					*/}
-					<slot name="expert" slot="expert"></slot>
-				</KolLinkWcTag>
-			</Host>
+				<slot name="expert" slot="expert"></slot>
+			</KolLinkWcTag>
 		);
 	}
 

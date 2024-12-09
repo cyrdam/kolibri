@@ -17,7 +17,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop } from '@stencil/core';
+import { Component, h, Method, Prop } from '@stencil/core';
 import { KolButtonWcTag } from '../../core/component-names';
 
 @Component({
@@ -57,39 +57,32 @@ export class KolButton implements ButtonProps, FocusableElement {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-button">
-				<KolButtonWcTag
-					ref={this.catchRef}
-					class={{
-						button: true,
-						[this._variant as string]: this._variant !== 'custom',
-						[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-					}}
-					_accessKey={this._accessKey}
-					_ariaControls={this._ariaControls}
-					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this._ariaExpanded}
-					_ariaSelected={this._ariaSelected}
-					_customClass={this._customClass}
-					_disabled={this._disabled}
-					_hideLabel={this._hideLabel}
-					_icons={this._icons}
-					_id={this._id}
-					_label={this._label}
-					_name={this._name}
-					_on={this._on}
-					_role={this._role}
-					_shortKey={this._shortKey}
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					_variant={this._variant}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</KolButtonWcTag>
-			</Host>
+			<KolButtonWcTag
+				ref={this.catchRef}
+				_accessKey={this._accessKey}
+				_ariaControls={this._ariaControls}
+				_ariaDescription={this._ariaDescription}
+				_ariaExpanded={this._ariaExpanded}
+				_ariaSelected={this._ariaSelected}
+				_customClass={this._customClass}
+				_disabled={this._disabled}
+				_hideLabel={this._hideLabel}
+				_icons={this._icons}
+				_id={this._id}
+				_label={this._label}
+				_name={this._name}
+				_on={this._on}
+				_role={this._role}
+				_shortKey={this._shortKey}
+				_syncValueBySelector={this._syncValueBySelector}
+				_tabIndex={this._tabIndex}
+				_tooltipAlign={this._tooltipAlign}
+				_type={this._type}
+				_value={this._value}
+				_variant={this._variant}
+			>
+				<slot name="expert" slot="expert"></slot>
+			</KolButtonWcTag>
 		);
 	}
 

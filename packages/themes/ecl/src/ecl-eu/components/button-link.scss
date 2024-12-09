@@ -1,12 +1,5 @@
+@import '../mixins/link';
+
 @layer kol-theme-component {
-	a,
-	button {
-		appearance: none;
-		color: var(--color-blue);
-		text-decoration: underline;
-	}
-	a:hover,
-	button:hover {
-		color: var(--color-blue-130);
-	}
+	@include kol-link('kol-button');
 }

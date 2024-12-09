@@ -1,9 +1,5 @@
 @import '../mixins/link';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
-	@include kol-link;
+	@include kol-link('kol-link');
 }

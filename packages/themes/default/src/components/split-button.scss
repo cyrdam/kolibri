@@ -26,10 +26,9 @@
 		width: rem(1);
 	}
 
-	:is(a, button) > .kol-span-wc {
+	:is(a, button) > .kol-span {
 		font-weight: 700;
-		border-top-left-radius: var(--border-radius);
-		border-bottom-left-radius: var(--border-radius);
+
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
 		padding: rem(8) rem(14);
@@ -38,5 +37,16 @@
 		transition-property: background-color, color, border-color;
 	}
 
-	@include kol-button;
+	// Temp-Fix Hover-effect on Button clipping border
+	.main-button :is(a, button) > .kol-span {
+		border-top-left-radius: var(--border-radius);
+		border-bottom-left-radius: var(--border-radius);
+	}
+
+	.secondary-button :is(a, button) > .kol-span {
+		border-top-right-radius: var(--border-radius);
+		border-bottom-right-radius: var(--border-radius);
+	}
+
+	@include kol-button('kol-button');
 }

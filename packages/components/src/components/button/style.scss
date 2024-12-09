@@ -1,3 +1,5 @@
 @import '../@shared/mixins';
 @import '../style';
-@import '../button';
+@import '../@shared/kol-button-mixin';
+
+@include kol-button-styles('kol-button');

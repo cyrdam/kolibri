@@ -18,5 +18,5 @@
 		background-color: #fff;
 	}
 
-	@include kol-button;
+	@include kol-button('kol-button');
 }

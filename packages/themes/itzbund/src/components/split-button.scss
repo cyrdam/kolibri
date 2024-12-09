@@ -22,21 +22,21 @@
 		height: 100%;
 	}
 
-	.secondary-button > button > .kol-span-wc {
+	.secondary-button > button > .kol-span {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}
 
-	.secondary-button > button > :active > .kol-span-wc {
+	.secondary-button > button > :active > .kol-span {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
 	}
 
-	.secondary-button > button > :focus > .kol-span-wc {
+	.secondary-button > button > :focus > .kol-span {
 		border-top-right-radius: rem(32);
 		border-bottom-right-radius: rem(32);
 		border-top-left-radius: 0;
@@ -63,8 +63,8 @@
 		/* text-transform: uppercase; */
 	}
 
-	a > .kol-span-wc,
-	button > .kol-span-wc {
+	a > .kol-span,
+	button > .kol-span {
 		border-top-left-radius: rem(32);
 		border-bottom-left-radius: rem(32);
 		font-size: inherit;
@@ -73,5 +73,5 @@
 		min-height: rem(44);
 	}
 
-	@include kol-button;
+	@include kol-button('kol-button');
 }
