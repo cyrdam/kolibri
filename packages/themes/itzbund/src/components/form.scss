@@ -6,16 +6,20 @@
 	@include kol-alert-theme;
 	@include kol-link;
 
-	.kol-form__link {
-		display: inline-block;
-	}
+	.kol-form {
+		&__link {
+			display: inline-block;
+		}
 
-	.mandatory-fields-hint {
-		@include indented-text;
-	}
+		&__mandatory-fields-hint {
+			@include indented-text;
+		}
 
-	.kol-alert .kol-alert__heading {
-		display: flex;
-		place-items: center;
+		&__alert {
+			.kol-alert__heading {
+				display: flex;
+				place-items: center;
+			}
+		}
 	}
 }

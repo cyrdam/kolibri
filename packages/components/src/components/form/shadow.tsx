@@ -53,7 +53,7 @@ export class KolForm implements FormAPI {
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc type="error" variant="card" label={translate('kol-error-list-message')}>
+			<KolAlertFc class="kol-form__alert" type="error" variant="card" label={translate('kol-error-list-message')}>
 				<nav aria-label={translate('kol-error-list')}>
 					<ul>
 						{errorList?.map((error, index) => (
@@ -77,14 +77,14 @@ export class KolForm implements FormAPI {
 
 	private renderFormElement(): JSX.Element {
 		return (
-			<form method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+			<form class="kol-form__form" method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 				{this.state._requiredText === true ? (
 					<p>
-						<div class="mandatory-fields-hint">{translate('kol-form-description')}</div>
+						<div class="kol-form__mandatory-fields-hint">{translate('kol-form-description')}</div>
 					</p>
 				) : typeof this.state._requiredText === 'string' && this.state._requiredText.length > 0 ? (
 					<p>
-						<div class="mandatory-fields-hint">{this.state._requiredText}</div>
+						<div class="kol-form__mandatory-fields-hint">{this.state._requiredText}</div>
 					</p>
 				) : null}
 				<slot />
