@@ -10,7 +10,9 @@ export type KoliBriEventType =
 	| 'input'
 	| 'mousedown'
 	| 'reset'
-	| 'selection-change'
+	| 'selection-change' // todo remove
+	| 'selectionChange'
+	| 'sort'
 	| 'submit'
 	| 'toggle';
 

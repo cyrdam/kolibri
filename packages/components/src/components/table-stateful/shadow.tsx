@@ -11,13 +11,14 @@ import type {
 	KoliBriTableSelectedHead,
 	LabelPropType,
 	PaginationPositionPropType,
+	SortEventPayload,
 	Stringified,
 	TableAPI,
-	TableStatefulCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
 	TableSelectionPropType,
+	TableStatefulCallbacksPropType,
 	TableStates,
 } from '../../schema';
 import {
@@ -36,12 +37,11 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
-import type { SortEventPayload } from '../../schema';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -406,11 +406,11 @@ export class KolTableStateful implements TableAPI {
 	};
 
 	public componentDidLoad(): void {
-		this.tableWcRef?.addEventListener('kol-selection-change', this.onSelectionChange);
+		this.tableWcRef?.addEventListener('selectionChange', this.onSelectionChange);
 	}
 
 	public disconnectedCallback(): void {
-		this.tableWcRef?.removeEventListener('kol-selection-change', this.onSelectionChange);
+		this.tableWcRef?.removeEventListener('selectionChange', this.onSelectionChange);
 	}
 
 	public componentWillLoad(): void {
@@ -567,10 +567,11 @@ export class KolTableStateful implements TableAPI {
 			};
 		const selectedData = this.getSelectedData(value);
 
-		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
-
 		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
 			this.state._on[Events.onSelectionChange](event, selectedData);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, 'selectionChange');
 		}
 	}
 

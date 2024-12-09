@@ -12,6 +12,7 @@ import type {
 	KoliBriTableHeaders,
 	KoliBriTableRender,
 	LabelPropType,
+	SelectionChangeEventPayload,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
@@ -31,7 +32,7 @@ import {
 } from '../../schema';
 import { Events } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -404,6 +405,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		return dataField;
 	}
 
+	private handleSelectionChangeCallbackAndEvent(event: Event, payload: SelectionChangeEventPayload) {
+		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
+			this.state._on[Events.onSelectionChange](event, payload);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, 'selectionChange');
+		}
+	}
+
 	public componentWillLoad(): void {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -454,10 +464,7 @@ export class KolTableStateless implements TableStatelessAPI {
 									const updatedSelectedKeys = !selected
 										? [...(selection?.selectedKeys ?? []), keyProperty]
 										: selection?.selectedKeys?.filter((key) => key !== keyProperty);
-									tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
-									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-										this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);
-									}
+									this.handleSelectionChangeCallbackAndEvent(event, updatedSelectedKeys ?? []);
 								}}
 							/>
 						</label>
@@ -467,10 +474,7 @@ export class KolTableStateless implements TableStatelessAPI {
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
-									tryToDispatchKoliBriEvent('selection-change', this.host, keyProperty);
-									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-										this.state._on[Events.onSelectionChange](event, keyProperty);
-									}
+									this.handleSelectionChangeCallbackAndEvent(event, keyProperty);
 								}}
 							/>
 						</label>
@@ -585,10 +589,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							type="checkbox"
 							onInput={(event: Event) => {
 								const selections = !isChecked ? this.state._data.map((el) => el?.[keyPropertyName] as string) : [];
-								tryToDispatchKoliBriEvent('selection-change', this.host, selections);
-								if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-									this.state._on[Events.onSelectionChange](event, selections);
-								}
+								this.handleSelectionChangeCallbackAndEvent(event, selections);
 							}}
 						/>
 					</label>
@@ -671,6 +672,9 @@ export class KolTableStateless implements TableStatelessAPI {
 										key: cell.key,
 										currentSortDirection: cell.sortDirection,
 									});
+								}
+								if (this.host) {
+									dispatchDomEvent(this.host, 'sort');
 								}
 							},
 						}}
