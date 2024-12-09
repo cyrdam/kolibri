@@ -6,10 +6,8 @@
 	@include kol-alert-theme;
 	@include kol-link('kol-link');
 
-	:host {
-		font-family: var(--font-family);
-	}
 	.kol-form {
+		font-family: var(--font-family);
 		&__link {
 			display: inline-block;
 		}
