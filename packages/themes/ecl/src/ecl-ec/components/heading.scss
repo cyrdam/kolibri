@@ -6,7 +6,7 @@
 		font-family: var(--font-family);
 	}
 
-	.kol-heading {
+	.kol-headline {
 		&--h1 {
 			@include kol-typography-h1;
 		}

@@ -34,11 +34,11 @@
 		cursor: pointer;
 	}
 
-	/* This is the text label. */
-	[class*='--hide-label'],
-	.hide-label {
-		.kol-span {
-			&__label {
+	.kol-span {
+		$spanRoot: &;
+
+		&__label {
+			@at-root #{$spanRoot} &--hide-label & {
 				display: none;
 			}
 		}

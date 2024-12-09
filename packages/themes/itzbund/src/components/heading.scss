@@ -1,7 +1,7 @@
 @import '../mixins/typography';
 
 @layer kol-theme-component {
-	.kol-heading {
+	.kol-headline {
 		&--h1 {
 			@include kol-typography-h1;
 		}
