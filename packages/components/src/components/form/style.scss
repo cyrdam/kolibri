@@ -7,7 +7,7 @@
 @include kol-link-styles('kol-link');
 
 @layer kol-component {
-	.kol-form {
+	:host {
 		font-size: rem(16);
 	}
 }
