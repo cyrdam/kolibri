@@ -5,6 +5,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
 import type { JSX } from '@stencil/core';
+import clsx from 'clsx';
 
 /**
  * @internal
@@ -95,7 +96,7 @@ export class KolPopover implements PopoverAPI {
 		return (
 			<Host ref={this.catchHostAndTriggerElement} class="kol-popover">
 				<div
-					class={{ 'kol-popover__content': true, 'kol-popover__content--visible': this.state._visible }}
+					class={clsx('kol-popover__content', { 'kol-popover__content--visible': this.state._visible })}
 					ref={this.catchPopoverElement}
 					hidden={!this.state._show}
 				>
