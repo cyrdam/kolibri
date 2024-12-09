@@ -72,7 +72,7 @@ const KolHeadlineFc: FC<HeadlineProps> = ({ class: classNames, level = MIN_HEADI
 	const finalVariant = variant || HeadlineTag;
 
 	return (
-		<HeadlineTag class={clsx('headline', `headline-${finalVariant}`, classNames)} {...other}>
+		<HeadlineTag class={clsx('kol-headline', `kol-headline--${finalVariant}`, classNames)} {...other}>
 			{children}
 		</HeadlineTag>
 	);
@@ -88,7 +88,7 @@ const KolSecondaryHeadlineFc: FC<SecondaryHeadlineProps> = ({ class: classNames,
 	const HeadlineTag = getSubHeadlineTag(level + 1);
 
 	return (
-		<HeadlineTag class={clsx('secondary-headline', classNames)} {...other}>
+		<HeadlineTag class={clsx('kol-headline kol-headline--group kol-headline--secondary', classNames)} {...other}>
 			{children}
 		</HeadlineTag>
 	);
@@ -104,10 +104,6 @@ const KolHeadingFc: FC<HeadingProps> = (
 	{ secondaryHeadline, level = MIN_HEADING_LEVEL, class: classNames, HeadingGroupProps = {}, SecondaryHeadlineProps = {}, ...other },
 	children,
 ) => {
-	// The 'kol-heading-wc' class is retained for backward compatibility.
-	// It must remain here until the SCSS/themes are updated accordingly.
-	const deprecatedClassName = 'kol-heading-wc';
-
 	const headlineProps: HeadlineProps = {
 		level,
 		...other,
@@ -115,7 +111,7 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	if (!secondaryHeadline) {
 		return (
-			<KolHeadlineFc class={clsx(deprecatedClassName, classNames)} {...headlineProps}>
+			<KolHeadlineFc class={clsx(classNames, 'kol-headline--single')} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 		);
@@ -123,13 +119,13 @@ const KolHeadingFc: FC<HeadingProps> = (
 
 	const { class: groupClassNames, ...groupOthers } = HeadingGroupProps;
 	const headlineGroupProps: HGroupProps = {
-		class: clsx(deprecatedClassName, groupClassNames),
+		class: clsx('kol-heading-group', groupClassNames),
 		...groupOthers,
 	};
 
 	return (
 		<hgroup {...headlineGroupProps}>
-			<KolHeadlineFc class={classNames} {...headlineProps}>
+			<KolHeadlineFc class={clsx(classNames, 'kol-headline--group', 'kol-headline--primary')} {...headlineProps}>
 				{children}
 			</KolHeadlineFc>
 			<KolSecondaryHeadlineFc level={level} {...SecondaryHeadlineProps}>

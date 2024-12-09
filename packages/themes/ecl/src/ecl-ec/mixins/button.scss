@@ -104,7 +104,7 @@
 			line-height: 1.2;
 
 			@at-root #{$root}--hide-label & {
-				.span-label {
+				.kol-span__label {
 					display: none;
 				}
 			}

@@ -2,7 +2,7 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
+	.kol-headline {
 		font-size: rem(16);
 	}
 }
