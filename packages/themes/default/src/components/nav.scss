@@ -57,11 +57,11 @@
 						padding: 0 rem(16);
 					}
 
-					.kol-nav__list--vertical .kol-nav__list--active & {
+					.kol-nav__list--vertical .kol-nav__list-item--active & {
 						border-left-color: var(--color-primary);
 					}
 
-					.kol-nav__list--active & {
+					.kol-nav__list-item--active & {
 						font-weight: bold;
 					}
 				}

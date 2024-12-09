@@ -2,14 +2,17 @@
 
 @layer kol-theme-component {
 	.kol-nav {
+		$root: &;
+
 		font-family: var(--font-family);
 
-		li > ul,
-		li + li {
-			border-color: var(--color-blue-75);
-			border-style: solid;
-			border-width: 0;
-			border-top-width: rem(2);
+		&__list-item {
+			@at-root & #{$root}__list-item {
+				border-color: var(--color-blue-75);
+				border-style: solid;
+				border-width: 0;
+				border-top-width: rem(2);
+			}
 		}
 
 		/* custom. */
@@ -23,12 +26,21 @@
 			margin: 0;
 			padding: 0;
 
+			&--nested {
+				@at-root #{$root}__list-item {
+					border-color: var(--color-blue-75);
+					border-style: solid;
+					border-width: 0;
+					border-top-width: rem(2);
+				}
+			}
+
 			&--vertical {
 				flex-direction: column;
 			}
 		}
 
-		&__entry {
+		&__list-item &__entry {
 			display: flex;
 
 			&--link {
@@ -61,7 +73,7 @@
 			content: '\eab6';
 		}
 
-		&list--expanded &__entry--expand-button kol-icon::part(icon)::before {
+		&list-item--expanded &__entry--expand-button kol-icon::part(icon)::before {
 			content: '\eab4';
 		}
 	}

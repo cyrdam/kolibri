@@ -2,6 +2,8 @@
 
 @layer kol-theme-component {
 	.kol-nav {
+		$root: &;
+
 		&__navigation {
 			.kol-link-wc a.text-center {
 				display: grid;
@@ -11,6 +13,12 @@
 		}
 
 		&__list {
+			&-item {
+				border-radius: var(--border-radius);
+				overflow: hidden;
+				padding: 0.125em;
+			}
+
 			list-style: none;
 			margin: 0;
 			padding: 0;
@@ -22,15 +30,11 @@
 			}
 		}
 
-		&__entry {
+		&__list-item &__entry {
 			height: 100%;
 
 			&--item {
-				border-radius: var(--border-radius);
-				overflow: hidden;
-				padding: 0.125em;
-
-				&[part*='vertical'] + li {
+				@at-root &[part*='vertical'] #{$root}__list-item {
 					border-radius: 0;
 					border-top: 0.1em dotted white;
 				}
@@ -39,7 +43,7 @@
 					border-right: 0.375em solid var(--color-citrin);
 				}
 
-				&[part*='horizontal'] + li {
+				@at-root &[part*='horizontal'] #{$root}__list-item {
 					border-radius: 0;
 					border-left: 0.1em dotted white;
 				}

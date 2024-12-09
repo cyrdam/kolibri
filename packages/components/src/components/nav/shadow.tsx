@@ -30,6 +30,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
 import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import type { StencilUnknown } from '../../schema';
+import clsx from 'clsx';
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -100,7 +101,7 @@ export class KolNav implements NavAPI {
 				: undefined;
 
 		return (
-			<div class={{ 'kol-nav__entry': true, 'hide-label': hideLabel }}>
+			<div class={clsx('kol-nav__entry', { 'hide-label': hideLabel })}>
 				{entryIsLink(entry) ? (
 					<KolLinkWcTag class="kol-nav__entry--item kol-nav__entry--link" {...entry} _hideLabel={hideLabel} _icons={icons} />
 				) : (
@@ -153,11 +154,11 @@ export class KolNav implements NavAPI {
 		const expanded = Boolean(link._children && this.state._expandedChildren.includes(link._children));
 		return (
 			<li
-				class={{
-					'kol-nav__list--active': active,
-					'kol-nav__list--expanded': expanded,
-					'kol-nav__list--has-children': hasChildren,
-				}}
+				class={clsx('kol-nav__list-item', {
+					'kol-nav__list-item--active': active,
+					'kol-nav__list-item--expanded': expanded,
+					'kol-nav__list-item--has-children': hasChildren,
+				})}
 				key={index}
 			>
 				{this.entry(collapsible, hideLabel, hasChildren, link, expanded)}
@@ -175,7 +176,12 @@ export class KolNav implements NavAPI {
 	}): JSX.Element => {
 		return (
 			<ul
-				class={`kol-nav__list ${props.deep > 0 && 'kol-nav__list--nested'} ${props.deep === 0 && props.orientation === 'horizontal' ? ' kol-nav__list--horizontal' : ' kol-nav__list--vertical'}`}
+				class={clsx(
+					'kol-nav__list',
+					{ 'kol-nav__list--nested': props.deep > 0 },
+					{ ' kol-nav__list--horizontal': props.deep === 0 && props.orientation === 'horizontal' },
+					{ 'kol-nav__list--vertical': props.deep !== 0 || props.orientation === 'vertical' },
+				)}
 				data-deep={props.deep}
 			>
 				{props.links.map((link, index: number) => {
