@@ -24,14 +24,6 @@
 		&__content {
 			display: block;
 			padding: rem(8);
-
-			&:last-child {
-				display: block;
-				padding: rem(8);
-				border-top-style: solid;
-				border-top-color: var(--color-achat);
-				border-top-width: rem(1);
-			}
 		}
 	}
 }
