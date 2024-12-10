@@ -4,6 +4,7 @@ import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeIte
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import { KolLinkWcTag, KolIconTag, KolTreeTag } from '../../core/component-names';
 import { nonce } from '../../utils/dev.utils';
+import clsx from 'clsx';
 
 @Component({
 	tag: `kol-tree-item-wc`,
@@ -19,19 +20,15 @@ export class KolTreeItemWc implements TreeItemAPI {
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item-wc">
+			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item">
 				<li
-					class="tree-item"
+					class="kol-tree-item__item"
 					style={{
 						'--level': `${this.level}`,
 					}}
 				>
 					<KolLinkWcTag
-						class={{
-							'tree-link': true,
-							'first-level': this.level === 0,
-							active: Boolean(_active),
-						}}
+						class={clsx('kol-tree-item__link', this.level === 0 && 'kol-tree-item__link--first-level', Boolean(_active) && 'kol-tree-item__link--active')}
 						_href={_href}
 						_label=""
 						_role="treeitem"
@@ -43,9 +40,12 @@ export class KolTreeItemWc implements TreeItemAPI {
 						<span slot="expert">
 							{_hasChildren && (
 								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-								<span class="toggle-button" onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}>
+								<span
+									class="kol-tree-item__toggle-button"
+									onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}
+								>
 									<KolIconTag
-										class="toggle-button-icon"
+										class="kol-tree-item__toggle-button-icon"
 										_icons={`codicon codicon-${_open ? 'chevron-down' : 'chevron-right'}`}
 										_label={'' /* Label deliberately left empty */}
 									/>
@@ -54,7 +54,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 							{_label}
 						</span>
 					</KolLinkWcTag>
-					<ul hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
+					<ul class="kol-tree-item__children" hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
 						<slot />
 					</ul>
 				</li>
