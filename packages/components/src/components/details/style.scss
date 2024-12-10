@@ -4,15 +4,13 @@
 @import '../../functional-components/Collapsible/collapsible';
 
 @layer kol-component {
-	:host {
+	.kol-details {
 		font-size: rem(16);
-	}
 
-	.details {
 		&__heading-button {
 			display: flex;
 
-			button {
+			.kol-button {
 				min-height: auto;
 
 				.kol-span {

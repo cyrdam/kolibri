@@ -4,17 +4,19 @@
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
-		font-size: rem(16);
 	}
 
-	.details {
+	.kol-details {
+		font-size: rem(16);
 		&__heading-button {
 			&:focus-within {
 				cursor: pointer;
 			}
 
-			button .kol-span__label {
-				border-bottom-color: #000;
+			.kol-button {
+				.kol-span__label {
+					border-bottom-color: #000;
+				}
 			}
 
 			.kol-icon {
