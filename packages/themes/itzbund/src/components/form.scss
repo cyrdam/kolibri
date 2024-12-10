@@ -4,9 +4,9 @@
 
 @layer kol-theme-component {
 	@include kol-link;
+	@include kol-alert-theme;
 
 	.kol-form {
-		@include kol-alert-theme;
 		&__link {
 			display: inline-block;
 		}

@@ -4,9 +4,9 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
+	@include kol-alert-theme;
 
 	.kol-form {
-		@include kol-alert-theme;
 		font-family: var(--font-family);
 		width: 100%;
 
