@@ -2,11 +2,8 @@
 @import '../mixins/indented-text';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-details {
+		font-family: var(--font-family);
 		font-size: rem(16);
 		&__heading-button {
 			&:focus-within {
