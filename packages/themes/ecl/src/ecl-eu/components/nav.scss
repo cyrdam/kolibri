@@ -20,9 +20,9 @@
 		display: flex;
 	}
 
-	.entry .kol-button-wc:first-child,
+	.entry .kol-button:first-child,
 	.entry .kol-link,
-	.entry .kol-span-wc {
+	.entry .kol-span {
 		flex-grow: 1;
 	}
 
@@ -43,7 +43,7 @@
 		height: 100%;
 	}
 
-	.kol-span-wc {
+	.kol-span {
 		border-color: transparent;
 		border-style: solid;
 		border-width: rem(2);
@@ -66,12 +66,12 @@
 		text-decoration: none;
 	}
 
-	:is(.kol-button-wc, .kol-link):focus-within .kol-span-wc {
+	:is(.kol-button, .kol-link):focus-within .kol-span {
 		border-color: var(--color-white);
 	}
 
-	:is(.kol-button-wc, .kol-link):focus-within .kol-span-wc,
-	:is(.kol-button-wc, .kol-link):hover .kol-span-wc {
+	:is(.kol-button, .kol-link):focus-within .kol-span,
+	:is(.kol-button, .kol-link):hover .kol-span {
 		text-decoration: underline;
 	}
 

@@ -36,12 +36,14 @@
 				}
 			}
 
-			.kol-span-wc > span {
-				display: flex;
-				place-items: baseline center;
-				text-align: left;
-				gap: 0.5em;
-				@include kol-typography-accordion;
+			.kol-span {
+				&__container {
+					display: flex;
+					place-items: baseline center;
+					text-align: left;
+					gap: 0.5em;
+					@include kol-typography-accordion;
+				}
 			}
 
 			border-radius: var(--border-radius);
