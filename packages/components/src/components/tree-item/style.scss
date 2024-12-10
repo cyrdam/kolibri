@@ -7,15 +7,15 @@
 		font-size: rem(16);
 
 		&__link {
-			&--first-level .kol-link {
-				padding-left: rem(6);
-			}
-
 			.kol-link {
 				padding-right: rem(6);
 				padding-left: calc(rem(22.4) * var(--level));
 				padding-top: rem(6.4);
 				padding-bottom: rem(6.4);
+			}
+
+			&--first-level .kol-link {
+				padding-left: rem(6);
 			}
 		}
 
