@@ -3,20 +3,23 @@
 
 @layer kol-component {
 	/*
-	* display necessary to center icon
+	* Necessary to center icon
 	 */
 	:host {
 		display: contents;
 	}
 
-	/*
+	.kol-icon {
+		&__icon {
+			font-size: rem(16);
+			color: inherit;
+			line-height: inherit;
+		}
+		/*
    * The <code>:important</code> is important, because we should always override the font icon style.
    */
-	.kol-icon {
-		color: inherit;
-		line-height: inherit;
-		font-size: inherit !important;
-		&:before {
+		&__icon,
+		&__icon:before {
 			font-size: inherit !important;
 		}
 	}
