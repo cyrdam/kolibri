@@ -11,7 +11,6 @@ export type KoliBriEventType =
 	| 'mousedown'
 	| 'reset'
 	| 'select'
-	| 'selection-change' // todo remove
 	| 'selectionChange'
 	| 'sort'
 	| 'submit'
@@ -22,33 +21,6 @@ export function stopPropagation(event: Event): void {
 	event.stopPropagation();
 }
 
-function createKoliBriEvent<T>(type: KoliBriEventType, detail: T): CustomEvent {
-	const event = new CustomEvent(`kol-${type}`, {
-		bubbles: true,
-		cancelable: true,
-		composed: true,
-		detail: detail,
-	});
-	return event;
-}
-
-function dispatchKoliBriEvent<T>(target: EventTarget, type: KoliBriEventType, detail?: T): boolean {
-	const dispatch = target.dispatchEvent(createKoliBriEvent(type, detail));
-	return dispatch;
-}
-
-/**
- * @deprecated
- */
-export function tryToDispatchKoliBriEvent<T>(type: KoliBriEventType, target?: EventTarget, detail?: T): void {
-	target && dispatchKoliBriEvent(target, type, detail);
-}
-
 export function dispatchDomEvent(target: HTMLElement, type: KoliBriEventType) {
 	target.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
-}
-
-export function preventDefaultAndStopPropagation(event: Event) {
-	event.preventDefault();
-	stopPropagation(event);
 }
