@@ -2,15 +2,13 @@
 
 @layer kol-theme-component {
 	.kol-card {
-		&__card {
-			background-color: white;
-			border-color: var(--border-color);
-			border-style: solid;
-			border-width: rem(1);
-			border-radius: calc(2 * var(--border-radius));
-			width: 100%;
-			height: 100%;
-		}
+		background-color: white;
+		border-color: var(--border-color);
+		border-style: solid;
+		border-width: rem(1);
+		border-radius: calc(2 * var(--border-radius));
+		width: 100%;
+		height: 100%;
 
 		&__headline {
 			padding: rem(8);

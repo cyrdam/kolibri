@@ -6,12 +6,10 @@
 	.kol-card {
 		font-size: rem(16);
 
-		&__card {
-			height: 100%;
-			position: relative;
-			/* Visible with forced colors  */
-			outline: transparent solid rem(1);
-		}
+		height: 100%;
+		position: relative;
+		/* Visible with forced colors  */
+		outline: transparent solid rem(1);
 
 		&__close-button {
 			position: absolute;

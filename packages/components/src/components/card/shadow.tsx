@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
 import type { CardAPI, CardStates, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
 import { setState, validateHasCloser, validateLabel } from '../../schema';
@@ -32,32 +32,30 @@ export class KolCard implements CardAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-card">
-				<div class="kol-card__card">
-					<div class="kol-card__header">
-						<KolHeadingFc class="kol-card__headline" level={this.state._level}>
-							{this.state._label}
-						</KolHeadingFc>
-					</div>
-					<div class="kol-card__content">
-						<slot />
-					</div>
-					{this.state._hasCloser && (
-						<KolButtonWcTag
-							class="kol-card__close-button"
-							_hideLabel
-							_icons={{
-								left: {
-									icon: 'codicon codicon-close',
-								},
-							}}
-							_label={translate('kol-close')}
-							_on={this.on}
-							_tooltipAlign="left"
-						></KolButtonWcTag>
-					)}
+			<div class="kol-card">
+				<div class="kol-card__header">
+					<KolHeadingFc class="kol-card__headline" level={this.state._level}>
+						{this.state._label}
+					</KolHeadingFc>
 				</div>
-			</Host>
+				<div class="kol-card__content">
+					<slot />
+				</div>
+				{this.state._hasCloser && (
+					<KolButtonWcTag
+						class="kol-card__close-button"
+						_hideLabel
+						_icons={{
+							left: {
+								icon: 'codicon codicon-close',
+							},
+						}}
+						_label={translate('kol-close')}
+						_on={this.on}
+						_tooltipAlign="left"
+					></KolButtonWcTag>
+				)}
+			</div>
 		);
 	}
 
