@@ -2,16 +2,17 @@
 @import '../../assets/codicons/codicon';
 
 @layer kol-component {
-	/* :host implicitly inherits font-size, see below */
+	/*
+	* display necessary to center icon
+	 */
 	:host {
 		display: contents;
-		font-size: rem(16);
 	}
 
 	/*
    * The <code>:important</code> is important, because we should always override the font icon style.
    */
-	.kol_icon {
+	.kol-icon {
 		color: inherit;
 		line-height: inherit;
 		font-size: inherit !important;
