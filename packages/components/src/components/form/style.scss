@@ -4,9 +4,9 @@
 @import '../@shared/kol-link-mixin';
 
 @layer kol-component {
-	@include kol-link-styles('kol-link');
-	@include kol-alert-styles;
 	.kol-form {
+		@include kol-link-styles('kol-link');
+		@include kol-alert-styles;
 		font-size: rem(16);
 	}
 }

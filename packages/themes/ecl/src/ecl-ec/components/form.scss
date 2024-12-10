@@ -3,10 +3,10 @@
 @import '../mixins/link';
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
 	@include kol-link('kol-link');
 
 	.kol-form {
+		@include kol-alert-theme;
 		font-family: var(--font-family);
 		width: 100%;
 
