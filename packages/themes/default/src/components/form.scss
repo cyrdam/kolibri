@@ -7,7 +7,6 @@
 	@include kol-link('kol-link');
 
 	.kol-form {
-		font-family: var(--font-family);
 		&__link {
 			display: inline-block;
 		}
