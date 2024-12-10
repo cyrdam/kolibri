@@ -28,7 +28,7 @@ import { translate } from '../../i18n';
 import { nonce } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { KolButtonWcTag, KolSelectTag } from '../../core/component-names';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const leftDoubleArrowIcon = {
 	left: 'codicon codicon-debug-reverse-continue',
@@ -264,7 +264,7 @@ export class KolPagination implements PaginationAPI {
 			this.state._on.onClick(event, page);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, 'click');
+			dispatchDomEvent(this.host, KolEvent.click);
 		}
 		this.onChangePage(event, page);
 	};
@@ -276,7 +276,7 @@ export class KolPagination implements PaginationAPI {
 				this.state._on.onChangePage(event, page);
 			}
 			if (this.host) {
-				dispatchDomEvent(this.host, 'changePage');
+				dispatchDomEvent(this.host, KolEvent.changePage);
 			}
 		});
 	};
@@ -291,7 +291,7 @@ export class KolPagination implements PaginationAPI {
 					this.state._on.onChangePageSize(event, this._pageSize);
 				}
 				if (this.host) {
-					dispatchDomEvent(this.host, 'changePageSize');
+					dispatchDomEvent(this.host, KolEvent.changePageSize);
 				}
 			});
 		}

@@ -33,8 +33,7 @@ import {
 	watchString,
 } from '../../../schema';
 
-import type { KoliBriEventType } from '../../../utils/events';
-import { dispatchDomEvent, stopPropagation } from '../../../utils/events';
+import { dispatchDomEvent, KolEvent, stopPropagation } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
@@ -180,7 +179,7 @@ export class InputController extends ControlledInputController implements Watche
 		validateAccessAndShortKey(this.component._accessKey, this.component._shortKey);
 	}
 
-	private emitEvent(type: KoliBriEventType): void {
+	private emitEvent(type: KolEvent): void {
 		if (this.host) {
 			dispatchDomEvent(this.host, type);
 		}
@@ -190,7 +189,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.component._touched = true;
 
 		// Event handling
-		this.emitEvent('blur');
+		this.emitEvent(KolEvent.blur);
 		stopPropagation(event);
 
 		// Callback
@@ -207,7 +206,7 @@ export class InputController extends ControlledInputController implements Watche
 		value = value ?? (event.target as HTMLInputElement).value;
 
 		// Event handling
-		this.emitEvent('change');
+		this.emitEvent(KolEvent.change);
 
 		// Callback
 		if (typeof this.component._on?.onChange === 'function') {
@@ -236,7 +235,7 @@ export class InputController extends ControlledInputController implements Watche
 		value = value ?? (event.target as HTMLInputElement).value;
 
 		// Event handling
-		this.emitEvent('input');
+		this.emitEvent(KolEvent.input);
 		stopPropagation(event);
 
 		// Static form handling
@@ -252,7 +251,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onClick(event: Event): void {
 		// Event handling
-		this.emitEvent('click');
+		this.emitEvent(KolEvent.click);
 		stopPropagation(event);
 
 		// Callback
@@ -263,7 +262,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onFocus(event: Event): void {
 		// Event handling
-		this.emitEvent('focus');
+		this.emitEvent(KolEvent.focus);
 		stopPropagation(event);
 
 		// Callback

@@ -32,7 +32,7 @@ import {
 } from '../../schema';
 import { Events } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -410,7 +410,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			this.state._on[Events.onSelectionChange](event, payload);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, 'selectionChange');
+			dispatchDomEvent(this.host, KolEvent.selectionChange);
 		}
 	}
 
@@ -674,7 +674,7 @@ export class KolTableStateless implements TableStatelessAPI {
 									});
 								}
 								if (this.host) {
-									dispatchDomEvent(this.host, 'sort');
+									dispatchDomEvent(this.host, KolEvent.sort);
 								}
 							},
 						}}

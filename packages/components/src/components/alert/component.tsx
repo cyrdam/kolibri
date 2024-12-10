@@ -4,7 +4,7 @@ import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { watchHeadingLevel } from '../heading/validation';
 import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Alert';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -20,7 +20,7 @@ export class KolAlertWc implements AlertAPI {
 	private readonly close = () => {
 		this._on?.onClose?.(new Event('Close'));
 		if (this.host) {
-			dispatchDomEvent(this.host, 'close');
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	};
 

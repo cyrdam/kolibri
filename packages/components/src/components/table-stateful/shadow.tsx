@@ -41,7 +41,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { Events } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -406,11 +406,11 @@ export class KolTableStateful implements TableAPI {
 	};
 
 	public componentDidLoad(): void {
-		this.tableWcRef?.addEventListener('selectionChange', this.onSelectionChange);
+		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
 	}
 
 	public disconnectedCallback(): void {
-		this.tableWcRef?.removeEventListener('selectionChange', this.onSelectionChange);
+		this.tableWcRef?.removeEventListener(KolEvent.selectionChange, this.onSelectionChange);
 	}
 
 	public componentWillLoad(): void {
@@ -571,7 +571,7 @@ export class KolTableStateful implements TableAPI {
 			this.state._on[Events.onSelectionChange](event, selectedData);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, 'selectionChange');
+			dispatchDomEvent(this.host, KolEvent.selectionChange);
 		}
 	}
 

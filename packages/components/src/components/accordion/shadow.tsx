@@ -15,7 +15,7 @@ import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabe
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -70,7 +70,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		setTimeout(() => {
 			this.state._on?.onClick?.(event, this._open === true);
 			if (this.host) {
-				dispatchDomEvent(this.host, 'click');
+				dispatchDomEvent(this.host, KolEvent.click);
 			}
 		});
 	};

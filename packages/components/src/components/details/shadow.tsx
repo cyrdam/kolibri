@@ -4,7 +4,7 @@ import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @slot - Der Inhalt, der in der Detailbeschreibung angezeigt wird.
@@ -56,7 +56,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 
 		this.toggleTimeout = setTimeout(() => {
 			if (this.host) {
-				dispatchDomEvent(this.host, 'toggle');
+				dispatchDomEvent(this.host, KolEvent.toggle);
 			}
 			this.state._on?.onToggle?.(event, Boolean(this._open));
 		}, 25);

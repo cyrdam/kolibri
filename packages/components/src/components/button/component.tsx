@@ -46,7 +46,7 @@ import {
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { dispatchDomEvent, stopPropagation } from '../../utils/events';
+import { dispatchDomEvent, KolEvent, stopPropagation } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -104,7 +104,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		}
 
 		if (this.host) {
-			dispatchDomEvent(this.host, 'click');
+			dispatchDomEvent(this.host, KolEvent.click);
 		}
 	};
 
@@ -112,7 +112,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		stopPropagation(event);
 		this.state?._on?.onMouseDown?.(event);
 		if (this.host) {
-			dispatchDomEvent(this.host, 'mousedown');
+			dispatchDomEvent(this.host, KolEvent.mousedown);
 		}
 	};
 

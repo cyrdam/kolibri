@@ -49,7 +49,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
@@ -94,7 +94,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 				this.state._on?.onClick(event, this.state._href);
 			}
 			if (this.host) {
-				dispatchDomEvent(this.host, 'click');
+				dispatchDomEvent(this.host, KolEvent.click);
 			}
 		}
 	};

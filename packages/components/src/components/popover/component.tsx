@@ -5,7 +5,7 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 
 import type { JSX } from '@stencil/core';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -45,7 +45,7 @@ export class KolPopover implements PopoverAPI {
 
 		this.state._on?.onClose?.(event);
 		if (this.host) {
-			dispatchDomEvent(this.host, 'close');
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	}
 

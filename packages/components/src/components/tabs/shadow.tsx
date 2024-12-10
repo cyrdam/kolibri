@@ -31,7 +31,7 @@ import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 import { KolButtonWcTag } from '../../core/component-names';
 import { KeyboardKey } from '../../schema/enums';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -444,7 +444,7 @@ export class KolTabs implements TabsAPI {
 	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
 		this._on?.onSelect?.(event, index);
 		if (this.host) {
-			dispatchDomEvent(this.host, 'select');
+			dispatchDomEvent(this.host, KolEvent.select);
 		}
 
 		this.focusTabById(index);

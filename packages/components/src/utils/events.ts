@@ -1,26 +1,37 @@
-// TODO: Should be synchronized with enums/events.ts
-export type KoliBriEventType =
-	| 'blur'
-	| 'change'
-	| 'changePage'
-	| 'changePageSize'
-	| 'click'
-	| 'close'
-	| 'focus'
-	| 'input'
-	| 'mousedown'
-	| 'reset'
-	| 'select'
-	| 'selectionChange'
-	| 'sort'
-	| 'submit'
-	| 'toggle';
+enum KolEvent {
+	blur = 'kolBlur',
+	change = 'kolChange',
+	changePage = 'kolChangePage',
+	changePageSize = 'kolChangePageSize',
+	click = 'kolClick',
+	close = 'kolClose',
+	focus = 'kolFocus',
+	input = 'kolInput',
+	mousedown = 'kolMousedown',
+	reset = 'kolReset',
+	select = 'kolSelect',
+	selectionChange = 'kolSelectionChange',
+	sort = 'kolSort',
+	submit = 'kolSubmit',
+	toggle = 'kolToggle',
+}
 
-export function stopPropagation(event: Event): void {
+function stopPropagation(event: Event): void {
 	event.stopImmediatePropagation();
 	event.stopPropagation();
 }
 
-export function dispatchDomEvent(target: HTMLElement, type: KoliBriEventType) {
-	target.dispatchEvent(new Event(type, { bubbles: true, composed: true }));
+function createKoliBriEvent<T>(type: KolEvent, detail?: T): CustomEvent {
+	return new CustomEvent(type, {
+		bubbles: true,
+		cancelable: true,
+		composed: true,
+		detail: detail,
+	});
 }
+
+function dispatchDomEvent<T>(target: HTMLElement, event: KolEvent, detail?: T) {
+	target.dispatchEvent(createKoliBriEvent<T>(event, detail));
+}
+
+export { KolEvent, stopPropagation, dispatchDomEvent };

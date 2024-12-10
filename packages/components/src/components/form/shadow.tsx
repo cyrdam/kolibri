@@ -7,7 +7,7 @@ import { translate } from '../../i18n';
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { KolLinkWcTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @slot - Inhalt der Form.
@@ -31,7 +31,7 @@ export class KolForm implements FormAPI {
 			this.state._on?.onSubmit(event as SubmitEvent);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, 'submit');
+			dispatchDomEvent(this.host, KolEvent.submit);
 		}
 	};
 
@@ -42,7 +42,7 @@ export class KolForm implements FormAPI {
 			this.state._on?.onReset(event);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, 'reset');
+			dispatchDomEvent(this.host, KolEvent.reset);
 		}
 	};
 

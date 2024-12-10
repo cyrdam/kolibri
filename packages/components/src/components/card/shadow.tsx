@@ -8,7 +8,7 @@ import { watchHeadingLevel } from '../heading/validation';
 
 import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTML's in den Inhaltsbereich der Card.
@@ -28,7 +28,7 @@ export class KolCard implements CardAPI {
 			this._on.onClose(new Event('Close'));
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, 'close');
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	};
 

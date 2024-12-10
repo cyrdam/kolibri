@@ -4,7 +4,7 @@ import { setState, validateLabel, validateOpen, validateAlign, validateModal } f
 import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @slot - The Content of drawer.
@@ -149,7 +149,7 @@ export class KolDrawer implements DrawerAPI {
 		this.dialogElement?.close();
 		this._on?.onClose?.();
 		if (this.host) {
-			dispatchDomEvent(this.host, 'close');
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	}
 

@@ -3,7 +3,7 @@ import { setState, validateLabel, watchString, watchValidator } from '../../sche
 import type { JSX } from '@stencil/core';
 import { Method } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
-import { dispatchDomEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -34,7 +34,7 @@ export class KolModal implements ModalAPI {
 	private handleNativeCloseEvent() {
 		this.state._on?.onClose?.();
 		if (this.host) {
-			dispatchDomEvent(this.host, 'close');
+			dispatchDomEvent(this.host, KolEvent.close);
 		}
 	}
 
