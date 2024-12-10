@@ -571,7 +571,7 @@ export class KolTableStateful implements TableAPI {
 			this.state._on[Events.onSelectionChange](event, selectedData);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.selectionChange);
+			dispatchDomEvent(this.host, KolEvent.selectionChange, selectedData);
 		}
 	}
 

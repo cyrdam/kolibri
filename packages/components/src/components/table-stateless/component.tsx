@@ -410,7 +410,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			this.state._on[Events.onSelectionChange](event, payload);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.selectionChange);
+			dispatchDomEvent(this.host, KolEvent.selectionChange, payload);
 		}
 	}
 

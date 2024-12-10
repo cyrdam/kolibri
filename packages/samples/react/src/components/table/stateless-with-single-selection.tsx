@@ -1,10 +1,10 @@
 import type { FC } from 'react';
-import React, { useEffect, useState, useRef } from 'react';
-import { KolButton, KolTableStateless, createReactRenderElement } from '@public-ui/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableSelection } from '@public-ui/components';
+import type { KoliBriTableCell, KoliBriTableSelection } from '@public-ui/components';
+import { KolEvent } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
-import type { KoliBriTableCell } from '@public-ui/components';
 import { useToasterService } from '../../hooks/useToasterService';
 
 const DATA = [
@@ -45,11 +45,11 @@ export const TableStatelessWithSingleSelection: FC = () => {
 
 	useEffect(() => {
 		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-		kolTableStatelessRef.current?.addEventListener('kol-selection-change', handleSelectionChangeEvent);
+		kolTableStatelessRef.current?.addEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
 
 		return () => {
 			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-			kolTableStatelessRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
+			kolTableStatelessRef.current?.removeEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
 		};
 	}, [kolTableStatelessRef]);
 
