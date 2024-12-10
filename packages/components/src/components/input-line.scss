@@ -32,7 +32,7 @@
 		place-items: center;
 	}
 
-	.kol-input.required .input-tooltip .span-label::after {
+	.kol-input.required .input-tooltip .kol-span__label::after {
 		content: '*';
 	}
 }

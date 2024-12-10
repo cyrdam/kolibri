@@ -37,7 +37,7 @@ const KolSpanFc: FC<SpanProps> = (props, children) => {
 	}
 
 	return (
-		<span class={clsx('kol-span-wc', { 'hide-label': hideLabel }, classNames)} {...other}>
+		<span class={clsx('kol-span', { 'kol-span--hide-label': hideLabel }, classNames)} {...other}>
 			{isObject(topIconProps) && <IconHelper class="top" {...topIconProps} />}
 			<span class="kol-span__container">
 				{isObject(leftIconProps) && <IconHelper class="left" {...leftIconProps} />}

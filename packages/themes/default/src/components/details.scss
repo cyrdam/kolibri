@@ -29,14 +29,14 @@
 				font-size: rem(19.2);
 			}
 
-			.kol-span-wc {
-				& > span {
+			.kol-span {
+				&__container {
 					display: flex;
 					text-align: left;
 					gap: 0;
 				}
 
-				.span-label {
+				&__label {
 					border-bottom-color: #000;
 				}
 			}

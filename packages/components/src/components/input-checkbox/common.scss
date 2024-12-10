@@ -80,7 +80,7 @@
 		cursor: not-allowed;
 	}
 
-	.kol-input.required .tooltip-content .span-label::after {
+	.kol-input.required .tooltip-content .kol-span__label::after {
 		content: '*';
 	}
 }

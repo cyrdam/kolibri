@@ -1,4 +1,4 @@
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
 import type { HeadingAPI, HeadingLevel, HeadingStates, HeadingVariantPropType, LabelWithExpertSlotPropType } from '../../schema';
 import { validateHeadingVariant, validateLabelWithExpertSlot, watchString } from '../../schema';
@@ -73,12 +73,10 @@ export class KolHeading implements HeadingAPI {
 		const { _secondaryHeadline, _label, _level, _variant } = this.state;
 
 		return (
-			<Host class="kol-heading">
-				<KolHeadingFc secondaryHeadline={_secondaryHeadline} level={_level} variant={_variant}>
-					{_label}
-					<slot name="expert" slot="expert" />
-				</KolHeadingFc>
-			</Host>
+			<KolHeadingFc secondaryHeadline={_secondaryHeadline} level={_level} variant={_variant}>
+				{_label}
+				<slot name="expert" slot="expert" />
+			</KolHeadingFc>
 		);
 	}
 }
