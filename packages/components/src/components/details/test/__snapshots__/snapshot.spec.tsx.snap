@@ -22,7 +22,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=false _open=true 1`] = `
 <kol-details _open="">
   <template shadowrootmode="open">
-    <div class="collapsible kol-details open" id="nonce">
+    <div class="collapsible collapsible--open kol-details" id="nonce">
       <h1 class="collapsible__heading kol-details__heading kol-headline kol-headline--h1 kol-headline--single">
         <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _icons="codicon codicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" slot="expert"></kol-button-wc>
       </h1>
@@ -41,7 +41,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=true _open=false 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <div class="collapsible disabled kol-details" id="nonce">
+    <div class="collapsible collapsible--disabled kol-details" id="nonce">
       <h1 class="collapsible__heading kol-details__heading kol-headline kol-headline--h1 kol-headline--single">
         <kol-button-wc _ariacontrols="nonce-control" _disabled="" _icons="codicon codicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" slot="expert"></kol-button-wc>
       </h1>
@@ -60,7 +60,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=true _open=true 1`] = `
 <kol-details _open="">
   <template shadowrootmode="open">
-    <div class="collapsible disabled kol-details open" id="nonce">
+    <div class="collapsible collapsible--disabled collapsible--open kol-details" id="nonce">
       <h1 class="collapsible__heading kol-details__heading kol-headline kol-headline--h1 kol-headline--single">
         <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _disabled="" _icons="codicon codicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" slot="expert"></kol-button-wc>
       </h1>
