@@ -18,11 +18,11 @@
 			visibility: hidden;
 		}
 
-		.open &__wrapper {
+		.collapsible--open &__wrapper {
 			grid-template-rows: 1fr;
 		}
 
-		.open &__wrapper-animation {
+		.collapsible--open &__wrapper-animation {
 			visibility: visible;
 		}
 
@@ -35,7 +35,7 @@
 
 		/* @see https://github.com/public-ui/kolibri/issues/5952 */
 		@media print {
-			:not(.open) &__wrapper-animation {
+			:not(.collapsible--open) &__wrapper-animation {
 				display: none;
 			}
 		}

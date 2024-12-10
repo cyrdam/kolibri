@@ -20,7 +20,7 @@
 		&__heading-button {
 			@include kol-typography-accordion;
 
-			& button {
+			& .kol-button {
 				font-weight: inherit;
 				font-size: inherit;
 				line-height: inherit;
@@ -60,8 +60,8 @@
 			padding: rem(8);
 		}
 
-		.open &__heading-button {
-			button {
+		.collapsible--open &__heading-button {
+			.kol-button {
 				padding-bottom: 0;
 			}
 
@@ -70,7 +70,7 @@
 			}
 		}
 
-		.open &__content {
+		.collapsible--open &__content {
 			margin: 0;
 		}
 	}

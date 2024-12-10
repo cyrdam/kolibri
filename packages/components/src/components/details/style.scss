@@ -22,7 +22,7 @@
 			}
 		}
 
-		.open &__heading-button {
+		.collapsible--open &__heading-button {
 			.kol-icon::part(icon) {
 				transform: rotate(90deg);
 			}
