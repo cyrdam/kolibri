@@ -32,9 +32,9 @@ export class KolTreeWc implements TreeAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-wc">
-				<nav class="tree" aria-label={this.state._label}>
-					<ul class="treeview-navigation" role="tree" aria-label={this.state._label}>
+			<Host onSlotchange={this.handleSlotchange.bind(this)}>
+				<nav class="kol-tree" aria-label={this.state._label}>
+					<ul class="kol-tree__treeview-navigation" role="tree" aria-label={this.state._label}>
 						<slot />
 					</ul>
 				</nav>

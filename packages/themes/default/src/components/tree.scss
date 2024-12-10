@@ -1,8 +1,8 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.tree {
-		ul {
+	.kol-tree {
+		&__treeview-navigation {
 			border: rem(2) solid transparent;
 			border-radius: var(--border-radius);
 		}
