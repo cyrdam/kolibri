@@ -4,17 +4,19 @@
 @layer kol-component {
 	/* :host implicitly inherits font-size, see below */
 	:host {
-		font-size: rem(16);
-		color: inherit;
 		display: contents;
-		line-height: inherit;
+		font-size: rem(16);
 	}
 
 	/*
    * The <code>:important</code> is important, because we should always override the font icon style.
    */
-	:host > i,
-	:host > i:before {
+	.kol_icon {
+		color: inherit;
+		line-height: inherit;
 		font-size: inherit !important;
+		&:before {
+			font-size: inherit !important;
+		}
 	}
 }
