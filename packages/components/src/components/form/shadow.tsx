@@ -77,7 +77,7 @@ export class KolForm implements FormAPI {
 
 	private renderFormElement(): JSX.Element {
 		return (
-			<form class="kol-form__form" method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
+			<form class="kol-form" method="post" onSubmit={this.onSubmit} onReset={this.onReset} autoComplete="off" noValidate>
 				{this.state._requiredText === true ? (
 					<p>
 						<div class="kol-form__mandatory-fields-hint">{translate('kol-form-description')}</div>
@@ -96,7 +96,7 @@ export class KolForm implements FormAPI {
 		const hasErrorList = Array.isArray(this._errorList) && this._errorList.length > 0;
 
 		return (
-			<Host class="kol-form">
+			<Host>
 				{hasErrorList && this.renderErrorList(this._errorList)}
 				{this.renderFormElement()}
 			</Host>
