@@ -446,7 +446,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		this._indeterminate = false;
 
 		const value = this.getModelValue();
-		this.controller.onFacade.onInput(event, true, value);
+		this.controller.onFacade.onInput(event, false, value);
+		this.controller.setFormAssociatedCheckboxValue(value);
 	};
 
 	private onChange = (event: Event): void => {
