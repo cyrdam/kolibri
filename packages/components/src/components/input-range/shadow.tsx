@@ -184,13 +184,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
-					<div id="input" class="input-slot">
-						<div class="inputs-wrapper" style={inputsWrapperStyle}>
-							<KolInputStateWrapperFc {...this.getInputRangeProps()} />
-							<KolInputStateWrapperFc {...this.getInputNumberProps()} />
-						</div>
-						{this.hasSuggestions && <KolSuggestionsFc id={this.state._id} suggestions={this.state._suggestions} />}
+					<div class="kol-input-range__inputs-wrapper" style={inputsWrapperStyle}>
+						<KolInputStateWrapperFc {...this.getInputRangeProps()} />
+						<KolInputStateWrapperFc {...this.getInputNumberProps()} />
 					</div>
+					{this.hasSuggestions && <KolSuggestionsFc id={this.state._id} suggestions={this.state._suggestions} />}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);

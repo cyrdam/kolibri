@@ -12,7 +12,7 @@ const KolFormFieldHintFc: FC<FormFieldHintProps> = ({ id, class: classNames, hin
 	}
 
 	return (
-		<span class={clsx('hint', classNames)} id={`${id}-hint`} {...other}>
+		<span class={clsx('kol-form-field__hint', classNames)} id={`${id}-hint`} {...other}>
 			{hint}
 		</span>
 	);

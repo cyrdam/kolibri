@@ -62,13 +62,13 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	return (
 		<Component
 			{...other}
-			class={clsx('input-label', classNames)}
+			class={clsx('kol-form-field__label', classNames)}
 			id={!useTooltopInsteadOfLabel ? `${id}-label` : undefined}
 			hidden={useTooltopInsteadOfLabel}
 			htmlFor={id}
 		>
 			{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-			<span class="input-label-span">
+			<span class="kol-form-field__label-text">
 				{/* INFO: label comes with any html tag or as plain text! */}
 				<LabelFc hasExpertSlot={hasExpertSlot} accessKey={accessKey} shortKey={shortKey} label={label} />
 			</span>

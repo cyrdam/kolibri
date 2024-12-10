@@ -1,0 +1,25 @@
+@layer kol-component {
+	.kol-form-field {
+		$root: &;
+
+		display: grid;
+
+		&--disabled {
+			opacity: 0.5;
+		}
+
+		&--required {
+			#{$root}__label-text {
+				&::after {
+					content: '*';
+				}
+			}
+
+			#{$root}__tooltip {
+				.span-label::after {
+					content: '*';
+				}
+			}
+		}
+	}
+}

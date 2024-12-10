@@ -1,6 +1,8 @@
 @import '../@shared/mixins';
 @import '../style';
 @import '../input-line';
+@import '../form-field';
+@import '../input-container';
 
 @layer kol-component {
 	:host {

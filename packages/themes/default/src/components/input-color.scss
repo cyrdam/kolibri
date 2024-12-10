@@ -1,13 +1,14 @@
-@import '../@shared/input-core';
+@import '../@shared/input-text';
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	input[type='color'] {
-		border: none;
-		min-height: rem(40);
-	}
-
-	input[type='color'] {
-		background-color: transparent;
+	.kol-input-color {
+		.kol-input-container {
+			input[type='color'] {
+				border: none;
+				min-height: rem(40);
+				background-color: transparent;
+			}
+		}
 	}
 }

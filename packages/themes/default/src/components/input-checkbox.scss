@@ -4,306 +4,555 @@
 @import '../mixins/input-error';
 @import '../mixins/typography';
 
+@import '../mixins/form-field';
+
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
 
-	.kol-input {
-		display: grid;
-		align-items: center;
-		justify-items: left;
-		width: 100%;
-		min-height: var(--a11y-min-size);
-		gap: rem(6.4);
-	}
-
-	.checkbox-container {
-		position: relative;
-		justify-content: center;
-	}
-
-	.input,
-	.checkbox-container {
-		min-width: initial;
-		width: initial;
-	}
-
-	.kol-input.default {
-		grid-template-columns: auto 1fr;
-	}
-
-	.kol-input.default[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: 1fr auto;
-
-		.checkbox-container {
-			justify-content: center;
-		}
-	}
-
-	.kol-input.switch {
-		grid-template-columns: rem(56) auto;
-	}
-
-	.kol-input.switch[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto rem(56);
-	}
-
-	.kol-input.button {
-		gap: rem(6.4) rem(1);
-	}
-
-	.kol-input > div.input {
-		display: flex;
-		min-height: var(--a11y-min-size);
-		order: 2;
-	}
-
-	.kol-input > div.input input {
-		margin: 0;
-	}
-
-	kol-input > label {
-		order: 3;
-	}
-
-	.disabled .input-label,
-	.disabled .checkbox-container {
-		cursor: not-allowed;
-	}
-
-	.kol-input > .kol-alert.error {
-		order: 1;
-		padding-top: calc(var(--spacing) / 2);
-		grid-column: span 2 / auto;
-	}
-
-	.kol-input.error:not(.hidden-error) {
-		@include input-error;
-
-		input:focus,
-		select:focus,
-		textarea:focus {
-			outline-color: var(--color-danger);
-		}
-	}
-
-	input {
-		cursor: pointer;
-		order: 1;
-		width: 100%;
-		border-color: var(--color-subtle);
-		border-width: rem(2);
-		border-style: solid;
-		border-radius: var(--border-radius);
-		@include kol-typography-body;
-	}
-
-	input:hover {
-		border-color: var(--color-primary);
-		box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
-	}
-
-	input:focus:hover {
-		box-shadow: none;
-	}
-
-	input:active {
-		box-shadow: none;
-	}
-
-	.kol-alert {
-		@include kol-alert;
-	}
-
-	/* CHECKBOX */
-	.kol-input label span {
-		margin-top: rem(2);
-	}
-
-	.required label > span::after {
-		content: '*';
-		padding-left: 0.125em;
-	}
-
-	.kol-input input[type='checkbox'] {
-		appearance: none;
-		background-color: white;
-		cursor: pointer;
-		transition: 0.5s;
-		margin: 0;
-	}
-
-	.kol-input input[type='checkbox']:checked {
-		background-color: var(--color-primary);
-		border-color: var(--color-primary);
-	}
-
-	.kol-input.default input[type='checkbox'] {
-		border-radius: var(--border-radius);
-		height: calc(6 * rem(4));
-		min-width: calc(6 * rem(4));
-		width: calc(6 * rem(4));
-	}
-
-	.kol-input.default input[type='checkbox']:indeterminate {
-		background-color: var(--color-primary);
-	}
-
-	.kol-input.default .icon {
-		color: var(--color-light);
-		display: flex;
-	}
-
-	.kol-input.switch input[type='checkbox'] {
-		background-color: var(--color-subtle);
-		border-radius: 1.25em;
-		border-width: 0;
-		display: block;
-		height: 1.5em;
-		min-width: 3.5em;
-		position: relative;
-		width: 3.5em;
-		/* Visible with forced colors  */
-		outline: transparent solid rem(1);
-	}
-
-	.kol-input.switch input[type='checkbox']:before {
-		width: 1.25em;
-		height: 1.25em;
-		left: calc(0.25em - rem(2));
-		top: calc(0.25em - rem(2));
-		border-radius: 1.25em;
-		background-color: white;
-		position: absolute;
-	}
-
-	.kol-input.switch input[type='checkbox']:checked {
-		background-color: var(--color-primary);
-	}
-
-	.kol-input.switch input[type='checkbox']:checked:before {
-		transform: translateX(2em);
-	}
-
-	.kol-input.switch input[type='checkbox']:indeterminate:before {
-		transform: translateX(1em);
-	}
-
-	.kol-input input[type='checkbox']:focus {
-		@include switch-outline;
-	}
-
-	.switch {
-		& .icon {
-			width: 1.25em;
-			height: 1.25em;
-			left: rem(2);
-		}
-
-		&.checked .icon {
-			transform: translate(2em, -50%);
-		}
-
-		&.indeterminate .icon {
-			transform: translate(1em, -50%);
-		}
-	}
-
-	.button {
-		.input {
-			border-top-width: rem(1);
-			border-left-width: rem(1);
-			border-bottom-width: rem(1);
-
-			border-top-style: solid;
-			border-left-style: solid;
-			border-bottom-style: solid;
-		}
-
-		&.hide-label .input {
-			border-right-width: rem(1);
-			border-right-style: solid;
-		}
-
-		.input-label {
-			border-top-width: rem(1);
-			border-right-width: rem(1);
-			border-bottom-width: rem(1);
-
-			border-top-style: solid;
-			border-right-style: solid;
-			border-bottom-style: solid;
-
-			justify-self: stretch;
-			align-self: stretch;
-			display: flex;
-
-			padding-right: rem(16);
-
-			.input-label-span {
-				margin: auto auto;
-				font-weight: 700;
-			}
-		}
-
-		&:focus-within {
-			@include focus-outline;
-		}
-
-		.input,
-		.input-label {
-			border-color: var(--color-primary);
-			background-color: var(--color-light);
-			color: var(--color-primary);
-		}
-
-		&.indeterminate {
-			.input,
-			.input-label {
-				border-color: var(--color-primary);
-				background-color: var(--color-mute);
-				color: var(--color-primary);
-			}
-		}
-
-		&.checked {
-			.input,
-			.input-label {
-				border-color: var(--color-primary);
-				background-color: var(--color-primary);
-				color: var(--color-light);
-			}
-		}
-
-		&:is(:active, :hover):not(.disabled) {
-			.input,
-			.input-label {
-				background-color: var(--color-primary-variant);
-				border-color: var(--color-primary-variant);
-				color: var(--color-light);
-			}
-		}
-
-		&.disabled .input {
-			opacity: 0.5;
-			outline: none;
-		}
-	}
-
-	.button[data-label-align='left']:not(.hide-label) {
-		column-gap: 0;
-
-		.input {
-			border-style: solid;
-			border-width: rem(1) rem(1) rem(1) 0;
-		}
-
-		.input-label {
-			border-style: solid;
-			border-width: rem(1) 0 rem(1) rem(1);
-		}
-	}
-
 	@include kol-alert-theme;
+	@include kol-form-field-theme;
+
+	.kol-form-field {
+		$root: &;
+		gap: rem(6.4);
+
+		&--disabled {
+			#{$root}__input {
+				opacity: 0.5;
+				outline: none;
+				cursor: not-allowed;
+			}
+			#{$root}__label {
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	.kol-input-container {
+		$root: &;
+
+		min-height: var(--a11y-min-size);
+
+		#{$root}__checkbox-container {
+			min-width: initial;
+			width: initial;
+		}
+
+		#{$root}__checkbox-input-element {
+			cursor: pointer;
+			order: 1;
+			width: 100%;
+			border-color: var(--color-subtle);
+			border-width: rem(2);
+			border-style: solid;
+			border-radius: var(--border-radius);
+			@include kol-typography-body;
+
+			&:focus {
+				@include focus-outline;
+			}
+
+			&:focus:hover {
+				box-shadow: none;
+			}
+
+			&:active {
+				box-shadow: none;
+			}
+
+			&[type='checkbox'] {
+				appearance: none;
+				background-color: white;
+				cursor: pointer;
+				transition: 0.5s;
+				margin: 0;
+
+				&:checked {
+					background-color: var(--color-primary);
+					border-color: var(--color-primary);
+				}
+			}
+
+			&:hover {
+				border-color: var(--color-primary);
+				box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+			}
+		}
+
+		&--variant {
+			/*
+			* Checkbox
+			*/
+			&-default {
+				#{$root}__checkbox-input-element {
+					&[type='checkbox'] {
+						border-radius: var(--border-radius);
+						height: calc(6 * rem(4));
+						min-width: calc(6 * rem(4));
+						width: calc(6 * rem(4));
+					}
+				}
+
+				#{$root}__checkbox-icon {
+					color: var(--color-light);
+				}
+			}
+
+			&-switch {
+				$switch: &;
+
+				#{$root}__checkbox-input-element {
+					&[type='checkbox'] {
+						background-color: var(--color-subtle);
+						border-radius: 1.25em;
+						border-width: 0;
+						display: block;
+						height: 1.5em;
+						min-width: 3.5em;
+						position: relative;
+						width: 3.5em;
+						/* Visible with forced colors  */
+						outline: transparent solid rem(1);
+
+						&:focus {
+							@include switch-outline;
+						}
+
+						&:before {
+							width: 1.25em;
+							height: 1.25em;
+							left: calc(0.25em - rem(2));
+							top: calc(0.25em - rem(2));
+							border-radius: 1.25em;
+							background-color: white;
+							position: absolute;
+						}
+
+						&:checked {
+							background-color: var(--color-primary);
+						}
+
+						&:checked::before {
+							transform: translateX(2em);
+						}
+
+						&:indeterminate::before {
+							transform: translateX(1em);
+						}
+					}
+				}
+
+				#{$root}__checkbox-icon {
+					width: 1.25em;
+					height: 1.25em;
+					left: rem(2);
+				}
+
+				@at-root #{$root}--checked#{$switch} #{$root}__checkbox-icon {
+					transform: translate(2em, -50%);
+				}
+
+				@at-root #{$root}--indeterminate#{$switch} #{$root}__checkbox-icon {
+					transform: translate(1em, -50%);
+				}
+			}
+		}
+	}
+
+	.kol-input-checkbox {
+		$root: &;
+
+		&--variant {
+			/*
+			* Button
+			*/
+			&-button {
+				$button: &;
+
+				column-gap: 0;
+				border: none;
+
+				.kol-form-field {
+					&__input,
+					&__label {
+						border-color: var(--color-primary);
+						background-color: var(--color-light);
+						color: var(--color-primary);
+					}
+
+					&__input {
+						border-width: rem(1) 0 rem(1) rem(1);
+						border-style: solid none solid solid;
+					}
+
+					&__label {
+						border-width: rem(1) rem(1) rem(1) 0;
+						border-style: solid solid solid none;
+
+						justify-self: stretch;
+						align-self: stretch;
+						display: flex;
+
+						padding-right: rem(16);
+
+						&-text {
+							margin: auto auto;
+							font-weight: 700;
+						}
+					}
+				}
+
+				@at-root #{$root}--indeterminate#{$button} .kol-form-field {
+					&__input,
+					&__label {
+						border-color: var(--color-primary);
+						background-color: var(--color-mute);
+						color: var(--color-primary);
+					}
+				}
+
+				@at-root #{$root}--checked#{$button} .kol-form-field {
+					&__input,
+					&__label {
+						border-color: var(--color-primary);
+						background-color: var(--color-primary);
+						color: var(--color-light);
+					}
+				}
+
+				@at-root #{$button}:is(:active, :hover):not(.kol-form-field--disabled) {
+					.kol-form-field__input,
+					.kol-form-field__label {
+						background-color: var(--color-primary-variant);
+						border-color: var(--color-primary-variant);
+						color: var(--color-light);
+					}
+				}
+
+				@at-root #{$button}:focus-within {
+					@include focus-outline;
+				}
+
+				@at-root #{$root}--label-align-left#{$button} {
+					.kol-form-field__input {
+						border-width: rem(1) rem(1) rem(1) 0;
+						border-style: solid solid solid none;
+					}
+
+					.kol-form-field__label {
+						border-width: rem(1) 0 rem(1) rem(1);
+						border-style: solid none solid solid;
+					}
+				}
+
+				@at-root .kol-form-field--hide-label#{$button} {
+					.kol-form-field__input {
+						border-width: rem(1);
+						border-style: solid;
+					}
+				}
+			}
+		}
+	}
 }
+
+// 	.kol-input {
+// 		display: grid;
+// 		align-items: center;
+// 		justify-items: left;
+// 		width: 100%;
+// 		min-height: var(--a11y-min-size);
+// 		gap: rem(6.4);
+// 	}
+
+// 	.checkbox-container {
+// 		position: relative;
+// 		justify-content: center;
+// 	}
+
+// 	.input,
+// 	.checkbox-container {
+// 		min-width: initial;
+// 		width: initial;
+// 	}
+
+// 	.kol-input.default {
+// 		grid-template-columns: auto 1fr;
+// 	}
+
+// 	.kol-input.default[data-label-align='left']:not(.hide-label) {
+// 		grid-template-columns: 1fr auto;
+
+// 		.checkbox-container {
+// 			justify-content: center;
+// 		}
+// 	}
+
+// 	.kol-input.switch {
+// 		grid-template-columns: rem(56) auto;
+// 	}
+
+// 	.kol-input.switch[data-label-align='left']:not(.hide-label) {
+// 		grid-template-columns: auto rem(56);
+// 	}
+
+// 	.kol-input.button {
+// 		gap: rem(6.4) rem(1);
+// 	}
+
+// 	.kol-input > div.input {
+// 		display: flex;
+// 		min-height: var(--a11y-min-size);
+// 		order: 2;
+// 	}
+
+// 	.kol-input > div.input input {
+// 		margin: 0;
+// 	}
+
+// 	kol-input > label {
+// 		order: 3;
+// 	}
+
+// 	.disabled .input-label,
+// 	.disabled .checkbox-container {
+// 		cursor: not-allowed;
+// 	}
+
+// 	.kol-input > .kol-alert.error {
+// 		order: 1;
+// 		padding-top: calc(var(--spacing) / 2);
+// 		grid-column: span 2 / auto;
+// 	}
+
+// 	.kol-input.error:not(.hidden-error) {
+// 		@include input-error;
+
+// 		input:focus,
+// 		select:focus,
+// 		textarea:focus {
+// 			outline-color: var(--color-danger);
+// 		}
+// 	}
+
+// 	input {
+// 		cursor: pointer;
+// 		order: 1;
+// 		width: 100%;
+// 		border-color: var(--color-subtle);
+// 		border-width: rem(2);
+// 		border-style: solid;
+// 		border-radius: var(--border-radius);
+// 		@include kol-typography-body;
+// 	}
+
+// 	input:hover {
+// 		border-color: var(--color-primary);
+// 		box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
+// 	}
+
+// 	input:focus:hover {
+// 		box-shadow: none;
+// 	}
+
+// 	input:active {
+// 		box-shadow: none;
+// 	}
+
+// 	.kol-alert {
+// 		@include kol-alert;
+// 	}
+
+// 	/* CHECKBOX */
+// 	.kol-input label span {
+// 		margin-top: rem(2);
+// 	}
+
+// 	.required label > span::after {
+// 		content: '*';
+// 		padding-left: 0.125em;
+// 	}
+
+// 	.kol-input input[type='checkbox'] {
+// 		appearance: none;
+// 		background-color: white;
+// 		cursor: pointer;
+// 		transition: 0.5s;
+// 		margin: 0;
+// 	}
+
+// 	.kol-input input[type='checkbox']:checked {
+// 		background-color: var(--color-primary);
+// 		border-color: var(--color-primary);
+// 	}
+
+// 	.kol-input.default input[type='checkbox'] {
+// 		border-radius: var(--border-radius);
+// 		height: calc(6 * rem(4));
+// 		min-width: calc(6 * rem(4));
+// 		width: calc(6 * rem(4));
+// 	}
+
+// 	.kol-input.default input[type='checkbox']:indeterminate {
+// 		background-color: var(--color-primary);
+// 	}
+
+// 	.kol-input.default .icon {
+// 		color: var(--color-light);
+// 		display: flex;
+// 	}
+
+// 	.kol-input.switch input[type='checkbox'] {
+// 		background-color: var(--color-subtle);
+// 		border-radius: 1.25em;
+// 		border-width: 0;
+// 		display: block;
+// 		height: 1.5em;
+// 		min-width: 3.5em;
+// 		position: relative;
+// 		width: 3.5em;
+// 		/* Visible with forced colors  */
+// 		outline: transparent solid rem(1);
+// 	}
+
+// 	.kol-input.switch input[type='checkbox']:before {
+// 		width: 1.25em;
+// 		height: 1.25em;
+// 		left: calc(0.25em - rem(2));
+// 		top: calc(0.25em - rem(2));
+// 		border-radius: 1.25em;
+// 		background-color: white;
+// 		position: absolute;
+// 	}
+
+// 	.kol-input.switch input[type='checkbox']:checked {
+// 		background-color: var(--color-primary);
+// 	}
+
+// 	.kol-input.switch input[type='checkbox']:checked:before {
+// 		transform: translateX(2em);
+// 	}
+
+// 	.kol-input.switch input[type='checkbox']:indeterminate:before {
+// 		transform: translateX(1em);
+// 	}
+
+// 	.kol-input input[type='checkbox']:focus {
+// 		@include switch-outline;
+// 	}
+
+// 	.switch {
+// 		& .icon {
+// 			width: 1.25em;
+// 			height: 1.25em;
+// 			left: rem(2);
+// 		}
+
+// 		&.checked .icon {
+// 			transform: translate(2em, -50%);
+// 		}
+
+// 		&.indeterminate .icon {
+// 			transform: translate(1em, -50%);
+// 		}
+// 	}
+
+// 	.button {
+// 		.input {
+// 			border-top-width: rem(1);
+// 			border-left-width: rem(1);
+// 			border-bottom-width: rem(1);
+
+// 			border-top-style: solid;
+// 			border-left-style: solid;
+// 			border-bottom-style: solid;
+// 		}
+
+// 		&.hide-label .input {
+// 			border-right-width: rem(1);
+// 			border-right-style: solid;
+// 		}
+
+// 		.input-label {
+// 			border-top-width: rem(1);
+// 			border-right-width: rem(1);
+// 			border-bottom-width: rem(1);
+
+// 			border-top-style: solid;
+// 			border-right-style: solid;
+// 			border-bottom-style: solid;
+
+// 			justify-self: stretch;
+// 			align-self: stretch;
+// 			display: flex;
+
+// 			padding-right: rem(16);
+
+// 			.input-label-span {
+// 				margin: auto auto;
+// 				font-weight: 700;
+// 			}
+// 		}
+
+// 		&:focus-within {
+// 			@include focus-outline;
+// 		}
+
+// 		.input,
+// 		.input-label {
+// 			border-color: var(--color-primary);
+// 			background-color: var(--color-light);
+// 			color: var(--color-primary);
+// 		}
+
+// 		&.indeterminate {
+// 			.input,
+// 			.input-label {
+// 				border-color: var(--color-primary);
+// 				background-color: var(--color-mute);
+// 				color: var(--color-primary);
+// 			}
+// 		}
+
+// 		&.checked {
+// 			.input,
+// 			.input-label {
+// 				border-color: var(--color-primary);
+// 				background-color: var(--color-primary);
+// 				color: var(--color-light);
+// 			}
+// 		}
+
+// 		&:is(:active, :hover):not(.disabled) {
+// 			.input,
+// 			.input-label {
+// 				background-color: var(--color-primary-variant);
+// 				border-color: var(--color-primary-variant);
+// 				color: var(--color-light);
+// 			}
+// 		}
+
+// 		&.disabled .input {
+// 			opacity: 0.5;
+// 			outline: none;
+// 		}
+// 	}
+
+// 	.button[data-label-align='left']:not(.hide-label) {
+// 		column-gap: 0;
+
+// 		.input {
+// 			border-style: solid;
+// 			border-width: rem(1) rem(1) rem(1) 0;
+// 		}
+
+// 		.input-label {
+// 			border-style: solid;
+// 			border-width: rem(1) 0 rem(1) rem(1);
+// 		}
+// 	}
+
+// 	@include kol-alert-theme;
+// }

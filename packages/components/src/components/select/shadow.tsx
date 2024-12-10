@@ -102,9 +102,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
-					{/* deprecated: remove from theme and replace/refactor 'flex-grow: 1;' */}
 					<form
-						class="input-slot"
 						onSubmit={(event) => {
 							event.preventDefault();
 							propagateSubmitEventToForm({

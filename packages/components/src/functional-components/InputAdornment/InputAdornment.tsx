@@ -7,10 +7,11 @@ export type InputAdornmentProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 };
 
 const InputAdornment: FC<InputAdornmentProps> = ({ position = 'start', class: className, ...other }, children) => {
-	const rootClassName = `inputAdornment-${position}`;
+	const rootClassName = `kol-input-container__adornment`;
+	const positionClassName = `${rootClassName}--${position}`;
 
 	return (
-		<div class={clsx(rootClassName, className)} {...other}>
+		<div class={clsx(rootClassName, positionClassName, className)} {...other}>
 			{children}
 		</div>
 	);

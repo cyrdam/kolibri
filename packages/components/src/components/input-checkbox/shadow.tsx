@@ -80,13 +80,13 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-input-checkbox', 'checkbox', this.state._variant, {
-				'hide-label': !!this.state._hideLabel,
-				checked: this.state._checked,
-				indeterminate: this.state._indeterminate,
+			class: clsx('kol-input-checkbox', {
+				[`kol-input-checkbox--checked`]: this.state._checked,
+				[`kol-input-checkbox--indeterminate`]: this.state._indeterminate,
+				[`kol-input-checkbox--variant-${this.state._variant || 'default'}`]: true,
+				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			'data-label-align': this.state._labelAlign || 'right',
 			'data-role': this.state._variant === 'button' ? 'button' : undefined,
 			alert: this.showAsAlert(),
 			reverseLabelInput: this.state._labelAlign === 'right',
@@ -95,12 +95,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			class: clsx('checkbox-input-element', {
+			class: clsx('kol-input-container__checkbox-input-element', {
 				'visually-hidden': this.state._variant === 'button',
 			}),
 			ref: this.catchRef,
 			type: 'checkbox',
-			slot: 'input',
 			state: this.state,
 			...this.controller.onFacade,
 			onInput: this.onInput,
@@ -125,7 +124,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	private getIconProps() {
 		return {
-			class: 'icon',
+			class: 'kol-input-container__checkbox-icon',
 			icons: this.getIcon(),
 			label: '',
 		};
@@ -134,8 +133,14 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<div class="input">
-					<label class="checkbox-container">
+				<div
+					class={clsx('kol-input-container', {
+						[`kol-input-container--checked`]: this.state._checked,
+						[`kol-input-container--indeterminate`]: this.state._indeterminate,
+						[`kol-input-container--variant-${this.state._variant || 'default'}`]: true,
+					})}
+				>
+					<label class="kol-input-container__checkbox-container">
 						<KolIconFc {...this.getIconProps()} />
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 					</label>

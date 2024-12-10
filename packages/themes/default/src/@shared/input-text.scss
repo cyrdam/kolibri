@@ -1,0 +1,18 @@
+@import './input-core';
+
+@layer kol-theme-component {
+	.kol-input-container {
+		input {
+			border: none;
+			background-color: transparent;
+
+			&::placeholder {
+				color: var(--color-subtle);
+			}
+
+			&:disabled {
+				cursor: not-allowed;
+			}
+		}
+	}
+}

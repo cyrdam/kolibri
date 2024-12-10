@@ -117,19 +117,19 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 
 	let stateCssClasses = {
-		disabled: Boolean(disabled),
-		required: Boolean(required),
-		touched: Boolean(touched),
-		'hide-label': Boolean(hideLabel),
-		'read-only': Boolean(readOnly),
-		'hidden-error': Boolean(hideError),
+		['kol-form-field--disabled']: Boolean(disabled),
+		['kol-form-field--required']: Boolean(required),
+		['kol-form-field--touched']: Boolean(touched),
+		['kol-form-field--hide-label']: Boolean(hideLabel),
+		['kol-form-field--read-only']: Boolean(readOnly),
+		['kol-form-field--hidden-error']: Boolean(hideError),
 	};
 
 	if (showMsg) {
 		stateCssClasses = {
 			...stateCssClasses,
-			[msg?.type || 'error']: true,
-			[getModifierClassNameByMsgType(msg)]: true,
+			[`kol-form-field--${msg?.type || 'error'}`]: true,
+			[`kol-form-field--${getModifierClassNameByMsgType(msg)}`]: true,
 		};
 	}
 
@@ -149,7 +149,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 		</>,
 		<>
-			{children}
+			<div class="kol-form-field__input">{children}</div>
 			{useTooltipInsteadOfLabel && (
 				<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} hideLabel={hideLabel} align={tooltipAlign} badgeText={badgeText} />
 			)}
@@ -161,7 +161,11 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	}
 
 	return (
-		<Component class={clsx('kol-input', stateCssClasses, classNames)} role={`presentation` /* Avoid element being read as 'clickable' in NVDA */} {...other}>
+		<Component
+			class={clsx('kol-form-field', stateCssClasses, classNames)}
+			role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
+			{...other}
+		>
 			{componentList}
 			{showMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} hideError={hideError} />}
 			{counter ? <KolFormFieldCounterFc {...(formFieldCounterProps || {})} {...counter} /> : null}

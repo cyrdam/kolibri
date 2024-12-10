@@ -2,6 +2,9 @@
 @import '../style';
 @import '../input-line';
 
+@import '../form-field';
+@import '../input-container';
+
 @include kol-alert-styles;
 
 @layer kol-component {
@@ -9,10 +12,11 @@
 		font-size: rem(16);
 	}
 
-	.inputs-wrapper {
+	.kol-input-range__inputs-wrapper {
 		align-items: center;
 		display: flex;
 		flex-direction: row;
+		flex-grow: 1;
 	}
 
 	input[type='number'] {
