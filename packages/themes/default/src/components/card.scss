@@ -1,12 +1,9 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	.kol-card {
+		font-family: var(--font-family);
 		&__card {
 			display: grid;
 			width: 100%;

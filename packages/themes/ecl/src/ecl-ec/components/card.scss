@@ -1,11 +1,8 @@
 @import '../../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-card {
+		font-family: var(--font-family);
 		&__card {
 			display: grid;
 			width: 100%;
