@@ -12,7 +12,7 @@ describe('KolSpanFc', () => {
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
 		expect(page.root?.tagName.toLowerCase()).toBe('span');
-		expect(page.root?.classList.contains('kol-span-wc')).toBe(true);
+		expect(page.root?.classList.contains('kol-span')).toBe(true);
 		expect(page.root?.textContent).toContain('Default Label');
 	});
 
@@ -39,7 +39,7 @@ describe('KolSpanFc', () => {
 
 		expect(page.root).toBeDefined();
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.classList.contains('hide-label')).toBe(true);
+		expect(page.root?.classList.contains('kol-span--hide-label')).toBe(true);
 		expect(page.root?.textContent).not.toContain('Hidden Label');
 	});
 

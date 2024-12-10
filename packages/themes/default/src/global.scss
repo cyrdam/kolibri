@@ -45,7 +45,7 @@
 		transition: outline-offset 0.2s linear;
 	}
 
-	.kol-heading-wc {
+	.kol-headline {
 		font-weight: 700;
 	}
 
@@ -68,8 +68,8 @@
 		padding: rem(8) rem(12);
 	}
 
-	.kol-span-wc,
-	.kol-span-wc > span {
+	.kol-span,
+	.kol-span__container {
 		gap: rem(8);
 	}
 

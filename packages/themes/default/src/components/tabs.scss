@@ -35,15 +35,15 @@
 		color: var(--color-primary);
 	}
 
-	button:not(.selected) .kol-span-wc > span {
+	button:not(.selected) .kol-span__container {
 		padding-bottom: 0.25em;
 	}
 
-	button.selected .kol-span-wc > span {
+	button.selected .kol-span__container {
 		border-bottom: 0.25em solid;
 	}
 
-	button .kol-span-wc > span {
+	button .kol-span__container {
 		gap: rem(8);
 	}
 
