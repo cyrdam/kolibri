@@ -20,7 +20,7 @@
 		&__heading-button {
 			@include kol-typography-accordion;
 
-			& .kol-button {
+			.kol-button {
 				font-weight: inherit;
 				font-size: inherit;
 				line-height: inherit;

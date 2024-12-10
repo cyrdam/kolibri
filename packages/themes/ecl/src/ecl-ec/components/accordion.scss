@@ -21,7 +21,7 @@
 				place-items: center;
 				line-height: 1.2;
 
-				.kol-button-text {
+				&__text {
 					color: var(--color-grey);
 					font-weight: var(--font-weight-bold);
 					padding: rem(12) 0;
