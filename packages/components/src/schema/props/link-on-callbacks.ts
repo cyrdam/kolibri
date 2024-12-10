@@ -1,10 +1,10 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { Events } from '../enums';
+import type { Callbacks } from '../enums';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 
 /* types */
 export type LinkOnCallbacksPropType = {
-	[Events.onClick]?: EventValueOrEventCallback<Event, string>;
+	[Callbacks.onClick]?: EventValueOrEventCallback<Event, string>;
 };
 
 /**

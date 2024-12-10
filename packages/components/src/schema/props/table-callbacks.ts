@@ -1,4 +1,4 @@
-import type { Events } from '../enums';
+import type { Callbacks } from '../enums';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
@@ -15,11 +15,11 @@ export type SelectionChangeEventPayload = string[] | string;
 export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | KoliBriTableDataType | null;
 
 export type TableCallbacksPropType = {
-	[Events.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
-	[Events.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
+	[Callbacks.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
+	[Callbacks.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
 };
 export type TableStatefulCallbacksPropType = {
-	[Events.onSelectionChange]?: EventValueOrEventCallback<Event, StatefulSelectionChangeEventPayload>;
+	[Callbacks.onSelectionChange]?: EventValueOrEventCallback<Event, StatefulSelectionChangeEventPayload>;
 };
 /**
  * Defines the callback functions for table events.

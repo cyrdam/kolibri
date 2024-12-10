@@ -1,11 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Events } from '../enums';
+import type { Callbacks } from '../enums';
 import type { PropCustomClass, PropLabel, PropMax, PropTooltipAlign } from '../props';
 import type { EventValueOrEventCallback, Option, Stringified } from '../types';
 
 export type KoliBriPaginationButtonCallbacks = {
-	[Events.onClick]?: EventValueOrEventCallback<Event, number>;
+	[Callbacks.onClick]?: EventValueOrEventCallback<Event, number>;
 	onChangePage?: EventValueOrEventCallback<Event, number>;
 	onChangePageSize?: EventValueOrEventCallback<Event, number>;
 };

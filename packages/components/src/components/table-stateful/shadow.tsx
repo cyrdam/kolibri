@@ -42,7 +42,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { Events } from '../../schema/enums';
+import { Callbacks } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -567,8 +567,8 @@ export class KolTableStateful implements TableAPI {
 			};
 		const selectedData = this.getSelectedData(value);
 
-		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-			this.state._on[Events.onSelectionChange](event, selectedData);
+		if (typeof this.state._on?.[Callbacks.onSelectionChange] === 'function') {
+			this.state._on[Callbacks.onSelectionChange](event, selectedData);
 		}
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.selectionChange, selectedData);

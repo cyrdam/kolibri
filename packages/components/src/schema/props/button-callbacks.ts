@@ -1,4 +1,4 @@
-import type { Events } from '../enums';
+import type { Callbacks } from '../enums';
 import type { EventCallback, EventValueOrEventCallback } from '../types/callbacks';
 import type { StencilUnknown } from '../types/unknown';
 import { watchValidator } from '../utils';
@@ -6,8 +6,8 @@ import { watchValidator } from '../utils';
 import type { Generic } from 'adopted-style-sheets';
 /* types */
 export type ButtonCallbacksPropType<T> = {
-	[Events.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
-	[Events.onMouseDown]?: EventCallback<MouseEvent>;
+	[Callbacks.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
+	[Callbacks.onMouseDown]?: EventCallback<MouseEvent>;
 };
 
 /**
