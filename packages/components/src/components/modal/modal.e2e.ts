@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { KolEvent } from '../../utils/events';
 
 test.describe('kol-modal', () => {
 	test.describe('attributes', () => {
@@ -95,13 +96,13 @@ test.describe('kol-modal', () => {
 			await page.setContent('<kol-modal _label="">Modal content</kol-modal>');
 			const kolModal = page.locator('kol-modal');
 
-			const closeEventPromise = kolModal.evaluate((element: HTMLKolModalElement) => {
+			const closeEventPromise = kolModal.evaluate((element: HTMLKolModalElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener('close', () => {
+					element.addEventListener(KolEvent.close, () => {
 						resolve();
 					});
 				});
-			});
+			}, KolEvent);
 
 			await kolModal.evaluate(async (element: HTMLKolModalElement) => {
 				await element.openModal();
@@ -115,20 +116,20 @@ test.describe('kol-modal', () => {
 			await page.setContent('<kol-modal _label="">Modal content</kol-modal>');
 			const kolModal = page.locator('kol-modal');
 
-			const closeEventPromise = kolModal.evaluate((element: HTMLKolModalElement) => {
+			const eventPromise = kolModal.evaluate((element: HTMLKolModalElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener('close', () => {
+					element.addEventListener(KolEvent.close, () => {
 						resolve();
 					});
 				});
-			});
+			}, KolEvent);
 
 			await kolModal.evaluate(async (element: HTMLKolModalElement) => {
 				await element.openModal();
 			});
 			await page.keyboard.press('Escape');
 
-			await expect(closeEventPromise).resolves.toBeUndefined();
+			await expect(eventPromise).resolves.toBeUndefined();
 		});
 	});
 });

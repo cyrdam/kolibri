@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { KolEvent } from '../../utils/events';
 
 test.describe('kol-badge', () => {
 	test.describe('Callbacks', () => {
@@ -29,7 +30,7 @@ test.describe('kol-badge', () => {
 	});
 
 	test.describe('DOM events', () => {
-		['click', 'mousedown'].forEach((event) => {
+		[KolEvent.click, KolEvent.mousedown].forEach((event) => {
 			test(`should emit ${event} when smart button emits ${event}`, async ({ page }) => {
 				const BADGE_PROPS = { _label: `Smart Button` };
 				await page.setContent(`<kol-badge _label="Badge with Button" _smart-button='${JSON.stringify(BADGE_PROPS)}'></kol-badge>`);

@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import type { SortEventPayload, TableHeaderCellsPropType } from '../../schema';
+import { KolEvent } from '../../utils/events';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const HEADERS: TableHeaderCellsPropType = {
@@ -65,13 +66,13 @@ test.describe('kol-table-stateless', () => {
 	test.describe('DOM events', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
-			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener('selectionChange', () => {
+					element.addEventListener(KolEvent.selectionChange, () => {
 						resolve();
 					});
 				});
-			});
+			}, KolEvent);
 			await kolTableStateless.getByLabel(`Selection for ${DATA[0].id}`).check();
 
 			await expect(callbackPromise).resolves.toBeUndefined();
@@ -79,13 +80,13 @@ test.describe('kol-table-stateless', () => {
 
 		test('it emits sort when the ID column header is clicked', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
-			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener('sort', () => {
+					element.addEventListener(KolEvent.sort, () => {
 						resolve();
 					});
 				});
-			});
+			}, KolEvent);
 			await kolTableStateless.getByRole('button', { name: 'ID' }).click();
 
 			await expect(callbackPromise).resolves.toBeUndefined();

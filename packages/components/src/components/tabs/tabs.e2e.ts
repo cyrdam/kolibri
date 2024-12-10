@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { KolEvent } from '../../utils/events';
 
 const TABS = [
 	{
@@ -39,13 +40,13 @@ test.describe('kol-tabs', () => {
 	test.describe('DOM events', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTabs = page.locator('kol-tabs');
-			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
+			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener('select', () => {
+					element.addEventListener(KolEvent.select, () => {
 						resolve();
 					});
 				});
-			});
+			}, KolEvent);
 			await kolTabs.getByRole('tab', { name: 'Second Tab' }).click();
 
 			await expect(eventPromise).resolves.toBeUndefined();

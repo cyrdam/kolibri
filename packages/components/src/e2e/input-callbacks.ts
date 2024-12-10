@@ -4,6 +4,7 @@ import { expect, type Page } from '@playwright/test';
 import type { FillAction } from './utils/FillAction';
 import type { InputTypeOnDefault } from '../schema';
 import { INPUTS_SELECTOR } from './utils/inputsSelector';
+import { Callbacks } from '../schema/enums';
 
 const testInputCallbacks = <ElementType extends { _on?: InputTypeOnDefault } & (HTMLElement | SVGElement)>(
 	componentName: string,
@@ -15,12 +16,12 @@ const testInputCallbacks = <ElementType extends { _on?: InputTypeOnDefault } & (
 	equalityCheck: 'toBe' | 'toEqual' = 'toBe',
 ) => {
 	test.describe('Callbacks', () => {
-		const EVENTS: [string, string, unknown?][] = [
-			['click', 'onClick'],
-			['focus', 'onFocus'],
-			['blur', 'onBlur'],
-			['input', 'onInput', testValue],
-			['change', 'onChange', testValue],
+		const EVENTS: [string, Callbacks, unknown?][] = [
+			['click', Callbacks.onClick],
+			['focus', Callbacks.onFocus],
+			['blur', Callbacks.onBlur],
+			['input', Callbacks.onInput, testValue],
+			['change', Callbacks.onChange, testValue],
 		];
 
 		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([eventName, callbackName, testValue]) => {

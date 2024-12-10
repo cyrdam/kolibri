@@ -8,10 +8,11 @@ const TEST_VALUE = true;
 const fillAction: FillAction = async (page) => {
 	await page.locator('input').check();
 };
+const OMITTED_EVENTS = ['click'];
 
 test.describe(COMPONENT_NAME, () => {
-	testInputCallbacks<HTMLKolInputCheckboxElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['click']);
-	testInputDomEvents(COMPONENT_NAME);
+	testInputCallbacks<HTMLKolInputCheckboxElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS);
+	testInputDomEvents(COMPONENT_NAME, undefined, undefined, OMITTED_EVENTS);
 
 	test(`should reflect the _checked property on the web component`, async ({ page }) => {
 		const getCheckedProperty = () => page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputCheckboxElement) => element._checked);

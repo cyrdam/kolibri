@@ -1,14 +1,27 @@
 import { type E2EPage, test } from '@stencil/playwright';
 import { expect, type Locator, type Page } from '@playwright/test';
 import { INPUTS_SELECTOR } from './utils/inputsSelector';
+import { KolEvent } from '../utils/events';
 
-const testInputDomEvents = (componentName: string, additionalProperties: string = '', selectInput?: (page: Page & E2EPage) => Locator) => {
+const testInputDomEvents = (
+	componentName: string,
+	additionalProperties: string = '',
+	selectInput?: (page: Page & E2EPage) => Locator,
+	omittedEvents: string[] = [],
+) => {
 	test.describe('DOM events', () => {
-		['click', 'focus', 'blur', 'input', 'change'].forEach((event) => {
-			test(`should emit ${event} when internal input emits ${event}`, async ({ page, browserName }) => {
+		const EVENTS: [string, KolEvent][] = [
+			['click', KolEvent.click],
+			['focus', KolEvent.focus],
+			['blur', KolEvent.blur],
+			['input', KolEvent.input],
+			['change', KolEvent.change],
+		];
+		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEvent, kolEvent]) => {
+			test(`should emit ${kolEvent} when internal input emits ${nativeEvent}`, async ({ page, browserName }) => {
 				/* See https://github.com/microsoft/playwright/issues/33864 */
 				test.skip(
-					componentName === 'kol-input-color' && event === 'click' && browserName === 'firefox',
+					componentName === 'kol-input-color' && kolEvent === KolEvent.click && browserName === 'firefox',
 					'Clicking on an input[type=color] in Firefox currently makes the page close itself.',
 				);
 
@@ -19,13 +32,13 @@ const testInputDomEvents = (componentName: string, additionalProperties: string 
 				await expect(component).toBeVisible();
 				await expect(input).toBeVisible();
 
-				const eventPromise = component.evaluate(async (element, event) => {
+				const eventPromise = component.evaluate(async (element, kolEvent) => {
 					return new Promise((resolve) => {
-						element.addEventListener(event, resolve);
+						element.addEventListener(kolEvent, resolve);
 					});
-				}, event);
+				}, kolEvent);
 				await page.waitForChanges();
-				await input.dispatchEvent(event);
+				await input.dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeTruthy();
 			});
 		});

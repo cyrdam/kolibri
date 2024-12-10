@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { KolEvent } from '../../utils/events';
 
 test.describe('kol-popover', () => {
 	test('should display popover when _show is true and hide when _show is false', async ({ page }) => {
@@ -48,17 +49,17 @@ test.describe('kol-popover', () => {
 		test(`it emits close when popover is closed`, async ({ page }) => {
 			await page.setContent(`<kol-popover-wc _show>Popover content</kol-popover-wc>`);
 
-			const callbackPromise = page.locator('kol-popover-wc').evaluate((element: HTMLKolPopoverWcElement) => {
+			const eventPromise = page.locator('kol-popover-wc').evaluate((element: HTMLKolPopoverWcElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
-					element.addEventListener('close', () => {
+					element.addEventListener(KolEvent.close, () => {
 						resolve();
 					});
 				});
-			});
+			}, KolEvent);
 			await page.waitForChanges();
 			await page.keyboard.press('Escape');
 
-			await expect(callbackPromise).resolves.toBeUndefined();
+			await expect(eventPromise).resolves.toBeUndefined();
 		});
 	});
 });

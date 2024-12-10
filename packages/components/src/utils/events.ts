@@ -21,8 +21,8 @@ function stopPropagation(event: Event): void {
 	event.stopPropagation();
 }
 
-function createKoliBriEvent<T>(type: KolEvent, detail?: T): CustomEvent {
-	return new CustomEvent(type, {
+function createKoliBriEvent<T>(event: KolEvent, detail?: T): CustomEvent {
+	return new CustomEvent(event, {
 		bubbles: true,
 		cancelable: true,
 		composed: true,

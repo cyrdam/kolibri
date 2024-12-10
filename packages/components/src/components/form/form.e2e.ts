@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { KolEvent } from '../../utils/events';
 
 test.describe('kol-form', () => {
 	test.describe('Callbacks', () => {
@@ -30,18 +31,22 @@ test.describe('kol-form', () => {
 	});
 
 	test.describe('DOM events', () => {
-		['reset', 'submit'].forEach((eventName) => {
-			test(`should emit ${eventName} when internal form emits ${eventName}`, async ({ page }) => {
+		const EVENTS: [string, KolEvent][] = [
+			['submit', KolEvent.submit],
+			['reset', KolEvent.reset],
+		];
+		EVENTS.forEach(([nativeEvent, kolEvent]) => {
+			test(`should emit ${kolEvent} when internal form emits ${nativeEvent}`, async ({ page }) => {
 				await page.setContent('<kol-form />');
-				const eventPromise = page.locator('kol-form').evaluate(async (element: HTMLKolFormElement, eventName) => {
+				const eventPromise = page.locator('kol-form').evaluate(async (element: HTMLKolFormElement, kolEvent) => {
 					return new Promise<void>((resolve) => {
-						element.addEventListener(eventName, () => {
+						element.addEventListener(kolEvent, () => {
 							resolve();
 						});
 					});
-				}, eventName);
+				}, kolEvent);
 				await page.waitForChanges();
-				await page.locator('form').dispatchEvent(eventName);
+				await page.locator('form').dispatchEvent(nativeEvent);
 				await expect(eventPromise).resolves.toBeUndefined();
 			});
 		});
