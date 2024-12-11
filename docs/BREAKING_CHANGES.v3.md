@@ -13,6 +13,10 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
+### kol-input-file
+
+- The property `_value` has been removed as it never served a purpose. Use the `_files` property or `getValue()` instead to access the FileList.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)
