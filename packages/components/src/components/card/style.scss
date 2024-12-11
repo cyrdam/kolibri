@@ -3,20 +3,18 @@
 @import '../tooltip/style.scss';
 
 @layer kol-component {
-	:host {
+	.kol-card {
 		font-size: rem(16);
-	}
 
-	:host > div.card {
 		height: 100%;
 		position: relative;
 		/* Visible with forced colors  */
 		outline: transparent solid rem(1);
-	}
 
-	.close {
-		position: absolute;
-		top: 0;
-		right: 0;
+		&__close-button {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
 	}
 }
