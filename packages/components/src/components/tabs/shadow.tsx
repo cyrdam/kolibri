@@ -444,7 +444,7 @@ export class KolTabs implements TabsAPI {
 	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
 		this._on?.onSelect?.(event, index);
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.select);
+			dispatchDomEvent(this.host, KolEvent.select, index);
 		}
 
 		this.focusTabById(index);

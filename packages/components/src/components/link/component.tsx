@@ -94,7 +94,7 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 				this.state._on?.onClick(event, this.state._href);
 			}
 			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.click);
+				dispatchDomEvent(this.host, KolEvent.click, this.state._href);
 			}
 		}
 	};

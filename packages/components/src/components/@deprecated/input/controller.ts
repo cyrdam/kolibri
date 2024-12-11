@@ -179,9 +179,9 @@ export class InputController extends ControlledInputController implements Watche
 		validateAccessAndShortKey(this.component._accessKey, this.component._shortKey);
 	}
 
-	private emitEvent(type: KolEvent): void {
+	private emitEvent(type: KolEvent, value?: unknown): void {
 		if (this.host) {
-			dispatchDomEvent(this.host, type);
+			dispatchDomEvent(this.host, type, value);
 		}
 	}
 
@@ -206,7 +206,7 @@ export class InputController extends ControlledInputController implements Watche
 		value = value ?? (event.target as HTMLInputElement).value;
 
 		// Event handling
-		this.emitEvent(KolEvent.change);
+		this.emitEvent(KolEvent.change, value);
 
 		// Callback
 		if (typeof this.component._on?.onChange === 'function') {
@@ -235,7 +235,7 @@ export class InputController extends ControlledInputController implements Watche
 		value = value ?? (event.target as HTMLInputElement).value;
 
 		// Event handling
-		this.emitEvent(KolEvent.input);
+		this.emitEvent(KolEvent.input, value);
 		stopPropagation(event);
 
 		// Static form handling

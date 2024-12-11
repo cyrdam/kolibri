@@ -674,7 +674,10 @@ export class KolTableStateless implements TableStatelessAPI {
 									});
 								}
 								if (this.host) {
-									dispatchDomEvent(this.host, KolEvent.sort);
+									dispatchDomEvent(this.host, KolEvent.sort, {
+										key: cell.key,
+										currentSortDirection: cell.sortDirection,
+									});
 								}
 							},
 						}}

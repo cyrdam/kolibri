@@ -104,7 +104,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		}
 
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click);
+			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
 		}
 	};
 

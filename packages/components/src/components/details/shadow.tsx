@@ -56,7 +56,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 
 		this.toggleTimeout = setTimeout(() => {
 			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.toggle);
+				dispatchDomEvent(this.host, KolEvent.toggle, Boolean(this._open));
 			}
 			this.state._on?.onToggle?.(event, Boolean(this._open));
 		}, 25);

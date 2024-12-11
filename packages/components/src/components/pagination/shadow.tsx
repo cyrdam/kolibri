@@ -264,7 +264,7 @@ export class KolPagination implements PaginationAPI {
 			this.state._on.onClick(event, page);
 		}
 		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click);
+			dispatchDomEvent(this.host, KolEvent.click, page);
 		}
 		this.onChangePage(event, page);
 	};
@@ -276,7 +276,7 @@ export class KolPagination implements PaginationAPI {
 				this.state._on.onChangePage(event, page);
 			}
 			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.changePage);
+				dispatchDomEvent(this.host, KolEvent.changePage, page);
 			}
 		});
 	};
@@ -291,7 +291,7 @@ export class KolPagination implements PaginationAPI {
 					this.state._on.onChangePageSize(event, this._pageSize);
 				}
 				if (this.host) {
-					dispatchDomEvent(this.host, KolEvent.changePageSize);
+					dispatchDomEvent(this.host, KolEvent.changePageSize, this._pageSize);
 				}
 			});
 		}

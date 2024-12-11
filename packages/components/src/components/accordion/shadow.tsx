@@ -70,7 +70,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		setTimeout(() => {
 			this.state._on?.onClick?.(event, this._open === true);
 			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.click);
+				dispatchDomEvent(this.host, KolEvent.click, this._open === true);
 			}
 		});
 	};
