@@ -17,6 +17,14 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 - The property `_value` has been removed as it never served a purpose. Use the `_files` property or `getValue()` instead to access the FileList.
 
+### kol-table-stateful
+
+- The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
+
+### kol-table-stateless
+
+- The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)
