@@ -1,8 +1,11 @@
 @import '../@shared/mixins';
 
 @layer kol-component {
-	.kol-tooltip {
+	:host {
 		font-size: rem(16);
+	}
+
+	.kol-tooltip {
 		display: contents;
 
 		&__floating {

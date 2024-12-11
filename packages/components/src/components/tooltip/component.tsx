@@ -2,7 +2,7 @@ import { autoUpdate } from '@floating-ui/dom';
 import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType, TooltipAPI, TooltipStates } from '../../schema';
 import { getDocument, validateBadgeText, validateAlign, validateId, validateLabel } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../utils/overlay';
@@ -125,14 +125,14 @@ export class KolTooltipWc implements TooltipAPI {
 
 	public render(): JSX.Element {
 		return (
-			<div class="kol-tooltip">
+			<Host class="kol-tooltip">
 				{this.state._label !== '' && (
 					<div class="kol-tooltip__floating" ref={this.catchTooltipElement}>
 						<div class="kol-tooltip__area kol-tooltip__arrow" ref={this.catchArrowElement} />
 						<KolSpanFc class="kol-tooltip__area kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
 					</div>
 				)}
-			</div>
+			</Host>
 		);
 	}
 
