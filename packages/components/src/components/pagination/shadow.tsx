@@ -258,8 +258,6 @@ export class KolPagination implements PaginationAPI {
 	};
 
 	private onClick = (event: Event, page: number) => {
-		event.stopPropagation();
-
 		if (typeof this.state._on.onClick === 'function') {
 			this.state._on.onClick(event, page);
 		}

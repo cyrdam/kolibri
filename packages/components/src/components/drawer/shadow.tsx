@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, OpenPropType, ModalPropType, DrawerStates } from '../../schema';
-import { setState, validateLabel, validateOpen, validateAlign, validateModal } from '../../schema';
-import { Component, Element, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-
+import type { AlignPropType, DrawerAPI, DrawerStates, KoliBriModalEventCallbacks, LabelPropType, ModalPropType, OpenPropType } from '../../schema';
+import { setState, validateAlign, validateLabel, validateModal, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -153,9 +152,7 @@ export class KolDrawer implements DrawerAPI {
 		}
 	}
 
-	private handleClose(event: Event) {
-		event.stopPropagation();
-
+	private handleClose() {
 		void (async () => {
 			await this.close();
 			this.handleCloseDialog();

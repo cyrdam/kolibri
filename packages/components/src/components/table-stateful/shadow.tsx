@@ -402,6 +402,7 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private onSelectionChange = (event: Event): void => {
+		/* Stop propagation for selectionChange event from table-stateless component because table-stateful emits its own selectionChange event. */
 		event.stopPropagation();
 	};
 

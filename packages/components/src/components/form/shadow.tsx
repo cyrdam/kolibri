@@ -26,7 +26,7 @@ export class KolForm implements FormAPI {
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
-		event.stopPropagation();
+
 		if (typeof this.state._on?.onSubmit === 'function') {
 			this.state._on?.onSubmit(event as SubmitEvent);
 		}
@@ -37,7 +37,6 @@ export class KolForm implements FormAPI {
 
 	private readonly onReset = (event: Event) => {
 		event.preventDefault();
-		event.stopPropagation();
 		if (typeof this.state._on?.onReset === 'function') {
 			this.state._on?.onReset(event);
 		}

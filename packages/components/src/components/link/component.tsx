@@ -84,7 +84,6 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 	}
 
 	private readonly onClick = (event: Event) => {
-		event.stopPropagation();
 		if (this.state._disabled === true) {
 			event.preventDefault();
 		} else {

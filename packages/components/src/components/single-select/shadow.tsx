@@ -45,12 +45,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 	private refOptions: HTMLLIElement[] = [];
 	private oldValue?: string;
 
-	@Listen('blur')
-	handleHostBlur(event: MouseEvent) {
-		// Stop propagation to avoid the popover being close immediately because of the input blur event
-		event.stopPropagation();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {

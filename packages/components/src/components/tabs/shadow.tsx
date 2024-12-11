@@ -144,15 +144,8 @@ export class KolTabs implements TabsAPI {
 		}
 	}
 
-	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-	// 	this.onClose(button, event, index);
-	// };
-
 	private readonly onMouseDown = (event: Event): void => {
 		event.preventDefault();
-		event.stopPropagation();
 	};
 
 	private readonly callbacks: ButtonCallbacksPropType<number> = {
@@ -452,7 +445,6 @@ export class KolTabs implements TabsAPI {
 
 	private onCreate = (event: Event) => {
 		event.preventDefault();
-		event.stopPropagation();
 		if (typeof this.state._on?.onCreate === 'function') {
 			this.state._on?.onCreate(event);
 		}
