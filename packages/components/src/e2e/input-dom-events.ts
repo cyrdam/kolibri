@@ -17,6 +17,7 @@ const testInputDomEvents = (
 			['input', KolEvent.input],
 			['change', KolEvent.change],
 		];
+
 		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEvent, kolEvent]) => {
 			test(`should emit ${kolEvent} when internal input emits ${nativeEvent}`, async ({ page, browserName }) => {
 				/* See https://github.com/microsoft/playwright/issues/33864 */

@@ -25,7 +25,7 @@ const testInputCallbacks = <ElementType extends { _on?: InputTypeOnDefault } & (
 		];
 
 		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([eventName, callbackName, testValue]) => {
-			test(`should call ${callbackName} when internal input emits`, async ({ page, browserName }) => {
+			test(`should call ${callbackName} callback when internal input emits ${eventName}`, async ({ page, browserName }) => {
 				/* See https://github.com/microsoft/playwright/issues/33864 */
 				test.skip(
 					componentName === 'kol-input-color' && eventName === 'click' && browserName === 'firefox',
