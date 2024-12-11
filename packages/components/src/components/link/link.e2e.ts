@@ -4,11 +4,11 @@ import { KolEvent } from '../../utils/events';
 
 test.describe('kol-link', () => {
 	test.describe('Callbacks', () => {
-		test(`should call onClick when internal anchor emits click`, async ({ page }) => {
+		test(`should call onClick callback when internal anchor emits click`, async ({ page }) => {
 			await page.setContent('<kol-link _label="Link"></kol-link>');
 			const kolLink = page.locator('kol-link');
 
-			const eventPromise = kolLink.evaluate((element: HTMLKolLinkElement) => {
+			const callbackPromise = kolLink.evaluate((element: HTMLKolLinkElement) => {
 				return new Promise<void>((resolve) => {
 					element._on = {
 						onClick: () => {
@@ -20,7 +20,7 @@ test.describe('kol-link', () => {
 			await page.waitForChanges();
 
 			await page.locator('a').dispatchEvent('click');
-			await expect(eventPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
 

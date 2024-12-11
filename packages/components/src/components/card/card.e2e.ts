@@ -4,9 +4,9 @@ import { KolEvent } from '../../utils/events';
 
 test.describe('kol-card', () => {
 	test.describe('Callbacks', () => {
-		test('should call "onClose" when the close button is clicked', async ({ page }) => {
+		test('should call "onClose" callback when the close button is clicked', async ({ page }) => {
 			await page.setContent('<kol-card _label="Card" _has-closer />');
-			const eventPromise = page.locator('kol-card').evaluate(async (element: HTMLKolCardElement) => {
+			const callbackPromise = page.locator('kol-card').evaluate(async (element: HTMLKolCardElement) => {
 				return new Promise((resolve) => {
 					element._on = {
 						onClose: (_event: Event, value?: unknown) => {
@@ -17,7 +17,7 @@ test.describe('kol-card', () => {
 			});
 			await page.waitForChanges();
 			await page.getByTestId('card-close-button').click();
-			await expect(eventPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
 

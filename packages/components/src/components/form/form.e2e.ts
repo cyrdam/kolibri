@@ -9,11 +9,11 @@ test.describe('kol-form', () => {
 			['reset', 'onReset'],
 		];
 		EVENTS.forEach(([eventName, callbackName]) => {
-			test(`should call ${callbackName} when internal form emits`, async ({ page }) => {
+			test(`should call ${callbackName} callback when internal form emits`, async ({ page }) => {
 				await page.setContent('<kol-form />');
 				const kolForm = page.locator('kol-form');
 
-				const eventPromise = kolForm.evaluate((element: HTMLKolFormElement, callbackName) => {
+				const callbackPromise = kolForm.evaluate((element: HTMLKolFormElement, callbackName) => {
 					return new Promise<void>((resolve) => {
 						element._on = {
 							[callbackName]: () => {
@@ -25,7 +25,7 @@ test.describe('kol-form', () => {
 				await page.waitForChanges();
 
 				await page.locator('form').dispatchEvent(eventName);
-				await expect(eventPromise).resolves.toBeUndefined();
+				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
 	});

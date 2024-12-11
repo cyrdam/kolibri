@@ -1,7 +1,9 @@
 export enum Callback {
 	onBlur = 'onBlur',
 	onChange = 'onChange',
+	onChangePage = 'onChangePage',
 	onClick = 'onClick',
+	onClose = 'onClose',
 	onDblClick = 'onDblClick',
 	onFocus = 'onFocus',
 	onInput = 'onInput',
@@ -15,9 +17,9 @@ export enum Callback {
 	onMouseUp = 'onMouseUp',
 	onReset = 'onReset',
 	onSelect = 'onSelect',
-	onSort = 'onSort',
 	onSelectionChange = 'onSelectionChange',
+	onChangePageSize = 'onChangePageSize',
+	onSort = 'onSort',
 	onSubmit = 'onSubmit',
 	onToggle = 'onToggle',
-	onClose = 'onClose',
 }

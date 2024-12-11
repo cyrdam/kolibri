@@ -4,11 +4,11 @@ import { KolEvent } from '../../utils/events';
 
 test.describe('kol-details', () => {
 	test.describe('Callbacks', () => {
-		test(`should call 'onToggle' when title is clicked`, async ({ page }) => {
+		test(`should call 'onToggle' callback when title is clicked`, async ({ page }) => {
 			await page.setContent('<kol-details _label="Details" _has-closer />');
 			const kolDetails = page.locator('kol-details');
 
-			const eventPromise = kolDetails.evaluate((element: HTMLKolDetailsElement) => {
+			const callbackPromise = kolDetails.evaluate((element: HTMLKolDetailsElement) => {
 				return new Promise<void>((resolve) => {
 					element._on = {
 						onToggle: () => {
@@ -20,7 +20,7 @@ test.describe('kol-details', () => {
 			await page.waitForChanges();
 
 			await page.locator('button').click();
-			await expect(eventPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
 

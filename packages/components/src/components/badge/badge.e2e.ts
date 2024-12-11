@@ -5,11 +5,11 @@ import { KolEvent } from '../../utils/events';
 test.describe('kol-badge', () => {
 	test.describe('Callbacks', () => {
 		['onClick', 'onMouseDown'].forEach((callbackName) => {
-			test(`should call ${callbackName} when smart button emits`, async ({ page }) => {
+			test(`should call ${callbackName} callback when smart button emits`, async ({ page }) => {
 				await page.setContent(`<kol-badge _label="Badge with Button"></kol-badge>`);
 				const kolBadge = page.locator('kol-badge');
 
-				const eventPromise = kolBadge.evaluate((element: HTMLKolBadgeElement, callbackName) => {
+				const callbackPromise = kolBadge.evaluate((element: HTMLKolBadgeElement, callbackName) => {
 					return new Promise<void>((resolve) => {
 						element._smartButton = {
 							_label: `Smart Button`,
@@ -24,7 +24,7 @@ test.describe('kol-badge', () => {
 				await page.waitForChanges();
 
 				await page.locator('button').click();
-				await expect(eventPromise).resolves.toBeUndefined();
+				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
 	});

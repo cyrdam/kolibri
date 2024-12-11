@@ -41,15 +41,15 @@ test.describe('kol-tabs', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTabs = page.locator('kol-tabs');
 			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement, KolEvent) => {
-				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.select, () => {
-						resolve();
+				return new Promise<number>((resolve) => {
+					element.addEventListener(KolEvent.select, (event: Event) => {
+						resolve((event as CustomEvent).detail as number);
 					});
 				});
 			}, KolEvent);
 			await kolTabs.getByRole('tab', { name: 'Second Tab' }).click();
 
-			await expect(eventPromise).resolves.toBeUndefined();
+			await expect(eventPromise).resolves.toEqual(1);
 		});
 	});
 });

@@ -11,11 +11,11 @@ test.describe('kol-button', () => {
 
 	test.describe('Callbacks', () => {
 		['onClick', 'onMouseDown'].forEach((callbackName) => {
-			test(`should call ${callbackName} when internal button emits`, async ({ page }) => {
+			test(`should call ${callbackName} callback when internal button emits`, async ({ page }) => {
 				await page.setContent('<kol-button _label="Button"></kol-button>');
 				const kolButton = page.locator('kol-button');
 
-				const eventPromise = kolButton.evaluate((element: HTMLKolButtonElement, callbackName) => {
+				const callbackPromise = kolButton.evaluate((element: HTMLKolButtonElement, callbackName) => {
 					return new Promise<void>((resolve) => {
 						element._on = {
 							[callbackName]: () => {
@@ -27,7 +27,7 @@ test.describe('kol-button', () => {
 				await page.waitForChanges();
 
 				await page.locator('button').click();
-				await expect(eventPromise).resolves.toBeUndefined();
+				await expect(callbackPromise).resolves.toBeUndefined();
 			});
 		});
 	});

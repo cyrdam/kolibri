@@ -4,9 +4,9 @@ import { KolEvent } from '../../utils/events';
 
 test.describe('kol-alert', () => {
 	test.describe('Callbacks', () => {
-		test('should call "onClose" when the close button is clicked', async ({ page }) => {
+		test('should call "onClose" callback when the close button is clicked', async ({ page }) => {
 			await page.setContent('<kol-alert _label="Alert" _has-closer />');
-			const eventPromise = page.locator('kol-alert').evaluate(async (element: HTMLKolAlertElement) => {
+			const callbackPromise = page.locator('kol-alert').evaluate(async (element: HTMLKolAlertElement) => {
 				return new Promise((resolve) => {
 					element._on = {
 						onClose: (_event: Event, value?: unknown) => {
@@ -17,7 +17,7 @@ test.describe('kol-alert', () => {
 			});
 			await page.waitForChanges();
 			await page.getByTestId('alert-close-button').click();
-			await expect(eventPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
 

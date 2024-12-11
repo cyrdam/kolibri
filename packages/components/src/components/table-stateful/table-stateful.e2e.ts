@@ -48,15 +48,15 @@ test.describe('kol-table-stateful', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTableStateful = page.locator('kol-table-stateful');
 			const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement, KolEvent) => {
-				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.selectionChange, () => {
-						resolve();
+				return new Promise<KoliBriTableDataType[] | KoliBriTableDataType | null>((resolve) => {
+					element.addEventListener(KolEvent.selectionChange, (event: Event) => {
+						resolve((event as CustomEvent).detail as KoliBriTableDataType[] | KoliBriTableDataType | null);
 					});
 				});
 			}, KolEvent);
 			await kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`).check();
 
-			await expect(callbackPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toEqual([DATA[0]]);
 		});
 	});
 });

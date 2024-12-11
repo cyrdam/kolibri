@@ -66,30 +66,33 @@ test.describe('kol-table-stateless', () => {
 	test.describe('DOM events', () => {
 		test('it emits selectionChange when the selection changes', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
-			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
-				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.selectionChange, () => {
-						resolve();
+			const eventPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
+				return new Promise<string | string[]>((resolve) => {
+					element.addEventListener(KolEvent.selectionChange, (event: Event) => {
+						resolve((event as CustomEvent).detail as string | string[]);
 					});
 				});
 			}, KolEvent);
 			await kolTableStateless.getByLabel(`Selection for ${DATA[0].id}`).check();
 
-			await expect(callbackPromise).resolves.toBeUndefined();
+			await expect(eventPromise).resolves.toEqual([DATA[0].id]);
 		});
 
 		test('it emits sort when the ID column header is clicked', async ({ page }) => {
 			const kolTableStateless = page.locator('kol-table-stateless');
-			const callbackPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
-				return new Promise<void>((resolve) => {
-					element.addEventListener(KolEvent.sort, () => {
-						resolve();
+			const eventPromise = kolTableStateless.evaluate((element: HTMLKolTableStatelessElement, KolEvent) => {
+				return new Promise<SortEventPayload>((resolve) => {
+					element.addEventListener(KolEvent.sort, (event: Event) => {
+						resolve((event as CustomEvent).detail as SortEventPayload);
 					});
 				});
 			}, KolEvent);
 			await kolTableStateless.getByRole('button', { name: 'ID' }).click();
 
-			await expect(callbackPromise).resolves.toBeUndefined();
+			await expect(eventPromise).resolves.toEqual({
+				key: 'id',
+				currentSortDirection: 'ASC',
+			});
 		});
 	});
 });

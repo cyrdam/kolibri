@@ -52,7 +52,7 @@ test.describe('kol-modal', () => {
 			await page.setContent('<kol-modal _label="">Modal content</kol-modal>');
 			const kolModal = page.locator('kol-modal');
 
-			const closeEventPromise = kolModal.evaluate((element: HTMLKolModalElement) => {
+			const callbackPromise = kolModal.evaluate((element: HTMLKolModalElement) => {
 				return new Promise<void>((resolve) => {
 					element._on = {
 						onClose: () => {
@@ -67,14 +67,14 @@ test.describe('kol-modal', () => {
 				await element.closeModal();
 			});
 
-			await expect(closeEventPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 
 		test('it calls the onClose callback when the dialog closes natively', async ({ page }) => {
 			await page.setContent('<kol-modal _label="">Modal content</kol-modal>');
 			const kolModal = page.locator('kol-modal');
 
-			const closeEventPromise = kolModal.evaluate((element: HTMLKolModalElement) => {
+			const callbackPromise = kolModal.evaluate((element: HTMLKolModalElement) => {
 				return new Promise<void>((resolve) => {
 					element._on = {
 						onClose: () => {
@@ -87,7 +87,7 @@ test.describe('kol-modal', () => {
 			await kolModal.evaluate(async (element: HTMLKolModalElement) => element.openModal());
 			await page.keyboard.press('Escape');
 
-			await expect(closeEventPromise).resolves.toBeUndefined();
+			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
 
@@ -96,7 +96,7 @@ test.describe('kol-modal', () => {
 			await page.setContent('<kol-modal _label="">Modal content</kol-modal>');
 			const kolModal = page.locator('kol-modal');
 
-			const closeEventPromise = kolModal.evaluate((element: HTMLKolModalElement, KolEvent) => {
+			const eventPromise = kolModal.evaluate((element: HTMLKolModalElement, KolEvent) => {
 				return new Promise<void>((resolve) => {
 					element.addEventListener(KolEvent.close, () => {
 						resolve();
@@ -109,7 +109,7 @@ test.describe('kol-modal', () => {
 				await element.closeModal();
 			});
 
-			await expect(closeEventPromise).resolves.toBeUndefined();
+			await expect(eventPromise).resolves.toBeUndefined();
 		});
 
 		test('it should emit close when the dialog closes natively', async ({ page }) => {
