@@ -30,7 +30,7 @@ import {
 	validateTableSelection,
 	watchString,
 } from '../../schema';
-import { Callbacks } from '../../schema/enums';
+import { Callback } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -406,8 +406,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	}
 
 	private handleSelectionChangeCallbackAndEvent(event: Event, payload: SelectionChangeEventPayload) {
-		if (typeof this.state._on?.[Callbacks.onSelectionChange] === 'function') {
-			this.state._on[Callbacks.onSelectionChange](event, payload);
+		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
+			this.state._on[Callback.onSelectionChange](event, payload);
 		}
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.selectionChange, payload);

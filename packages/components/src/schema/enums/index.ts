@@ -1,2 +1,2 @@
-export * from './callbacks';
+export * from './callback';
 export * from './keyboard';

@@ -1,4 +1,4 @@
-export enum Callbacks {
+export enum Callback {
 	onBlur = 'onBlur',
 	onChange = 'onChange',
 	onClick = 'onClick',

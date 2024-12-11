@@ -1,12 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Callbacks } from '../enums';
+import type { Callback } from '../enums';
 import type { PropErrorList } from '../props';
 import type { EventCallback } from '../types';
 
 export type KoliBriFormCallbacks = {
-	[Callbacks.onSubmit]?: EventCallback<Event>;
-	[Callbacks.onReset]?: EventCallback<Event>;
+	[Callback.onSubmit]?: EventCallback<Event>;
+	[Callback.onReset]?: EventCallback<Event>;
 };
 
 type RequiredProps = NonNullable<unknown>;

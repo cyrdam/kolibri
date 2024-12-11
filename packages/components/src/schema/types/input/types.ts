@@ -1,27 +1,27 @@
 import type { EventCallback, EventValueOrEventCallback } from '../callbacks';
-import type { Callbacks } from '../../enums';
+import type { Callback } from '../../enums';
 
 export const inputTypeOnOffOptions = ['on', 'off'] as const;
 export type InputTypeOnOff = (typeof inputTypeOnOffOptions)[number];
 
 type InputTypeOnBlur = {
-	[Callbacks.onBlur]?: EventCallback<Event>;
+	[Callback.onBlur]?: EventCallback<Event>;
 };
 
 type InputTypeOnClick = {
-	[Callbacks.onClick]?: EventCallback<Event>;
+	[Callback.onClick]?: EventCallback<Event>;
 };
 
 type InputTypeOnChange = {
-	[Callbacks.onChange]?: EventValueOrEventCallback<Event, unknown>;
+	[Callback.onChange]?: EventValueOrEventCallback<Event, unknown>;
 };
 
 type InputTypeOnFocus = {
-	[Callbacks.onFocus]?: EventCallback<Event>;
+	[Callback.onFocus]?: EventCallback<Event>;
 };
 
 type InputTypeOnInput = {
-	[Callbacks.onInput]?: EventValueOrEventCallback<Event, unknown>;
+	[Callback.onInput]?: EventValueOrEventCallback<Event, unknown>;
 };
 
 // https://html.spec.whatwg.org/multipage/form-elements.html#the-option-element

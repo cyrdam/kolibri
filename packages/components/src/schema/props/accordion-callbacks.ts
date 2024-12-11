@@ -1,11 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { Callbacks } from '../enums';
+import type { Callback } from '../enums';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
 /* types */
 export type AccordionCallbacksPropType<T> = {
-	[Callbacks.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
+	[Callback.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
 };
 
 /**
