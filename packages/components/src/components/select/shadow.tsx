@@ -25,7 +25,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { SelectController } from './controller';
@@ -487,8 +486,5 @@ export class KolSelect implements SelectAPI, FocusableElement {
 
 	private onChange(event: Event): void {
 		this.controller.onFacade.onChange(event, this._value);
-
-		// Event handling
-		stopPropagation(event);
 	}
 }

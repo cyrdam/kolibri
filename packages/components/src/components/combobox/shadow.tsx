@@ -20,7 +20,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation } from '../../utils/events';
 import { ComboboxController } from './controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { InternalUnderlinedBadgeText } from '../../functional-components';
@@ -641,9 +640,6 @@ export class KolCombobox implements ComboboxAPI {
 
 	private onChange(event: Event): void {
 		this.controller.onFacade.onChange(event);
-
-		// Event handling
-		stopPropagation(event);
 
 		// Static form handling
 		this.controller.setFormAssociatedValue(this.state._value as unknown as string);

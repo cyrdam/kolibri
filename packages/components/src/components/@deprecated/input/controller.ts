@@ -33,7 +33,7 @@ import {
 	watchString,
 } from '../../../schema';
 
-import { dispatchDomEvent, KolEvent, stopPropagation } from '../../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
@@ -190,7 +190,6 @@ export class InputController extends ControlledInputController implements Watche
 
 		// Event handling
 		this.emitEvent(KolEvent.blur);
-		stopPropagation(event);
 
 		// Callback
 		if (typeof this.component._on?.onBlur === 'function') {
@@ -236,7 +235,6 @@ export class InputController extends ControlledInputController implements Watche
 
 		// Event handling
 		this.emitEvent(KolEvent.input, value);
-		stopPropagation(event);
 
 		// Static form handling
 		if (shouldSetFormAssociatedValue) {
@@ -252,7 +250,6 @@ export class InputController extends ControlledInputController implements Watche
 	protected onClick(event: Event): void {
 		// Event handling
 		this.emitEvent(KolEvent.click);
-		stopPropagation(event);
 
 		// Callback
 		if (typeof this.component._on?.onClick === 'function') {
@@ -263,7 +260,6 @@ export class InputController extends ControlledInputController implements Watche
 	protected onFocus(event: Event): void {
 		// Event handling
 		this.emitEvent(KolEvent.focus);
-		stopPropagation(event);
 
 		// Callback
 		if (typeof this.component._on?.onFocus === 'function') {

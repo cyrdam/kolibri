@@ -21,7 +21,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation } from '../../utils/events';
 import { getRenderStates } from '../input/controller';
 import { InternalUnderlinedBadgeText, KolFormFieldMsgFc } from '../../functional-components';
 import { InputRadioController } from './controller';
@@ -443,9 +442,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
 				this.controller.onFacade.onChange(event, option.value);
-
-				// Event handling
-				stopPropagation(event);
 
 				this._value = option.value;
 			}

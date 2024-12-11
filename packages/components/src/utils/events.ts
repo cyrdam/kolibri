@@ -16,11 +16,6 @@ enum KolEvent {
 	toggle = 'kolToggle',
 }
 
-function stopPropagation(event: Event): void {
-	event.stopImmediatePropagation();
-	event.stopPropagation();
-}
-
 function createKoliBriEvent<T>(event: KolEvent, detail?: T): CustomEvent {
 	return new CustomEvent(event, {
 		bubbles: true,
@@ -34,4 +29,4 @@ function dispatchDomEvent<T>(target: HTMLElement, event: KolEvent, detail?: T) {
 	target.dispatchEvent(createKoliBriEvent<T>(event, detail));
 }
 
-export { KolEvent, stopPropagation, dispatchDomEvent };
+export { KolEvent, dispatchDomEvent };

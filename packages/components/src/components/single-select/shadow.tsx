@@ -20,7 +20,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation } from '../../utils/events';
 import { SingleSelectController } from './controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { InternalUnderlinedBadgeText } from '../../functional-components';
@@ -710,9 +709,6 @@ export class KolSingleSelect implements SingleSelectAPI {
 		if (!this._isOpen) {
 			this.controller.onFacade.onChange(event, this._value);
 		}
-
-		// Event handling
-		stopPropagation(event);
 	}
 
 	private onClick(event: MouseEvent): void {
