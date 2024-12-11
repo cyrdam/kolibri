@@ -41,7 +41,7 @@ test.describe('kol-accordion', () => {
 			const eventPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement) => {
 				return new Promise((resolve) => {
 					element._on = {
-						onClick: (_event: MouseEvent, value?: unknown) => {
+						onClick: (_event: MouseEvent, value?: boolean) => {
 							resolve(value);
 						},
 					};
@@ -49,7 +49,7 @@ test.describe('kol-accordion', () => {
 			});
 			await page.waitForChanges();
 			await page.getByRole('button', { name: 'Accordion label' }).click();
-			await expect(eventPromise).resolves.toBeTruthy();
+			await expect(eventPromise).resolves.toBe(true);
 		});
 	});
 
