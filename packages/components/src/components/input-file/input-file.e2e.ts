@@ -1,5 +1,5 @@
 import { test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents } from '../../e2e';
+import { testInputCallbacksAndEvents } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { expect } from '@playwright/test';
 
@@ -14,8 +14,7 @@ const fillAction: FillAction = async (page) => {
 };
 
 test.describe(COMPONENT_NAME, () => {
-	testInputCallbacks<HTMLKolInputFileElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['input', 'change']);
-	testInputDomEvents(COMPONENT_NAME);
+	testInputCallbacksAndEvents<HTMLKolInputFileElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['input', 'change']);
 
 	test.describe('Callbacks', () => {
 		['onInput', 'onChange'].forEach((callbackName) => {

@@ -1,5 +1,5 @@
 import { test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents, testInputValueReflection } from '../../e2e';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
 const COMPONENT_NAME = 'kol-input-number';
@@ -10,6 +10,5 @@ const fillAction: FillAction = async (page) => {
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputNumberElement>(COMPONENT_NAME, Number(TEST_VALUE), fillAction); // need to use a custom fillAction because the standard one only works with strings;
-	testInputCallbacks<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE);
-	testInputDomEvents(COMPONENT_NAME);
+	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE);
 });

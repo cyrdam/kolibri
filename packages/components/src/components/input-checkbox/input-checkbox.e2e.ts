@@ -1,5 +1,5 @@
 import { test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents } from '../../e2e';
+import { testInputCallbacksAndEvents } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { expect } from '@playwright/test';
 
@@ -11,8 +11,7 @@ const fillAction: FillAction = async (page) => {
 const OMITTED_EVENTS = ['click'];
 
 test.describe(COMPONENT_NAME, () => {
-	testInputCallbacks<HTMLKolInputCheckboxElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS);
-	testInputDomEvents(COMPONENT_NAME, undefined, undefined, OMITTED_EVENTS);
+	testInputCallbacksAndEvents<HTMLKolInputCheckboxElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS);
 
 	test(`should reflect the _checked property on the web component`, async ({ page }) => {
 		const getCheckedProperty = () => page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputCheckboxElement) => element._checked);

@@ -1,3 +1,2 @@
-export * from './input-callbacks';
-export * from './input-dom-events';
+export * from './input-callbacks-and-events';
 export * from './input-value-reflection';

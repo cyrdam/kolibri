@@ -1,5 +1,5 @@
 import { test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents, testInputValueReflection } from '../../e2e';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
 const COMPONENT_NAME = 'kol-single-select';
@@ -19,6 +19,5 @@ const fillAction: FillAction = async (page) => {
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolSingleSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE);
-	testInputCallbacks<HTMLKolSingleSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, undefined, OPTIONS_ATTRIBUTE);
-	testInputDomEvents(COMPONENT_NAME, OPTIONS_ATTRIBUTE, undefined, ['input'] /*fixme!*/);
+	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>(COMPONENT_NAME, TEST_VALUE, fillAction, undefined, OPTIONS_ATTRIBUTE);
 });

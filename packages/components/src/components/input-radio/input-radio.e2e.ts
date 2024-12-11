@@ -1,5 +1,5 @@
 import { type E2EPage, test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents, testInputValueReflection } from '../../e2e';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 
@@ -18,6 +18,5 @@ const selectInput = (page: Page & E2EPage) => page.locator('input').first();
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OPTIONS_ATTRIBUTE);
-	testInputCallbacks<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS, OPTIONS_ATTRIBUTE, selectInput);
-	testInputDomEvents(COMPONENT_NAME, OPTIONS_ATTRIBUTE, selectInput, OMITTED_EVENTS);
+	testInputCallbacksAndEvents<HTMLKolInputNumberElement>(COMPONENT_NAME, TEST_VALUE, fillAction, OMITTED_EVENTS, OPTIONS_ATTRIBUTE, selectInput);
 });

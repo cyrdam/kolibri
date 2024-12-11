@@ -1,5 +1,5 @@
 import { type E2EPage, test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents, testInputValueReflection } from '../../e2e';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
@@ -15,8 +15,7 @@ const selectInput = (page: Page & E2EPage) => page.locator('input[type=number]')
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputRangeElement>(COMPONENT_NAME, Number(TEST_VALUE), fillAction);
-	testInputCallbacks<HTMLKolInputRangeElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['change'], undefined, selectInput);
-	testInputDomEvents(COMPONENT_NAME, undefined, selectInput);
+	testInputCallbacksAndEvents<HTMLKolInputRangeElement>(COMPONENT_NAME, TEST_VALUE, fillAction, ['change'], undefined, selectInput);
 
 	// handle special case: onChange payload is a number while onInput is a string
 	test.describe('Callbacks', () => {

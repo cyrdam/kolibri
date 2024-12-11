@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { testInputCallbacks, testInputDomEvents, testInputValueReflection } from '../../e2e';
+import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 
 const COMPONENT_NAME = 'kol-input-text';
 const TEST_VALUE = 'Hello World';
@@ -22,6 +22,5 @@ test.describe('kol-input-text', () => {
 	});
 
 	testInputValueReflection<HTMLKolInputTextElement>(COMPONENT_NAME, TEST_VALUE);
-	testInputCallbacks<HTMLKolInputTextElement>(COMPONENT_NAME);
-	testInputDomEvents(COMPONENT_NAME);
+	testInputCallbacksAndEvents<HTMLKolInputTextElement>(COMPONENT_NAME);
 });
