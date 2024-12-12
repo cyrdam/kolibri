@@ -28,7 +28,10 @@ export class KolTreeItemWc implements TreeItemAPI {
 					}}
 				>
 					<KolLinkWcTag
-						class={clsx('kol-tree-item__link', this.level === 0 && 'kol-tree-item__link--first-level', Boolean(_active) && 'kol-tree-item__link--active')}
+						class={clsx('kol-tree-item__link', {
+							'kol-tree-item__link--first-level': this.level === 0,
+							'kol-tree-item__link--active': _active,
+						})}
 						_href={_href}
 						_label=""
 						_role="treeitem"
