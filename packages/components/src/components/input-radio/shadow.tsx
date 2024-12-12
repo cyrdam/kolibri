@@ -28,6 +28,7 @@ import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
 import KolFormFieldHintFc from '../../functional-components/FormFieldHint';
 
@@ -77,11 +78,14 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return {
 			state: this.state,
 			component: 'fieldset',
+			class: clsx('kol-form-field-radio'),
 			formFieldLabelProps: {
 				component: 'legend',
-				class: 'block w-full mb-1 leading-normal',
+				class: 'kol-form-field__label--legend',
 			},
-			class: clsx('kol-input-radio', 'fieldset', this.state._orientation),
+			formFieldInputProps: {
+				class: `kol-form-field__input--orientation-${this.state._orientation}`,
+			},
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
@@ -99,12 +103,19 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		);
 	}
 
-	private getOptionProps(option: RadioOption<StencilUnknown>): FormFieldStateWrapperProps {
-		const obj: FormFieldStateWrapperProps = {
+	private getOptionProps(option: RadioOption<StencilUnknown>, id: string): FieldControlStateWrapperProps {
+		const obj: FieldControlStateWrapperProps = {
 			state: this.state,
+			id: id,
 			hint: option.hint,
 			label: option.label as string,
-			msg: undefined,
+			hideLabel: false,
+			fieldControlLabelProps: {
+				class: clsx({
+					'kol-field-control__label--visually-hidden': this.state._hideLabel,
+				}),
+			},
+			showTooltip: this.state._hideLabel,
 		};
 
 		if (option.disabled) {
@@ -114,13 +125,13 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return obj;
 	}
 
-	private getInputProps(option: RadioOption<StencilUnknown>, index: number, selected: boolean): InputStateWrapperProps {
+	private getInputProps(option: RadioOption<StencilUnknown>, id: string, index: number, selected: boolean): InputStateWrapperProps {
 		const obj: InputStateWrapperProps = {
 			state: this.state,
-
+			id: id,
 			ref: this.state._value === option.value ? this.catchRef : undefined,
-			class: clsx('radio', {
-				disabled: Boolean(this.state._disabled || option.disabled),
+			class: clsx('kol-input-radio', {
+				['kol-input-radio--disabled']: Boolean(this.state._disabled || option.disabled),
 			}),
 			'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
 			type: 'radio',
@@ -155,25 +166,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		const selected = this.state._value === option.value;
 
 		return (
-			<KolFormFieldStateWrapperFc key={customId} {...this.getOptionProps(option)} renderNoLabel>
-				<div class="radio-input-wrapper">
-					<KolInputStateWrapperFc {...this.getInputProps(option, index, selected)} />
-					<label
-						class="radio-label"
-						htmlFor={`${customId}`}
-						style={{
-							height: this.state._hideLabel ? '0' : undefined,
-							margin: this.state._hideLabel ? '0' : undefined,
-							padding: this.state._hideLabel ? '0' : undefined,
-							visibility: this.state._hideLabel ? 'hidden' : undefined,
-						}}
-					>
-						<span>
-							<span class="radio-label-span-inner">{option.label}</span>
-						</span>
-					</label>
-				</div>
-			</KolFormFieldStateWrapperFc>
+			<KolFieldControlStateWrapperFc key={customId} {...this.getOptionProps(option, customId)}>
+				<KolInputStateWrapperFc {...this.getInputProps(option, customId, index, selected)} />
+			</KolFieldControlStateWrapperFc>
 		);
 	}
 

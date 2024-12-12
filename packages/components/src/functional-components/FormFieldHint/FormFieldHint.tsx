@@ -4,15 +4,16 @@ import clsx from 'clsx';
 
 type FormFieldHintProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	hint?: string;
+	baseClassNaame?: string;
 };
 
-const KolFormFieldHintFc: FC<FormFieldHintProps> = ({ id, class: classNames, hint, ...other }) => {
+const KolFormFieldHintFc: FC<FormFieldHintProps> = ({ id, class: classNames, hint, baseClassNaame = 'kol-form-field', ...other }) => {
 	if (!hint) {
 		return null;
 	}
 
 	return (
-		<span class={clsx('kol-form-field__hint', classNames)} id={`${id}-hint`} {...other}>
+		<span class={clsx(`${baseClassNaame}__hint`, classNames)} id={`${id}-hint`} {...other}>
 			{hint}
 		</span>
 	);

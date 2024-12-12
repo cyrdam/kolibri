@@ -8,7 +8,7 @@ import KolFormFieldTooltipFc from '../FormFieldTooltip';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 import type { AlignPropType, InternMsgPropType } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
+import { buildBadgeTextString, checkHasError, showExpertSlot } from '../../schema';
 
 function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	if (msg?.type) {
@@ -24,26 +24,6 @@ function getModifierClassNameByMsgType(msg?: { type?: string }): string {
 	}
 
 	return '';
-}
-
-function checkHasError(msg?: InternMsgPropType, touched?: boolean): boolean {
-	/**
-	 * We support 5 types of messages:
-	 * - default
-	 * - info
-	 * - success
-	 * - warning
-	 * - error
-	 *
-	 * The message is shown if:
-	 * - the message text is not an empty string
-	 * - we show only one message at a time
-	 * - by error messages the input must be touched
-	 */
-	const hasValidMsg = Boolean(msg?.description && msg?.description.length > 0);
-	const showMsg = hasValidMsg && (touched === true || msg?.type !== 'error');
-
-	return showMsg;
 }
 
 export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
@@ -74,8 +54,17 @@ export type FormFieldProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
 	formFieldTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
 	formFieldMsgProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 	formFieldCounterProps?: JSXBase.HTMLAttributes<HTMLSpanElement>;
+	formFieldInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 } & {
 	[key: `data-${string}`]: unknown;
+};
+
+const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: classNames, ...other }, children) => {
+	return (
+		<div class={clsx('kol-form-field__input', classNames)} {...other}>
+			{children}
+		</div>
+	);
 };
 
 const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
@@ -106,6 +95,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		formFieldTooltipProps,
 		formFieldMsgProps,
 		formFieldCounterProps,
+		formFieldInputProps,
 		...other
 	} = props;
 
@@ -149,7 +139,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 		</>,
 		<>
-			<div class="kol-form-field__input">{children}</div>
+			<InputContainer {...formFieldInputProps}>{children}</InputContainer>
 			{useTooltipInsteadOfLabel && (
 				<KolFormFieldTooltipFc {...(formFieldTooltipProps || {})} id={id} label={label} hideLabel={hideLabel} align={tooltipAlign} badgeText={badgeText} />
 			)}

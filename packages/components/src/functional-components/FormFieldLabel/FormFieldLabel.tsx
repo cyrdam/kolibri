@@ -16,6 +16,7 @@ type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLe
 	component?: 'label' | 'legend';
 	id: string;
 	hideLabel?: boolean;
+	baseClassNaame?: string;
 } & LabelProps;
 
 const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label }) => {
@@ -49,6 +50,7 @@ const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label }) 
 const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	component: Component = 'label',
 	id,
+	baseClassNaame = 'kol-form-field',
 	class: classNames,
 	accessKey,
 	shortKey,
@@ -62,13 +64,13 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	return (
 		<Component
 			{...other}
-			class={clsx('kol-form-field__label', classNames)}
+			class={clsx(`${baseClassNaame}__label`, classNames)}
 			id={!useTooltopInsteadOfLabel ? `${id}-label` : undefined}
 			hidden={useTooltopInsteadOfLabel}
 			htmlFor={id}
 		>
 			{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-			<span class="kol-form-field__label-text">
+			<span class={clsx(`${baseClassNaame}__label-text`)}>
 				{/* INFO: label comes with any html tag or as plain text! */}
 				<LabelFc hasExpertSlot={hasExpertSlot} accessKey={accessKey} shortKey={shortKey} label={label} />
 			</span>

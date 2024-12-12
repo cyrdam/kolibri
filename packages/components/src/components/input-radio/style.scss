@@ -2,6 +2,10 @@
 @import '../style';
 @import '../input';
 
+@import '../form-field';
+@import '../input-container';
+@import '../field-control';
+
 @include kol-alert-styles;
 
 @layer kol-component {
@@ -11,15 +15,27 @@
 		font-size: rem(16);
 	}
 
-	.kol-input .icons {
-		display: none;
+	.kol-form-field {
+		&__label {
+			display: contents;
+		}
+
+		&__input {
+			&--orientation {
+				&-horizontal {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: flex-start;
+				}
+			}
+		}
+
+		&--disabled {
+			opacity: unset;
+		}
 	}
 
-	label {
-		cursor: pointer;
-	}
-
-	input {
+	.kol-input-radio {
 		appearance: none;
 		border-width: var(--border-width);
 		border-style: solid;
@@ -32,42 +48,95 @@
 		min-width: var(--input-size);
 		padding: 0;
 		width: var(--input-size);
-	}
 
-	input:before {
-		border-radius: 100%;
-		content: '';
-		margin: auto;
-		height: calc(var(--input-size) / 2);
-		width: calc(var(--input-size) / 2);
-	}
+		&:before {
+			border-radius: 100%;
+			content: '';
+			margin: auto;
+			height: calc(var(--input-size) / 2);
+			width: calc(var(--input-size) / 2);
+		}
 
-	input:checked:before {
-		background-color: #000;
-	}
+		&:checked {
+			&:before {
+				background-color: #000;
+			}
+		}
 
-	@media (forced-colors: active) {
-		input:checked:before {
-			/* Give it a visible background in forced colors mode */
-			background-color: selectedItem !important;
+		&:disabled {
+			opacity: 0.5;
+			cursor: not-allowed;
 		}
 	}
 
-	fieldset {
-		display: flex;
+	@media (forced-colors: active) {
+		.kol-input-radio {
+			&:checked {
+				&:before {
+					/* Give it a visible background in forced colors mode */
+					background-color: selectedItem !important;
+				}
+			}
+		}
 	}
 
-	fieldset.vertical {
-		flex-direction: column;
-	}
+	// .kol-input .icons {
+	// 	display: none;
+	// }
 
-	fieldset .input-slot {
-		align-items: center;
-		display: flex;
-	}
+	// label {
+	// 	cursor: pointer;
+	// }
 
-	/* required star is on fieldset legend */
-	.required label > span::after {
-		content: '';
-	}
+	// input {
+	// 	appearance: none;
+	// 	border-width: var(--border-width);
+	// 	border-style: solid;
+	// 	border-radius: 100%;
+	// 	cursor: pointer;
+	// 	display: flex;
+	// 	height: var(--input-size);
+	// 	margin: 0;
+	// 	min-height: var(--input-size);
+	// 	min-width: var(--input-size);
+	// 	padding: 0;
+	// 	width: var(--input-size);
+	// }
+
+	// input:before {
+	// 	border-radius: 100%;
+	// 	content: '';
+	// 	margin: auto;
+	// 	height: calc(var(--input-size) / 2);
+	// 	width: calc(var(--input-size) / 2);
+	// }
+
+	// input:checked:before {
+	// 	background-color: #000;
+	// }
+
+	// @media (forced-colors: active) {
+	// 	input:checked:before {
+	// 		/* Give it a visible background in forced colors mode */
+	// 		background-color: selectedItem !important;
+	// 	}
+	// }
+
+	// fieldset {
+	// 	display: flex;
+	// }
+
+	// fieldset.vertical {
+	// 	flex-direction: column;
+	// }
+
+	// fieldset .input-slot {
+	// 	align-items: center;
+	// 	display: flex;
+	// }
+
+	// /* required star is on fieldset legend */
+	// .required label > span::after {
+	// 	content: '';
+	// }
 }

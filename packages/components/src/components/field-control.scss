@@ -1,0 +1,52 @@
+@layer kol-component {
+	.kol-field-control {
+		$base: &;
+
+		display: grid;
+
+		&__wrapper {
+			min-height: var(--a11y-min-size);
+			width: 100%;
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-template-areas: 'input label';
+			align-items: center;
+			justify-content: left;
+		}
+
+		&__label {
+			grid-area: label;
+			flex-grow: 1;
+
+			&--visually-hidden {
+				height: 0;
+				margin: 0;
+				padding: 0;
+				visibility: hidden;
+			}
+
+			&-text {
+				&::after {
+					content: '';
+				}
+			}
+		}
+
+		&__tooltip {
+			.span-label::after {
+				content: '';
+			}
+		}
+
+		&__input {
+			grid-area: input;
+		}
+
+		&--disabled {
+			#{$base}__label {
+				cursor: not-allowed;
+				opacity: 0.5;
+			}
+		}
+	}
+}
