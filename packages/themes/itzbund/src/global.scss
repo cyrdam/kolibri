@@ -68,16 +68,13 @@
 	}
 
 	.kol-tooltip {
-		&__tooltip-area {
-			background-color: #f2f2f2;
-		}
-
-		&__tooltip-arrow {
+		&__arrow {
 			background-color: #626262;
 		}
 
-		&__tooltip-content {
+		&__content {
 			@include kol-typography-label;
+			background-color: #f2f2f2;
 			padding: rem(4) rem(8);
 			border-radius: rem(2);
 			border: rem(1) solid #626262;

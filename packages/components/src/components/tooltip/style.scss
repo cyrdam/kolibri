@@ -26,13 +26,9 @@
 			width: var(--kol-tooltip-width);
 		}
 
-		/* Shared between content and arrow */
-		&__tooltip-area {
+		&__arrow {
 			background-color: #fff;
 			color: #000;
-		}
-
-		&__tooltip-arrow {
 			height: rem(10);
 			position: absolute;
 			transform: rotate(45deg);
@@ -40,7 +36,9 @@
 			z-index: 999;
 		}
 
-		&__tooltip-content {
+		&__content {
+			background-color: #fff;
+			color: #000;
 			position: relative;
 			z-index: 1000;
 		}

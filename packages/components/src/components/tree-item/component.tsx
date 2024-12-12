@@ -20,9 +20,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 	public render(): JSX.Element {
 		const { _href, _active, _hasChildren, _open, _label } = this.state;
 		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)} class="kol-tree-item">
+			<Host onSlotchange={this.handleSlotchange.bind(this)}>
 				<li
-					class="kol-tree-item__item"
+					class="kol-tree-item"
 					style={{
 						'--level': `${this.level}`,
 					}}

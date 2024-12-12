@@ -3,9 +3,9 @@
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=false 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <kol-tree-item-wc class="kol-tree-item">
+    <kol-tree-item-wc>
       <!---->
-      <li class="kol-tree-item__item" style="--level: 0;">
+      <li class="kol-tree-item" style="--level: 0;">
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
           <span slot="expert">
             Label
@@ -23,9 +23,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=true 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <kol-tree-item-wc class="kol-tree-item">
+    <kol-tree-item-wc>
       <!---->
-      <li class="kol-tree-item__item" style="--level: 0;">
+      <li class="kol-tree-item" style="--level: 0;">
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="0" class="kol-tree-item__link kol-tree-item__link--active kol-tree-item__link--first-level">
           <span slot="expert">
             Label
@@ -43,9 +43,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=false 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <kol-tree-item-wc class="kol-tree-item">
+    <kol-tree-item-wc>
       <!---->
-      <li class="kol-tree-item__item" style="--level: 0;">
+      <li class="kol-tree-item" style="--level: 0;">
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
           <span slot="expert">
             Label
@@ -63,9 +63,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=true 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <kol-tree-item-wc class="kol-tree-item">
+    <kol-tree-item-wc>
       <!---->
-      <li class="kol-tree-item__item" style="--level: 0;">
+      <li class="kol-tree-item" style="--level: 0;">
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
           <span slot="expert">
             Label
@@ -83,9 +83,9 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <kol-tree-item-wc class="kol-tree-item">
+    <kol-tree-item-wc>
       <!---->
-      <li class="kol-tree-item__item" style="--level: 0;">
+      <li class="kol-tree-item" style="--level: 0;">
         <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
           <span slot="expert">
             Label

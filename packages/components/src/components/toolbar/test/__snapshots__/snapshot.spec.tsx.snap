@@ -4,8 +4,8 @@ exports[`kol-toolbar should render with _label="Text" _items=[{"_label":"Button"
 <kol-toolbar>
   <template shadowrootmode="open">
     <div aria-label="Text" class="kol-toolbar" role="toolbar">
-      <kol-button _label="Button" _tabindex="0" class="kol-toolbar--item"></kol-button>
-      <kol-link _href="#" _label="Link" _tabindex="-1" class="kol-toolbar--item"></kol-link>
+      <kol-button _label="Button" _tabindex="0" class="kol-toolbar__item"></kol-button>
+      <kol-link _href="#" _label="Link" _tabindex="-1" class="kol-toolbar__item"></kol-link>
     </div>
   </template>
 </kol-toolbar>

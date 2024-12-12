@@ -50,20 +50,18 @@
 	}
 
 	.kol-tooltip {
-		&__tooltip-floating {
+		&__floating {
 			border: var(--border-width) solid var(--color-subtle);
 			border-radius: var(--border-radius);
 		}
 
-		&__tooltip-arrow {
+		&__arrow {
+			background-color: var(--color-light);
 			border: var(--border-width) solid var(--color-subtle);
 		}
 
-		&__tooltip-area {
+		&__content {
 			background-color: var(--color-light);
-		}
-
-		&__tooltip-content {
 			border-radius: var(--border-radius);
 			line-height: 1.5;
 			padding: rem(8) rem(12);

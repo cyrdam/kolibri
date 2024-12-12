@@ -5,7 +5,7 @@ import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, To
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolLinkTag, KolButtonTag } from '../../core/component-names';
 
-const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar--item';
+const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar__item';
 
 @Component({
 	tag: 'kol-toolbar',

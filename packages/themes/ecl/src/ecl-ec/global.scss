@@ -2,15 +2,12 @@
 
 @layer kol-theme-global {
 	.kol-tooltip {
-		&__tooltip-area {
-			background-color: #f2f2f2;
-		}
-
-		&__tooltip-arrow {
+		&__arrow {
 			background-color: #626262;
 		}
 
-		&__tooltip-content {
+		&__content {
+			background-color: #f2f2f2;
 			padding: rem(4) rem(8);
 			font-size: rem(14);
 			line-height: 1.2;

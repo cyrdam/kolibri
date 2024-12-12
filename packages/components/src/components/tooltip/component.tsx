@@ -128,8 +128,8 @@ export class KolTooltipWc implements TooltipAPI {
 			<Host class="kol-tooltip">
 				{this.state._label !== '' && (
 					<div class="kol-tooltip__floating" ref={this.catchTooltipElement}>
-						<div class="kol-tooltip__area kol-tooltip__arrow" ref={this.catchArrowElement} />
-						<KolSpanFc class="kol-tooltip__area kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
+						<div class="kol-tooltip__arrow" ref={this.catchArrowElement} />
+						<KolSpanFc class="kol-tooltip__content" id={this.state._id} badgeText={this._badgeText} label={this.state._label} />
 					</div>
 				)}
 			</Host>
