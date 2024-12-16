@@ -21,7 +21,7 @@
 		}
 
 		&__heading-button {
-			button {
+			.kol-button {
 				border-radius: rem(8);
 				outline-offset: rem(-1);
 				border: 0;
@@ -39,7 +39,7 @@
 				width: 100%;
 				line-height: 1.2;
 
-				.button-inner > span {
+				&__text {
 					align-items: baseline;
 				}
 
@@ -80,8 +80,8 @@
 			padding: rem(24);
 		}
 
-		.open &__heading-button {
-			button {
+		.collapsible--open &__heading-button {
+			.kol-button {
 				border-start-end-radius: rem(8);
 				border-start-start-radius: rem(8);
 			}
@@ -91,7 +91,7 @@
 			}
 		}
 
-		:not(.open) &__heading-button button .kol-icon::part(icon)::before {
+		:not(.collapsible--open) &__heading-button .kol-button .kol-icon::part(icon)::before {
 			content: '\f078';
 		}
 	}

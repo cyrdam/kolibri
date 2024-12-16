@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Method, Prop, State, Watch, type JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch, type JSX } from '@stencil/core';
 import type { DetailsCallbacksPropType, DetailsAPI, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
@@ -65,7 +65,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		const { _open, _label, _disabled } = this.state;
 		const _level = 1;
 
-		const rootClass = 'details';
+		const rootClass = 'kol-details';
 
 		const props: CollapsibleProps = {
 			id: this.nonce,
@@ -89,11 +89,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		};
 
 		return (
-			<Host class="kol-details">
-				<KolCollapsibleFc {...props}>
-					<slot />
-				</KolCollapsibleFc>
-			</Host>
+			<KolCollapsibleFc {...props}>
+				<slot />
+			</KolCollapsibleFc>
 		);
 	}
 

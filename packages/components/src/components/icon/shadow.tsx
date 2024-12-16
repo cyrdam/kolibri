@@ -3,6 +3,7 @@ import { validateLabel, watchString } from '../../schema';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import clsx from 'clsx';
 /**
  * @part icon - Ermöglicht das Styling des inneren Icons.
  */
@@ -27,7 +28,7 @@ export class KolIcon implements IconAPI {
 					 * Referenz: https://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
 					 */
 					aria-label={ariaShow ? this.state._label : undefined}
-					class={this.state._icons}
+					class={clsx('kol-icon__icon', this.state._icons)}
 					part="icon"
 					role="img"
 				></i>
