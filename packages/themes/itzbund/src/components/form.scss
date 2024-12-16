@@ -3,19 +3,23 @@
 @import '../mixins/link';
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
 	@include kol-link;
+	@include kol-alert-theme;
 
-	.kol-form__link {
-		display: inline-block;
-	}
+	.kol-form {
+		&__link {
+			display: inline-block;
+		}
 
-	.mandatory-fields-hint {
-		@include indented-text;
-	}
+		&__mandatory-fields-hint {
+			@include indented-text;
+		}
 
-	.kol-alert .kol-alert__heading {
-		display: flex;
-		place-items: center;
+		&__alert {
+			.kol-alert__heading {
+				display: flex;
+				place-items: center;
+			}
+		}
 	}
 }

@@ -3,11 +3,10 @@
 @import '../input-line';
 @import '../@shared/kol-link-mixin';
 
-@include kol-alert-styles;
-@include kol-link-styles('kol-link');
-
 @layer kol-component {
-	:host {
+	@include kol-link-styles('kol-link');
+	@include kol-alert-styles;
+	.kol-form {
 		font-size: rem(16);
 	}
 }
