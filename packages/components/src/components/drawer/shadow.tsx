@@ -78,7 +78,7 @@ export class KolDrawer implements DrawerAPI {
 					'kol-drawer--modal': isModal,
 				})}
 			>
-				<dialog class="drawer__dialog" ref={this.getRef}>
+				<dialog class="kol-drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
