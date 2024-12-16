@@ -55,10 +55,10 @@ export class KolDrawer implements DrawerAPI {
 		return (
 			<div
 				ref={this.getWrapperRef}
-				class={`drawer__wrapper drawer__wrapper--${align} ${this.state._open ? 'drawer__wrapper--open' : 'is-closing'}`}
+				class={`kol-drawer__wrapper kol-drawer__wrapper--${align} ${this.state._open ? 'kol-drawer__wrapper--open' : 'kol-drawer__wrapper--is-closing'}`}
 				aria-label={this.state._label}
 			>
-				<div class="drawer__content">
+				<div class="kol-drawer__content">
 					<slot />
 				</div>
 			</div>
@@ -69,8 +69,8 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		const isModal = this.state._modal;
 		return (
-			<Host class={`kol-drawer drawer ${isModal ? 'drawer--modal' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
-				<dialog class="drawer__dialog" ref={this.getRef}>
+			<Host class={`kol-drawer ${isModal ? 'kol-drawer--modal' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
+				<dialog class="kol-drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
 			</Host>
