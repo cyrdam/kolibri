@@ -39,17 +39,17 @@
 				text-decoration: none;
 				text-align: left;
 
-				@at-root #{$root}__toggle-button {
-					display: inline-block;
-
-					&:hover {
-						transform: scale(1.3);
-					}
-				}
-
 				&:focus {
 					color: var(--color-black);
 				}
+			}
+		}
+
+		&__toggle-button {
+			display: inline-block;
+
+			&:hover {
+				transform: scale(1.3);
 			}
 		}
 	}
