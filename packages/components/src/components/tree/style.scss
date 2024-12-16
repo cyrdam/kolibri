@@ -2,12 +2,10 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
+	.kol-tree {
 		font-size: rem(16);
-	}
 
-	.tree {
-		ul {
+		&__treeview-navigation {
 			margin: 0;
 			padding: 0;
 			list-style: none;

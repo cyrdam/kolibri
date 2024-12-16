@@ -1,8 +1,8 @@
 @import '../../mixins/rem';
 
 @layer kol-theme-component {
-	.tree {
-		ul {
+	.kol-tree {
+		&__treeview-navigation {
 			display: flex;
 			flex-direction: column;
 		}
