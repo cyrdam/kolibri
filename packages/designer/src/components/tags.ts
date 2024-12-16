@@ -32,7 +32,6 @@ export const TAG_NAMES: string[] = [
 	'kol-form',
 	// 'kol-input-adapter-leanup', // not customizable
 	// 'kol-kolibri', // not customizable
-	// 'kol-logo', // not customizable
 	'kol-modal',
 	'kol-nav',
 	'kol-progress',

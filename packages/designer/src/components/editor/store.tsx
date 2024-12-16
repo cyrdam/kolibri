@@ -24,7 +24,6 @@ import {
 	KolInputText,
 	KolLink,
 	KolLinkButton,
-	KolLogo,
 	KolModal,
 	KolNav,
 	KolPagination,
@@ -1123,16 +1122,6 @@ export const components: Record<string, Component> = {
 				<KolLink _href="/" _label={`Besuchter Link`} />
 			</div>
 			<div>
-				<KolLink _href="#/">
-					<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-				</KolLink>
-			</div>
-			<div>
-				<KolLink _href="#/">
-					<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-				</KolLink>
-			</div>
-			<div>
 				<KolLink
 					_href="#"
 					_icons={{
@@ -1187,11 +1176,6 @@ export const components: Record<string, Component> = {
 				<KolButtonLink _label="Besuchter Link (gibt es nicht bei ButtonLink)" />
 			</div>
 			<div>
-				<KolButtonLink _label="">
-					<KolLogo slot="expert" class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']} />
-				</KolButtonLink>
-			</div>
-			<div>
 				<KolButtonLink
 					_icons={{
 						left: 'codicon codicon-arrow-left',
@@ -1218,13 +1202,6 @@ export const components: Record<string, Component> = {
 					]}
 				/>
 			</div>
-		</div>
-	),
-	'KOL-LOGO': () => (
-		<div class="grid gap-6">
-			<KolLogo _org={Bundesministerium['Die Bundesregierung']} />
-			<KolLogo _org={Bundesministerium['Bundesministerium der Finanzen']} />
-			<KolLogo _org={Bundesministerium['Bundesministerium für Gesundheit']} />
 		</div>
 	),
 	'KOL-MODAL': () => (

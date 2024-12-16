@@ -29,7 +29,6 @@
 - [kol-input-range](../input-range)
 - [kol-input-text](../input-text)
 - [kol-link](../link)
-- [kol-logo](../logo)
 - [kol-modal](../modal)
 - [kol-nav](../nav)
 - [kol-pagination](../pagination)
@@ -70,7 +69,6 @@ graph TD;
   kol-all --> kol-input-range
   kol-all --> kol-input-text
   kol-all --> kol-link
-  kol-all --> kol-logo
   kol-all --> kol-modal
   kol-all --> kol-nav
   kol-all --> kol-pagination

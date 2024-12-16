@@ -25,6 +25,10 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 - Component has been removed.
 
+### kol-logo
+
+- Component has been removed.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)

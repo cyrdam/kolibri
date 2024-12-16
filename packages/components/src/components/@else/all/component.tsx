@@ -2,8 +2,6 @@ import type { Generic } from 'adopted-style-sheets';
 import type { JSX } from '@stencil/core';
 import { h, Host, State } from '@stencil/core';
 
-import { Bundesministerium } from '../../../enums/bund';
-
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = NonNullable<unknown>;
 // type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
@@ -45,7 +43,6 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-input-range _label=""></kol-input-range>
 				<kol-input-text _label=""></kol-input-text>
 				<kol-link _href="" _label="Label"></kol-link>
-				<kol-logo _org={Bundesministerium['Auswärtiges Amt']}></kol-logo>
 				<kol-modal _label=""></kol-modal>
 				<kol-nav _label="" _links={[]}></kol-nav>
 				<kol-pagination _on={{}} _page={1} _max={11}></kol-pagination>
