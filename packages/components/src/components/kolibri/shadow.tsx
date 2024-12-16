@@ -1,5 +1,5 @@
 import { devHint, validateColor, watchBoolean } from '../../schema';
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Prop, State, Watch, h } from '@stencil/core';
 
 import { colorRgba } from './color-rgba';
 
@@ -21,21 +21,19 @@ export class KolKolibri implements KolibriAPI {
 	public render(): JSX.Element {
 		const fillColor = `rgb(${this.state._color.red},${this.state._color.green},${this.state._color.blue})`;
 		return (
-			<Host class="kol-kolibri">
-				<svg role="img" aria-label={translate('kol-kolibri-logo')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
-					<path d="M353 322L213 304V434L353 322Z" />
-					<path d="M209 564V304L149 434L209 564Z" />
-					<path d="M357 316L417 250L361 210L275 244L357 316Z" />
-					<path d="M329 218L237 92L250 222L272 241L329 218Z" />
-					<path d="M353 318L35 36L213 300L353 318Z" />
-					<path d="M391 286L565 272L421 252L391 286Z" />
-					{this.state._labeled === true && (
-						<text x="250" y="525" fill={fillColor}>
-							KoliBri
-						</text>
-					)}
-				</svg>
-			</Host>
+			<svg class="kol-kolibri" role="img" aria-label={translate('kol-kolibri-logo')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill={fillColor}>
+				<path d="M353 322L213 304V434L353 322Z" />
+				<path d="M209 564V304L149 434L209 564Z" />
+				<path d="M357 316L417 250L361 210L275 244L357 316Z" />
+				<path d="M329 218L237 92L250 222L272 241L329 218Z" />
+				<path d="M353 318L35 36L213 300L353 318Z" />
+				<path d="M391 286L565 272L421 252L391 286Z" />
+				{this.state._labeled === true && (
+					<text class="kol-kolibri__text" x="250" y="525" fill={fillColor}>
+						KoliBri
+					</text>
+				)}
+			</svg>
 		);
 	}
 
