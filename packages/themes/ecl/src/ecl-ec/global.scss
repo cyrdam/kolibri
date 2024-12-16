@@ -1,20 +1,19 @@
 @import '../mixins/rem';
 
 @layer kol-theme-global {
-	.kol-tooltip-wc .tooltip-area {
-		background-color: #f2f2f2;
-	}
+	.kol-tooltip {
+		&__arrow {
+			background-color: #626262;
+		}
 
-	.kol-tooltip-wc .tooltip-arrow {
-		background-color: #626262;
-	}
-
-	.kol-tooltip-wc .tooltip-content {
-		padding: rem(4) rem(8);
-		font-size: rem(14);
-		line-height: 1.2;
-		border-radius: rem(2);
-		border: rem(1) solid #626262;
+		&__content {
+			background-color: #f2f2f2;
+			padding: rem(4) rem(8);
+			font-size: rem(14);
+			line-height: 1.2;
+			border-radius: rem(2);
+			border: rem(1) solid #626262;
+		}
 	}
 
 	:host {
