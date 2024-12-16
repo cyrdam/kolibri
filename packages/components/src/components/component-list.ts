@@ -29,7 +29,6 @@ import { KolInputText } from './input-text/shadow';
 import { KolInputWc } from './input/component';
 import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/shadow';
-import { KolLinkGroup } from './link-group/shadow';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
 import { KolLogo } from './logo/shadow';
@@ -92,7 +91,6 @@ export const COMPONENTS = [
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkGroup,
 	KolLinkWc,
 	KolLogo,
 	KolModal,

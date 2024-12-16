@@ -200,16 +200,6 @@ ROUTES.set('link-button/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('link-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/horizontal', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('link/basic', {
 	axe: {
 		skipFailures: false,

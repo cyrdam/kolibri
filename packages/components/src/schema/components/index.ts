@@ -27,7 +27,6 @@ export * from './input-text';
 export * from './kolibri';
 export * from './link';
 export * from './link-button';
-export * from './link-group';
 export * from './modal';
 export * from './nav';
 export * from './pagination';

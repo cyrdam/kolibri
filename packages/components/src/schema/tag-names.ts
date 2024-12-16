@@ -29,7 +29,6 @@ export enum TagEnum {
 	'kolibri',
 	'link',
 	'link-button',
-	'link-group',
 	'logo',
 	'modal',
 	'nav',

@@ -430,7 +430,6 @@ export const HandoutBasic: FC = () => {
 							/>
 						</div>
 						{/* <KolSkipNav></KolSkipNav> */}
-						{/* <KolLinkGroup _label=""></KolLinkGroup> */}
 						<div>
 							<KolBreadcrumb
 								_label="Breadcrumb aus Text-Links"

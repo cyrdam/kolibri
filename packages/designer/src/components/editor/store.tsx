@@ -24,7 +24,6 @@ import {
 	KolInputText,
 	KolLink,
 	KolLinkButton,
-	KolLinkGroup,
 	KolLogo,
 	KolModal,
 	KolNav,
@@ -1098,30 +1097,6 @@ export const components: Record<string, Component> = {
 			<KolInputText _label="Vorname (text, readonly)" _id="" _value="Value" _read-only _type="text"></KolInputText>
 			<KolInputText _label="Vorname (text, disabled)" _id="" _placeholder="Placeholder" _disabled _type="text"></KolInputText>
 			<KolInputText _label="Vorname (text, disabled)" _id="" _value="Value" _disabled _type="text"></KolInputText>
-		</div>
-	),
-	'KOL-LINK-GROUP': () => (
-		<div class="grid gap-6">
-			<KolLinkGroup
-				_label="Überschrift für diese Linkgroup"
-				_links={[
-					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
-				]}
-				_orientation="vertical"
-			></KolLinkGroup>
-			<KolLinkGroup
-				_label="Horizontale Linkgroup"
-				_links={[
-					{ _label: 'Link nur Text', _href: 'https://www.w3.org' },
-					{ _label: 'Link mit Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link nur Icon', _href: 'https://www.w3.org', _icons: 'codicon codicon-home' },
-					{ _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org' },
-				]}
-				_orientation="horizontal"
-			></KolLinkGroup>
 		</div>
 	),
 	'KOL-LINK': () => (

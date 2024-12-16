@@ -99,7 +99,6 @@ body:
         - 'Input-Range'
         - 'Input-Text'
         - 'Link-Button'
-        - 'Link-Group'
         - 'Link'
         - 'Modal'
         - 'Nav'

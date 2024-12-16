@@ -61,7 +61,6 @@ const BLACKLIST = [
 	'kol-icon-icofont',
 	'kol-input-adapter-leanup',
 	'kol-input-radio-group',
-	'kol-link-group',
 	'kol-span',
 	'kol-span-wc',
 ];

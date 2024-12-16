@@ -26,7 +26,6 @@ import { INPUT_RANGE_ROUTES } from '../components/input-range/routes';
 import { INPUT_TEXT_ROUTES } from '../components/input-text/routes';
 import { KOLIBRI_ROUTES } from '../components/kolibri/routes';
 import { LINK_BUTTON_ROUTES } from '../components/link-button/routes';
-import { LINK_GROUP_ROUTES } from '../components/link-group/routes';
 import { LINK_ROUTES } from '../components/link/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
@@ -79,7 +78,6 @@ export const ROUTES: Routes = {
 	...INPUT_TEXT_ROUTES,
 	...KOLIBRI_ROUTES,
 	...LINK_BUTTON_ROUTES,
-	...LINK_GROUP_ROUTES,
 	...LINK_ROUTES,
 	...MODAL_ROUTES,
 	...NAV_ROUTES,

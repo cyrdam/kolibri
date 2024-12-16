@@ -38,7 +38,6 @@ const TAGS = [
 	'kol-kolibri',
 	'kol-link',
 	'kol-link-button',
-	'kol-link-group',
 	'kol-logo',
 	'kol-modal',
 	'kol-nav',

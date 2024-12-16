@@ -29,7 +29,6 @@
 - [kol-input-range](../input-range)
 - [kol-input-text](../input-text)
 - [kol-link](../link)
-- [kol-link-group](../link-group)
 - [kol-logo](../logo)
 - [kol-modal](../modal)
 - [kol-nav](../nav)
@@ -71,7 +70,6 @@ graph TD;
   kol-all --> kol-input-range
   kol-all --> kol-input-text
   kol-all --> kol-link
-  kol-all --> kol-link-group
   kol-all --> kol-logo
   kol-all --> kol-modal
   kol-all --> kol-nav
@@ -111,8 +109,6 @@ graph TD;
   kol-input-radio --> kol-alert
   kol-input-range --> kol-alert
   kol-input-text --> kol-alert
-  kol-link-group --> kol-heading
-  kol-link-group --> kol-link
   kol-nav --> kol-link
   kol-nav --> kol-button
   kol-pagination --> kol-button
