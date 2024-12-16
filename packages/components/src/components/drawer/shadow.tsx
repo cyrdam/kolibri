@@ -4,6 +4,7 @@ import { setState, validateLabel, validateOpen, validateAlign, validateModal } f
 import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
+import clsx from 'clsx';
 
 /**
  * @slot - The Content of drawer.
@@ -55,7 +56,10 @@ export class KolDrawer implements DrawerAPI {
 		return (
 			<div
 				ref={this.getWrapperRef}
-				class={`kol-drawer__wrapper kol-drawer__wrapper--${align} ${this.state._open ? 'kol-drawer__wrapper--open' : 'kol-drawer__wrapper--is-closing'}`}
+				class={clsx(`kol-drawer__wrapper`, `kol-drawer__wrapper--${align}`, {
+					'kol-drawer__wrapper--open': this.state._open,
+					'kol-drawer__wrapper--is-closing': this.state._open === false,
+				})}
 				aria-label={this.state._label}
 			>
 				<div class="kol-drawer__content">
@@ -69,7 +73,12 @@ export class KolDrawer implements DrawerAPI {
 	public render(): JSX.Element {
 		const isModal = this.state._modal;
 		return (
-			<Host class={`kol-drawer ${isModal ? 'kol-drawer--modal' : ''}`} ref={(el) => (this.hostElement = el as HTMLElement)}>
+			<Host
+				class={clsx('kol-drawer--modal', {
+					'kol-drawer--modal': isModal,
+				})}
+				ref={(el) => (this.hostElement = el as HTMLElement)}
+			>
 				<dialog class="kol-drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
