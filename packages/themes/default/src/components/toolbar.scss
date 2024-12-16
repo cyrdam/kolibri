@@ -1,7 +1,7 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.toolbar {
+	.kol-toolbar {
 		padding: rem(8) rem(14);
 		border-radius: var(--border-radius);
 		background-color: var(--color-light);

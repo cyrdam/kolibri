@@ -31,23 +31,25 @@
 				@include focus-outline;
 				cursor: pointer;
 
-				button {
+				.kol-button {
 					outline: 0;
 				}
 			}
 
-			.kol-span-wc > span {
-				display: flex;
-				place-items: baseline center;
-				text-align: left;
-				gap: 0.5em;
-				@include kol-typography-accordion;
+			.kol-span {
+				&__container {
+					display: flex;
+					place-items: baseline center;
+					text-align: left;
+					gap: 0.5em;
+					@include kol-typography-accordion;
+				}
 			}
 
 			border-radius: var(--border-radius);
 			min-height: rem(35.2);
 
-			button {
+			.kol-button {
 				padding: rem(12) rem(8);
 
 				:focus {

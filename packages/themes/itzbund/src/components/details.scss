@@ -2,12 +2,9 @@
 @import '../mixins/indented-text';
 
 @layer kol-theme-component {
-	:host {
+	.kol-details {
 		font-family: var(--font-family);
 		font-size: rem(16);
-	}
-
-	.details {
 		&__heading-button {
 			border-radius: var(--border-radius);
 
@@ -15,15 +12,17 @@
 				cursor: pointer;
 			}
 
-			button .span-label {
-				border-bottom-color: #000;
+			.kol-button {
+				.kol-span__label {
+					border-bottom-color: #000;
+				}
 			}
 
 			.kol-icon {
 				font-size: rem(19.2);
 			}
 
-			.kol-span-wc > span {
+			.kol-span__container {
 				display: flex;
 				text-align: left;
 				gap: 0;

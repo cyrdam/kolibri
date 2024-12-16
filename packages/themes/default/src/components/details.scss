@@ -3,12 +3,9 @@
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
-		font-size: rem(16);
+	.kol-details {
 		font-family: var(--font-family);
-	}
-
-	.details {
+		font-size: rem(16);
 		width: 100%;
 		height: 100%;
 		display: grid;
@@ -29,19 +26,19 @@
 				font-size: rem(19.2);
 			}
 
-			.kol-span-wc {
-				& > span {
+			.kol-span {
+				&__container {
 					display: flex;
 					text-align: left;
 					gap: 0;
 				}
 
-				.span-label {
+				&__label {
 					border-bottom-color: #000;
 				}
 			}
 
-			button:focus-within {
+			.kol-button:focus-within {
 				@include focus-outline;
 				cursor: pointer;
 			}

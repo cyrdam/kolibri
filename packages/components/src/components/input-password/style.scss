@@ -7,6 +7,11 @@
 @include kol-alert-styles;
 
 @layer kol-component {
+	.password-toggle-button {
+		position: absolute;
+		transform: translateX(-100%);
+	}
+
 	.kol-tooltip-wc {
 		--kol-tooltip-width: #{rem(160)};
 	}

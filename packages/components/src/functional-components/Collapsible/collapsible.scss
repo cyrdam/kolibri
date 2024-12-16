@@ -18,11 +18,11 @@
 			visibility: hidden;
 		}
 
-		.open &__wrapper {
+		.collapsible--open &__wrapper {
 			grid-template-rows: 1fr;
 		}
 
-		.open &__wrapper-animation {
+		.collapsible--open &__wrapper-animation {
 			visibility: visible;
 		}
 
@@ -35,7 +35,7 @@
 
 		/* @see https://github.com/public-ui/kolibri/issues/5952 */
 		@media print {
-			:not(.open) &__wrapper-animation {
+			:not(.collapsible--open) &__wrapper-animation {
 				display: none;
 			}
 		}
@@ -44,8 +44,10 @@
         * Inside a button, the caption text is always centered.
         * So we have to align the text to the left.
         */
-		&__heading-button button .kol-span-wc {
-			justify-items: start;
+		&__heading-button button {
+			.kol-span {
+				justify-items: start;
+			}
 		}
 	}
 }
