@@ -5,7 +5,7 @@
 		font-family: var(--font-family);
 
 		&__progress,
-		span {
+		&__span {
 			display: block;
 			height: 0;
 			overflow: hidden;
@@ -15,17 +15,17 @@
 		&__progress {
 			display: none;
 		}
-	}
 
-	svg line:first-child,
-	svg circle:first-child {
-		fill: transparent;
-		stroke: var(--color-grey-25);
-	}
+		&__line line:first-child,
+		&__circle circle:first-child {
+			fill: transparent;
+			stroke: var(--color-grey-25);
+		}
 
-	svg line:last-child,
-	svg circle:last-child {
-		stroke: var(--color-blue-130);
-		fill: transparent;
+		&__line line:last-child,
+		&__circle circle:last-child {
+			stroke: var(--color-blue-130);
+			fill: transparent;
+		}
 	}
 }

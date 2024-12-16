@@ -17,8 +17,8 @@
 			&--nested {
 				padding-left: rem(16);
 
-				a,
-				button {
+				.kol-link-wc,
+				.kol-button-wc {
 					font-weight: normal !important;
 					border-left-color: transparent !important;
 				}
@@ -31,12 +31,12 @@
 			}
 
 			&--item {
-				a:hover {
+				.kol-link-wc:hover {
 					text-decoration: underline;
 				}
 
-				a,
-				button {
+				.kol-link-wc,
+				.kol-button-wc {
 					align-items: center;
 					color: var(--color-primary);
 					display: flex;
