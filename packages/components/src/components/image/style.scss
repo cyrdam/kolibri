@@ -2,12 +2,9 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
+	.kol-image {
 		display: inline-block;
 		font-size: rem(16);
-	}
-
-	img {
 		max-height: 100%;
 		max-width: 100%;
 	}
