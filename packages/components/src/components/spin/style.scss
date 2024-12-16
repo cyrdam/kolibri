@@ -4,13 +4,12 @@
 @import './dot';
 
 @layer kol-component {
-	:host {
+	.kol-spin {
 		font-size: rem(16);
-	}
-
-	.spin {
-		display: block;
-		padding: rem(2);
-		position: relative;
+		&__spinner {
+			display: block;
+			padding: rem(2);
+			position: relative;
+		}
 	}
 }

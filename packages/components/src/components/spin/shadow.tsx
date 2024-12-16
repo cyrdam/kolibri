@@ -5,19 +5,20 @@ import { Component, Fragment, h, Host, Prop, State, Watch } from '@stencil/core'
 import { translate } from '../../i18n';
 
 import type { ShowPropType, SpinAPI, SpinStates, SpinVariantPropType } from '../../schema';
+import clsx from 'clsx';
 function renderSpin(variant: SpinVariantPropType): JSX.Element {
 	switch (variant) {
 		case 'cycle':
-			return <span class="loader"></span>;
+			return <span class="kol-spin__loader"></span>;
 		case 'none':
 			return <slot name="expert"></slot>;
 		default:
 			return (
 				<>
-					<span class="bg-spin-1"></span>
-					<span class="bg-spin-2"></span>
-					<span class="bg-spin-3"></span>
-					<span class="bg-neutral"></span>
+					<span class="kol-spin__spinner-element kol-spin__spinner-element--1"></span>
+					<span class="kol-spin__spinner-element kol-spin__spinner-element--2"></span>
+					<span class="kol-spin__spinner-element kol-spin__spinner-element--3"></span>
+					<span class="kol-spin__spinner-element kol-spin__spinner-element--neutral"></span>
 				</>
 			);
 	}
@@ -41,11 +42,10 @@ export class KolSpin implements SpinAPI {
 						aria-busy="true"
 						aria-label={translate('kol-action-running')}
 						aria-live="polite"
-						class={{
-							spin: true,
-							[this.state._variant]: true,
+						class={clsx('kol-spin__spinner', {
+							[`kol-spin__spinner--${this.state._variant}`]: true,
 							/* [`spin--${this.state._variant}`]: true, witch benefit have this notation? */
-						}}
+						})}
 						role="alert"
 					>
 						{renderSpin(this.state._variant)}
