@@ -13,7 +13,6 @@ import detailsCss from './components/details.scss';
 import formCss from './components/form.scss';
 import drawerCss from './components/drawer.scss';
 import headingCss from './components/heading.scss';
-import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -49,7 +48,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	GLOBAL: globalCss,
 	'KOL-HEADING': headingCss,
 	'KOL-ACCORDION': accordionCss,
-	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-BUTTON': buttonCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-PAGINATION': paginationCss,

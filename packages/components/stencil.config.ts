@@ -26,7 +26,6 @@ const TAGS = [
 	'kol-heading',
 	'kol-icon',
 	'kol-image',
-	'kol-indented-text',
 	'kol-input-checkbox',
 	'kol-input-color',
 	'kol-input-date',

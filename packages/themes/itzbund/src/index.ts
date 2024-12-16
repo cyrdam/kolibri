@@ -12,7 +12,6 @@ import detailsCss from './components/details.scss';
 import drawerCss from './components/drawer.scss';
 import formCss from './components/form.scss';
 import headingCss from './components/heading.scss';
-import indentedTextCss from './components/indented-text.scss';
 import inputCheckboxCss from './components/input-checkbox.scss';
 import inputColorCss from './components/input-color.scss';
 import inputDateCss from './components/input-date.scss';
@@ -59,7 +58,6 @@ export const ITZBund = KoliBri.createTheme('itzbund', {
 	'KOL-ALERT': alertCss,
 	'KOL-HEADING': headingCss,
 	'KOL-BADGE': badgeCss,
-	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-LINK': linkCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-SPIN': spinCss,

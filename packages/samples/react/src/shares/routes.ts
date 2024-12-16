@@ -14,7 +14,6 @@ import { HANDOUT_ROUTES } from '../components/handout/routes';
 import { HEADING_ROUTES } from '../components/heading/routes';
 import { ICON_ROUTES } from '../components/icon/routes';
 import { IMAGE_ROUTES } from '../components/image/routes';
-import { INDENTED_ROUTES } from '../components/indented-text/routes';
 import { INPUT_CHECKBOX_ROUTES } from '../components/input-checkbox/routes';
 import { INPUT_COLOR_ROUTES } from '../components/input-color/routes';
 import { INPUT_DATE_ROUTES } from '../components/input-date/routes';
@@ -68,7 +67,6 @@ export const ROUTES: Routes = {
 	...HEADING_ROUTES,
 	...ICON_ROUTES,
 	...IMAGE_ROUTES,
-	...INDENTED_ROUTES,
 	...INPUT_CHECKBOX_ROUTES,
 	...INPUT_COLOR_ROUTES,
 	...INPUT_DATE_ROUTES,

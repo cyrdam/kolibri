@@ -13,7 +13,6 @@ export const TAG_NAMES: string[] = [
 	'kol-button',
 	'kol-link-button',
 	'kol-pagination',
-	'kol-indented-text',
 	'kol-input-checkbox',
 	'kol-input-color',
 	'kol-input-date',

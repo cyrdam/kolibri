@@ -16,7 +16,6 @@ export enum TagEnum {
 	'heading',
 	'icon',
 	'image',
-	'indented-text',
 	'input-checkbox',
 	'input-color',
 	'input-date',

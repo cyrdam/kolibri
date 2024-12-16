@@ -174,11 +174,6 @@ ROUTES.set('image/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('indented-text/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('input-checkbox/basic', null);
 ROUTES.set('input-checkbox/button', null);
 ROUTES.set('input-checkbox/switch', null);

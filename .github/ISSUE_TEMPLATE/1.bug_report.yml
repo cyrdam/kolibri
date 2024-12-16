@@ -88,7 +88,6 @@ body:
         - 'Heading'
         - 'Icon'
         - 'Image'
-        - 'Indented-Text'
         - 'Input-Checkbox'
         - 'Input-Color'
         - 'Input-Date'

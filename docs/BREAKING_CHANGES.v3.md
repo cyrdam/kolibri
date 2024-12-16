@@ -17,6 +17,10 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 - Component has been removed.
 
+### kol-indented-text
+
+- Component has been removed.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)

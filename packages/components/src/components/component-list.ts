@@ -16,7 +16,6 @@ import { KolForm } from './form/shadow';
 import { KolHeading } from './heading/shadow';
 import { KolIcon } from './icon/shadow';
 import { KolImage } from './image/shadow';
-import { KolIndentedText } from './indented-text/shadow';
 import { KolInputCheckbox } from './input-checkbox/shadow';
 import { KolInputColor } from './input-color/shadow';
 import { KolInputDate } from './input-date/shadow';
@@ -79,7 +78,6 @@ export const COMPONENTS = [
 	KolHeading,
 	KolIcon,
 	KolImage,
-	KolIndentedText,
 	KolInputWc,
 	KolInputCheckbox,
 	KolInputColor,

@@ -17,8 +17,6 @@ export let KolFormTag = 'kol-form' as const;
 export let KolHeadingTag = 'kol-heading' as const;
 export let KolIconTag = 'kol-icon' as const;
 export let KolImageTag = 'kol-image' as const;
-export let KolIndentedTextTag = 'kol-indented-text' as const;
-export let KolIndentedTextWcTag = 'kol-indented-text-wc' as const;
 export let KolInputCheckboxTag = 'kol-input-checkbox' as const;
 export let KolInputColorTag = 'kol-input-color' as const;
 export let KolInputDateTag = 'kol-input-date' as const;
@@ -83,8 +81,6 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolHeadingTag = transformTagName(KolHeadingTag as string) as 'kol-heading';
 	KolIconTag = transformTagName(KolIconTag as string) as 'kol-icon';
 	KolImageTag = transformTagName(KolImageTag as string) as 'kol-image';
-	KolIndentedTextTag = transformTagName(KolIndentedTextTag as string) as 'kol-indented-text';
-	KolIndentedTextWcTag = transformTagName(KolIndentedTextWcTag as string) as 'kol-indented-text-wc';
 	KolInputCheckboxTag = transformTagName(KolInputCheckboxTag as string) as 'kol-input-checkbox';
 	KolInputColorTag = transformTagName(KolInputColorTag as string) as 'kol-input-color';
 	KolInputDateTag = transformTagName(KolInputDateTag as string) as 'kol-input-date';

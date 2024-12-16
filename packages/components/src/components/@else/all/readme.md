@@ -19,7 +19,6 @@
 - [kol-icon](../icon)
 - [kol-icon-font-awesome](../icon-font-awesome)
 - [kol-icon-icofont](../icon-icofont)
-- [kol-indented-text](../indented-text)
 - [kol-input-checkbox](../input-checkbox)
 - [kol-input-color](../input-color)
 - [kol-input-email](../input-email)
@@ -62,7 +61,6 @@ graph TD;
   kol-all --> kol-icon
   kol-all --> kol-icon-font-awesome
   kol-all --> kol-icon-icofont
-  kol-all --> kol-indented-text
   kol-all --> kol-input-checkbox
   kol-all --> kol-input-color
   kol-all --> kol-input-email
@@ -103,8 +101,6 @@ graph TD;
   kol-button --> kol-tooltip
   kol-card --> kol-heading
   kol-details --> kol-icon-icofont
-  kol-details --> kol-indented-text
-  kol-form --> kol-indented-text
   kol-icon-font-awesome --> kol-icon
   kol-input-checkbox --> kol-alert
   kol-input-color --> kol-alert

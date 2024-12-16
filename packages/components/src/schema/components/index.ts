@@ -13,7 +13,6 @@ export * from './form';
 export * from './heading';
 export * from './icon';
 export * from './image';
-export * from './indented-text';
 export * from './input';
 export * from './input-checkbox';
 export * from './input-color';

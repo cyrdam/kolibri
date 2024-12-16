@@ -35,7 +35,6 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-icon _label="" _icons="codicon codicon-home"></kol-icon>
 				<kol-icon-font-awesome _ariaLabel="" _icon="500px" _prefix="fab"></kol-icon-font-awesome>
 				<kol-icon-icofont _ariaLabel="" _icon="home"></kol-icon-icofont>
-				<kol-indented-text></kol-indented-text>
 				<kol-input-checkbox _label="" _value="test"></kol-input-checkbox>
 				<kol-input-color _label=""></kol-input-color>
 				<kol-input-email _label=""></kol-input-email>

@@ -12,7 +12,6 @@ import {
 	KolDetails,
 	KolHeading,
 	KolIcon,
-	KolIndentedText,
 	KolInputCheckbox,
 	KolInputColor,
 	KolInputDate,
@@ -763,16 +762,6 @@ export const components: Record<string, Component> = {
 			</div>
 		</div>
 	),
-	'KOL-INDENTED-TEXT': () => (
-		<div class="grid gap-6">
-			<KolIndentedText>
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-			</KolIndentedText>
-		</div>
-	),
 	'KOL-INPUT-CHECKBOX': () => (
 		<div class="grid gap-6">
 			<KolInputCheckbox _value={true} _label="Unchecked" _id="checkbox-1" _required></KolInputCheckbox>
@@ -1181,11 +1170,9 @@ export const components: Record<string, Component> = {
 				/>
 			</div>
 			<div>
-				<KolIndentedText>
-					<b>Links sind unsichtbar geschalten</b>
-					<br />
-					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-				</KolIndentedText>
+				<b>Links sind unsichtbar geschalten</b>
+				<br />
+				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
 				<KolSkipNav
 					_label="Skip-Nav"
 					_links={[
@@ -1241,13 +1228,11 @@ export const components: Record<string, Component> = {
 				/>
 			</div>
 			<div>
-				<KolIndentedText>
-					<p>
-						<b>Links sind unsichtbar geschalten</b>
-						<br />
-						Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-					</p>
-				</KolIndentedText>
+				<p>
+					<b>Links sind unsichtbar geschalten</b>
+					<br />
+					Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+				</p>
 				<KolSkipNav
 					_label="Skip-Nav"
 					_links={[
@@ -1542,11 +1527,9 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-SKIP-NAV': () => (
 		<div class="grid gap-6">
-			<KolIndentedText>
-				<b>Links sind unsichtbar geschalten</b>
-				<br />
-				Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
-			</KolIndentedText>
+			<b>Links sind unsichtbar geschalten</b>
+			<br />
+			Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
 			<KolSkipNav
 				_label="Skip-Nav"
 				_links={[
