@@ -5,7 +5,6 @@ export * from './avatar';
 export * from './badge';
 export * from './breadcrumb';
 export * from './button';
-export * from './button-group';
 export * from './button-link';
 export * from './card';
 export * from './details';

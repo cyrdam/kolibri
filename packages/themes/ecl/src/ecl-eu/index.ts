@@ -6,7 +6,6 @@ import avatarCss from './components/avatar.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
 import buttonCss from './components/button.scss';
-import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
@@ -53,7 +52,6 @@ export const ECL_EU = KoliBri.createTheme('ecl-eu', {
 	'KOL-INDENTED-TEXT': indentedTextCss,
 	'KOL-BUTTON': buttonCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
-	'KOL-BUTTON-GROUP': buttonGroupCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-PROGRESS': progressCss,
 	'KOL-NAV': navCss,

@@ -79,7 +79,6 @@ body:
         - 'Avatar'
         - 'Badge'
         - 'Breadcrumb'
-        - 'Button-Group'
         - 'Button-Link'
         - 'Button'
         - 'Card'

@@ -4,7 +4,6 @@ import { ALERT_ROUTES } from '../components/alert/routes';
 import { AVATAR_ROUTES } from '../components/avatar/routes';
 import { BADGE_ROUTES } from '../components/badge/routes';
 import { BREADCRUMB_ROUTES } from '../components/breadcrumb/routes';
-import { BUTTON_GROUP_ROUTES } from '../components/button-group/routes';
 import { BUTTON_LINK_ROUTES } from '../components/button-link/routes';
 import { BUTTON_ROUTES } from '../components/button/routes';
 import { CARD_ROUTES } from '../components/card/routes';

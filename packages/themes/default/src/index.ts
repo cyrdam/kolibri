@@ -6,7 +6,6 @@ import avatarCss from './components/avatar.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
 import buttonCss from './components/button.scss';
-import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
@@ -52,7 +51,6 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-BADGE': badgeCss,
 	'KOL-BREADCRUMB': breadcrumbCss,
 	'KOL-BUTTON': buttonCss,
-	'KOL-BUTTON-GROUP': buttonGroupCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,
 	'KOL-CARD': cardCss,
 	'KOL-COMBOBOX': ComboboxCss,

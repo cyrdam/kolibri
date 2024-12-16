@@ -7,7 +7,6 @@ export enum TagEnum {
 	'badge',
 	'breadcrumb',
 	'button',
-	'button-group',
 	'button-link',
 	'card',
 	'combobox',

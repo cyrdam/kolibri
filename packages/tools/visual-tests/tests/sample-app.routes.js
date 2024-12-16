@@ -60,11 +60,6 @@ ROUTES.set('breadcrumb/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('button-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('button-link/basic', {
 	axe: {
 		skipFailures: false,

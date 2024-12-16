@@ -13,6 +13,10 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
+### kol-button-group
+
+- Component has been removed.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)

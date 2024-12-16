@@ -28,7 +28,6 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 				<kol-badge _label="Label"></kol-badge>
 				<kol-breadcrumb _label="" _links={[]}></kol-breadcrumb>
 				<kol-button _label="Label" _on={{}}></kol-button>
-				<kol-button-group></kol-button-group>
 				<kol-card _label=""></kol-card>
 				<kol-details _label=""></kol-details>
 				<kol-form _on={{}}></kol-form>

@@ -12,7 +12,6 @@
 - [kol-badge](../badge)
 - [kol-breadcrumb](../breadcrumb)
 - [kol-button](../button)
-- [kol-button-group](../button-group)
 - [kol-card](../card)
 - [kol-details](../details)
 - [kol-form](../form)
@@ -56,7 +55,6 @@ graph TD;
   kol-all --> kol-badge
   kol-all --> kol-breadcrumb
   kol-all --> kol-button
-  kol-all --> kol-button-group
   kol-all --> kol-card
   kol-all --> kol-details
   kol-all --> kol-form
@@ -125,9 +123,7 @@ graph TD;
   kol-select --> kol-alert
   kol-skip-nav --> kol-link
   kol-table --> kol-button
-  kol-table --> kol-button-group
   kol-table --> kol-select
-  kol-tabs --> kol-button-group
   kol-tabs --> kol-icon-icofont
   kol-textarea --> kol-alert
   kol-version --> kol-badge

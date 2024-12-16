@@ -6,8 +6,6 @@ export let KolAvatarTag = 'kol-avatar' as const;
 export let KolAvatarWcTag = 'kol-avatar-wc' as const;
 export let KolBadgeTag = 'kol-badge' as const;
 export let KolBreadcrumbTag = 'kol-breadcrumb' as const;
-export let KolButtonGroupTag = 'kol-button-group' as const;
-export let KolButtonGroupWcTag = 'kol-button-group-wc' as const;
 export let KolButtonLinkTag = 'kol-button-link' as const;
 export let KolButtonTag = 'kol-button' as const;
 export let KolButtonWcTag = 'kol-button-wc' as const;
@@ -74,8 +72,6 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolAvatarWcTag = transformTagName(KolAvatarWcTag as string) as 'kol-avatar-wc';
 	KolBadgeTag = transformTagName(KolBadgeTag as string) as 'kol-badge';
 	KolBreadcrumbTag = transformTagName(KolBreadcrumbTag as string) as 'kol-breadcrumb';
-	KolButtonGroupTag = transformTagName(KolButtonGroupTag as string) as 'kol-button-group';
-	KolButtonGroupWcTag = transformTagName(KolButtonGroupWcTag as string) as 'kol-button-group-wc';
 	KolButtonLinkTag = transformTagName(KolButtonLinkTag as string) as 'kol-button-link';
 	KolButtonTag = transformTagName(KolButtonTag as string) as 'kol-button';
 	KolButtonWcTag = transformTagName(KolButtonWcTag as string) as 'kol-button-wc';

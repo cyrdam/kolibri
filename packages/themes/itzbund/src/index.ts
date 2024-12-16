@@ -5,7 +5,6 @@ import alertCss from './components/alert.scss';
 import badgeCss from './components/badge.scss';
 import breadcrumbCss from './components/breadcrumb.scss';
 import buttonCss from './components/button.scss';
-import buttonGroupCss from './components/button-group.scss';
 import buttonLinkCss from './components/button-link.scss';
 import cardCss from './components/card.scss';
 import ComboboxCss from './components/combobox.scss';
@@ -46,7 +45,6 @@ import treeCss from './components/tree.scss';
 export const ITZBund = KoliBri.createTheme('itzbund', {
 	GLOBAL: globalCss,
 	'KOL-BUTTON': buttonCss,
-	'KOL-BUTTON-GROUP': buttonGroupCss,
 	'KOL-LINK-BUTTON': linkButtonCss,
 	'KOL-PAGINATION': paginationCss,
 	'KOL-BUTTON-LINK': buttonLinkCss,

@@ -7,7 +7,6 @@ import {
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
-	KolButtonGroup,
 	KolButtonLink,
 	KolCard,
 	KolDetails,
@@ -648,26 +647,6 @@ export const components: Record<string, Component> = {
 			</div>
 		</div>
 	),
-	'KOL-BUTTON-GROUP': () => (
-		<div class="grid gap-6">
-			<KolButtonGroup>
-				<KolButton _label="Primary" _variant="primary" />
-				<KolButton _label="Secondary" _variant="secondary" />
-				<KolButton _label="Normal" _variant="normal" />
-				<KolButton _label="Danger" _variant="danger" />
-				<KolButton _label="Ghost" _variant="ghost" />
-				<KolButton _label="Disabled" _disabled />
-			</KolButtonGroup>
-			<KolButtonGroup>
-				<KolButton _label="Primary" _variant="primary" />
-				<KolButton _label="Secondary" _variant="secondary" />
-				<KolButton _label="Normal" _variant="normal" />
-				<KolButton _label="Danger" _icons="codicon codicon-trash" _hideLabel _variant="danger" />
-				<KolButton _label="Ghost" _icons="codicon codicon-info" _hideLabel _variant="ghost" />
-				<KolButton _label="Disabled" _icons="codicon codicon-lock" _hideLabel _disabled />
-			</KolButtonGroup>
-		</div>
-	),
 	'KOL-CARD': () => (
 		<div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-6">
 			<KolCard _label="H1-Überschrift der Card" _level={1}>
@@ -685,10 +664,8 @@ export const components: Record<string, Component> = {
 					<img alt="Einleitungsbild der Stadtverwaltung" class="w-full" src="http://placeimg.com/400/200/arch" />
 				</div>
 				<div slot="footer">
-					<KolButtonGroup>
-						<KolButton _label="Kaufen" _variant="primary" />
-						<KolButton _label="Löschen" _icons="codicon codicon-trash" _hideLabel _variant="danger" />
-					</KolButtonGroup>
+					<KolButton _label="Kaufen" _variant="primary" />
+					<KolButton _label="Löschen" _icons="codicon codicon-trash" _hideLabel _variant="danger" />
 				</div>
 			</KolCard>
 			<KolCard _label="H3-Überschrift der Card" _level={3}>
@@ -709,11 +686,9 @@ export const components: Record<string, Component> = {
 			<KolCard _label="H6-Überschrift der Card" _level={6}>
 				<div slot="">Inhalt der Card</div>
 				<div slot="footer">
-					<KolButtonGroup>
-						<KolButton _label="Speichern" _variant="primary" />
-						<KolButton _label="Abbrechen" _variant="secondary" />
-						<KolButton _label="Löschen" _variant="danger" />
-					</KolButtonGroup>
+					<KolButton _label="Speichern" _variant="primary" />
+					<KolButton _label="Abbrechen" _variant="secondary" />
+					<KolButton _label="Löschen" _variant="danger" />
 				</div>
 			</KolCard>
 			<KolCard _label="Kann geschlossen werden" _level={6}>
