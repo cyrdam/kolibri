@@ -31,7 +31,7 @@
 				@include focus-outline;
 				cursor: pointer;
 
-				button {
+				.kol-button {
 					outline: 0;
 				}
 			}
@@ -49,7 +49,7 @@
 			border-radius: var(--border-radius);
 			min-height: rem(35.2);
 
-			button {
+			.kol-button {
 				padding: rem(12) rem(8);
 
 				:focus {
