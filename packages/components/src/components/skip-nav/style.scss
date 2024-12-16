@@ -2,31 +2,31 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
+	.kol-skip-nav {
 		font-size: rem(16);
-	}
 
-	ul {
-		display: grid;
-		list-style: none;
-		place-items: center;
-	}
+		&__list {
+			display: grid;
+			list-style: none;
+			place-items: center;
+		}
 
-	ul li {
-		height: 0;
-	}
+		&__list-item {
+			height: 0;
+		}
 
-	.kol-link {
-		left: rem(-99999);
-		overflow: hidden;
-		position: absolute;
-		z-index: 9999999;
-		line-height: 1;
+		.kol-link {
+			left: rem(-99999);
+			overflow: hidden;
+			position: absolute;
+			z-index: 9999999;
+			line-height: 1;
 
-		&:focus {
-			background-color: #fff;
-			left: unset;
-			position: unset;
+			&:focus {
+				background-color: #fff;
+				left: unset;
+				position: unset;
+			}
 		}
 	}
 }

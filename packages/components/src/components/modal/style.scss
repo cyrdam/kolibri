@@ -2,13 +2,10 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-modal {
 		border: 0;
 		padding: 0;
+		font-size: rem(16);
 
 		&::backdrop {
 			background-color: rgba(0, 0, 0, 0.33);

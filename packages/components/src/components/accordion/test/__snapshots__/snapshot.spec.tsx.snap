@@ -22,7 +22,7 @@ exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=f
 exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=false _disabled=true 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
-    <div class="collapsible disabled kol-accordion" id="nonce">
+    <div class="collapsible collapsible--disabled kol-accordion" id="nonce">
       <h1 class="collapsible__heading kol-accordion__heading kol-headline kol-headline--h1 kol-headline--single">
         <kol-button-wc _ariacontrols="nonce-control" _disabled="" _icons="codicon codicon-add" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" slot="expert"></kol-button-wc>
       </h1>
@@ -41,7 +41,7 @@ exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=f
 exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=true _disabled=false 1`] = `
 <kol-accordion _open="">
   <template shadowrootmode="open">
-    <div class="collapsible kol-accordion open" id="nonce">
+    <div class="collapsible collapsible--open kol-accordion" id="nonce">
       <h1 class="collapsible__heading kol-accordion__heading kol-headline kol-headline--h1 kol-headline--single">
         <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _icons="codicon codicon-remove" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" slot="expert"></kol-button-wc>
       </h1>
@@ -60,7 +60,7 @@ exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=t
 exports[`kol-accordion should render with _label="Überschrift" _level=1 _open=true _disabled=true 1`] = `
 <kol-accordion _open="">
   <template shadowrootmode="open">
-    <div class="collapsible disabled kol-accordion open" id="nonce">
+    <div class="collapsible collapsible--disabled collapsible--open kol-accordion" id="nonce">
       <h1 class="collapsible__heading kol-accordion__heading kol-headline kol-headline--h1 kol-headline--single">
         <kol-button-wc _ariacontrols="nonce-control" _ariaexpanded="" _disabled="" _icons="codicon codicon-remove" _label="Überschrift" class="collapsible__heading-button kol-accordion__heading-button" slot="expert"></kol-button-wc>
       </h1>

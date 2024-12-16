@@ -14,12 +14,6 @@ type FormFieldMsgProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 
 const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, hideError, id, class: classNames, ...other }) => (
 	<KolAlertFc
-		/**
-		 * This message is read out by screen readers if the input field
-		 * refers to the message using the <code>aria-describedby</code>
-		 * attribute. It also does this if <code>aria-hidden=true</code>
-		 * is set.
-		 */
 		id={`${id}-error`}
 		alert={alert}
 		type="error"

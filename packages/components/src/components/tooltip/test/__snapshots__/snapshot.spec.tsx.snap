@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="bottom" 1`] = `
-<kol-tooltip-wc class="kol-tooltip-wc">
-  <div class="tooltip-floating">
-    <div class="tooltip-area tooltip-arrow"></div>
-    <span class="kol-span tooltip-area tooltip-content" id="id">
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
       <span class="kol-span__container">
         <span class="kol-span__label">
           Label
@@ -17,10 +17,10 @@ exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="botto
 `;
 
 exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="left" 1`] = `
-<kol-tooltip-wc class="kol-tooltip-wc">
-  <div class="tooltip-floating">
-    <div class="tooltip-area tooltip-arrow"></div>
-    <span class="kol-span tooltip-area tooltip-content" id="id">
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
       <span class="kol-span__container">
         <span class="kol-span__label">
           Label
@@ -33,10 +33,10 @@ exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="left"
 `;
 
 exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="right" 1`] = `
-<kol-tooltip-wc class="kol-tooltip-wc">
-  <div class="tooltip-floating">
-    <div class="tooltip-area tooltip-arrow"></div>
-    <span class="kol-span tooltip-area tooltip-content" id="id">
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
       <span class="kol-span__container">
         <span class="kol-span__label">
           Label
@@ -49,10 +49,10 @@ exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="right
 `;
 
 exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="top" 1`] = `
-<kol-tooltip-wc class="kol-tooltip-wc">
-  <div class="tooltip-floating">
-    <div class="tooltip-area tooltip-arrow"></div>
-    <span class="kol-span tooltip-area tooltip-content" id="id">
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
       <span class="kol-span__container">
         <span class="kol-span__label">
           Label
@@ -65,10 +65,10 @@ exports[`kol-tooltip-wc should render with _id="id" _label="Label" _align="top" 
 `;
 
 exports[`kol-tooltip-wc should render with _id="id" _label="Label" 1`] = `
-<kol-tooltip-wc class="kol-tooltip-wc">
-  <div class="tooltip-floating">
-    <div class="tooltip-area tooltip-arrow"></div>
-    <span class="kol-span tooltip-area tooltip-content" id="id">
+<kol-tooltip-wc class="kol-tooltip">
+  <div class="kol-tooltip__floating">
+    <div class="kol-tooltip__arrow"></div>
+    <span class="kol-span kol-tooltip__content" id="id">
       <span class="kol-span__container">
         <span class="kol-span__label">
           Label
