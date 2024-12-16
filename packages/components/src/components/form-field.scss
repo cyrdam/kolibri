@@ -1,24 +1,47 @@
 @layer kol-component {
+	/**
+	 * Normalize Form Field
+	 */
+	.kol-form-field {
+		font-size: rem(16);
+	}
+
 	.kol-form-field {
 		$root: &;
 
 		display: grid;
 
-		&--disabled {
-			opacity: 0.5;
+		&--disabled & {
+			&__label,
+			&__hint,
+			&__msg {
+				opacity: 0.5;
+			}
 		}
 
-		&--required {
-			#{$root}__label-text {
+		&--required & {
+			&__label-text {
 				&::after {
 					content: '*';
 				}
 			}
 
-			#{$root}__tooltip {
+			&__tooltip {
 				.span-label::after {
 					content: '*';
 				}
+			}
+		}
+
+		.kol-alert {
+			display: grid;
+
+			&__container {
+				place-items: center;
+				display: flex;
+			}
+			&__container-content {
+				flex-grow: 1;
 			}
 		}
 	}

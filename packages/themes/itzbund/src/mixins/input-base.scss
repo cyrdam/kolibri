@@ -1,5 +1,41 @@
 @import './rem';
 
+@mixin kol-input-theme($block-classname) {
+	.#{$block-classname} {
+		color: var(--default-letter);
+		border-width: rem(1);
+		border-style: solid;
+		border-radius: 0;
+		border-color: var(--kolibri-color-normal);
+		background-color: #e8edf2;
+
+		&::placeholder {
+			// color: var(--default-border);
+			font-style: italic;
+		}
+
+		&--disabled {
+			background-color: var(--color-input-bg-default);
+			border-color: var(--border-color);
+			cursor: not-allowed;
+		}
+
+		&:not(&--disabled, &:disabled):hover,
+		&:focus {
+			border-color: var(--default-border-hover);
+			outline-color: var(--primary);
+			outline-offset: 0;
+			outline-style: solid;
+			outline-width: rem(1);
+		}
+
+		&--error {
+			background-color: var(--color-rotton-20);
+			border-color: var(--color-rotton);
+		}
+	}
+}
+
 @mixin kol-input-border {
 	color: var(--default-letter);
 	border-width: rem(1);

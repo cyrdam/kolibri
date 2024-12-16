@@ -2,6 +2,7 @@
 @import '../mixins/alert-wc';
 @import '../mixins/typography';
 @import '../mixins/form-field';
+@import '../mixins/field-control';
 @import '../mixins/outline';
 
 @layer kol-theme-component {
@@ -22,6 +23,7 @@
 
 	@include kol-alert-theme;
 	@include kol-form-field-theme;
+	@include kol-field-control-theme;
 
 	.kol-form-field-radio {
 		& .kol-form-field {
@@ -31,12 +33,9 @@
 
 			&__input {
 				gap: rem(4);
-				display: flex;
-				flex-direction: column;
 
 				&--orientation {
 					&-horizontal {
-						flex-direction: row;
 						margin-top: calc(var(--spacing) / 2);
 						gap: var(--spacing) calc(var(--spacing) * 2);
 					}

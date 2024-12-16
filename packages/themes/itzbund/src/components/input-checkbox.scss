@@ -2,175 +2,172 @@
 @import '../mixins/rem';
 @import '../mixins/typography';
 
+@import '../mixins/input-base';
+@import '../mixins/form-field';
+@import '../mixins/form-field-order';
+
 @layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
+	@include kol-alert-theme;
+	@include kol-form-field-theme;
+
+	.kol-form-field {
+		&__input {
+			order: 1;
+		}
+
+		&__hint {
+			order: 2;
+		}
+
+		&__msg {
+			order: 3;
+		}
 	}
 
-	.checkbox-container {
-		position: relative;
-		justify-content: center;
-		min-width: initial;
-		width: initial;
+	.kol-field-control {
+		gap: rem(8);
+
+		&__label {
+			@include kol-typography-body;
+		}
 	}
 
-	input {
-		@include kol-typography-body;
-		color: var(--default-letter);
-		border-color: var(--default-border);
-		border-width: rem(2);
-		border-style: solid;
+	.kol-checkbox--variant-default {
+		width: unset;
+
+		.kol-input {
+			@include kol-typography-body;
+			color: var(--default-letter);
+			border-color: var(--border-color);
+			border-width: rem(2);
+			border-style: solid;
+			appearance: none;
+			background-color: white;
+			cursor: pointer;
+			transition: 0.5s;
+
+			&:not(&:disabled):hover {
+				border-color: var(--color-petrol);
+			}
+
+			&:disabled {
+				opacity: 0.5;
+			}
+		}
+
+		&.kol-checkbox--checked {
+			.kol-input {
+				background-color: var(--color-petrol);
+				border-color: var(--color-petrol);
+				color: var(--color-weiss);
+			}
+
+			.kol-icon {
+				color: var(--color-weiss);
+			}
+		}
+
+		&.kol-checkbox--disabled {
+			.kol-input {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+		}
 	}
 
-	.required label > span::after {
-		content: '*';
-		padding-left: 0.125em;
+	.kol-checkbox--variant-switch {
+		.kol-icon {
+			color: var(--color-weiss);
+		}
+
+		.kol-input {
+			color: var(--default-letter);
+			border-color: var(--border-color);
+			border-width: rem(2);
+			border-style: solid;
+
+			display: block;
+			min-width: 3.2em;
+			width: 3.2em;
+			height: 1.7em;
+			position: relative;
+
+			&:before {
+				-webkit-transition: 0.5s;
+				-moz-transition: 0.5s;
+				-ms-transition: 0.5s;
+				transition: 0.5;
+				width: 1.2em;
+				height: 1.2em;
+				left: calc(0.25em - rem(2));
+				top: calc(0.25em - rem(2));
+				background-color: black;
+				position: absolute;
+			}
+		}
+
+		&.kol-checkbox--checked {
+			.kol-icon {
+				color: var(--color-weiss);
+			}
+
+			.kol-input {
+				background-color: var(--color-petrol);
+				border-color: var(--color-petrol);
+				color: var(--default-letter);
+
+				&:before {
+					transform: translateX(1.5em);
+					background-color: white;
+				}
+			}
+		}
+
+		&.kol-checkbox--indeterminate {
+			.kol-input {
+				&:before {
+					transform: translateX(0.75em);
+					background-color: var(--color-petrol);
+				}
+			}
+		}
+
+		&.kol-checkbox--checked .kol-icon {
+			background-color: var(--color-white);
+			color: #000;
+		}
+
+		&.kol-checkbox--disabled {
+			.kol-input {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+		}
 	}
 
-	input:hover {
-		border-color: var(--color-petrol);
+	.kol-input-checkbox--variant-button {
+		gap: var(--spacing-xs) 0;
+
+		& .kol-form-field {
+			&__input {
+				order: 1;
+			}
+
+			&__hint {
+				order: 2;
+			}
+
+			&__msg {
+				order: 3;
+			}
+		}
 	}
 
-	/* NEU */
-	.kol-input {
-		display: grid;
-		align-items: center;
-		justify-items: left;
-		width: 100%;
-		gap: calc(2 * 2 * var(--spacing));
-	}
-
-	.kol-input.default {
-		grid-template-columns: auto 1fr;
-	}
-
-	.default[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: 1fr auto;
-	}
-
-	.switch {
-		grid-template-columns: calc(13 * 2 * var(--spacing)) auto;
-	}
-
-	.switch[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto calc(13 * 2 * var(--spacing));
-	}
-
-	.button {
-		gap: rem(8) 0;
-		grid-template-areas:
-			'input label'
-			'hint hint'
-			'error error';
-	}
-
-	.button[data-label-align='left']:not(.hide-label) {
-		grid-template-areas:
-			'label input'
-			'hint hint'
-			'error error';
-	}
-
-	.kol-input > div.input {
-		display: inline-flex;
-		order: 1;
-	}
-
-	.kol-input > div.input input {
-		margin: 0;
-	}
-
-	.kol-input > label {
-		order: 2;
-	}
-
-	.kol-input > .kol-alert.error {
-		order: 3;
-		padding-top: 0.25em;
-		grid-column: span 2 / auto;
-	}
-
-	/* CHECKBOX */
-	input[type='checkbox'] {
-		appearance: none;
-		background-color: white;
-		cursor: pointer;
-		transition: 0.5s;
-	}
-
-	input[type='checkbox']:checked {
-		background-color: var(--color-petrol);
-		border-color: var(--color-petrol);
-	}
-
-	.default input[type='checkbox'] {
-		height: calc(6 * 2 * var(--spacing));
-		min-width: calc(6 * 2 * var(--spacing));
-		width: calc(6 * 2 * var(--spacing));
-	}
-
-	.default .icon {
-		display: flex;
-	}
-
-	.default.checked .icon {
-		color: var(--color-weiss);
-	}
-
-	.switch input[type='checkbox'] {
-		display: block;
-		min-width: 3.2em;
-		width: 3.2em;
-		height: 1.7em;
-		position: relative;
-	}
-
-	.switch input[type='checkbox']:before {
-		/* border-radius: 0.25em; */
-		-webkit-transition: 0.5s;
-		-moz-transition: 0.5s;
-		-ms-transition: 0.5s;
-		transition: 0.5;
-		width: 1.2em;
-		height: 1.2em;
-		left: calc(0.25em - rem(2));
-		top: calc(0.25em - rem(2));
-		background-color: black;
-		position: absolute;
-	}
-
-	.switch input[type='checkbox']:checked:before {
-		transform: translateX(1.5em);
-		background-color: white;
-	}
-
-	.switch input[type='checkbox']:indeterminate:before {
-		transform: translateX(0.75em);
-		background-color: var(--color-petrol);
-	}
-
-	.switch:is(:not(.checked), .indeterminate) .icon {
-		color: #fff;
-	}
-
-	.disabled {
-		opacity: 0.33;
-	}
-
-	.kol-input span.hint {
-		grid-column: span 2;
-		font-style: italic;
-		color: gray;
-		display: block;
-		order: 3;
-		padding: 0 var(--spacing);
-	}
-
-	.button:focus-within {
-		border-radius: rem(32);
-		outline-color: var(--color-achat);
-		outline-offset: rem(2);
-		outline-style: solid;
-		outline-width: rem(3);
+	.kol-input-checkbox__field-control--variant-button {
+		&:focus-within {
+			outline-color: var(--color-blue-130);
+			outline-style: solid;
+			outline-width: rem(2);
+		}
 	}
 }

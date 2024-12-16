@@ -87,9 +87,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-textarea', 'textarea', {
-				'has-value': this.state._hasValue,
-				'has-counter': !!this.state._hasCounter,
+			class: clsx('kol-form-field-textarea', {
+				'kol-form-field--has-value': this.state._hasValue,
+				'kol-form-field--has-counter': !!this.state._hasCounter,
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.textareaRef?.focus(),

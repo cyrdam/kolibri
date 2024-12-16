@@ -1,32 +1,21 @@
-@import '../@shared/label';
-@import '../@shared/kol-alert-wc';
-@import '../@shared/kol-required';
-
 @import '../mixins/alert-wc';
-@import '../mixins/typography';
 @import '../mixins/input-base';
+@import '../mixins/form-field';
+@import '../mixins/form-field-order';
 
 @layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
+	@include kol-form-field-theme;
+	@include kol-form-field-order-theme;
+	@include kol-input-theme('kol-select');
 
-	.error select {
-		@include kol-input-error;
-	}
+	.kol-select {
+		&__option {
+			min-height: 2em;
+		}
 
-	select {
-		@include kol-typography-body;
-		@include kol-input-container-base;
-
-		width: 100%;
-	}
-
-	option {
-		min-height: 2em;
-	}
-
-	select:not([multiple]) option {
-		padding: 0.5em;
+		&:not([multiple]) &__option {
+			padding: 0.5em;
+		}
 	}
 }

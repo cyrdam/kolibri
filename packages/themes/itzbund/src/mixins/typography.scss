@@ -61,6 +61,7 @@
 @mixin kol-typography-label {
 	font-size: rem(14);
 	line-height: 1.25;
+	font-weight: 700;
 }
 
 @mixin kol-typography-hint {

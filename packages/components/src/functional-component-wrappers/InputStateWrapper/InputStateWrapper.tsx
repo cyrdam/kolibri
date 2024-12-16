@@ -2,16 +2,17 @@ import type { VNode } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolInputFc, { type InputProps } from '../../functional-components/inputs/Input';
 
-import type {
-	InputColorStates,
-	InputEmailStates,
-	InputFileStates,
-	InputNumberStates,
-	InputPasswordStates,
-	InputRangeStates,
-	InputTextStates,
-	InputCheckboxStates,
-	InputRadioStates,
+import {
+	type InputColorStates,
+	type InputEmailStates,
+	type InputFileStates,
+	type InputNumberStates,
+	type InputPasswordStates,
+	type InputRangeStates,
+	type InputTextStates,
+	type InputCheckboxStates,
+	type InputRadioStates,
+	convertMsgToInternMsg,
 } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 import SuggestionsFc from '../../functional-components/Suggestions';
@@ -53,13 +54,15 @@ function getInputProps(state: InputState): InputProps {
 	if ('_autoComplete' in state) props.autoComplete = state._autoComplete;
 	if ('_spellCheck' in state) props.spellcheck = state._spellCheck;
 	if ('_pattern' in state) props.pattern = state._pattern;
-	if ('_readOnly' in state) props.readOnly = state._readOnly;
+	if ('_readOnly' in state) props.readonly = state._readOnly;
 	if ('_min' in state) props.min = state._min;
 	if ('_max' in state) props.max = state._max;
 	if ('_step' in state) props.step = state._step;
 	if ('_multiple' in state) props.multiple = state._multiple;
 	if ('_checked' in state) props.checked = state._checked;
 	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
+	if ('_touched' in state) props.touched = state._touched;
+	if ('_msg' in state) props.msg = convertMsgToInternMsg(state._msg);
 
 	if ('_suggestions' in state) {
 		const hasSuggestions = Array.isArray(state._suggestions) && state._suggestions.length > 0;

@@ -1,29 +1,21 @@
-@import '../@shared/label';
-@import '../@shared/kol-alert-wc';
-@import '../@shared/kol-required';
-
 @import '../mixins/alert-wc';
-@import '../mixins/typography';
 @import '../mixins/input-base';
+@import '../mixins/form-field';
+@import '../mixins/form-field-order';
 
 @layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
+	@include kol-alert-theme;
+	@include kol-form-field-theme;
+	@include kol-form-field-order-theme;
+	@include kol-input-theme('kol-textarea');
 
-	textarea {
-		@include kol-typography-body;
-		@include kol-input-base;
-
+	.kol-textarea {
+		line-height: 1.5;
 		width: 100%;
-	}
 
-	.error textarea {
-		@include kol-input-error;
-	}
-
-	textarea:read-only {
-		border-color: var(--border-default);
-		background-color: var(--background-light-grey);
+		&--readonly {
+			border-color: var(--border-default);
+			background-color: var(--background-light-grey);
+		}
 	}
 }

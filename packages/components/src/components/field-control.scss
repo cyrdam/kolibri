@@ -2,21 +2,46 @@
 	.kol-field-control {
 		$base: &;
 
+		min-height: var(--a11y-min-size);
 		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-areas: 'input label';
+		grid-template-rows: auto;
 
-		&__wrapper {
-			min-height: var(--a11y-min-size);
-			width: 100%;
-			display: grid;
+		align-items: center;
+		justify-content: left;
+
+		&:has(&__hint) {
 			grid-template-columns: auto 1fr;
-			grid-template-areas: 'input label';
+			grid-template-areas: 'input label' 'hint hint';
+			grid-template-rows: auto auto;
+		}
+
+		&--label-align-left:not(&--hide-label) {
+			&:has(.kol-field-control__hint) {
+				grid-template-columns: 1fr auto;
+				grid-template-areas: 'label input' 'hint hint';
+				grid-template-rows: auto auto;
+			}
+
+			grid-template-columns: 1fr auto;
+			grid-template-areas: 'label input';
+			grid-template-rows: auto;
+		}
+
+		&__input {
+			grid-area: input;
+			display: flex;
+			min-height: var(--a11y-min-size);
 			align-items: center;
-			justify-content: left;
 		}
 
 		&__label {
 			grid-area: label;
 			flex-grow: 1;
+			display: flex;
+			min-height: var(--a11y-min-size);
+			align-items: center;
 
 			&--visually-hidden {
 				height: 0;
@@ -38,14 +63,28 @@
 			}
 		}
 
-		&__input {
-			grid-area: input;
+		&__hint {
+			grid-area: hint;
 		}
 
-		&--disabled {
-			#{$base}__label {
+		&--disabled & {
+			&__label {
 				cursor: not-allowed;
 				opacity: 0.5;
+			}
+		}
+
+		&--required & {
+			&__label-text {
+				&::after {
+					content: '*';
+				}
+			}
+
+			&__tooltip {
+				.span-label::after {
+					content: '*';
+				}
 			}
 		}
 	}

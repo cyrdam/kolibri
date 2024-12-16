@@ -5,9 +5,3 @@
 @import '../input-container';
 
 @include kol-alert-styles;
-
-@layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-}

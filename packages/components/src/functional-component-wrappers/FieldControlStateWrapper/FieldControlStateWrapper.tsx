@@ -41,6 +41,18 @@ function getFieldControlProps(state: InputState): FieldControlProps {
 		touched: state._touched,
 	};
 
+	if ('_required' in state) {
+		props.required = state._required;
+	}
+
+	if ('_readOnly' in state) {
+		props.readonly = state._readOnly;
+	}
+
+	if ('_labelAlign' in state) {
+		props.labelAlign = state._labelAlign;
+	}
+
 	return props;
 }
 

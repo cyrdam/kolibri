@@ -1,354 +1,147 @@
 @import '../@shared/mixins';
 @import '../style';
 @import '../input';
-
-@include kol-alert-styles;
-
-/*
-With fix gap in grid layout error: https://github.com/w3c/csswg-drafts/issues/5813
-*/
+@import '../form-field';
+@import '../field-control';
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
 	.kol-form-field {
-		$root: &;
-
 		display: grid;
-		align-items: center;
-		justify-items: left;
-
-		grid-template-columns: auto 1fr;
-		grid-template-areas: 'input label' 'msg msg' 'hint hint';
-		grid-template-rows: auto;
-
-		@at-root #{$root}__label {
-			grid-area: label;
-		}
-
-		@at-root #{$root}__input {
-			grid-area: input;
-
-			min-height: var(--a11y-min-size);
-			display: flex;
-			align-items: center;
-		}
-
-		@at-root #{$root}__msg {
-			grid-area: msg;
-		}
-
-		@at-root #{$root}__hint {
-			grid-area: hint;
-		}
-
-		&:not(:has(#{$root}__msg)) {
-			grid-template-areas: 'input label' 'hint hint';
-			grid-template-rows: auto auto;
-		}
-
-		&:not(:has(#{$root}__hint)) {
-			grid-template-areas: 'input label' 'msg msg';
-			grid-template-rows: auto auto;
-		}
-
-		&:not(:has(#{$root}__msg)):not(:has(#{$root}__hint)) {
-			grid-template-areas: 'input label';
-			grid-template-rows: auto;
-		}
-
-		@at-root .kol-input-checkbox--label-align-left {
-			grid-template-columns: 1fr auto;
-			grid-template-areas: 'label input' 'msg msg' 'hint hint';
-			grid-template-rows: auto auto auto;
-
-			&:not(:has(#{$root}__msg)) {
-				grid-template-areas: 'label input' 'hint hint';
-				grid-template-rows: auto auto;
-			}
-
-			&:not(:has(#{$root}__hint)) {
-				grid-template-areas: 'label input' 'msg msg';
-				grid-template-rows: auto auto;
-			}
-
-			&:not(:has(#{$root}__msg)):not(:has(#{$root}__hint)) {
-				grid-template-areas: 'label input';
-				grid-template-rows: auto;
-			}
-		}
-
-		@at-root #{$root}--hide-label {
-			grid-template-columns: 1fr;
-			grid-template-areas: 'input' 'msg' 'hint';
-			grid-template-rows: auto auto auto;
-
-			&:not(:has(#{$root}__msg)) {
-				grid-template-areas: 'input' 'hint';
-				grid-template-rows: auto auto;
-			}
-
-			&:not(:has(#{$root}__hint)) {
-				grid-template-areas: 'input' 'msg';
-				grid-template-rows: auto auto;
-			}
-
-			&:not(:has(#{$root}__msg)):not(:has(#{$root}__hint)) {
-				grid-template-areas: 'input';
-				grid-template-rows: auto;
-			}
-		}
-
-		&--disabled {
-			#{$root}__label {
-				cursor: not-allowed;
-				opacity: 0.5;
-				outline: none;
-			}
-		}
-
-		&--required {
-			#{$root}__label-text {
-				&::after {
-					content: '*';
-				}
-			}
-
-			#{$root}__tooltip {
-				.span-label::after {
-					content: '*';
-				}
-			}
-		}
 	}
 
-	.kol-input-checkbox {
-		$root: &;
-		$form: kol-form-field;
+	.kol-checkbox {
+		$base: &;
 
-		&--variant {
-			/*
-			* Button
-			*/
-			&-button {
-				$button: &;
-
-				&:focus-within {
-					/* override global `[tabindex]:focus` style */
-					cursor: inherit;
-					outline-color: black;
-					outline-style: solid;
-				}
-
-				grid-template-columns: auto 1fr;
-				grid-template-areas: 'msg msg' 'input label' 'hint hint';
-				grid-template-rows: auto auto auto;
-
-				&:not(:has(.#{$form}__msg)) {
-					grid-template-areas: 'input label' 'hint hint';
-					grid-template-rows: auto auto;
-				}
-
-				&:not(:has(.#{$form}__hint)) {
-					grid-template-areas: 'msg msg' 'input label';
-					grid-template-rows: auto auto;
-				}
-
-				&:not(:has(.#{$form}__msg)):not(:has(.#{$form}__hint)) {
-					grid-template-areas: 'input label';
-					grid-template-rows: auto;
-				}
-
-				@at-root #{$root}--label-align-left#{$button} {
-					grid-template-columns: 1fr auto;
-					grid-template-areas: 'msg msg' 'label input' 'hint hint';
-					grid-template-rows: auto auto auto;
-
-					&:not(:has(.#{$form}__msg)) {
-						grid-template-areas: 'label input' 'hint hint';
-						grid-template-rows: auto auto;
-					}
-
-					&:not(:has(.#{$form}__hint)) {
-						grid-template-areas: 'msg msg' 'label input';
-						grid-template-rows: auto auto;
-					}
-
-					&:not(:has(.#{$form}__msg)):not(:has(.#{$form}__hint)) {
-						grid-template-areas: 'label input';
-						grid-template-rows: auto;
-					}
-				}
-
-				&.kol-form-field--hide-label {
-					grid-template-areas: 'msg' 'input' 'hint';
-					grid-template-columns: 1fr;
-					grid-template-rows: auto auto auto;
-
-					&:not(:has(.#{$form}__msg)) {
-						grid-template-areas: 'input' 'hint';
-						grid-template-rows: auto auto;
-					}
-
-					&:not(:has(.#{$form}__hint)) {
-						grid-template-areas: 'msg' 'input';
-						grid-template-rows: auto auto;
-					}
-
-					&:not(:has(.#{$form}__msg)):not(:has(.#{$form}__hint)) {
-						grid-template-areas: 'input';
-						grid-template-rows: auto;
-					}
-				}
-			}
-			/*
-			* End Button
-			*/
-		}
-	}
-
-	.kol-input-container {
-		$root: &;
-
+		position: relative;
 		display: flex;
 		align-items: center;
 
-		#{$root}__checkbox-container {
-			align-items: center;
-			display: flex;
-		}
+		.kol-input {
+			font-size: rem(16);
 
-		#{$root}__checkbox-input-element {
+			appearance: none;
+			background-color: #fff;
+			cursor: pointer;
+			transition: 0.5s;
+
 			margin: 0;
 			border-style: solid;
 			border-width: rem(2);
-			line-height: 1.5;
 
-			&[type='checkbox'] {
-				appearance: none;
-				background-color: #fff;
+			&:before {
+				content: '';
 				cursor: pointer;
-				transition: 0.5s;
+			}
 
-				&:before {
-					content: '';
-					cursor: pointer;
-				}
+			&:disabled:before {
+				cursor: not-allowed;
+			}
+		}
+	}
 
-				&:disabled:before {
-					cursor: not-allowed;
-				}
+	/**
+	 * Variant: Checkbox
+	 */
+	.kol-checkbox--variant-default {
+		height: var(--a11y-min-size);
+		justify-content: center;
+		position: relative;
+		width: var(--a11y-min-size);
+
+		.kol-icon {
+			display: flex;
+			inset: auto;
+			position: absolute;
+			z-index: 1;
+			pointer-events: none;
+
+			&::part(icon) {
+				display: none;
 			}
 		}
 
-		&--variant {
-			/*
-			* Checkbox
-			*/
-			&-default {
-				#{$root}__checkbox-container {
-					height: var(--a11y-min-size);
-					justify-content: center;
-					position: relative;
-					width: var(--a11y-min-size);
-				}
+		.kol-input {
+			width: rem(22);
+			height: rem(22);
+		}
 
-				#{$root}__checkbox-icon {
-					display: flex;
-					inset: auto;
-					position: absolute;
-					z-index: 1;
-					pointer-events: none;
-				}
+		&.kol-checkbox--checked,
+		&.kol-checkbox--indeterminate {
+			.kol-icon::part(icon) {
+				display: block;
+			}
+		}
+	}
 
-				#{$root}__checkbox-input-element {
-					width: rem(22);
-					height: rem(22);
-				}
+	/**
+	 * Variant: Switch
+	 */
+	.kol-checkbox--variant-switch {
+		position: relative;
 
-				&:not(#{$root}--checked):not(#{$root}--indeterminate) {
-					& #{$root}__checkbox-icon::part(icon) {
-						display: none;
-					}
-				}
+		.kol-input {
+			display: inline-block;
+			height: 1.7em;
+			min-width: 3.2em;
+			position: relative;
+			width: 3.2em;
+
+			&::before {
+				background-color: #000;
+				height: 1.2em;
+				left: calc(0.25em - rem(2));
+				top: calc(0.25em - rem(2));
+				position: absolute;
+				transition: 0.5s;
+				width: 1.2em;
 			}
 
-			/*
-			* Switch
-			*/
-			&-switch {
-				$switch: &;
-
-				position: relative;
-
-				#{$root}__checkbox-input-element {
-					&[type='checkbox'] {
-						display: inline-block;
-						height: 1.7em;
-						min-width: 3.2em;
-						position: relative;
-						width: 3.2em;
-
-						&::before {
-							background-color: #000;
-							height: 1.2em;
-							left: calc(0.25em - rem(2));
-							top: calc(0.25em - rem(2));
-							position: absolute;
-							transition: 0.5s;
-							width: 1.2em;
-						}
-
-						&:checked::before {
-							transform: translateX(1.5em);
-						}
-
-						&:indeterminate::before {
-							transform: translateX(0.75em);
-						}
-					}
-				}
-
-				#{$root}__checkbox-icon {
-					cursor: pointer;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					width: 1.2em;
-					height: 1.2em;
-					position: absolute;
-					z-index: 1;
-					top: 50%;
-					left: rem(4);
-					transform: translate(0, -50%);
-					transition: 0.5s;
-					color: #000;
-				}
-
-				@at-root #{$root}--checked#{$switch} #{$root}__checkbox-icon {
-					transform: translate(1.5em, -50%);
-				}
-
-				@at-root #{$root}--indeterminate#{$switch} #{$root}__checkbox-icon {
-					transform: translate(0.75em, -50%);
-				}
+			&:checked::before {
+				transform: translateX(1.5em);
 			}
-			/*
-			* Button
-			*/
-			&-button {
-				width: var(--a11y-min-size);
 
-				#{$root}__checkbox-icon {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					width: var(--a11y-min-size);
-					height: var(--a11y-min-size);
-				}
+			&:indeterminate::before {
+				transform: translateX(0.75em);
 			}
+		}
+
+		.kol-icon {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 1.2em;
+			height: 1.2em;
+			position: absolute;
+			z-index: 1;
+			top: 50%;
+			left: rem(4);
+			transform: translate(0, -50%);
+			transition: 0.5s;
+			color: #000;
+		}
+
+		&.kol-checkbox--checked .kol-icon {
+			transform: translate(1.5em, -50%);
+		}
+
+		&.kol-checkbox--indeterminate .kol-icon {
+			transform: translate(0.75em, -50%);
+		}
+	}
+
+	/**
+	 * Variant: Button
+	 */
+	.kol-checkbox--variant-button {
+		width: var(--a11y-min-size);
+
+		.kol-icon {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: var(--a11y-min-size);
+			height: var(--a11y-min-size);
 		}
 	}
 }

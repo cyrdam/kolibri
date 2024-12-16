@@ -16,7 +16,7 @@ describe('FormFieldTooltipFc', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldTooltipFc id="test-id" label="Test Label" class={classNames} />);
 
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.className).toContain('input-tooltip');
+		expect(page.root?.className).toContain('kol-form-field__tooltip');
 		expect(page.root?.className).toContain(classNames);
 	});
 

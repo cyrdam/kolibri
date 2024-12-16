@@ -4,8 +4,4 @@
 @import '../form-field';
 @import '../input-container';
 
-@layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-}
+@include kol-alert-styles;

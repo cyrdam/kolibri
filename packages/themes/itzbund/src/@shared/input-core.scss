@@ -6,12 +6,16 @@
 @import '../mixins/typography';
 @import '../mixins/input-base';
 
-@layer kol-theme-component {
-	:host {
-		@include kol-alert-theme;
-	}
+// @import '../mixins/form-field';
+// @import '../mixins/form-field-order';
 
-	input {
+@layer kol-theme-component {
+	@include kol-alert-theme;
+	// @include kol-form-field-theme;
+	// @include kol-form-field-order-theme;
+	@include kol-input-theme('kol-input');
+
+	.kol-input {
 		@include kol-typography-body;
 		@include kol-input-base;
 
@@ -20,7 +24,7 @@
 		overflow: hidden;
 	}
 
-	.error input {
-		@include kol-input-error;
-	}
+	// .error input {
+	// 	@include kol-input-error;
+	// }
 }

@@ -3,17 +3,21 @@
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _accessKey="V" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           Label
           <span aria-hidden="true" class="access-key-hint">
             V
           </span>
         </span>
       </label>
-      <div class="input">
-        <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -23,16 +27,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _alert=true 1`] = `
 <kol-input-date _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -42,16 +50,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _disabled=true 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date disabled has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-form-field--disabled kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" disabled="" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--disabled">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -61,20 +73,24 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _hint="Hint" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <span class="hint" id="id-nonce-hint">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
+      </div>
+      <span class="kol-form-field__hint" id="id-nonce-hint">
         Hint
       </span>
-      <div class="input">
-        <input aria-describedby="id-nonce-hint" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
-      </div>
     </div>
   </template>
 </kol-input-date>
@@ -83,21 +99,25 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <div class="inputAdornment-start">
-          <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
-        </div>
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
-        <div class="inputAdornment-end">
-          <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start">
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+          </div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
         </div>
       </div>
     </div>
@@ -108,20 +128,24 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <div class="inputAdornment-start">
-          <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start">
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-left" _label=""></kol-icon>
+          </div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
-        <div class="inputAdornment-end"></div>
       </div>
     </div>
   </template>
@@ -131,19 +155,23 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <div class="inputAdornment-start"></div>
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
-        <div class="inputAdornment-end">
-          <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <kol-icon _icons="codicon codicon-codicon codicon-arrow-right" _label=""></kol-icon>
+          </div>
         </div>
       </div>
     </div>
@@ -154,16 +182,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
 <kol-input-date _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value hidden-error kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-form-field--hidden-error kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -173,16 +205,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -192,16 +228,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _readOnly=true 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date read-only" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-form-field--read-only kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" readonly="" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly" id="id-nonce" max="9999-12-31" name="field" readonly="" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -211,17 +251,21 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _shortKey="S" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           Label
           <span aria-hidden="true" class="access-key-hint">
             S
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -231,16 +275,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _touched=true 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date touched" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-form-field--touched kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -250,16 +298,20 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
-    <div class="date has-value kol-input kol-input-date" role="presentation">
-      <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
-        <span class="input-label-span">
+    <div class="date has-value kol-form-field kol-input-date" role="presentation">
+      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+        <span class="kol-form-field__label-text">
           <span>
             Label
           </span>
         </span>
       </label>
-      <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="id-nonce" max="9999-12-31" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
       </div>
     </div>
   </template>

@@ -71,8 +71,8 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-select', 'select', {
-				'has-value': this.state._hasValue,
+			class: clsx('kol-form-field-select', {
+				'kol-form-field--has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.selectRef?.focus(),

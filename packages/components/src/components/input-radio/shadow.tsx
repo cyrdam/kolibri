@@ -30,7 +30,6 @@ import { propagateSubmitEventToForm } from '../form/controller';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolFormFieldHintFc from '../../functional-components/FormFieldHint';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -89,8 +88,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
-			renderNoHint: true,
-			anotherChildren: (<KolFormFieldHintFc hint={this.state._hint} />) as JSX.Element,
 			hideLabel: false,
 		};
 	}
@@ -109,13 +106,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			id: id,
 			hint: option.hint,
 			label: option.label as string,
-			hideLabel: false,
-			fieldControlLabelProps: {
-				class: clsx({
-					'kol-field-control__label--visually-hidden': this.state._hideLabel,
-				}),
-			},
-			showTooltip: this.state._hideLabel,
+			required: false,
 		};
 
 		if (option.disabled) {
