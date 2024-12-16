@@ -126,7 +126,7 @@ export class KolProcess implements ProgressAPI {
 					max={this.state._max}
 					value={this.state._value}
 				></progress>
-				<span class="kol-progress__span" aria-live="polite" aria-relevant="removals text" class="visually-hidden">
+				<span aria-live="polite" aria-relevant="removals text" class="kol-progress__span visually-hidden">
 					{this.state._liveValue} von {this.state._max} {this.state._unit}
 				</span>
 			</div>

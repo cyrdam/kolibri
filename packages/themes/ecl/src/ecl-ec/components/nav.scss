@@ -42,13 +42,13 @@
 		&__list-item &__entry {
 			display: flex;
 
-			.kol-button-wc:first-child,
+			.kol-button:first-child,
 			&--item,
 			.kol-span {
 				flex-grow: 1;
 			}
 
-			&--expand-button .kol-button-wc {
+			&--expand-button .kol-button {
 				background-color: var(--color-blue-130);
 				margin: auto;
 				height: 100%;
@@ -59,12 +59,12 @@
 			}
 		}
 
-		:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span {
+		:is(.kol-button, .kol-link):focus-within .kol-span {
 			border-color: var(--color-white);
 		}
 
-		:is(.kol-button-wc, .kol-link-wc):focus-within .kol-span,
-		:is(.kol-button-wc, .kol-link-wc):hover .kol-span {
+		:is(.kol-button, .kol-link):focus-within .kol-span,
+		:is(.kol-button, .kol-link):hover .kol-span {
 			text-decoration: underline;
 		}
 
