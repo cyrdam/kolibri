@@ -3,7 +3,6 @@
 $duration: 0.4s;
 @layer kol-theme-component {
 	.kol-drawer {
-		background: purple !important;
 		&__wrapper {
 			box-shadow: 0 0 rem(4) var(--color-subtle);
 
