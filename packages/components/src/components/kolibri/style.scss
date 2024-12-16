@@ -2,18 +2,14 @@
 @import '../style';
 
 @layer kol-component {
-	:host {
+	.kol-kolibri {
 		display: inline-block;
 		font-size: rem(16);
-	}
-
-	text {
-		font-size: rem(90);
-		letter-spacing: normal;
-		word-spacing: normal;
-	}
-
-	svg {
 		max-height: 100%;
+		&__text {
+			font-size: rem(90);
+			letter-spacing: normal;
+			word-spacing: normal;
+		}
 	}
 }

@@ -5,8 +5,6 @@ import type { LabelPropType, ToolbarAPI, ToolbarStates, ToolbarItemsPropType, To
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KolLinkTag, KolButtonTag } from '../../core/component-names';
 
-const TOOLBAR_ITEM_TAG_NAME = 'kol-toolbar__item';
-
 @Component({
 	tag: 'kol-toolbar',
 	styleUrls: {
@@ -30,7 +28,7 @@ export class KolToolbar implements ToolbarAPI {
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
 		const props = {
 			key: index,
-			class: TOOLBAR_ITEM_TAG_NAME,
+			class: 'kol-toolbar__item',
 			_tabIndex: tabIndex,
 		};
 		const catchRef = (element?: HTMLKolLinkElement | HTMLKolButtonElement) => {
