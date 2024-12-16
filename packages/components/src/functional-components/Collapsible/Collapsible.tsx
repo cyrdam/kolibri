@@ -47,8 +47,8 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			class={clsx(
 				'collapsible',
 				{
-					disabled: disabled === true,
-					open: open === true,
+					'collapsible--disabled': disabled === true,
+					'collapsible--open': open === true,
 				},
 				classNames,
 			)}

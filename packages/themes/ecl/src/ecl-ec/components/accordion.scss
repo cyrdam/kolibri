@@ -13,7 +13,7 @@
 		border-width: rem(1);
 
 		&__heading-button {
-			button {
+			.kol-button {
 				text-align: left;
 				width: 100%;
 				padding: 0 var(--spacing-m);
@@ -21,7 +21,7 @@
 				place-items: center;
 				line-height: 1.2;
 
-				span {
+				&__text {
 					color: var(--color-grey);
 					font-weight: var(--font-weight-bold);
 					padding: rem(12) 0;
