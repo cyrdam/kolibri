@@ -505,7 +505,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		return (
-			<tr key={`row-${key}`}>
+			<tr class="kol-table__body-cell-row" key={`row-${key}`}>
 				{this.renderSelectionCell(row, rowIndex)}
 				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical))}
 			</tr>
@@ -710,7 +710,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return (
 			<tr aria-hidden="true" class={clsx(`kol-table__${variant}-spacer`)}>
-				<td colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
+				<td class={clsx(`kol-table__${variant}-spacer-line`)} colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
 			</tr>
 		);
 	}
