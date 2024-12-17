@@ -4,7 +4,7 @@ import { KolSelect } from '@public-ui/react';
 
 import { ERROR_MSG } from '../../../shares/constants';
 
-import type { Components, SelectOption } from '@public-ui/components';
+import type { Components, Optgroup, SelectOption, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
@@ -26,6 +26,19 @@ const SALUTATION_OPTIONS: SelectOption<string>[] = [
 		value: 'Divers',
 	},
 ];
+
+type GroupedOptionsType = Record<string, Optgroup<StencilUnknown>>;
+
+const groupedOptions: GroupedOptionsType = COUNTRY_OPTIONS.reduce((acc, option) => {
+	const firstLetter = (option.label as string).charAt(0).toUpperCase();
+	if (!acc[firstLetter]) {
+		acc[firstLetter] = { label: firstLetter, options: [] };
+	}
+	acc[firstLetter].options.push({ label: option.label, value: option.label });
+	return acc;
+}, {} as GroupedOptionsType);
+
+const groupedOptionsArray = Object.values(groupedOptions);
 
 export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function SelectCases(props, ref) {
 	return (
@@ -59,6 +72,8 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With access key" _accessKey="c" />
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With short key" _shortKey="s" />
+			<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter" _value={['Albanien']} />
+			<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter (multiple)" _multiple _value={['Albanien']} />
 		</div>
 	);
 });
