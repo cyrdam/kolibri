@@ -75,10 +75,7 @@
 
 	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion#toning_down_the_animation_scaling */
 	@media (prefers-reduced-motion) {
-		.kol-spin__spinner-element--1,
-		.kol-spin__spinner-element--2,
-		.kol-spin__spinner-element--3,
-		.kol-spin__spinner-element--neutral {
+		.kol-spin__spinner-element {
 			animation-duration: 2s;
 		}
 	}

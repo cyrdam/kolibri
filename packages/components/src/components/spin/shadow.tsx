@@ -42,10 +42,7 @@ export class KolSpin implements SpinAPI {
 						aria-busy="true"
 						aria-label={translate('kol-action-running')}
 						aria-live="polite"
-						class={clsx('kol-spin__spinner', {
-							[`kol-spin__spinner--${this.state._variant}`]: true,
-							/* [`spin--${this.state._variant}`]: true, witch benefit have this notation? */
-						})}
+						class={clsx('kol-spin__spinner', `kol-spin__spinner--${this.state._variant}`)}
 						role="alert"
 					>
 						{renderSpin(this.state._variant)}
