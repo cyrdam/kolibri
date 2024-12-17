@@ -47,11 +47,6 @@ export type InputCheckboxIconsState = {
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	alert: boolean;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	error: string;
 	hint: string;
 	icons: Stringified<InputCheckboxIconsProp>;
 	msg: Stringified<MsgPropType>;
@@ -82,7 +77,6 @@ type RequiredStates = {
 	PropIndeterminate &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	alert: boolean;
 	hint: string;
 	on: InputTypeOnDefault;
 	tabIndex: number;

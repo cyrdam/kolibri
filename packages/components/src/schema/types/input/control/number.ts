@@ -8,10 +8,8 @@ export type InputDateType = (typeof inputDateTypeOptions)[number];
 
 export type OptionalInputProps<T> = {
 	accessKey: string;
-	alert: boolean;
 	autoComplete: InputTypeOnOff;
 	disabled: boolean;
-	error: string;
 	hideLabel: boolean;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;

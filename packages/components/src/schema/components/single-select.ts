@@ -43,7 +43,6 @@ type RequiredStates = {
 	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	alert: boolean;
 	hint: string;
 	value: string;
 	icons: KoliBriHorizontalIcons;

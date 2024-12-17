@@ -20,11 +20,6 @@ import type { InputTypeOnDefault, RadioOption, Orientation, StencilUnknown, Stri
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	alert: boolean;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	error: string;
 	hint: string;
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
@@ -50,7 +45,6 @@ type RequiredStates = {
 	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	alert: boolean;
 	hint: string;
 	on: InputTypeOnDefault;
 	tabIndex: number;
