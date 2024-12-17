@@ -15,7 +15,7 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 ### kol-input-file
 
-- The property `_value` has been removed as it never served a purpose. Use the `_files` property or `getValue()` instead to access the FileList.
+- The property `_value` has been removed as it never served a purpose. Use the `getValue()` method instead to access the FileList.
 
 ### kol-table-stateful
 

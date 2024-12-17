@@ -65,13 +65,4 @@ test.describe(COMPONENT_NAME, () => {
 			});
 		});
 	});
-
-	test(`should reflect the _files property on the web component`, async ({ page }) => {
-		await page.setContent(`<kol-input-file _label="Input"></kol-input-file>`);
-		await fillAction(page);
-		const filesDomProperty: FileList | null | undefined = await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputFileElement) => element._files);
-
-		expect(filesDomProperty).toBeTruthy();
-		expect(Object.keys(filesDomProperty as FileList)).toHaveLength(1); // no great way to test this, because Playwright has no FileList implementation.
-	});
 });
