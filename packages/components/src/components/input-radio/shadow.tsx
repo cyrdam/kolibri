@@ -1,3 +1,7 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
+
 import type {
 	FocusableElement,
 	HideErrorPropType,
@@ -15,19 +19,17 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	ShortKeyPropType,
+	RadioOption,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { KolInputTag } from '../../core/component-names';
-import { KolFormFieldMsgFc } from '../../functional-components';
+
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolFormFieldHintFc from '../../functional-components/FormFieldHint';
 
 /**
  * @slot - Die Legende/Überschrift der Radiobuttons.
@@ -63,118 +65,107 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
-	public render(): JSX.Element {
-		const { ariaDescribedBy, hasError } = getRenderStates(this.state);
-		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		return (
-			<Host class="kol-input-radio">
-				<fieldset
-					class={{
-						fieldset: true,
-						disabled: this.state._disabled === true,
-						error: hasError === true,
-						required: this.state._required === true,
-						'hidden-error': this._hideError === true,
-						[this.state._orientation]: true,
-					}}
-				>
-					<legend class="block w-full mb-1 leading-normal">
-						{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-						<span>
-							{/* INFO: label comes with any html tag or as plain text! */}
-							<span slot="label">
-								{hasExpertSlot ? (
-									<slot name="expert"></slot>
-								) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-									<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this._label} />
-								) : (
-									this._label
-								)}
-							</span>
-						</span>
-					</legend>
-					{this.state._options.map((option, index) => {
-						/**
-						 * Damit der Value einer Option ein beliebigen Typ haben kann
-						 * muss man auf HTML-Ebene den Value auf einen String-Wert
-						 * mappen. Das tun wir mittels der Map.
-						 */
-						const customId = `${this.state._id}-${index}`;
-						const slotName = `radio-${index}`;
-						const selected = this.state._value === option.value;
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			component: 'fieldset',
+			formFieldLabelProps: {
+				component: 'legend',
+				class: 'block w-full mb-1 leading-normal',
+			},
+			class: clsx('kol-input-radio', 'fieldset', this.state._orientation),
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.inputRef?.focus(),
+			alert: this.showAsAlert(),
+			renderNoHint: true,
+			anotherChildren: (<KolFormFieldHintFc hint={this.state._hint} />) as JSX.Element,
+			hideLabel: false,
+		};
+	}
 
-						return (
-							<KolInputTag
-								class={{
-									radio: true,
-									disabled: Boolean(this.state._disabled || option.disabled),
-								}}
-								key={customId}
-								_accessKey={this.state._accessKey} // by radio?!
-								_disabled={this.state._disabled || option.disabled}
-								_hideLabel={this.state._hideLabel}
-								_hint={option.hint}
-								_id={customId}
-								_label={option.label as string}
-								_renderNoLabel={true}
-								_required={this.state._required}
-								_shortKey={this.state._shortKey}
-								_slotName={slotName}
-								_tooltipAlign={this._tooltipAlign}
-								_touched={this.state._touched}
-							>
-								<div slot={slotName} class="radio-input-wrapper">
-									<input
-										ref={this.state._value === option.value ? this.catchRef : undefined}
-										title=""
-										accessKey={this.state._accessKey} // by radio?!
-										aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-										aria-label={this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined}
-										type="radio"
-										id={customId}
-										checked={selected}
-										name={this.state._name || this.state._id}
-										disabled={this.state._disabled || option.disabled}
-										required={this.state._required}
-										tabIndex={this.state._tabIndex}
-										value={`-${index}`}
-										{...this.controller.onFacade}
-										onChange={this.onChange}
-										onClick={undefined} // onClick is not needed since onChange already triggers the correct event
-										onInput={this.onInput}
-										onKeyDown={this.onKeyDown.bind(this)}
-										onFocus={(event) => {
-											this.controller.onFacade.onFocus(event);
-											this.inputHasFocus = true;
-										}}
-										onBlur={(event) => {
-											this.controller.onFacade.onBlur(event);
-											this.inputHasFocus = false;
-										}}
-									/>
-									<label
-										class="radio-label"
-										htmlFor={`${customId}`}
-										style={{
-											height: this.state._hideLabel ? '0' : undefined,
-											margin: this.state._hideLabel ? '0' : undefined,
-											padding: this.state._hideLabel ? '0' : undefined,
-											visibility: this.state._hideLabel ? 'hidden' : undefined,
-										}}
-									>
-										<span>
-											<span class="radio-label-span-inner">{option.label}</span>
-										</span>
-									</label>
-								</div>
-							</KolInputTag>
-						);
-					})}
-					{hasError && <KolFormFieldMsgFc _alert={this.showAsAlert()} _hideError={this.state._hideError} _msg={this.state._msg} _id={this.state._id} />}
-					{hasHint && <span class="hint">{this.state._hint}</span>}
-				</fieldset>
-			</Host>
+	public render(): JSX.Element {
+		return (
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				{this.state._options.map((option, index) => this.renderOption(option, index))}
+			</KolFormFieldStateWrapperFc>
+		);
+	}
+
+	private getOptionProps(option: RadioOption<StencilUnknown>): FormFieldStateWrapperProps {
+		const obj: FormFieldStateWrapperProps = {
+			state: this.state,
+			hint: option.hint,
+			label: option.label as string,
+			msg: undefined,
+		};
+
+		if (option.disabled) {
+			obj.disabled = true;
+		}
+
+		return obj;
+	}
+
+	private getInputProps(option: RadioOption<StencilUnknown>, index: number, selected: boolean): InputStateWrapperProps {
+		const obj: InputStateWrapperProps = {
+			state: this.state,
+
+			ref: this.state._value === option.value ? this.catchRef : undefined,
+			class: clsx('radio', {
+				disabled: Boolean(this.state._disabled || option.disabled),
+			}),
+			'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
+			type: 'radio',
+			name: this.state._name || this.state._id,
+			value: `-${index}`,
+			checked: selected,
+
+			...this.controller.onFacade,
+			onChange: this.onChange,
+			onClick: undefined, // onClick is not needed since onChange already triggers the correct event
+			onInput: this.onInput,
+			onKeyDown: this.onKeyDown.bind(this),
+			onFocus: (event: Event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event: Event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+		};
+
+		if (option.disabled) {
+			obj.disabled = true;
+		}
+
+		return obj;
+	}
+
+	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
+		const customId = `${this.state._id}-${index}`;
+		const selected = this.state._value === option.value;
+
+		return (
+			<KolFormFieldStateWrapperFc key={customId} {...this.getOptionProps(option)} renderNoLabel>
+				<div class="radio-input-wrapper">
+					<KolInputStateWrapperFc {...this.getInputProps(option, index, selected)} />
+					<label
+						class="radio-label"
+						htmlFor={`${customId}`}
+						style={{
+							height: this.state._hideLabel ? '0' : undefined,
+							margin: this.state._hideLabel ? '0' : undefined,
+							padding: this.state._hideLabel ? '0' : undefined,
+							visibility: this.state._hideLabel ? 'hidden' : undefined,
+						}}
+					>
+						<span>
+							<span class="radio-label-span-inner">{option.label}</span>
+						</span>
+					</label>
+				</div>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 

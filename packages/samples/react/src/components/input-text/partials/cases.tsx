@@ -21,6 +21,7 @@ export const InputTextCases = forwardRef<HTMLKolInputTextElement, Components.Kol
 						icon: 'codicon codicon-arrow-right',
 						style: {
 							'font-size': '200%',
+							'margin-right': 'calc(-8rem / var(--kolibri-root-font-size, 16))',
 						},
 					},
 				}}

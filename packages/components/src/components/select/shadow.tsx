@@ -1,3 +1,7 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
+
 import type {
 	FocusableElement,
 	HideErrorPropType,
@@ -7,12 +11,9 @@ import type {
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
-	Optgroup,
-	Option,
 	OptionsWithOptgroupPropType,
 	RowsPropType,
 	SelectAPI,
-	SelectOption,
 	SelectStates,
 	ShortKeyPropType,
 	Stringified,
@@ -20,21 +21,14 @@ import type {
 	TooltipAlignPropType,
 	W3CInputValue,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { SelectController } from './controller';
-import { KolInputTag } from '../../core/component-names';
 import { propagateSubmitEventToForm } from '../form/controller';
-
-const isSelected = (valueList: unknown[] | null, optionValue: unknown): boolean => {
-	return Array.isArray(valueList) && valueList.includes(optionValue);
-};
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -66,138 +60,56 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.selectRef?.focus();
 	}
 
-	private renderOptgroup(optgroup: Optgroup<string>, preKey: string): JSX.Element {
-		return (
-			<optgroup disabled={optgroup.disabled} label={optgroup.label}>
-				{optgroup.options?.map((option: SelectOption<W3CInputValue>, index: number) => {
-					const key = `${preKey}-${index}`;
-					if (Array.isArray((option as Optgroup<string>).options)) {
-						return this.renderOptgroup(option as Optgroup<string>, key);
-					} else {
-						return (
-							<option
-								disabled={option.disabled}
-								key={key}
-								// label={option.label}
-								selected={isSelected(this.state._value, (option as Option<W3CInputValue>).value)}
-								value={key}
-							>
-								{option.label}
-							</option>
-						);
-					}
-				})}
-			</optgroup>
-		);
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: clsx('kol-select', 'select', {
+				'has-value': this.state._hasValue,
+			}),
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.selectRef?.focus(),
+			alert: this.showAsAlert(),
+		};
+	}
+
+	private getSelectProps(): SelectStateWrapperProps {
+		return {
+			ref: this.catchRef,
+			state: this.state,
+			...this.controller.onFacade,
+			onInput: this.onInput.bind(this),
+			onChange: this.onChange.bind(this),
+			onFocus: (event: Event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event: Event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+		};
 	}
 
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = showExpertSlot(this.state._label);
-
 		return (
-			<Host class={{ 'kol-select': true, 'has-value': this.state._hasValue }}>
-				<KolInputTag
-					class={{
-						'hide-label': !!this.state._hideLabel,
-						select: true,
-					}}
-					_accessKey={this.state._accessKey}
-					_alert={this.showAsAlert()}
-					_disabled={this.state._disabled}
-					_hideError={this.state._hideError}
-					_hideLabel={this.state._hideLabel}
-					_hint={this.state._hint}
-					_icons={this.state._icons}
-					_id={this.state._id}
-					_label={this.state._label}
-					_msg={this.state._msg}
-					_required={this.state._required}
-					_shortKey={this.state._shortKey}
-					_tooltipAlign={this._tooltipAlign}
-					_touched={this.state._touched}
-					onClick={() => this.selectRef?.focus()}
-					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
-				>
-					<span slot="label">
-						{hasExpertSlot ? (
-							<slot name="expert"></slot>
-						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-							<>
-								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="access-key-hint" aria-hidden="true">
-									{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-								</span>
-							</>
-						) : (
-							<span>{this.state._label}</span>
-						)}
-					</span>
-					<div slot="input">
-						<form
-							onSubmit={(event) => {
-								event.preventDefault();
-								propagateSubmitEventToForm({
-									form: this.host,
-									ref: this.selectRef,
-								});
-							}}
-						>
-							<input type="submit" hidden />
-							<select
-								ref={this.catchRef}
-								title=""
-								accessKey={this.state._accessKey}
-								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-								autoCapitalize="off"
-								autoCorrect="off"
-								disabled={this.state._disabled}
-								id={this.state._id}
-								multiple={this.state._multiple}
-								name={this.state._name}
-								required={this.state._required}
-								size={this.state._rows}
-								{...this.controller.onFacade}
-								onInput={this.onInput.bind(this)}
-								onChange={this.onChange.bind(this)}
-								onFocus={(event) => {
-									this.controller.onFacade.onFocus(event);
-									this.inputHasFocus = true;
-								}}
-								onBlur={(event) => {
-									this.controller.onFacade.onBlur(event);
-									this.inputHasFocus = false;
-								}}
-							>
-								{this.state._options.map((option, index) => {
-									/**
-									 * Damit der Value einer Option ein beliebigen Typ haben kann
-									 * muss man auf HTML-Ebene den Value auf einen String-Wert
-									 * mappen. Das tun wir mittels der Map.
-									 */
-									const key = `-${index}`;
-									if (Array.isArray((option as unknown as Optgroup<string>).options)) {
-										return this.renderOptgroup(option as unknown as Optgroup<string>, key);
-									} else {
-										return (
-											<option
-												disabled={option.disabled}
-												key={key}
-												// label={option.label}
-												selected={isSelected(this.state._value, (option as unknown as Option<W3CInputValue>).value)}
-												value={key}
-											>
-												{option.label}
-											</option>
-										);
-									}
-								})}
-							</select>
-						</form>
-					</div>
-				</KolInputTag>
-			</Host>
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<KolInputContainerFc state={this.state}>
+					{/* deprecated: remove from theme and replace/refactor 'flex-grow: 1;' */}
+					<form
+						class="input-slot"
+						onSubmit={(event) => {
+							event.preventDefault();
+							propagateSubmitEventToForm({
+								form: this.host,
+								ref: this.selectRef,
+							});
+						}}
+					>
+						<input type="submit" hidden />
+						<KolSelectStateWrapperFc {...this.getSelectProps()} />
+					</form>
+				</KolInputContainerFc>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 
