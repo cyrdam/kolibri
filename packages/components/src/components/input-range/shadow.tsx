@@ -1,3 +1,7 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
+
 import type {
 	FocusableElement,
 	HideErrorPropType,
@@ -15,18 +19,15 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	W3CInputValue,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputRangeController } from './controller';
-import { KolInputTag } from '../../core/component-names';
+import KolSuggestionsFc from '../../functional-components/Suggestions';
 
 /**
  * @slot - Die Beschriftung des Eingabeelements.
@@ -116,129 +117,80 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		}
 	}
 
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: clsx('kol-input-range', 'range'),
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.refInputRange?.focus(),
+			alert: this.showAsAlert(),
+		};
+	}
+
+	private getGenericInputProps() {
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const { _suggestions, ...other } = this.state;
+
+		return {
+			state: { ...other, _suggestions: [] },
+			...this.controller.onFacade,
+			onChange: this.onChange,
+			onFocus: (event: Event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event: Event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+		};
+	}
+
+	private get hasSuggestions(): boolean {
+		return Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
+	}
+
+	private getInputRangeProps(): InputStateWrapperProps {
+		return {
+			...this.getGenericInputProps(),
+			name: this.state._name ? `${this.state._name}-range` : undefined,
+			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			type: 'range',
+			tabIndex: -1,
+			id: undefined,
+			'aria-hidden': 'true',
+			ref: this.catchInputRangeRef,
+		};
+	}
+
+	private getInputNumberProps(): InputStateWrapperProps {
+		return {
+			...this.getGenericInputProps(),
+			name: this.state._name ? `${this.state._name}-number` : undefined,
+			list: this.hasSuggestions ? `${this.state._id}-list` : undefined,
+			type: 'number',
+			ref: this.catchInputNumberRef,
+			onKeyDown: this.onKeyDown,
+		};
+	}
+
 	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
-		const hasExpertSlot = showExpertSlot(this.state._label);
+		const inputsWrapperStyle = {
+			'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
+		};
 
 		return (
-			<Host class="kol-input-range">
-				<KolInputTag
-					class={{
-						range: true,
-						'hide-label': !!this.state._hideLabel,
-					}}
-					_accessKey={this.state._accessKey}
-					_alert={this.showAsAlert()}
-					_disabled={this.state._disabled}
-					_hideError={this.state._hideError}
-					_hideLabel={this.state._hideLabel}
-					_hint={this.state._hint}
-					_icons={this.state._icons}
-					_id={this.state._id}
-					_label={this.state._label}
-					_msg={this.state._msg}
-					_shortKey={this.state._shortKey}
-					_tooltipAlign={this._tooltipAlign}
-					_touched={this.state._touched}
-				>
-					<span slot="label">
-						{hasExpertSlot ? (
-							<slot name="expert"></slot>
-						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-							<>
-								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="access-key-hint" aria-hidden="true">
-									{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-								</span>
-							</>
-						) : (
-							<span>{this.state._label}</span>
-						)}
-					</span>
-					<div slot="input">
-						<div
-							class="inputs-wrapper"
-							style={{
-								'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
-							}}
-						>
-							<input
-								ref={this.catchInputRangeRef}
-								title=""
-								accessKey={this.state._accessKey}
-								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-								aria-hidden="true"
-								autoCapitalize="off"
-								autoComplete={this.state._autoComplete}
-								autoCorrect="off"
-								disabled={this.state._disabled}
-								list={hasSuggestions ? `${this.state._id}-list` : undefined}
-								max={this.state._max}
-								min={this.state._min}
-								name={this.state._name ? `${this.state._name}-range` : undefined}
-								step={this.state._step}
-								tabIndex={-1}
-								type="range"
-								value={this.state._value as number}
-								{...this.controller.onFacade}
-								onChange={this.onChange}
-								onFocus={(event) => {
-									this.controller.onFacade.onFocus(event);
-									this.inputHasFocus = true;
-								}}
-								onBlur={(event) => {
-									this.controller.onFacade.onBlur(event);
-									this.inputHasFocus = false;
-								}}
-							/>
-							<input
-								ref={this.catchInputNumberRef}
-								title=""
-								accessKey={this.state._accessKey}
-								aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-								aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-								autoCapitalize="off"
-								autoComplete={this.state._autoComplete}
-								autoCorrect="off"
-								disabled={this.state._disabled}
-								id={this.state._id}
-								list={hasSuggestions ? `${this.state._id}-list` : undefined}
-								max={this.state._max}
-								min={this.state._min}
-								name={this.state._name ? `${this.state._name}-number` : undefined}
-								step={this.state._step}
-								type="number"
-								value={this.state._value}
-								{...this.controller.onFacade}
-								onKeyDown={this.onKeyDown}
-								onChange={this.onChange}
-								onFocus={(event) => {
-									this.controller.onFacade.onFocus(event);
-									this.inputHasFocus = true;
-								}}
-								onBlur={(event) => {
-									this.controller.onFacade.onBlur(event);
-									this.inputHasFocus = false;
-								}}
-							/>
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<KolInputContainerFc state={this.state}>
+					<div id="input" class="input-slot">
+						<div class="inputs-wrapper" style={inputsWrapperStyle}>
+							<KolInputStateWrapperFc {...this.getInputRangeProps()} />
+							<KolInputStateWrapperFc {...this.getInputNumberProps()} />
 						</div>
-						{hasSuggestions && [
-							<datalist id={`${this.state._id}-list`}>
-								{this.state._suggestions.map((option: W3CInputValue) => (
-									<option value={option} />
-								))}
-							</datalist>,
-							// <ul class="grid gap-1 text-sm grid-flow-col">
-							//   {this.state._suggestions.map((option: InputOption<number>) => (
-							//     <li class="border-1">{option.label}</li>
-							//   ))}
-							// </ul>,
-						]}
+						{this.hasSuggestions && <KolSuggestionsFc id={this.state._id} suggestions={this.state._suggestions} />}
 					</div>
-				</KolInputTag>
-			</Host>
+				</KolInputContainerFc>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 

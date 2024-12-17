@@ -1,6 +1,6 @@
 import type { LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
 import { validateLabel } from '../../schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
@@ -17,19 +17,17 @@ import { KolLinkWcTag } from '../../core/component-names';
 export class KolSkipNav implements SkipNavAPI {
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-skip-nav">
-				<nav aria-label={this.state._label}>
-					<ul>
-						{this.state._links.map((link: LinkProps, index: number) => {
-							return (
-								<li key={index}>
-									<KolLinkWcTag {...link}></KolLinkWcTag>
-								</li>
-							);
-						})}
-					</ul>
-				</nav>
-			</Host>
+			<nav class="kol-skip-nav" aria-label={this.state._label}>
+				<ul class="kol-skip-nav__list">
+					{this.state._links.map((link: LinkProps, index: number) => {
+						return (
+							<li class="kol-skip-nav__list-item" key={index}>
+								<KolLinkWcTag {...link}></KolLinkWcTag>
+							</li>
+						);
+					})}
+				</ul>
+			</nav>
 		);
 	}
 
