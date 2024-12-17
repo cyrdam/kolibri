@@ -32,6 +32,7 @@ import {
 import { Events } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import clsx from 'clsx';
 
 /**
  * @internal
@@ -441,12 +442,13 @@ export class KolTableStateless implements TableStatelessAPI {
 			['aria-label']: label,
 		};
 		return (
-			<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
-				<div class={`input ${selected ? 'checked' : ''}`}>
+			<td key={`tbody-${rowIndex}-selection`} class="kol-table__selection-cell">
+				<div class={clsx('kol-table__selection', { ckecked: selected })}>
 					{isMultiple ? (
-						<label class="checkbox-container">
-							<KolIconTag class="icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
+						<label class="kol-table__selection-label">
+							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
 							<input
+								class="kol-table__selection-input"
 								ref={(el) => el && this.checkboxRefs.push(el)}
 								{...props}
 								type="checkbox"
@@ -462,8 +464,9 @@ export class KolTableStateless implements TableStatelessAPI {
 							/>
 						</label>
 					) : (
-						<label class="radio-container">
+						<label class="kol-table__selection-radio-container">
 							<input
+								class="kol-table__selection-input"
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
@@ -475,7 +478,13 @@ export class KolTableStateless implements TableStatelessAPI {
 							/>
 						</label>
 					)}
-					<KolTooltipWcTag aria-hidden="true" class="input-tooltip" _align="right" _id={`${keyProperty}-label`} _label={label}></KolTooltipWcTag>
+					<KolTooltipWcTag
+						aria-hidden="true"
+						class="kol-table__selection-input-tooltip"
+						_align="right"
+						_id={`${keyProperty}-label`}
+						_label={label}
+					></KolTooltipWcTag>
 				</div>
 			</td>
 		);
@@ -525,9 +534,9 @@ export class KolTableStateless implements TableStatelessAPI {
 			return (
 				<td
 					key={`cell-${key}`}
-					class={{
-						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-					}}
+					class={clsx('kol-table__body-cell', {
+						[`kol-table__body-cell--align-${cell.textAlign}`]: cell.textAlign,
+					})}
 					colSpan={cell.colSpan}
 					rowSpan={cell.rowSpan}
 					style={{
@@ -573,11 +582,17 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="selection-cell selection-control">
-				<div class={`input ${indeterminate ? 'indeterminate' : isChecked ? 'checked' : ''}`}>
-					<label class="checkbox-container">
-						<KolIconTag class="icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
+			<th key={`thead-0-selection`} class="kol-table__selection-cell">
+				<div
+					class={clsx({
+						'kol-table__selection-indeterminate': indeterminate,
+						'kol-table__selection-checked': isChecked,
+					})}
+				>
+					<label class="kol-table__selection-label">
+						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
 						<input
+							class="kol-table__selection-input"
 							ref={(el) => el && this.checkboxRefs.push(el)}
 							name="selection"
 							checked={isChecked && !indeterminate}
@@ -592,7 +607,13 @@ export class KolTableStateless implements TableStatelessAPI {
 							}}
 						/>
 					</label>
-					<KolTooltipWcTag aria-hidden="true" class="input-tooltip" _align="right" _id={`${translationKey}-label`} _label={label}></KolTooltipWcTag>
+					<KolTooltipWcTag
+						aria-hidden="true"
+						class="kol-table__selection-input-tooltip"
+						_align="right"
+						_id={`${translationKey}-label`}
+						_label={label}
+					></KolTooltipWcTag>
 				</div>
 			</th>
 		);
@@ -648,7 +669,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={cell.textAlign ? `align-${cell.textAlign}` : undefined}
+				class={clsx('kol-table__header-cell', { [`kol-table__header-cell--align-${cell.textAlign}`]: cell.textAlign })}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
@@ -660,7 +681,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			>
 				{cell.sortDirection ? (
 					<KolButtonWcTag
-						class="table-sort-button"
+						class="kol-table__sort-button"
 						exportparts="icon"
 						_icons={{ right: sortButtonIcon }}
 						_label={cell.label}
@@ -688,7 +709,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
-			<tr aria-hidden="true" class={`${variant}-spacer`}>
+			<tr aria-hidden="true" class={clsx(`kol-table__${variant}-spacer`)}>
 				<td colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
 			</tr>
 		);
@@ -720,8 +741,9 @@ export class KolTableStateless implements TableStatelessAPI {
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
 				 */}
 				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-				<div ref={(element) => (this.tableDivElement = element)} class="table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
+				<div ref={(element) => (this.tableDivElement = element)} class="kol-table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
 					<table
+						class="kol-table__container"
 						style={{
 							minWidth: this.state._minWidth,
 						}}
@@ -732,14 +754,16 @@ export class KolTableStateless implements TableStatelessAPI {
 						 * prevent screen readers from just reading "blank".
 						 */}
 						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+						<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
 							&nbsp;
 						</div>
 
-						<caption id="caption">{this.state._label}</caption>
+						<caption class="kol-table__caption" id="caption">
+							{this.state._label}
+						</caption>
 
 						{Array.isArray(this.state._headerCells.horizontal) && (
-							<thead>
+							<thead class="kol-table__head">
 								{[
 									this.state._headerCells.horizontal.map((cols, rowIndex) => (
 										<tr key={`thead-${rowIndex}`}>
@@ -751,9 +775,9 @@ export class KolTableStateless implements TableStatelessAPI {
 														return (
 															<td
 																key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-																class={{
-																	[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-																}}
+																class={clsx({
+																	[`kol-table__head--${cell.textAlign}`]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
+																})}
 																colSpan={cell.colSpan}
 																rowSpan={cell.rowSpan}
 																style={{
@@ -781,7 +805,9 @@ export class KolTableStateless implements TableStatelessAPI {
 								]}
 							</thead>
 						)}
-						<tbody>{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}</tbody>
+						<tbody class="kol-table__body">
+							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
+						</tbody>
 						{this.renderFoot()}
 					</table>
 				</div>
