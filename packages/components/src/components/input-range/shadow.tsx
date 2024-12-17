@@ -45,14 +45,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private refInputNumber?: HTMLInputElement;
 	private refInputRange?: HTMLInputElement;
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

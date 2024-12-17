@@ -35,14 +35,6 @@ export class KolLink implements LinkProps, FocusableElement {
 		this.linkWcRef = ref;
 	};
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	public async kolFocus() {
 		await this.linkWcRef?.kolFocus();
