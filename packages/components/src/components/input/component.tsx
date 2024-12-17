@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { handleSlotContent, type MsgPropType, type ShortKeyPropType, showExpertSlot } from '../../schema';
+import { convertMsgToInternMsg, handleSlotContent, type MsgPropType, type ShortKeyPropType, showExpertSlot } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, Host, Prop, h } from '@stencil/core';
 import clsx from 'clsx';
@@ -134,7 +134,7 @@ export class KolInputWc implements Props {
 						_label={this._label}
 					></KolTooltipWcTag>
 				)}
-				{showMsg && <KolFormFieldMsgFc _alert={this._alert} _hideError={this._hideError} _msg={this._msg} _id={this._id} />}
+				{showMsg && <KolFormFieldMsgFc alert={this._alert} hideError={this._hideError} msg={convertMsgToInternMsg(this._msg)} id={this._id} />}
 				{Array.isArray(this._suggestions) && this._suggestions.length > 0 && (
 					<datalist id={`${this._id}-list`}>
 						{this._suggestions.map((option: W3CInputValue) => (

@@ -1,3 +1,7 @@
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
+
 import type {
 	AccessKeyPropType,
 	AlertPropType,
@@ -21,16 +25,14 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { buildBadgeTextString, setState, showExpertSlot, validateAlert } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { setState, validateAlert } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { InputTextController } from './controller';
-import { KolInputTag } from '../../core/component-names';
 
 /**
  * @slot - Die Beschriftung des Eingabefeldes.
@@ -94,98 +96,44 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
-	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasSuggestions = Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
-		const hasExpertSlot = showExpertSlot(this.state._label);
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: clsx('kol-input-text', this.state._type as string, {
+				'has-value': this.state._hasValue,
+			}),
+			tooltipAlign: this._tooltipAlign,
+			onClick: () => this.inputRef?.focus(),
+			alert: this.showAsAlert(),
+		};
+	}
 
+	private getInputProps(): InputStateWrapperProps {
+		return {
+			ref: this.catchRef,
+			state: this.state,
+			...this.controller.onFacade,
+			onChange: this.onChange,
+			onInput: this.onInput,
+			onKeyDown: this.onKeyDown,
+			onFocus: (event: Event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event: Event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+		};
+	}
+
+	public render(): JSX.Element {
 		return (
-			<Host
-				class={{
-					'has-value': this.state._hasValue,
-					'kol-input-text': true,
-				}}
-			>
-				<KolInputTag
-					class={{
-						[this.state._type]: true,
-						'hide-label': !!this.state._hideLabel,
-					}}
-					_accessKey={this.state._accessKey}
-					_alert={this.showAsAlert()}
-					_currentLength={this.state._currentLength}
-					_disabled={this.state._disabled}
-					_hasCounter={this.state._hasCounter}
-					_hideError={this.state._hideError}
-					_hideLabel={this.state._hideLabel}
-					_hint={this.state._hint}
-					_icons={this.state._icons}
-					_id={this.state._id}
-					_label={this.state._label}
-					_maxLength={this.state._maxLength}
-					_msg={this.state._msg}
-					_readOnly={this.state._readOnly}
-					_required={this.state._required}
-					_shortKey={this.state._shortKey}
-					_smartButton={this.state._smartButton}
-					_suggestions={this.state._suggestions}
-					_tooltipAlign={this._tooltipAlign}
-					_touched={this.state._touched}
-					onClick={() => this.inputRef?.focus()}
-					role={`presentation` /* Avoid element being read as 'clickable' in NVDA */}
-				>
-					<span slot="label">
-						{hasExpertSlot ? (
-							<slot name="expert"></slot>
-						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-							<>
-								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="access-key-hint" aria-hidden="true">
-									{buildBadgeTextString(this.state._accessKey, this.state._shortKey)}
-								</span>
-							</>
-						) : (
-							<span>{this.state._label}</span>
-						)}
-					</span>
-					<div slot="input">
-						<input
-							ref={this.catchRef}
-							title=""
-							accessKey={this.state._accessKey}
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							autoCapitalize="off"
-							autoComplete={this.state._autoComplete}
-							autoCorrect="off"
-							disabled={this.state._disabled}
-							id={this.state._id}
-							list={hasSuggestions ? `${this.state._id}-list` : undefined}
-							maxlength={this.state._maxLength}
-							name={this.state._name}
-							pattern={this.state._pattern}
-							placeholder={this.state._placeholder}
-							readOnly={this.state._readOnly}
-							required={this.state._required}
-							spellcheck={this.state._spellCheck}
-							type={this.state._type}
-							value={this.state._value as string}
-							{...this.controller.onFacade}
-							onChange={this.onChange}
-							onInput={this.onInput}
-							onKeyDown={this.onKeyDown}
-							onFocus={(event) => {
-								this.controller.onFacade.onFocus(event);
-								this.inputHasFocus = true;
-							}}
-							onBlur={(event) => {
-								this.controller.onFacade.onBlur(event);
-								this.inputHasFocus = false;
-							}}
-						/>
-					</div>
-				</KolInputTag>
-			</Host>
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<KolInputContainerFc state={this.state}>
+					<KolInputStateWrapperFc {...this.getInputProps()} />
+				</KolInputContainerFc>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 

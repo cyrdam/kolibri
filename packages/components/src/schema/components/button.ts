@@ -59,3 +59,5 @@ export type OptionalButtonStates = Omit<RequiredButtonProps & OptionalButtonProp
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
 export type ButtonAPI = Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates>;
+
+export type InternalButtonProps = RequiredButtonProps & OptionalButtonProps;

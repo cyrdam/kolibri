@@ -1,3 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import clsx from 'clsx';
+
 import type {
 	CheckedPropType,
 	HideErrorPropType,
@@ -18,17 +23,15 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { buildBadgeTextString, showExpertSlot } from '../../schema';
-import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
-import { getRenderStates } from '../input/controller';
-import { InternalUnderlinedBadgeText } from '../../functional-components';
 import { InputCheckboxController } from './controller';
-import { KolIconTag, KolInputTag } from '../../core/component-names';
 import type { FocusableElement } from '../../schema/interfaces/FocusableElement';
+
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
+import KolIconFc from '../../functional-components/Icon';
 
 /**
  * @slot expert - Die Beschriftung der Checkbox.
@@ -74,89 +77,70 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		this.inputRef?.focus();
 	}
 
-	public render(): JSX.Element {
-		const { ariaDescribedBy } = getRenderStates(this.state);
-		const hasExpertSlot = showExpertSlot(this.state._label);
+	private getFormFieldProps(): FormFieldStateWrapperProps {
+		return {
+			state: this.state,
+			class: clsx('kol-input-checkbox', 'checkbox', this.state._variant, {
+				'hide-label': !!this.state._hideLabel,
+				checked: this.state._checked,
+				indeterminate: this.state._indeterminate,
+			}),
+			tooltipAlign: this._tooltipAlign,
+			'data-label-align': this.state._labelAlign || 'right',
+			'data-role': this.state._variant === 'button' ? 'button' : undefined,
+			alert: this.showAsAlert(),
+			reverseLabelInput: this.state._labelAlign === 'right',
+		};
+	}
 
+	private getInputProps(): InputStateWrapperProps {
+		return {
+			class: clsx('checkbox-input-element', {
+				'visually-hidden': this.state._variant === 'button',
+			}),
+			ref: this.catchRef,
+			type: 'checkbox',
+			slot: 'input',
+			state: this.state,
+			...this.controller.onFacade,
+			onInput: this.onInput,
+			onChange: this.onChange,
+			onFocus: (event: Event) => {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			},
+			onBlur: (event: Event) => {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+			},
+			onClick: undefined, // onClick is not needed since onChange already triggers the correct event
+		};
+	}
+
+	private getIcon(): string {
+		if (this.state._indeterminate) return this.state._icons.indeterminate;
+		if (this.state._checked) return this.state._icons.checked;
+		return this.state._icons.unchecked;
+	}
+
+	private getIconProps() {
+		return {
+			class: 'icon',
+			icons: this.getIcon(),
+			label: '',
+		};
+	}
+
+	public render(): JSX.Element {
 		return (
-			<Host class="kol-input-checkbox">
-				<KolInputTag
-					class={{
-						checkbox: true,
-						[this.state._variant]: true,
-						'hide-label': !!this.state._hideLabel,
-						checked: this.state._checked,
-						indeterminate: this.state._indeterminate,
-					}}
-					data-label-align={this.state._labelAlign || 'right'}
-					data-role={this.state._variant === 'button' ? 'button' : undefined}
-					_accessKey={this.state._accessKey}
-					_alert={this.showAsAlert()}
-					_disabled={this.state._disabled}
-					_msg={this.state._msg}
-					_hideError={this.state._hideError}
-					_hideLabel={this.state._hideLabel}
-					_hint={this.state._hint}
-					_id={this.state._id}
-					_label={this.state._label}
-					_required={this.state._required}
-					_shortKey={this.state._shortKey}
-					_tooltipAlign={this._tooltipAlign}
-					_touched={this.state._touched}
-				>
-					<span slot="label">
-						{hasExpertSlot ? (
-							<slot name="expert"></slot>
-						) : typeof this.state._accessKey === 'string' || typeof this.state._shortKey === 'string' ? (
-							<>
-								<InternalUnderlinedBadgeText badgeText={buildBadgeTextString(this.state._accessKey, this.state._shortKey)} label={this.state._label} />{' '}
-								<span class="access-key-hint" aria-hidden="true">
-									{buildBadgeTextString(this.state._accessKey || this.state._shortKey)}
-								</span>
-							</>
-						) : (
-							<span>{this.state._label}</span>
-						)}
-					</span>
-					<label slot="input" class="checkbox-container">
-						<KolIconTag
-							class="icon"
-							_icons={
-								this.state._indeterminate ? this.state._icons.indeterminate : this.state._checked ? this.state._icons.checked : this.state._icons.unchecked
-							}
-							_label=""
-						/>
-						<input
-							class={`checkbox-input-element${this.state._variant === 'button' ? ' visually-hidden' : ''}`}
-							ref={this.catchRef}
-							title=""
-							accessKey={this.state._accessKey} // by checkbox?!
-							aria-describedby={ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined}
-							aria-label={this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined}
-							checked={this.state._checked}
-							disabled={this.state._disabled}
-							id={this.state._id}
-							indeterminate={this.state._indeterminate}
-							name={this.state._name}
-							required={this.state._required}
-							tabIndex={this.state._tabIndex}
-							type="checkbox"
-							{...this.controller.onFacade}
-							onInput={this.onInput}
-							onChange={this.onChange}
-							onFocus={(event) => {
-								this.controller.onFacade.onFocus(event);
-								this.inputHasFocus = true;
-							}}
-							onBlur={(event) => {
-								this.controller.onFacade.onBlur(event);
-								this.inputHasFocus = false;
-							}}
-							onClick={undefined} // onClick is not needed since onChange already triggers the correct event
-						/>
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
+				<div class="input">
+					<label class="checkbox-container">
+						<KolIconFc {...this.getIconProps()} />
+						<KolInputStateWrapperFc {...this.getInputProps()} />
 					</label>
-				</KolInputTag>
-			</Host>
+				</div>
+			</KolFormFieldStateWrapperFc>
 		);
 	}
 
