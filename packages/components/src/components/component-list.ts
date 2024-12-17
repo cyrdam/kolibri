@@ -43,7 +43,6 @@ import { KolSpin } from './spin/shadow';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSplitButton } from './split-button/shadow';
 import { KolSymbol } from './symbol/component';
-import { KolTable } from './table/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
@@ -103,7 +102,6 @@ export const COMPONENTS = [
 	KolSingleSelect,
 	KolSplitButton,
 	KolSymbol,
-	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolToastContainer,

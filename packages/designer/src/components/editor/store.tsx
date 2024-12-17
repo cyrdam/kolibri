@@ -1,4 +1,4 @@
-import { Bundesanstalt, Bundesministerium, ButtonOrLinkOrTextWithChildrenProps, SelectOption, TabButtonProps, ToasterService } from '@public-ui/components';
+import { AlertType, ButtonOrLinkOrTextWithChildrenProps, SelectOption, TabButtonProps, ToasterService } from '@public-ui/components';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -31,15 +31,12 @@ import {
 	KolSelect,
 	KolSkipNav,
 	KolSpin,
-	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolVersion,
 } from '@public-ui/solid';
 import { Component } from 'solid-js';
 import { COUNTRIES } from './countries';
-import { DATA, Zeiten } from './data';
-import { AlertType } from '@public-ui/components';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
@@ -1304,114 +1301,6 @@ export const components: Record<string, Component> = {
 			<KolSpin _show />
 			<KolSpin _show _variant="cycle" />
 			<KolSpin _show _variant="none" />
-		</div>
-	),
-	'KOL-TABLE': () => (
-		<div class="grid gap-6">
-			<KolTable
-				_label="Öffnungszeiten"
-				_data={DATA}
-				_headers={{
-					horizontal: [
-						[
-							{ label: '', asTd: true },
-							{ label: 'Tag', colSpan: 5 },
-						],
-						[
-							{
-								label: 'Stadtteil',
-								key: 'stadtteil',
-								textAlign: 'left',
-								sort: (data: Zeiten[]) => {
-									return data.sort((first, second) => {
-										if (first.stadtteil < second.stadtteil) {
-											return -1;
-										}
-										if (first.stadtteil > second.stadtteil) {
-											return 1;
-										}
-										return 0;
-									});
-								},
-							},
-							{ label: 'Montag', key: 'montag', textAlign: 'center' },
-							{ label: 'Dienstag', key: 'dienstag', textAlign: 'center' },
-							{ label: 'Mittwoch', key: 'mittwoch', textAlign: 'center' },
-							{ label: 'Donnerstag', key: 'donnerstag', textAlign: 'center' },
-							{ label: 'Freitag', key: 'freitag', textAlign: 'center' },
-						],
-					],
-				}}
-				_minWidth="50em"
-				_pagination={{
-					_page: 1,
-				}}
-				style={{
-					display: 'inline-grid',
-					width: '100%',
-				}}
-			/>
-			<KolTable
-				_label="Öffnungszeiten"
-				_data={[
-					{
-						asp: 'City',
-						montag: '08:00',
-						dienstag: '08:00',
-						mittwoch: '10:00',
-						donnerstag: '11:00',
-						freitag: '08:00',
-					},
-					{
-						asp: 'City-Süd',
-						montag: '08:00',
-						dienstag: '08:00',
-						mittwoch: '10:00',
-						donnerstag: '11:00',
-						freitag: '08:00',
-					},
-					{
-						asp: 'City-Nord',
-						montag: '08:00',
-						dienstag: '08:00',
-						mittwoch: '10:00',
-						donnerstag: '11:00',
-						freitag: '08:00',
-					},
-				]}
-				_headers={{
-					vertical: [[{ label: 'Berlin' }, { label: 'Hamburg' }, { label: 'München' }]],
-					horizontal: [
-						[
-							{ label: '' },
-							{
-								label: 'Stadtteil',
-								key: 'asp',
-							},
-							{
-								label: 'Montag',
-								key: 'montag',
-							},
-							{
-								label: 'Dienstag',
-								key: 'dienstag',
-							},
-							{
-								label: 'Mittwoch',
-								key: 'mittwoch',
-							},
-							{
-								label: 'Donnerstag',
-								key: 'donnerstag',
-							},
-							{
-								label: 'Freitag',
-								key: 'freitag',
-							},
-						],
-					],
-				}}
-			/>
 		</div>
 	),
 	'KOL-TABS': () => (

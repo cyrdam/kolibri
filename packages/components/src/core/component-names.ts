@@ -47,7 +47,6 @@ export let KolSymbolTag = 'kol-symbol' as const;
 export let KolTableStatefulTag = 'kol-table-stateful';
 export let KolTableStatelessTag = 'kol-table-stateless' as const;
 export let KolTableStatelessWcTag = 'kol-table-stateless-wc' as const;
-export let KolTableTag = 'kol-table' as const;
 export let KolTabsTag = 'kol-tabs' as const;
 export let KolTextareaTag = 'kol-textarea' as const;
 export let KolToastContainerTag = 'kol-toast-container' as const;
@@ -109,7 +108,6 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolTableStatefulTag = transformTagName(KolTableStatefulTag) as 'kol-table-stateful';
 	KolTableStatelessTag = transformTagName(KolTableStatelessTag as string) as 'kol-table-stateless';
 	KolTableStatelessWcTag = transformTagName(KolTableStatelessWcTag as string) as 'kol-table-stateless-wc';
-	KolTableTag = transformTagName(KolTableTag as string) as 'kol-table';
 	KolTabsTag = transformTagName(KolTabsTag as string) as 'kol-tabs';
 	KolTextareaTag = transformTagName(KolTextareaTag as string) as 'kol-textarea';
 	KolToastContainerTag = transformTagName(KolToastContainerTag as string) as 'kol-toast-container';

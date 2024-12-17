@@ -14,6 +14,7 @@ The following components have been removed:
 - kol-indented-text
 - kol-link-group
 - kol-logo
+- kol-table
 
 ## Changed Components
 

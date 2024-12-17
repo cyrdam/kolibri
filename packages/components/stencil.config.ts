@@ -48,7 +48,6 @@ const TAGS = [
 	'kol-spin',
 	'kol-split-button',
 	'kol-symbol',
-	'kol-table',
 	'kol-table-stateless',
 	'kol-table-stateful',
 	'kol-tabs',

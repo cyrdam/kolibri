@@ -36,7 +36,6 @@
 - [kol-select](../select)
 - [kol-skip-nav](../skip-nav)
 - [kol-spin](../spin)
-- [kol-table](../table)
 - [kol-tabs](../tabs)
 - [kol-textarea](../textarea)
 - [kol-tooltip](../tooltip)
@@ -76,7 +75,6 @@ graph TD;
   kol-all --> kol-select
   kol-all --> kol-skip-nav
   kol-all --> kol-spin
-  kol-all --> kol-table
   kol-all --> kol-tabs
   kol-all --> kol-textarea
   kol-all --> kol-tooltip
@@ -112,8 +110,6 @@ graph TD;
   kol-pagination --> kol-button
   kol-select --> kol-alert
   kol-skip-nav --> kol-link
-  kol-table --> kol-button
-  kol-table --> kol-select
   kol-tabs --> kol-icon-icofont
   kol-textarea --> kol-alert
   kol-version --> kol-badge

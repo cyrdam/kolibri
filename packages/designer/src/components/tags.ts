@@ -37,7 +37,6 @@ export const TAG_NAMES: string[] = [
 	'kol-progress',
 	'kol-skip-nav',
 	'kol-spin',
-	'kol-table',
 	'kol-tabs',
 	'kol-toast-container',
 	'kol-tooltip-wc',
