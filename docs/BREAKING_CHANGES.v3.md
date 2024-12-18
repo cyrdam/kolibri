@@ -18,6 +18,11 @@ The following components have been removed:
 
 ## Changed Components
 
+### All Input Components
+
+- The property `_alert` has been removed. It's not being handled automatically based on `_msg` and the touched state. See #6138.
+- The property `_error` has been removed. Use `_msg_` instead.
+
 ### kol-abbr
 
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
@@ -25,12 +30,11 @@ The following components have been removed:
 
 ### kol-modal
 
-- Remove property `_activeElement`
+- The property `_activeElement` has been removed. Use the methods `openModal` and `closeModal` instead.
 
-## All Input Components
+### kol-table-stateful
 
-- The property `_alert` has been removed. It's not being handled automatically based on `_msg` and the touched state. See #6138.
-- The property `_error` has been removed. Use `_msg_` instead.
+- The table header property `sort` has been removed. Use `compareFn` instead.
 
 ## `focus`-methods
 
