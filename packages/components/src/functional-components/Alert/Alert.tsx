@@ -1,8 +1,8 @@
-import { h, type FunctionalComponent as FC } from '@stencil/core';
+import { type FunctionalComponent as FC, h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import clsx from 'clsx';
 
-import { Log, type InternalAlertProps } from '../../schema';
+import { type InternalAlertProps } from '../../schema';
 import { translate } from '../../i18n';
 import { KolButtonWcTag } from '../../core/component-names';
 
@@ -22,11 +22,11 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		/**
 		 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
 		 * - https://googlechrome.github.io/samples/vibration/
+		 * - Ongoing discussion: https://github.com/public-ui/kolibri/issues/7191
+		 * @todo Move side-effect out of render-function to avoid multiple incarnations.
 		 */
-		try {
-			Log.debug(['Navigator should vibrate ...', navigator.vibrate([100, 75, 100, 75, 100])]);
-		} catch (e) {
-			Log.debug('Navigator does not support vibration.');
+		if (navigator.userActivation.hasBeenActive) {
+			navigator.vibrate([100, 75, 100, 75, 100]);
 		}
 
 		setTimeout(() => {
