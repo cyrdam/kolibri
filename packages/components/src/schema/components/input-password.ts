@@ -23,12 +23,7 @@ import type { PropPasswordVariant } from '../props/variant/password-variant';
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	alert: boolean;
 	autoComplete: InputTypeOnOff;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
 	maxLength: number;
@@ -59,7 +54,6 @@ type RequiredStates = {
 	PropHideError &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	alert: boolean;
 	currentLength: number;
 	hint: string;
 	icons: KoliBriHorizontalIcons;

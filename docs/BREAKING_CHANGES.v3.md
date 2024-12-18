@@ -13,6 +13,11 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
+## All Input Components
+
+- The property `_alert` has been removed. It's now being handled automatically based on `_msg` and the touched state. See #6138.
+- The property `_error` has been removed. Use `_msg_` instead.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)

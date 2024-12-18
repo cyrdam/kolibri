@@ -37,7 +37,6 @@ export const InputDateShowHideMsg = () => {
 					Error-Message visible: {showMsg && isTouched && !hideMsg ? 'Yes' : 'No'} (showMsg: {showMsg ? 'Yes' : 'No'}, isTouched: {isTouched ? 'Yes' : 'No'},
 					hideMsg: {hideMsg ? 'Yes' : 'No'})
 				</pre>
-				<KolInputDate _error={showMsg ? 'error message' : undefined} _hideError={hideMsg} _label="Date (_error)" _touched={isTouched} />
 				{msgTypes.map((type) => (
 					<KolInputDate
 						key={type}
