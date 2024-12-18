@@ -15,7 +15,7 @@ For more information, see the [KoliBri Maintenance and Support Strategy](https:/
 
 ## All Input Components
 
-- The property `_alert` has been removed. It's not being handled automatically based on `_msg` and the touched state. See #6138.
+- The property `_alert` has been removed. It's now being handled automatically based on `_msg` and the touched state. See #6138.
 - The property `_error` has been removed. Use `_msg_` instead.
 
 ## Themes
