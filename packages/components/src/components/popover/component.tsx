@@ -100,7 +100,7 @@ export class KolPopover implements PopoverAPI {
 					ref={this.catchPopoverElement}
 					hidden={!this.state._show}
 				>
-					<div class={`kol-popover__arrow ${this.state._align}`} ref={this.catchArrowElement} />
+					<div class={clsx('kol-popover__arrow', `kol-popover__arrow--${this.state._align}`)} ref={this.catchArrowElement} />
 					<slot />
 				</div>
 			</Host>
