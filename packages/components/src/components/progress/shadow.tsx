@@ -13,13 +13,13 @@ const CycleSvg = ({ state }: { state: ProgressStates }) => {
 
 	return (
 		<svg class="kol-progress__cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-			<circle class="kol-progress__cycle--background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
-			<circle class="kol-progress__cycle--whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
-			<circle class="kol-progress__cycle--border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle class="kol-progress__cycle--whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle class="kol-progress__cycle--border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+			<circle class="kol-progress__cycle-background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
+			<circle class="kol-progress__cycle-whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
+			<circle class="kol-progress__cycle-border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+			<circle class="kol-progress__cycle-whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+			<circle class="kol-progress__cycle-border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
 			<circle
-				class="kol-progress__cycle--progress"
+				class="kol-progress__cycle-progress"
 				fill="currentColor"
 				stroke="currentColor"
 				stroke-linecap="round"
@@ -51,7 +51,7 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 			{state._label && <div>{state._label}</div>}
 			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" overflow="visible">
 				<rect
-					class="kol-progress__bar--background"
+					class="kol-progress__bar-background"
 					x="1"
 					y="1"
 					height="10"
@@ -62,7 +62,7 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 					style={{ width: `calc(100% - 2px - ${textLabelPadding})` }}
 				></rect>
 				<rect
-					class="kol-progress__bar--border"
+					class="kol-progress__bar-border"
 					x="1"
 					y="1"
 					height="10"
@@ -73,7 +73,7 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 					style={{ width: `calc(100% - 2px - ${textLabelPadding})` }}
 				></rect>
 				<rect
-					class="kol-progress__bar--progress"
+					class="kol-progress__bar-progress"
 					x="2.5"
 					y="2.5"
 					height="7"
@@ -121,12 +121,12 @@ export class KolProcess implements ProgressAPI {
 
 				{/* https://css-tricks.com/html5-progress-element/ */}
 				<progress
-					class="kol-progress__progress"
+					class="visually-hidden"
 					aria-busy={this.state._value < this.state._max ? 'true' : 'false'}
 					max={this.state._max}
 					value={this.state._value}
 				></progress>
-				<span aria-live="polite" aria-relevant="removals text" class="kol-progress__span visually-hidden">
+				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 					{this.state._liveValue} von {this.state._max} {this.state._unit}
 				</span>
 			</div>

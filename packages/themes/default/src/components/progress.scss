@@ -4,30 +4,16 @@
 	.kol-progress {
 		font-family: var(--font-family);
 
-		&__progress,
-		&__span {
-			display: block;
-			height: 0;
-			overflow: hidden;
-			width: 0;
+		&__bar-progress {
+			fill: var(--color-primary-variant);
 		}
 
-		&__cycle {
-			&--progress {
-				stroke: var(--color-primary-variant);
-			}
-		}
-
-		&__line line:first-child,
-		&__cycle circle:first-child {
-			fill: transparent;
+		&__cycle-background {
 			stroke: var(--color-mute-variant);
 		}
 
-		&__line line:last-child,
-		&__cycle circle:last-child {
-			fill: transparent;
-			stroke: var(--color-primary);
+		&__cycle-progress {
+			stroke: var(--color-primary-variant);
 		}
 	}
 }

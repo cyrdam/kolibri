@@ -5,65 +5,52 @@
 	.kol-progress {
 		font-size: rem(16);
 
-		&__progress {
-			display: block;
-			height: 0;
-			overflow: hidden;
-			width: 0;
-		}
-
 		&__bar {
 			width: rem(150);
+		}
 
-			&--border {
-				fill: transparent;
-				stroke: black;
-			}
+		&__bar-border {
+			fill: transparent;
+			stroke: black;
+		}
 
-			&--background {
-				fill: lightgray;
-				stroke: white;
-			}
+		&__bar-background {
+			fill: lightgray;
+			stroke: white;
+		}
 
-			&--progress {
-				fill: #0075ff;
-				stroke: transparent;
+		&__bar-progress {
+			fill: #0075ff;
+			stroke: transparent;
+
+			@media (prefers-reduced-motion: no-preference) {
 				transition: 250ms ease-in-out 50ms;
 			}
 		}
 
-		&__cycle {
-			&--background {
-				fill: transparent;
-				stroke: lightgray;
-			}
-
-			&--border {
-				fill: transparent;
-				stroke: black;
-			}
-
-			&--whitespace {
-				fill: transparent;
-				stroke: white;
-			}
-
-			&--progress {
-				fill: transparent;
-				stroke: #0075ff;
-				transform-origin: 50% 50%;
-				transform: rotate(-90deg);
-				transition: 250ms ease-in-out 50ms;
-			}
+		&__cycle-background {
+			fill: transparent;
+			stroke: lightgray;
 		}
-	}
 
-	/* https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion */
-	@media (prefers-reduced-motion) {
-		.kol-progress {
-			&__progress {
-				transition-duration: 0s;
-				transition-delay: 0s;
+		&__cycle-border {
+			fill: transparent;
+			stroke: black;
+		}
+
+		&__cycle-whitespace {
+			fill: transparent;
+			stroke: white;
+		}
+
+		&__cycle-progress {
+			fill: transparent;
+			stroke: #0075ff;
+			transform-origin: 50% 50%;
+			transform: rotate(-90deg);
+
+			@media (prefers-reduced-motion: no-preference) {
+				transition: 250ms ease-in-out 50ms;
 			}
 		}
 	}
