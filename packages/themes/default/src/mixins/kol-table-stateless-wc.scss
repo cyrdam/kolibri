@@ -74,6 +74,7 @@
 				display: table-row;
 				height: rem(24);
 			}
+
 			&__foot-spacer-line,
 			&__head-spacer-line {
 				border-width: 0;
@@ -89,7 +90,7 @@
 				border-top-width: calc(var(--border-width) * 2);
 			}
 
-			&__body-cell-row:nth-child(even) {
+			&__body-row:nth-child(even) {
 				background-color: var(--color-mute);
 			}
 
@@ -135,17 +136,15 @@
 						}
 					}
 				}
+
+				@at-root #{$root}__selection-indeterminate & {
+					background-color: var(--color-primary);
+					border-color: var(--color-primary);
+				}
 			}
 
 			&__selection-icon {
 				color: var(--color-light);
-			}
-
-			&__selection-indeterminate {
-				input {
-					background-color: var(--color-primary);
-					border-color: var(--color-primary);
-				}
 			}
 
 			.kol-icon:hover ~ &__selection-input[type='checkbox'],

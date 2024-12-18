@@ -2,145 +2,145 @@
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
-		:host,
-		.kol-table-stateless-wc {
+		.kol-table {
+			$root: &;
+
 			display: block;
 			font-family: var(--font-family);
-		}
 
-		:host > div,
-		.kol-table-stateless-wc > div {
 			overflow-x: auto;
 			overflow-y: hidden;
-		}
-
-		caption {
 			padding: 0.5em;
-		}
 
-		th {
-			font-weight: normal;
-			color: var(--color-midnight);
-		}
-
-		table thead tr:first-child th,
-		table thead tr:first-child td {
-			border-width: 0;
-			border-top-width: rem(2);
-			border-style: solid;
-			border-color: var(--color-ice);
-		}
-
-		.table {
-			padding: 0.5em;
-		}
-
-		.table:has(.focus-element:focus) {
-			outline-color: var(--color-blue);
-			outline-offset: rem(2);
-			outline-style: solid;
-			outline-width: rem(2);
-		}
-
-		table {
-			width: 100%;
-			border-spacing: 0;
-		}
-
-		table,
-		table thead tr:last-child th,
-		table thead tr:last-child td {
-			border-width: 0;
-			border-bottom-width: rem(2);
-			border-style: solid;
-			border-color: var(--color-ice);
-		}
-
-		th {
-			background-color: var(--color-white);
-		}
-
-		th[aria-sort='ascending'] .kol-button,
-		th[aria-sort='descending'] .kol-button {
-			font-weight: 700;
-		}
-
-		th div {
-			display: flex;
-			gap: 0.5em;
-			grid-template-columns: 1fr auto;
-			align-items: center;
-		}
-
-		tbody tr:nth-child(odd) {
-			background-color: var(--color-grey-10);
-		}
-
-		th,
-		td {
-			padding: 0.5em;
-		}
-
-		th[aria-sort='ascending'],
-		th[aria-sort='descending'] {
-			font-weight: 700;
-		}
-
-		.input {
-			input:focus {
-				border-color: var(--color-blue);
-				outline-color: var(--color-blue);
-				outline-style: solid;
-				outline-offset: rem(2);
-				outline-width: rem(2);
+			&__caption {
+				padding: 0.5em;
 			}
 
-			// CHECKBOX
-			input[type='checkbox'] {
-				border-color: var(--color-grey-75);
+			&__header-cell {
+				font-weight: normal;
+				color: var(--color-midnight);
+			}
 
-				&:checked {
-					background-color: var(--color-blue);
-					border-color: var(--color-blue);
+			&__selection-cell,
+			&__header-cell {
+				@at-root #{$root}__head-row:first-child & {
+					border-width: 0;
+					border-top-width: rem(2);
+					border-style: solid;
+					border-color: var(--color-ice);
+				}
+
+				@at-root #{$root}__head-row:last-child & {
+					border-width: 0;
+					border-bottom-width: rem(2);
+					border-style: solid;
+					border-color: var(--color-ice);
 				}
 			}
 
-			.icon {
-				color: var(--color-white);
+			&__focus-element {
+				&:focus {
+					outline-color: var(--color-blue);
+					outline-offset: rem(2);
+					outline-style: solid;
+					outline-width: rem(2);
+				}
 			}
 
-			&.indeterminate {
-				input {
+			&__container {
+				width: 100%;
+				border-spacing: 0;
+				border-width: 0;
+				border-bottom-width: rem(2);
+				border-style: solid;
+				border-color: var(--color-ice);
+			}
+
+			&__header-cell {
+				background-color: var(--color-white);
+
+				&[aria-sort='ascending'],
+				&[aria-sort='descending'] {
+					font-weight: 700;
+					.kol-button {
+						font-weight: 700;
+					}
+				}
+			}
+
+			&__body-row {
+				&:nth-child(odd) {
+					background-color: var(--color-grey-10);
+				}
+			}
+
+			&__selection-cell,
+			&__header-cell,
+			&__body-cell {
+				padding: 0.5em;
+			}
+
+			&__selection-checked,
+			&__selection-indeterminate {
+				display: flex;
+				gap: 0.5em;
+				grid-template-columns: 1fr auto;
+				align-items: center;
+			}
+
+			&__selection-input {
+				&:focus {
+					border-color: var(--color-blue);
+					outline-color: var(--color-blue);
+					outline-style: solid;
+					outline-offset: rem(2);
+					outline-width: rem(2);
+				}
+
+				// CHECKBOX
+				&[type='checkbox'] {
+					border-color: var(--color-grey-75);
+
+					&:checked {
+						background-color: var(--color-blue);
+						border-color: var(--color-blue);
+					}
+				}
+
+				// RADIO
+				&[type='radio'] {
+					display: block;
+					border-color: var(--color-grey-75);
+
+					&:hover {
+						border-color: var(--color-blue);
+					}
+
+					&:checked {
+						border-color: var(--color-blue);
+						border-width: rem(7);
+
+						&:before {
+							background-color: var(--color-white);
+						}
+					}
+				}
+
+				@at-root #{$root}__selection-indeterminate & {
 					background-color: var(--color-white);
 				}
+			}
 
-				.icon {
+			&__selection-icon {
+				color: var(--color-white);
+				@at-root #{$root}__selection-indeterminate & {
 					color: var(--color-blue);
 				}
 			}
 
-			kol-icon:hover ~ input[type='checkbox'],
-			input[type='checkbox']:hover {
+			.kol-icon:hover ~ &__selection-input[type='checkbox'],
+			&__selection-input[type='checkbox']:hover {
 				border-color: var(--color-blue);
-			}
-
-			// RADIO
-			input[type='radio'] {
-				display: block;
-				border-color: var(--color-grey-75);
-
-				&:hover {
-					border-color: var(--color-blue);
-				}
-
-				&:checked {
-					border-color: var(--color-blue);
-					border-width: rem(7);
-
-					&:before {
-						background-color: var(--color-white);
-					}
-				}
 			}
 		}
 	}

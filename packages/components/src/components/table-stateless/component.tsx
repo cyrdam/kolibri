@@ -505,7 +505,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 
 		return (
-			<tr class="kol-table__body-cell-row" key={`row-${key}`}>
+			<tr class="kol-table__body-row" key={`row-${key}`}>
 				{this.renderSelectionCell(row, rowIndex)}
 				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical))}
 			</tr>
@@ -567,7 +567,7 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
-		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
+		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th class="kol-table__header-cell" key={`thead-0`}></th>;
 		const keyPropertyName = selection.keyPropertyName ?? 'id';
 		const selectedKeyLength = selection.selectedKeys?.length;
 		const dataLength = this.state._data.length;
@@ -582,7 +582,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="kol-table__selection-cell">
+			<th key={`thead-0-selection`} class="kol-table__header-cell">
 				<div
 					class={clsx({
 						'kol-table__selection-indeterminate': indeterminate,
@@ -766,7 +766,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							<thead class="kol-table__head">
 								{[
 									this.state._headerCells.horizontal.map((cols, rowIndex) => (
-										<tr key={`thead-${rowIndex}`}>
+										<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
 											{this.state._selection && this.renderHeadingSelectionCell()}
 											{rowIndex === 0 && this.renderHeaderTdCell()}
 											{Array.isArray(cols) &&
