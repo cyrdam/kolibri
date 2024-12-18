@@ -27,6 +27,11 @@ The following components have been removed:
 
 The public `focus`-methods have been removed from all components. Use `kolFocus` instead.
 
+## All Input Components
+
+- The property `_alert` has been removed. It's now being handled automatically based on `_msg` and the touched state. See #6138.
+- The property `_error` has been removed. Use `_msg_` instead.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)

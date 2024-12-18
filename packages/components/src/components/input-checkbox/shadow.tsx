@@ -5,6 +5,7 @@ import clsx from 'clsx';
 
 import type {
 	CheckedPropType,
+	FocusableElement,
 	HideErrorPropType,
 	IdPropType,
 	IndeterminatePropType,
@@ -27,7 +28,6 @@ import type {
 import { nonce } from '../../utils/dev.utils';
 import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { InputCheckboxController } from './controller';
-import type { FocusableElement } from '../../schema/interfaces/FocusableElement';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
@@ -144,12 +144,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Defines whether the checkbox is checked or not. Can be read and written.
 	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
 	 */
@@ -166,12 +160,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -292,20 +280,12 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
 	}
 
 	@Watch('_checked')
@@ -316,11 +296,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideError')
