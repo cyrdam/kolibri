@@ -145,7 +145,10 @@ export function PersonalInformationForm() {
 								id="field-email"
 								_label="E-Mail"
 								_value={field.value}
-								_error={form.errors.email || ''}
+								_msg={{
+									_type: 'error',
+									_description: form.errors.email || '',
+								}}
 								_touched={form.touched.email}
 								_required
 								_on={{
