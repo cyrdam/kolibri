@@ -48,7 +48,7 @@
 					@include focus-outline;
 				}
 
-				#{$root}--vertical & {
+				#{$root}__list--vertical & {
 					border-left: rem(2) solid transparent;
 					padding-left: rem(8);
 				}
