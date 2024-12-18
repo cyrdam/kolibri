@@ -23,6 +23,10 @@ The following components have been removed:
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
+### kol-modal
+
+- Remove property `_activeElement`
+
 ## All Input Components
 
 - The property `_alert` has been removed. It's not being handled automatically based on `_msg` and the touched state. See #6138.
