@@ -2,7 +2,7 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
+	.kol-pagination {
 		font-family: var(--font-family);
 	}
 
