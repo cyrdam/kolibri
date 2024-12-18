@@ -111,8 +111,7 @@ export function InputTextFormatterDemo() {
 										{({ field }: FieldProps<CurrencyExampleFormValues['currency']>) => (
 											<div className="block mt-2">
 												<NumericFormat
-													customInput={({ type, value, onBlur, onChange, onFocus, ...other }: any) => {
-														console.log('OTHER: ', other);
+													customInput={({ type, value, onBlur, onChange, onFocus }: any) => {
 														return <KolInputText _label="Currency" _type={type} _value={value} _on={{ onBlur, onChange, onFocus }} />;
 													}}
 													displayType="input"
