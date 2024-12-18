@@ -5,7 +5,6 @@ import type {
 	KoliBriHorizontalIcons,
 	MsgPropType,
 	PropAccessKey,
-	PropAlert,
 	PropDisabled,
 	PropHasCounter,
 	PropHideError,
@@ -32,7 +31,6 @@ type OptionalProps = {
 	slotName: string;
 	smartButton: Stringified<ButtonProps>;
 } & PropAccessKey &
-	PropAlert &
 	PropDisabled &
 	PropHasCounter &
 	PropHideError &

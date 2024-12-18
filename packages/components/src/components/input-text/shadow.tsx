@@ -4,7 +4,6 @@ import clsx from 'clsx';
 
 import type {
 	AccessKeyPropType,
-	AlertPropType,
 	ButtonProps,
 	FocusableElement,
 	HideErrorPropType,
@@ -25,7 +24,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setState, validateAlert } from '../../schema';
+import { setState } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -137,12 +136,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
@@ -152,12 +145,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Shows the character count on the lower border of the input.
@@ -310,20 +297,12 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: AccessKeyPropType): void {
 		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_alert')
-	public validateAlert(value?: AlertPropType): void {
-		validateAlert(this, value);
 	}
 
 	@Watch('_autoComplete')
@@ -334,11 +313,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hasCounter')

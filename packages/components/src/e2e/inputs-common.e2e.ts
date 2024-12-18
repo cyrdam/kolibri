@@ -1,65 +1,9 @@
 import { test } from '@stencil/playwright';
 import { expect } from '@playwright/test';
 
-const ALL_INPUT_COMPONENTS = [
-	`kol-combobox`,
-	`kol-input-checkbox`,
-	`kol-input-color`,
-	`kol-input-date`,
-	`kol-input-email`,
-	`kol-input-file`,
-	`kol-input-number`,
-	`kol-input-password`,
-	`kol-input-radio`,
-	`kol-input-range`,
-	`kol-input-text`,
-	`kol-select`,
-	`kol-single-select`,
-	`kol-textarea`,
-];
-
-const INPUT_COMPONENTS_WITH_COUNTER = [`kol-input-text`, `kol-input-password`, `kol-input-email`, `kol-textarea`];
-
+/* @TODO Instead of further extending this file, consider refactoring to a composition approach. */
 test.describe('inputs-common', () => {
-	for (const component of ALL_INPUT_COMPONENTS) {
-		test.describe(component, () => {
-			test.describe('alert', () => {
-				test('should render error messages with role=alert when the _alert prop is set to true', async ({ page }) => {
-					await page.setContent(`<${component}
-															_label="Input"
-															_msg="{'_description': 'Broken', '_type': 'error'}"
-															_touched
-															_alert
-														/>`);
-
-					await expect(page.locator('.kol-alert')).toHaveAttribute('role', 'alert');
-				});
-
-				test('should control the role=alert on error messages based on focus when no _alert prop is set', async ({ page }) => {
-					await page.setContent(`<${component}
-															_label="Input"
-															_msg="{'_description': 'Broken', '_type': 'error'}"
-															_touched
-															_options='${JSON.stringify([
-																{
-																	label: 'Option 1',
-																	value: 'option1',
-																},
-															])}'
-														/>`);
-					// target all primary input elements, no hidden elements
-					const inputElement = page.locator('input:visible:not([aria-hidden="true"]), textarea, select');
-
-					await expect(page.locator('.kol-alert')).toHaveAttribute('role', 'alert');
-					await inputElement.focus();
-					await expect(page.locator('.kol-alert')).not.toHaveAttribute('role', 'alert');
-					await inputElement.blur();
-					await expect(page.locator('.kol-alert')).toHaveAttribute('role', 'alert');
-				});
-			});
-		});
-	}
-
+	const INPUT_COMPONENTS_WITH_COUNTER = [`kol-input-text`, `kol-input-password`, `kol-input-email`, `kol-textarea`];
 	for (const component of INPUT_COMPONENTS_WITH_COUNTER) {
 		test.describe(component, () => {
 			test.describe('counter', () => {

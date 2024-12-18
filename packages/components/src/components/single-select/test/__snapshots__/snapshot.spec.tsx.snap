@@ -29,7 +29,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 <kol-single-select _alert="" class="kol-single-select">
   <template shadowrootmode="open">
     <div class="single-select">
-      <kol-input _alert="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+      <kol-input _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
         <span slot="label">
           <span>
             Label
