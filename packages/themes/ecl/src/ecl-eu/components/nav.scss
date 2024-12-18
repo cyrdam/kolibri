@@ -6,16 +6,6 @@
 
 		font-family: var(--font-family);
 
-		&__list-item {
-			@at-root & #{$root}__list-item {
-				border-color: var(--color-blue-75);
-				border-style: solid;
-				border-width: 0;
-				border-top-width: rem(2);
-			}
-		}
-
-		/* custom. */
 		&__navigation {
 			background-color: var(--color-blue);
 		}
@@ -26,56 +16,49 @@
 			margin: 0;
 			padding: 0;
 
-			&--nested {
-				@at-root #{$root}__list-item {
-					border-color: var(--color-blue-75);
-					border-style: solid;
-					border-width: 0;
-					border-top-width: rem(2);
-				}
-			}
-
 			&--vertical {
 				flex-direction: column;
 			}
 		}
 
-		&__list-item &__entry {
+		&__list-item {
+			border-color: var(--color-blue-75);
+			border-style: solid;
+			border-width: 0;
+
+			&:not(:first-child),
+			#{$root}__list--nested & {
+				border-top-width: rem(2);
+			}
+		}
+
+		&__entry-wrapper {
 			display: flex;
+		}
 
-			&--link {
-				text-decoration: none;
-			}
+		&__entry {
+			flex-grow: 1;
+		}
 
-			.kol-button:first-child,
-			.kol-link,
-			.kol-span {
-				flex-grow: 1;
-			}
-
-			&--expand-button button {
+		&__expand-button {
+			.kol-button {
 				background-color: var(--color-blue-130);
 				margin: auto;
 				height: 100%;
 			}
-		}
 
-		:is(.kol-button, .kol-link):focus-within .kol-span {
-			border-color: var(--color-white);
-		}
+			&--expanded .kol-icon::part(icon)::before {
+				content: '\eab4';
+			}
 
-		:is(.kol-button, .kol-link):focus-within .kol-span,
-		:is(.kol-button, .kol-link):hover .kol-span {
-			text-decoration: underline;
+			&:not(&--expanded) .kol-icon::part(icon)::before {
+				content: '\eab6';
+			}
 		}
+	}
 
-		&__entry--expand-button kol-icon::part(icon)::before {
-			content: '\eab6';
-		}
-
-		&list-item--expanded &__entry--expand-button kol-icon::part(icon)::before {
-			content: '\eab4';
-		}
+	.kol-link {
+		text-decoration: none;
 	}
 
 	.kol-span {
@@ -87,5 +70,14 @@
 		justify-items: start;
 		padding: rem(16);
 		height: 100%;
+
+		:is(.kol-button, .kol-link):focus-within & {
+			border-color: var(--color-white);
+		}
+
+		:is(.kol-button, .kol-link):focus-within &,
+		:is(.kol-button, .kol-link):hover & {
+			text-decoration: underline;
+		}
 	}
 }

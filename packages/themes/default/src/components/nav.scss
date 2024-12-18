@@ -4,6 +4,7 @@
 @layer kol-theme-component {
 	.kol-nav {
 		$root: &;
+
 		font-family: var(--font-family);
 
 		&__navigation {
@@ -30,58 +31,56 @@
 				display: flex;
 			}
 
-			&--item {
-				.kol-link:hover {
-					text-decoration: underline;
-				}
-
-				.kol-link,
-				.kol-button {
-					align-items: center;
-					color: var(--color-primary);
-					display: flex;
-					gap: rem(8);
-					min-height: var(--a11y-min-size);
-					text-decoration: none;
-
-					&:focus-visible {
-						@include focus-outline;
-					}
-
-					.kol-nav__list--vertical & {
-						border-left: rem(2) solid transparent;
-						padding-left: rem(8);
-					}
-
-					.kol-nav__list--horizontal & {
-						padding: 0 rem(16);
-					}
-
-					.kol-nav__list--vertical .kol-nav__list-item--active & {
-						border-left-color: var(--color-primary);
-					}
-
-					.kol-nav__list-item--active & {
-						font-weight: bold;
-					}
-				}
+			.kol-link:hover {
+				text-decoration: underline;
 			}
 
-			&--expand-button {
-				margin-left: rem(8);
+			.kol-link,
+			.kol-button {
+				align-items: center;
+				color: var(--color-primary);
+				display: flex;
+				gap: rem(8);
+				min-height: var(--a11y-min-size);
+				text-decoration: none;
 
-				.button {
-					&:hover {
-						background-color: var(--color-primary);
-						color: var(--color-light);
-					}
-
-					&:focus-visible {
-						@include focus-outline;
-					}
+				&:focus-visible {
+					@include focus-outline;
 				}
 
-				.button-inner {
+				#{$root}--vertical & {
+					border-left: rem(2) solid transparent;
+					padding-left: rem(8);
+				}
+
+				#{$root}--horizontal & {
+					padding: 0 rem(16);
+				}
+
+				#{$root}--vertical #{$root}__list-item--active & {
+					border-left-color: var(--color-primary);
+				}
+
+				#{$root}__list-item--active & {
+					font-weight: bold;
+				}
+			}
+		}
+
+		&__expand-button {
+			margin-left: rem(8);
+
+			.kol-button {
+				&:hover {
+					background-color: var(--color-primary);
+					color: var(--color-light);
+				}
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				&__text {
 					justify-content: center;
 				}
 			}

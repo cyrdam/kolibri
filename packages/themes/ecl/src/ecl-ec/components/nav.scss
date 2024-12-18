@@ -5,30 +5,11 @@
 		$root: &;
 		font-family: var(--font-family);
 
-		/* custom. */
 		&__navigation {
 			background-color: var(--color-blue);
 		}
 
-		&__list-item {
-			@at-root & #{$root}__list-item {
-				border-color: var(--color-blue-75);
-				border-style: solid;
-				border-width: 0;
-				border-top-width: rem(2);
-			}
-		}
-
 		&__list {
-			&--nested {
-				@at-root #{$root}__list-item {
-					border-color: var(--color-blue-75);
-					border-style: solid;
-					border-width: 0;
-					border-top-width: rem(2);
-				}
-			}
-
 			display: flex;
 			list-style: none;
 			margin: 0;
@@ -39,42 +20,40 @@
 			}
 		}
 
-		&__list-item &__entry {
-			display: flex;
+		&__list-item {
+			border-color: var(--color-blue-75);
+			border-style: solid;
+			border-width: 0;
 
-			.kol-button:first-child,
-			&--item,
-			.kol-span {
-				flex-grow: 1;
+			&:not(:first-child),
+			#{$root}__list--nested & {
+				border-top-width: rem(2);
 			}
+		}
 
-			&--expand-button .kol-button {
+		&__entry {
+			flex-grow: 1;
+		}
+
+		&__expand-button {
+			.kol-button {
 				background-color: var(--color-blue-130);
 				margin: auto;
 				height: 100%;
 			}
 
-			&--link {
-				text-decoration: none;
+			&--expanded .kol-icon::part(icon)::before {
+				content: '\eab4';
+			}
+
+			&:not(&--expanded) .kol-icon::part(icon)::before {
+				content: '\eab6';
 			}
 		}
+	}
 
-		:is(.kol-button, .kol-link):focus-within .kol-span {
-			border-color: var(--color-white);
-		}
-
-		:is(.kol-button, .kol-link):focus-within .kol-span,
-		:is(.kol-button, .kol-link):hover .kol-span {
-			text-decoration: underline;
-		}
-
-		&__entry--expand-button kol-icon::part(icon)::before {
-			content: '\eab6';
-		}
-
-		&list-item--expanded &__entry--expand-button kol-icon::part(icon)::before {
-			content: '\eab4';
-		}
+	.kol-link {
+		text-decoration: none;
 	}
 
 	.kol-span {
@@ -86,5 +65,14 @@
 		justify-items: start;
 		padding: rem(16);
 		height: 100%;
+
+		:is(.kol-button, .kol-link):focus-within & {
+			border-color: var(--color-white);
+		}
+
+		:is(.kol-button, .kol-link):focus-within &,
+		:is(.kol-button, .kol-link):hover & {
+			text-decoration: underline;
+		}
 	}
 }

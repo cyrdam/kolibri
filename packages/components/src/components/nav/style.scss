@@ -4,12 +4,20 @@
 
 @layer kol-component {
 	.kol-nav {
+		$root: &;
+
 		font-size: rem(16);
 		display: grid;
 		place-items: center;
 
 		&--horizontal {
 			width: 100%;
+		}
+
+		&__navigation {
+			#{$root}:not(#{$root}--is-compact) & {
+				width: 100%;
+			}
 		}
 
 		&__list {
@@ -27,16 +35,12 @@
 			}
 		}
 
-		&__entry {
+		&__entry-wrapper {
 			display: flex;
-
-			&--item {
-				flex-grow: 1;
-			}
 		}
-	}
 
-	:not(.kol-nav--is-compact) nav {
-		width: 100%;
+		&__entry {
+			flex-grow: 1;
+		}
 	}
 }

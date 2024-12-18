@@ -4,21 +4,7 @@
 	.kol-nav {
 		$root: &;
 
-		&__navigation {
-			.kol-link a.text-center {
-				display: grid;
-				align-items: center;
-				justify-items: center;
-			}
-		}
-
 		&__list {
-			&-item {
-				border-radius: var(--border-radius);
-				overflow: hidden;
-				padding: 0.125em;
-			}
-
 			list-style: none;
 			margin: 0;
 			padding: 0;
@@ -28,85 +14,27 @@
 			&--horizontal {
 				display: flex;
 			}
-		}
 
-		&__list-item &__entry {
-			height: 100%;
-
-			&--item {
-				width: 100%;
-				/*height: 100%;font-weight: 600;*/
-				display: block;
-
-				@at-root &[part*='vertical'] #{$root}__list-item {
-					border-radius: 0;
-					border-top: 0.1em dotted white;
-				}
-
-				&[part*='vertical selected'] {
-					border-right: 0.375em solid var(--color-citrin);
-				}
-
-				@at-root &[part*='horizontal'] #{$root}__list-item {
-					border-radius: 0;
-					border-left: 0.1em dotted white;
-				}
-
-				&[part*='horizontal selected'] {
-					border-bottom: 0.375em solid var(--color-citrin);
-				}
-
-				.kol-link {
-					border-radius: var(--border-radius);
-					background-color: var(--color-petrol);
-					border: rem(1) solid transparent;
-					grid: flex;
-					line-height: 2;
-					padding: 0.5em;
-					color: white;
-					height: 100%;
-					-webkit-box-align: center;
-					align-items: center;
-					display: flex;
-					cursor: pointer;
-					text-decoration: inherit;
-
-					&:focus,
-					&:hover {
-						border: rem(1) solid white;
-						background-color: var(--color-fluorit);
-						color: var(--color-anthrazit);
-					}
-
-					.kol-icon.mr-2 {
-						margin-right: calc(2 * 2 * var(--spacing));
-					}
-
-					.kol-icon.ml-2 {
-						margin-left: calc(2 * 2 * var(--spacing));
-					}
-				}
-
-				&[exportparts*='selected'] a {
-					background-color: var(--color-achat);
-					font-weight: 700;
-				}
+			&--nested {
+				padding-left: rem(16);
 			}
 		}
 
-		&__absolute {
-			position: absolute;
-		}
+		.kol-button,
+		.kol-link {
+			align-items: center;
+			color: var(--color-weiss);
+			display: flex;
+			gap: rem(8);
+			min-height: var(--a11y-min-size);
+			padding: 0 rem(8);
+			text-align: left;
+			text-decoration: none;
 
-		.kol-span {
-			justify-items: baseline;
-		}
-
-		/* compact button */
-		&__compact {
-			margin-top: 0.5em;
-			width: 100%;
-			text-align: center;
+			&:hover,
+			&:focus-visible {
+				text-decoration: underline;
+			}
 		}
 	}
 }

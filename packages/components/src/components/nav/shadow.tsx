@@ -101,12 +101,12 @@ export class KolNav implements NavAPI {
 				: undefined;
 
 		return (
-			<div class={clsx('kol-nav__entry', { 'hide-label': hideLabel })}>
+			<div class="kol-nav__entry-wrapper">
 				{entryIsLink(entry) ? (
-					<KolLinkWcTag class="kol-nav__entry--item kol-nav__entry--link" {...entry} _hideLabel={hideLabel} _icons={icons} />
+					<KolLinkWcTag class="kol-nav__entry kol-nav__entry--link" {...entry} _hideLabel={hideLabel} _icons={icons} />
 				) : (
 					<KolButtonWcTag
-						class="kol-nav__entry--item"
+						class="kol-nav__entry kol-nav__entry--button"
 						_label={entry._label}
 						_hideLabel={hideLabel}
 						_icons={icons}
@@ -130,7 +130,9 @@ export class KolNav implements NavAPI {
 	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<KolButtonWcTag
-				class="kol-nav__entry--expand-button"
+				class={clsx('kol-nav__expand-button', {
+					'kol-nav__expand-button--expanded': expanded,
+				})}
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
@@ -176,12 +178,11 @@ export class KolNav implements NavAPI {
 	}): JSX.Element => {
 		return (
 			<ul
-				class={clsx(
-					'kol-nav__list',
-					{ 'kol-nav__list--nested': props.deep > 0 },
-					{ ' kol-nav__list--horizontal': props.deep === 0 && props.orientation === 'horizontal' },
-					{ 'kol-nav__list--vertical': props.deep !== 0 || props.orientation === 'vertical' },
-				)}
+				class={clsx('kol-nav__list', {
+					'kol-nav__list--nested': props.deep > 0,
+					'kol-nav__list--horizontal': props.deep === 0 && props.orientation === 'horizontal',
+					'kol-nav__list--vertical': props.deep !== 0 || props.orientation === 'vertical',
+				})}
 				data-deep={props.deep}
 			>
 				{props.links.map((link, index: number) => {
@@ -227,11 +228,9 @@ export class KolNav implements NavAPI {
 		const orientation = this.state._orientation;
 		return (
 			<div
-				class={{
-					'kol-nav': true,
-					[`kol-nav--${orientation}`]: true,
+				class={clsx('kol-nav', `kol-nav--${orientation}`, {
 					'kol-nav--is-compact': this.state._hideLabel,
-				}}
+				})}
 			>
 				<nav class="kol-nav__navigation" aria-label={this.state._label} id="nav">
 					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
