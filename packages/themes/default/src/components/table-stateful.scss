@@ -1,7 +1,9 @@
 @import '../mixins/kol-table-stateless-wc';
 
 @layer kol-theme-component {
-	:host * {
+	@include kol-table-stateless-wc;
+
+	.kol-table-stateful {
 		hyphens: var(--hyphens);
 		font-family: var(--font-family);
 		line-height: var(--line-height);
@@ -9,11 +11,9 @@
 	}
 
 	@media (min-width: 1024px) {
-		div.pagination .kol-pagination {
+		.kol-pagination {
 			display: flex;
 			align-items: center;
 		}
 	}
 }
-
-@include kol-table-stateless-wc;

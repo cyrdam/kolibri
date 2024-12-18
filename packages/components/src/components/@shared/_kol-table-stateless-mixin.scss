@@ -4,13 +4,10 @@
 
 @mixin kol-table-stateless-styles {
 	@layer kol-component {
-		:host,
-		.kol-table-stateless-wc {
+		.kol-table {
 			display: block;
 			font-size: rem(16);
-		}
 
-		.kol-table {
 			max-width: 100%;
 			overflow-x: auto;
 			overflow-y: hidden;

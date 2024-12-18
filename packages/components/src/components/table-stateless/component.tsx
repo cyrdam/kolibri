@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
@@ -736,82 +736,80 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.checkboxRefs = [];
 
 		return (
-			<Host class="kol-table-stateless-wc">
-				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
-				 */}
-				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-				<div ref={(element) => (this.tableDivElement = element)} class="kol-table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
-					<table
-						class="kol-table__container"
-						style={{
-							minWidth: this.state._minWidth,
-						}}
-					>
-						{/*
-						 * The following element allows the table to receive focus without providing redundant content to screen readers.
-						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
-						 * prevent screen readers from just reading "blank".
-						 */}
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
-							&nbsp;
-						</div>
+			/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
+			 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+			 */
+			/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+			<div ref={(element) => (this.tableDivElement = element)} class="kol-table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
+				<table
+					class="kol-table__container"
+					style={{
+						minWidth: this.state._minWidth,
+					}}
+				>
+					{/*
+					 * The following element allows the table to receive focus without providing redundant content to screen readers.
+					 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
+					 * prevent screen readers from just reading "blank".
+					 */}
+					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+					<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+						&nbsp;
+					</div>
 
-						<caption class="kol-table__caption" id="caption">
-							{this.state._label}
-						</caption>
+					<caption class="kol-table__caption" id="caption">
+						{this.state._label}
+					</caption>
 
-						{Array.isArray(this.state._headerCells.horizontal) && (
-							<thead class="kol-table__head">
-								{[
-									this.state._headerCells.horizontal.map((cols, rowIndex) => (
-										<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
-											{this.state._selection && this.renderHeadingSelectionCell()}
-											{rowIndex === 0 && this.renderHeaderTdCell()}
-											{Array.isArray(cols) &&
-												cols.map((cell, colIndex) => {
-													if (cell.asTd === true) {
-														return (
-															<td
-																key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-																class={clsx({
-																	[`kol-table__head--${cell.textAlign}`]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-																})}
-																colSpan={cell.colSpan}
-																rowSpan={cell.rowSpan}
-																style={{
-																	textAlign: cell.textAlign,
-																	width: cell.width,
-																}}
-																ref={
-																	typeof cell.render === 'function'
-																		? (el) => {
-																				this.cellRender(cell, el);
-																			}
-																		: undefined
-																}
-															>
-																{typeof cell.render !== 'function' ? cell.label : ''}
-															</td>
-														);
-													} else {
-														return this.renderHeadingCell(cell, rowIndex, colIndex, false);
-													}
-												})}
-										</tr>
-									)),
-									this.renderSpacer('head', this.state._headerCells.horizontal),
-								]}
-							</thead>
-						)}
-						<tbody class="kol-table__body">
-							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
-						</tbody>
-						{this.renderFoot()}
-					</table>
-				</div>
-			</Host>
+					{Array.isArray(this.state._headerCells.horizontal) && (
+						<thead class="kol-table__head">
+							{[
+								this.state._headerCells.horizontal.map((cols, rowIndex) => (
+									<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
+										{this.state._selection && this.renderHeadingSelectionCell()}
+										{rowIndex === 0 && this.renderHeaderTdCell()}
+										{Array.isArray(cols) &&
+											cols.map((cell, colIndex) => {
+												if (cell.asTd === true) {
+													return (
+														<td
+															key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
+															class={clsx({
+																[`kol-table__head--${cell.textAlign}`]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
+															})}
+															colSpan={cell.colSpan}
+															rowSpan={cell.rowSpan}
+															style={{
+																textAlign: cell.textAlign,
+																width: cell.width,
+															}}
+															ref={
+																typeof cell.render === 'function'
+																	? (el) => {
+																			this.cellRender(cell, el);
+																		}
+																	: undefined
+															}
+														>
+															{typeof cell.render !== 'function' ? cell.label : ''}
+														</td>
+													);
+												} else {
+													return this.renderHeadingCell(cell, rowIndex, colIndex, false);
+												}
+											})}
+									</tr>
+								)),
+								this.renderSpacer('head', this.state._headerCells.horizontal),
+							]}
+						</thead>
+					)}
+					<tbody class="kol-table__body">
+						{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
+					</tbody>
+					{this.renderFoot()}
+				</table>
+			</div>
 		);
 	}
 }
