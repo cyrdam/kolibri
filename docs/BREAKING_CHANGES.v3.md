@@ -40,6 +40,10 @@ The following components have been removed:
 
 The public `focus`-methods have been removed from all components. Use `kolFocus` instead.
 
+## Toaster
+
+- The toast default `alertVariant` and options property `defaultAlertVariant` have been removed. Use `variant` and `defaultVariant` instead.
+
 ## Themes
 
 ### BMF-Theme (Bundesministerium der Finanzen)

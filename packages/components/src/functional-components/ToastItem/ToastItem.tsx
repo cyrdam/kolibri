@@ -12,20 +12,11 @@ type ToastItemProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 };
 
 const ToastItemFc: FC<ToastItemProps> = ({ status, toast, onClose, ...other }) => {
-	const { type, label, description, variant, alertVariant } = toast;
+	const { type, label, description, variant } = toast;
 
 	return (
 		<div class={clsx('toast', status)}>
-			<KolAlertFc
-				class="alert"
-				alert={true}
-				label={label}
-				level={0}
-				hasCloser={true}
-				type={type}
-				variant={alertVariant || variant || 'card'}
-				onCloserClick={onClose}
-			>
+			<KolAlertFc class="alert" alert={true} label={label} level={0} hasCloser={true} type={type} variant={variant || 'card'} onCloserClick={onClose}>
 				<div {...other}>{description}</div>
 			</KolAlertFc>
 		</div>
