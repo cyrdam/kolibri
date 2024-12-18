@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KolFormFieldLabelFc should render the correct component tag "label"  1`] = `
+<label class="input-label" htmlfor="test-id" id="test-id-label">
+  <span class="input-label-span">
+    <span>
+      Test Label
+    </span>
+  </span>
+</label>
+`;
+
+exports[`KolFormFieldLabelFc should render the correct component tag "legend"  1`] = `
+<legend class="input-label" htmlfor="test-id" id="test-id-label">
+  <span class="input-label-span">
+    <span>
+      Test Label
+    </span>
+  </span>
+</legend>
+`;
+
+exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
+<label class="input-label" htmlfor="test-id" id="test-id-label">
+  <span class="input-label-span">
+    Test Label
+    <span aria-hidden="true" class="access-key-hint">
+      A
+    </span>
+  </span>
+</label>
+`;
+
+exports[`KolFormFieldLabelFc should render with expert slot 1`] = `
+<label class="input-label" htmlfor="test-id" id="test-id-label">
+  <span class="input-label-span"></span>
+</label>
+`;
+
+exports[`KolFormFieldLabelFc should render with label 1`] = `
+<label class="input-label" htmlfor="test-id" id="test-id-label">
+  <span class="input-label-span">
+    <span>
+      Test Label
+    </span>
+  </span>
+</label>
+`;

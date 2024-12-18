@@ -18,12 +18,27 @@
 		gap: rem(6.4);
 	}
 
+	.checkbox-container {
+		position: relative;
+		justify-content: center;
+	}
+
+	.input,
+	.checkbox-container {
+		min-width: initial;
+		width: initial;
+	}
+
 	.kol-input.default {
-		grid-template-columns: rem(24) auto;
+		grid-template-columns: auto 1fr;
 	}
 
 	.kol-input.default[data-label-align='left']:not(.hide-label) {
-		grid-template-columns: auto rem(24);
+		grid-template-columns: 1fr auto;
+
+		.checkbox-container {
+			justify-content: center;
+		}
 	}
 
 	.kol-input.switch {
@@ -38,12 +53,8 @@
 		gap: rem(6.4) rem(1);
 	}
 
-	.checkbox-container {
-		justify-content: flex-start;
-	}
-
 	.kol-input > div.input {
-		display: inherit;
+		display: flex;
 		min-height: var(--a11y-min-size);
 		order: 2;
 	}
@@ -120,6 +131,7 @@
 		background-color: white;
 		cursor: pointer;
 		transition: 0.5s;
+		margin: 0;
 	}
 
 	.kol-input input[type='checkbox']:checked {
@@ -140,7 +152,7 @@
 
 	.kol-input.default .icon {
 		color: var(--color-light);
-		margin-left: rem(4);
+		display: flex;
 	}
 
 	.kol-input.switch input[type='checkbox'] {

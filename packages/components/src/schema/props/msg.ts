@@ -1,13 +1,20 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { AlertProps } from '../components';
+import type { AlertProps, InternalAlertProps } from '../components';
 import type { Stringified } from '../types';
 import { objectObjectHandler, parseJson, watchValidator } from '../utils';
 import { isObject } from '../validators';
+import { transformObjectProperties } from '../../utils/transformObjectProperties';
 
 /* types */
 export type MsgPropType = AlertProps & {
 	_description: string;
 };
+
+export type InternMsgPropType = Partial<
+	InternalAlertProps & {
+		description: string;
+	}
+>;
 
 /**
  * Defines the properties for a message rendered as Alert component.
@@ -40,3 +47,19 @@ export const validateMsg = (component: Generic.Element.Component, value?: String
 		);
 	});
 };
+
+export function isMsgEmpty(msg?: MsgPropType): boolean {
+	if (!msg) {
+		return true;
+	}
+
+	return msg._type === 'error' && !msg._description;
+}
+
+export function convertMsgToInternMsg(msg?: MsgPropType): InternMsgPropType | undefined {
+	if (!msg || isMsgEmpty(msg)) {
+		return undefined;
+	}
+
+	return transformObjectProperties(msg);
+}
