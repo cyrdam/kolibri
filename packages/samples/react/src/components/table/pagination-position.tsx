@@ -29,15 +29,33 @@ export const PaginationPosition: FC = () => (
 		<section className="w-full flex flex-col gap-14">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
-				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="bottom"></KolTable>
+				<KolTable
+					_label="Sample table with pagination at the bottom"
+					_data={DATA}
+					_headers={HEADERS}
+					_pagination={PAGINATION}
+					_paginationPosition="bottom"
+				></KolTable>
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
-				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTable>
+				<KolTable
+					_label="Sample table with pagination at the top"
+					_data={DATA}
+					_headers={HEADERS}
+					_pagination={PAGINATION}
+					_paginationPosition="top"
+				></KolTable>
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
-				<KolTable _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTable>
+				<KolTable
+					_label="Sample table with pagination at both top and bottom"
+					_data={DATA}
+					_headers={HEADERS}
+					_pagination={PAGINATION}
+					_paginationPosition="both"
+				></KolTable>
 			</section>
 		</section>
 	</div>
