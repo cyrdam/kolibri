@@ -25,7 +25,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		 * - Ongoing discussion: https://github.com/public-ui/kolibri/issues/7191
 		 * @todo Move side-effect out of render-function to avoid multiple incarnations.
 		 */
-		if (navigator.userActivation.hasBeenActive) {
+		if (navigator.userActivation?.hasBeenActive) {
 			navigator.vibrate([100, 75, 100, 75, 100]);
 		}
 
