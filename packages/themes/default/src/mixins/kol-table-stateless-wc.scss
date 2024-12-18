@@ -123,7 +123,7 @@
 				}
 
 				// RADIO
-				input[type='radio'] {
+				&[type='radio'] {
 					display: flex;
 					border-color: var(--color-subtle);
 

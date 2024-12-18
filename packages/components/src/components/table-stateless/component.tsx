@@ -464,7 +464,7 @@ export class KolTableStateless implements TableStatelessAPI {
 							/>
 						</label>
 					) : (
-						<label class="kol-table__selection-radio-container">
+						<label class="kol-table__selection-label">
 							<input
 								class="kol-table__selection-input"
 								{...props}
