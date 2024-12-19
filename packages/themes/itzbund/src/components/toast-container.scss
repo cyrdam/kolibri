@@ -9,8 +9,9 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
-	.kol-toast {
-		&__toast {
+
+	.kol-toast-container {
+		.kol-toast-item {
 			background-color: #fff;
 			margin-top: rem(16);
 

@@ -2,8 +2,9 @@
 @import '../style';
 @import '../@shared/kol-alert-mixin';
 
+@include kol-alert-styles;
+
 @layer kol-component {
-	@include kol-alert-styles;
 	:host {
 		display: flex;
 		flex-direction: column;
@@ -12,7 +13,7 @@
 		z-index: 200;
 	}
 
-	.kol-toast {
+	.kol-toast-container {
 		&__close-all {
 			align-self: flex-end;
 		}

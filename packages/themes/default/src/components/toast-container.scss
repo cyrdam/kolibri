@@ -10,8 +10,8 @@
 		width: rem(440);
 	}
 
-	.kol-toast {
-		&__toast {
+	.kol-toast-container {
+		.kol-toast-item {
 			margin-top: rem(16);
 		}
 	}
