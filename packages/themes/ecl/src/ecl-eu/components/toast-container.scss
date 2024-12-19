@@ -9,23 +9,25 @@
 		max-width: 100%;
 	}
 
-	.toast {
-		display: block;
-		background-color: #fff;
-		margin-top: rem(16);
+	.kol-toast {
+		&__toast {
+			display: block;
+			background-color: #fff;
+			margin-top: rem(16);
 
-		@include kol-alert-theme;
+			@include kol-alert-theme;
 
-		.heading {
-			width: 100%;
+			.heading {
+				width: 100%;
 
-			.heading-content {
-				flex: 1;
+				.heading-content {
+					flex: 1;
+				}
 			}
 		}
-	}
 
-	.alert {
-		display: block;
+		&__alert {
+			display: block;
+		}
 	}
 }

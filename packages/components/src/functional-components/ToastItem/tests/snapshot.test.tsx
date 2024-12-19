@@ -26,7 +26,7 @@ describe('ToastItemFc', () => {
 		for (const status of statuses) {
 			const page = await renderFunctionalComponentToSpecPage(() => <ToastItemFc toast={basicToast} onClose={mockOnClose} status={status} />);
 
-			expect(page.root?.classList.contains(status)).toBeTruthy();
+			expect(page.root?.classList.contains(`kol-toast__toast--${status}`)).toBeTruthy();
 		}
 	});
 });

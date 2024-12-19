@@ -9,16 +9,17 @@
 		left: 50%;
 		transform: translateX(-50%);
 	}
+	.kol-toast {
+		&__toast {
+			background-color: #fff;
+			margin-top: rem(16);
 
-	.toast {
-		background-color: #fff;
-		margin-top: rem(16);
+			.heading {
+				width: 100%;
 
-		.heading {
-			width: 100%;
-
-			.heading-content {
-				flex: 1;
+				.heading-content {
+					flex: 1;
+				}
 			}
 		}
 	}

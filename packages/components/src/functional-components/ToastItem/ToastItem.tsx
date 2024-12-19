@@ -15,9 +15,9 @@ const ToastItemFc: FC<ToastItemProps> = ({ status, toast, onClose, ...other }) =
 	const { type, label, description, variant, alertVariant } = toast;
 
 	return (
-		<div class={clsx('toast', status)}>
+		<div class={clsx('kol-toast__toast', `kol-toast__toast--${status}`)}>
 			<KolAlertFc
-				class="alert"
+				class="kol-toast__alert"
 				alert={true}
 				label={label}
 				level={0}
