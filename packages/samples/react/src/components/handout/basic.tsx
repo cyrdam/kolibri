@@ -73,16 +73,14 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
 				},
-				sort: (data) => {
-					return data.sort((first, second) => {
-						if ((first as TableDataType).monday < (second as TableDataType).monday) {
-							return -1;
-						}
-						if ((first as TableDataType).monday > (second as TableDataType).monday) {
-							return 1;
-						}
-						return 0;
-					});
+				compareFn: (first, second) => {
+					if ((first as TableDataType).monday < (second as TableDataType).monday) {
+						return -1;
+					}
+					if ((first as TableDataType).monday > (second as TableDataType).monday) {
+						return 1;
+					}
+					return 0;
 				},
 				sortDirection: 'ASC',
 				textAlign: 'right',
@@ -97,16 +95,14 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#060" _label={cell.label}></KolBadge>);
 				},
-				sort: (data) => {
-					return data.sort((first, second) => {
-						if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
-							return -1;
-						}
-						if ((first as TableDataType).tuesday > (second as TableDataType).tuesday) {
-							return 1;
-						}
-						return 0;
-					});
+				compareFn: (first, second) => {
+					if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
+						return -1;
+					}
+					if ((first as TableDataType).tuesday > (second as TableDataType).tuesday) {
+						return 1;
+					}
+					return 0;
 				},
 				sortDirection: 'DESC',
 			},

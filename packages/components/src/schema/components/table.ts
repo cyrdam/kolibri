@@ -5,19 +5,10 @@ import type { KoliBriTableDataType, KoliBriTableHeaderCell, Stringified, KoliBri
 import type { KoliBriPaginationProps } from './pagination';
 import type { PropPaginationPosition } from '../props/pagination-position';
 
-export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
-
-type KoliBriTableSort = <T>(data: T[]) => T[];
-
-export type KoliBriSortFunction = (data: KoliBriTableDataType[]) => KoliBriTableDataType[];
 export type KoliBriDataCompareFn = (a: KoliBriTableDataType, b: KoliBriTableDataType) => number;
 
 export type KoliBriTableHeaderCellWithLogic = KoliBriTableHeaderCell & {
 	compareFn?: KoliBriDataCompareFn;
-	/**
-	 * @deprecated use `compareFn` instead
-	 */
-	sort?: KoliBriTableSort;
 	sortDirection?: KoliBriSortDirection;
 };
 

@@ -23,6 +23,14 @@ The following components have been removed:
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
 
+### kol-modal
+
+- The property `_activeElement` has been removed. Use the methods `openModal` and `closeModal` instead.
+
+### kol-table-stateful
+
+- The table header property `sort` has been removed. Use `compareFn` instead.
+
 ### kol-input-file
 
 - The property `_value` has been removed as it never served a purpose. Use the `getValue()` method instead to access the FileList.
@@ -43,6 +51,10 @@ The public `focus`-methods have been removed from all components. Use `kolFocus`
 
 - The property `_alert` has been removed. It's now being handled automatically based on `_msg` and the touched state. See #6138.
 - The property `_error` has been removed. Use `_msg_` instead.
+
+## Toaster
+
+- The toast default `alertVariant` and options property `defaultAlertVariant` have been removed. Use `variant` and `defaultVariant` instead.
 
 ## Themes
 
