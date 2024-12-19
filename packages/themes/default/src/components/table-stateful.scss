@@ -10,12 +10,12 @@
 			line-height: var(--line-height);
 			word-break: break-word;
 		}
-	}
 
-	@media (min-width: 1024px) {
 		.kol-pagination {
-			display: flex;
-			align-items: center;
+			@media (min-width: 1024px) {
+				display: flex;
+				align-items: center;
+			}
 		}
 	}
 }

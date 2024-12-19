@@ -7,6 +7,13 @@
 	.kol-table-stateful {
 		font-family: var(--font-family);
 
+		&__pagination,
+		&__pagination-wrapper:last-child {
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
+		}
+
 		&__pagination {
 			overflow-x: auto;
 			overflow-y: hidden;
@@ -17,17 +24,12 @@
 				border-color: var(--border-color);
 			}
 		}
-	}
-
-	@media (min-width: 1024px) {
-		.kol-table-stateful__pagination,
-		.kol-table-stateful__pagination-wrapper:last-child {
-			grid-auto-flow: column;
-		}
 
 		.kol-pagination {
-			display: flex;
-			gap: rem(16);
+			@media (min-width: 1024px) {
+				display: flex;
+				gap: rem(16);
+			}
 		}
 	}
 }

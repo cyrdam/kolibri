@@ -443,12 +443,12 @@ export class KolTableStateless implements TableStatelessAPI {
 		};
 		return (
 			<td key={`tbody-${rowIndex}-selection`} class="kol-table__selection-cell">
-				<div class={clsx('kol-table__selection', { ckecked: selected })}>
+				<div class={clsx('kol-table__selection', { 'kol-table__selection--checked': selected })}>
 					{isMultiple ? (
 						<label class="kol-table__selection-label">
 							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
 							<input
-								class="kol-table__selection-input"
+								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 								ref={(el) => el && this.checkboxRefs.push(el)}
 								{...props}
 								type="checkbox"
@@ -466,7 +466,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					) : (
 						<label class="kol-table__selection-label">
 							<input
-								class="kol-table__selection-input"
+								class={clsx('kol-table__selection-input kol-table__selection-input--radio')}
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
@@ -584,15 +584,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th key={`thead-0-selection`} class="kol-table__header-cell">
 				<div
-					class={clsx({
-						'kol-table__selection-indeterminate': indeterminate,
-						'kol-table__selection-checked': isChecked,
+					class={clsx('kol-table__selection', {
+						'kol-table__selection--indeterminate': indeterminate,
+						'kol-table__selection--checked': isChecked,
 					})}
 				>
 					<label class="kol-table__selection-label">
 						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
 						<input
-							class="kol-table__selection-input"
+							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 							ref={(el) => el && this.checkboxRefs.push(el)}
 							name="selection"
 							checked={isChecked && !indeterminate}
@@ -709,8 +709,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
-			<tr aria-hidden="true" class={clsx(`kol-table__${variant}-spacer`)}>
-				<td class={clsx(`kol-table__${variant}-spacer-line`)} colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
+			<tr aria-hidden="true" class={clsx('kol-table__spacer', `kol-table__spacer--${variant}`)}>
+				<td class={clsx(`kol-table__spacer-line kol-table__spacer-line--${variant}`)} colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
 			</tr>
 		);
 	}
@@ -742,7 +742,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
 			<div ref={(element) => (this.tableDivElement = element)} class="kol-table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
 				<table
-					class="kol-table__container"
+					class="kol-table__table"
 					style={{
 						minWidth: this.state._minWidth,
 					}}

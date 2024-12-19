@@ -57,7 +57,7 @@
 
 			&__selection-input {
 				// CHECKBOX
-				&[type='checkbox'] {
+				&--checkbox {
 					&:checked {
 						background-color: var(--color-petrol);
 						border-color: var(--color-petrol);
@@ -73,7 +73,7 @@
 				}
 
 				// RADIO
-				&[type='radio'] {
+				&--radio {
 					display: flex;
 
 					&:hover {
@@ -96,7 +96,7 @@
 						outline-width: rem(2);
 					}
 				}
-				@at-root #{$root}__selection-indeterminate & {
+				@at-root #{$root}__selection--indeterminate & {
 					background-color: var(--color-weiss);
 				}
 			}
@@ -104,7 +104,7 @@
 			&__selection-icon {
 				color: var(--color-weiss);
 
-				@at-root #{$root}__selection-indeterminate & {
+				@at-root #{$root}__selection--indeterminate & {
 					color: var(--color-petrol);
 				}
 			}

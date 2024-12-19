@@ -5,24 +5,30 @@
 	@include kol-table-stateless-wc;
 
 	.kol-table-stateful {
+		$root: &;
+
 		font-family: var(--font-family);
+
+		&__pagination,
+		&__pagination-wrapper {
+			&:last-child {
+				@media (min-width: 1024px) {
+					grid-auto-flow: column;
+				}
+			}
+		}
 
 		&__pagination {
 			overflow-x: auto;
 			overflow-y: hidden;
 		}
-	}
 
-	@media (min-width: 1024px) {
-		.kol-table-stateful__pagination:last-child,
-		.kol-table-stateful__pagination-wrapper:last-child {
-			grid-auto-flow: column;
-		}
-
-		.kol-table-stateful__pagination:last-child {
-			.kol-pagination {
-				display: flex;
-				gap: rem(16);
+		.kol-pagination {
+			@at-root #{$root}__pagination:last-child & {
+				@media (min-width: 1024px) {
+					display: flex;
+					gap: rem(16);
+				}
 			}
 		}
 	}

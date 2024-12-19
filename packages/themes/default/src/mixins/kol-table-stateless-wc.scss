@@ -14,7 +14,7 @@
 			overflow-y: hidden;
 			padding: rem(8);
 
-			&__container,
+			&__table,
 			&__caption {
 				border-width: 0;
 				border-bottom-width: calc(var(--border-width) * 2);
@@ -22,7 +22,7 @@
 				border-style: solid;
 			}
 
-			&__container {
+			&__table {
 				width: 100%;
 				border-spacing: 0;
 			}
@@ -61,33 +61,30 @@
 				}
 			}
 
-			&__selection-indeterminate,
-			&__selection-checked {
+			&__selection {
 				display: flex;
 				gap: rem(8);
 				grid-template-columns: 1fr auto;
 				align-items: center;
 			}
 
-			&__foot-spacer,
-			&__head-spacer {
+			&__spacer {
 				display: table-row;
 				height: rem(24);
 			}
 
-			&__foot-spacer-line,
-			&__head-spacer-line {
+			&__spacer-line {
 				border-width: 0;
 				border-color: var(--color-primary-variant);
 				border-style: solid;
-			}
 
-			&__foot-spacer-line {
-				border-bottom-width: calc(var(--border-width) * 2);
-			}
+				&--foot {
+					border-bottom-width: calc(var(--border-width) * 2);
+				}
 
-			&__head-spacer-line {
-				border-top-width: calc(var(--border-width) * 2);
+				&--head {
+					border-top-width: calc(var(--border-width) * 2);
+				}
 			}
 
 			&__body-row:nth-child(even) {
@@ -113,7 +110,7 @@
 				}
 
 				// CHECKBOX
-				&[type='checkbox'] {
+				&--checkbox {
 					border-color: var(--color-subtle);
 					border-radius: rem(5);
 
@@ -124,7 +121,7 @@
 				}
 
 				// RADIO
-				&[type='radio'] {
+				&--radio {
 					display: flex;
 					border-color: var(--color-subtle);
 
@@ -137,7 +134,7 @@
 					}
 				}
 
-				@at-root #{$root}__selection-indeterminate & {
+				@at-root #{$root}__selection--indeterminate & {
 					background-color: var(--color-primary);
 					border-color: var(--color-primary);
 				}
@@ -147,8 +144,8 @@
 				color: var(--color-light);
 			}
 
-			.kol-icon:hover ~ &__selection-input[type='checkbox'],
-			&__selection-input[type='checkbox']:hover {
+			.kol-icon:hover ~ &__selection-input--checkbox,
+			&__selection-input--checkbox:hover {
 				border-color: var(--color-primary);
 			}
 		}

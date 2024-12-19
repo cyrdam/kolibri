@@ -47,7 +47,7 @@
 				}
 			}
 
-			&__container {
+			&__table {
 				width: 100%;
 				border-spacing: 0;
 				border-width: 0;
@@ -80,8 +80,7 @@
 				padding: 0.5em;
 			}
 
-			&__selection-checked,
-			&__selection-indeterminate {
+			&__selection {
 				display: flex;
 				gap: 0.5em;
 				grid-template-columns: 1fr auto;
@@ -98,7 +97,7 @@
 				}
 
 				// CHECKBOX
-				&[type='checkbox'] {
+				&--checkbox {
 					border-color: var(--color-grey-75);
 
 					&:checked {
@@ -108,7 +107,7 @@
 				}
 
 				// RADIO
-				&[type='radio'] {
+				&--radio {
 					display: block;
 					border-color: var(--color-grey-75);
 					outline-offset: rem(2);
@@ -128,20 +127,20 @@
 					}
 				}
 
-				@at-root #{$root}__selection-indeterminate & {
+				@at-root #{$root}__selection--indeterminate & {
 					background-color: var(--color-white);
 				}
 			}
 
 			&__selection-icon {
 				color: var(--color-white);
-				@at-root #{$root}__selection-indeterminate & {
+				@at-root #{$root}__selection--indeterminate & {
 					color: var(--color-blue);
 				}
 			}
 
-			.kol-icon:hover ~ &__selection-input[type='checkbox'],
-			&__selection-input[type='checkbox']:hover {
+			.kol-icon:hover ~ &__selection-input--checkbox,
+			&__selection-input--checkbox:hover {
 				border-color: var(--color-blue);
 			}
 		}

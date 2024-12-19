@@ -12,7 +12,7 @@
 			overflow-x: auto;
 			overflow-y: hidden;
 
-			&__container {
+			&__table {
 				width: 100%;
 			}
 
@@ -39,13 +39,10 @@
 
 			// headings in table body default to text-align left, unless defined otherwise.
 			&__body {
-				&,
-				&--align-left {
-					text-align: left;
+				text-align: left;
 
-					& .kol-button__text {
-						justify-items: start;
-					}
+				.kol-button__text {
+					justify-items: start;
 				}
 			}
 
@@ -75,8 +72,7 @@
 				}
 			}
 
-			&__foot-spacer,
-			&__head-spacer {
+			&__spacer {
 				display: none;
 			}
 
@@ -113,7 +109,7 @@
 					content: '';
 				}
 
-				&[type='checkbox'] {
+				&--checkbox {
 					position: relative;
 					display: flex;
 					height: calc(var(--a11y-min-size) / 2);
@@ -126,7 +122,7 @@
 					transition: all 0.5s ease 0s;
 				}
 
-				&[type='radio'] {
+				&--radio {
 					display: flex;
 					border-width: rem(2);
 					border-radius: 100%;
@@ -135,23 +131,18 @@
 					min-width: 1.5em;
 					padding: 0;
 					width: 1.5em;
-				}
-
-				&[type='radio']:before {
-					border-radius: 100%;
-					margin: auto;
-					height: calc(1.5em / 2);
-					width: calc(1.5em / 2);
-				}
-
-				&[type='radio']:checked:before {
-					background-color: #000;
-				}
-
-				@media (forced-colors: active) {
-					&[type='radio']:checked:before {
-						/* Give it a visible background in forced colors mode */
-						background-color: selectedItem !important;
+					&:before {
+						border-radius: 100%;
+						margin: auto;
+						height: calc(1.5em / 2);
+						width: calc(1.5em / 2);
+					}
+					&:checked:before {
+						background-color: #000;
+						@media (forced-colors: active) {
+							/* Give it a visible background in forced colors mode */
+							background-color: selectedItem !important;
+						}
 					}
 				}
 			}
