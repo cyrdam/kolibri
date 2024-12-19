@@ -6,7 +6,6 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	accessKey: AccessKeyPropType;
 	adjustHeight: boolean;
 	disabled: boolean;
-	error: string;
 	hideError: boolean;
 	hideLabel: boolean;
 	hint: string;

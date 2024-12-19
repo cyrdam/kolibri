@@ -60,11 +60,6 @@ ROUTES.set('breadcrumb/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('button-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('button-link/basic', {
 	axe: {
 		skipFailures: false,
@@ -179,11 +174,6 @@ ROUTES.set('image/basic', {
 		skipFailures: false,
 	},
 });
-ROUTES.set('indented-text/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
 ROUTES.set('input-checkbox/basic', null);
 ROUTES.set('input-checkbox/button', null);
 ROUTES.set('input-checkbox/switch', null);
@@ -206,16 +196,6 @@ ROUTES.set('kolibri/basic', {
 	},
 });
 ROUTES.set('link-button/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/basic', {
-	axe: {
-		skipFailures: false,
-	},
-});
-ROUTES.set('link-group/horizontal', {
 	axe: {
 		skipFailures: false,
 	},

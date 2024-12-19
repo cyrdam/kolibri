@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolHeading, KolTable } from '@public-ui/react';
+import { KolHeading, KolTableStateful } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 
@@ -11,12 +11,12 @@ const genericNonSorter = <T,>(data: T): T => data;
 export const TableColumnAlignment: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample shows KolTable with columns headers and data in different text alignments.</p>
+			<p>This sample shows KolTableStateful with columns headers and data in different text alignments.</p>
 		</SampleDescription>
 
 		<section className="w-full flex flex-col">
 			<KolHeading _label="Simple table" _level={3}></KolHeading>
-			<KolTable
+			<KolTableStateful
 				_label="Table for demonstration purposes with different text align properties"
 				_headers={{
 					horizontal: [
@@ -33,7 +33,7 @@ export const TableColumnAlignment: FC = () => (
 			/>
 
 			<KolHeading _label="Table with sortable columns" _level={3} className="block mt-6"></KolHeading>
-			<KolTable
+			<KolTableStateful
 				_label="Table for demonstration purposes with sortable columns"
 				_headers={{
 					horizontal: [
@@ -50,7 +50,7 @@ export const TableColumnAlignment: FC = () => (
 			/>
 
 			<KolHeading _label="Table some sortable columns" _level={3} className="block mt-6"></KolHeading>
-			<KolTable
+			<KolTableStateful
 				_label="Table for demonstration purposes with some but not all columns sortable"
 				_headers={{
 					horizontal: [
@@ -67,7 +67,7 @@ export const TableColumnAlignment: FC = () => (
 			/>
 
 			<KolHeading _label="Table with vertical heading" _level={3} className="block mt-6"></KolHeading>
-			<KolTable
+			<KolTableStateful
 				_label="Table for demonstration purposes with vertical heading"
 				_headers={{
 					horizontal: [
