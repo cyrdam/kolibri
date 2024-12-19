@@ -5,6 +5,8 @@
 	@include kol-table-stateless-wc;
 
 	.kol-table-stateful {
+		font-family: var(--font-family);
+
 		&__pagination {
 			overflow-x: auto;
 			overflow-y: hidden;
