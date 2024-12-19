@@ -118,7 +118,7 @@ export class KolToastContainer implements ToasterAPI {
 				{this.state._toastStates.length > 1 && (
 					<KolButtonTag
 						_label={translate('kol-toast-close-all')}
-						class="close-all"
+						class="kol-toast-container__button-close-all"
 						_on={{
 							onClick: () => {
 								void this.closeAll();
