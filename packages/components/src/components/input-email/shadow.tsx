@@ -73,7 +73,9 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		const value = (event.target as HTMLInputElement).value;
+		setState(this, '_currentLength', value.length);
+		this._value = value;
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -263,7 +265,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputEmailStates = {
 		_autoComplete: 'off',

@@ -260,7 +260,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
@@ -427,7 +427,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 
 	private readonly onInput = (event: InputEvent) => {
 		if (this.textareaRef instanceof HTMLTextAreaElement) {
-			setState(this, '_currentLength', this.textareaRef.value.length);
+			const value = this.textareaRef.value;
+			setState(this, '_currentLength', value.length);
+			this._value = value;
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.textareaRef);
 			}

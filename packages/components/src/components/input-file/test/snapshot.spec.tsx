@@ -4,11 +4,4 @@ import { executeInputSnapshotTests } from '../../../utils/testing';
 
 import { KolInputFile } from '../shadow';
 
-executeInputSnapshotTests<InputFileProps>(
-	KolInputFileTag,
-	[KolInputFile],
-	{
-		_value: 'File',
-	},
-	{ hasSmartButton: true },
-);
+executeInputSnapshotTests<InputFileProps>(KolInputFileTag, [KolInputFile], undefined, { hasSmartButton: true });
