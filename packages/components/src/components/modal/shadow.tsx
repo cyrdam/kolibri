@@ -1,8 +1,7 @@
 import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
-import { setState, validateLabel, watchString, watchValidator } from '../../schema';
+import { setState, validateLabel, watchString } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Method } from '@stencil/core';
-import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -20,12 +19,6 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 export class KolModal implements ModalAPI {
 	@Element() private readonly host?: HTMLKolModalElement;
 	private refDialog?: HTMLDialogElement;
-
-	public componentDidRender(): void {
-		if (this.state._activeElement) {
-			this.refDialog?.showModal();
-		}
-	}
 
 	public disconnectedCallback(): void {
 		void this.closeModal();
@@ -47,8 +40,6 @@ export class KolModal implements ModalAPI {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closeModal() {
-		this._activeElement = null;
-
 		/* The optional chaining for the `close` method is not strictly necessary, but a simple/lazy workaround for HTMLDialog not being implemented in jsdom, causing Jest tests to fail. It may be removed in the future. */
 		this.refDialog?.close?.();
 	}
@@ -75,12 +66,6 @@ export class KolModal implements ModalAPI {
 	}
 
 	/**
-	 * Legacy property - while set to an HTMLElement, the modal is open.
-	 * @deprecated Use methode `openModal` and `closeModal` instead.
-	 */
-	@Prop({ mutable: true }) public _activeElement?: HTMLElement | null;
-
-	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
@@ -96,26 +81,9 @@ export class KolModal implements ModalAPI {
 	@Prop() public _width?: string = '100%';
 
 	@State() public state: ModalStates = {
-		_activeElement: null,
 		_label: '', // ⚠ required
 		_width: '100%',
 	};
-
-	@Watch('_activeElement')
-	public validateActiveElement(value?: HTMLElement | null): void {
-		watchValidator(this, '_activeElement', (value): boolean => typeof value === 'object' || value === null, new Set(['HTMLElement', 'null']), value, {
-			defaultValue: null,
-			hooks: {
-				afterPatch: () => {
-					if (this.state._activeElement) {
-						void this.openModal();
-					} else {
-						void this.closeModal();
-					}
-				},
-			},
-		});
-	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -143,7 +111,6 @@ export class KolModal implements ModalAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.validateActiveElement(this._activeElement);
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
 		this.validateWidth(this._width);
