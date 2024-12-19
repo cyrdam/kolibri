@@ -88,7 +88,9 @@
 			}
 
 			&__body-row:nth-child(even) {
-				background-color: var(--color-mute);
+				@at-root #{$root}__body & {
+					background-color: var(--color-mute);
+				}
 			}
 
 			&__selection-input {

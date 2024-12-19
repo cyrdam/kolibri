@@ -729,7 +729,7 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
 		return (
-			<tfoot>
+			<tfoot class="kol-table__footer">
 				{[
 					this.renderSpacer('foot', rows),
 					rows.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true)),
