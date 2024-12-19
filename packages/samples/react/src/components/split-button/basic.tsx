@@ -27,10 +27,10 @@ export const SplitButtonBasic: FC = () => {
 
 			<div className="flex gap-4">
 				<KolSplitButton _label="Only the arrow opens" _on={{ onClick: handleButtonClick }}>
-					Dropdown-Inhalt
+					Dropdown contents
 				</KolSplitButton>
 				<KolSplitButton _label="Button without visible label" _hideLabel _icons="codicon codicon-git-pull-request">
-					Dropdown-Inhalt
+					Dropdown contents
 				</KolSplitButton>
 			</div>
 		</>

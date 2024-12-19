@@ -34,16 +34,23 @@ import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private readonly clickButtonHandler = {
-		onClick: (e: MouseEvent) => {
+		onClick: (event: MouseEvent) => {
+			event.stopPropagation(); // stop propagation to avoid triggering the event that closes the popover
+
 			if (typeof this._on?.onClick === 'function') {
 				// TODO: this._on is not validated
-				this._on?.onClick(e, this._value);
+				this._on?.onClick(event, this._value);
 			} else {
 				this.toggleDropdown();
 			}
 		},
 	};
-	private readonly clickToggleHandler = { onClick: () => this.toggleDropdown() };
+	private readonly clickToggleHandler = {
+		onClick: (event: MouseEvent) => {
+			event.stopPropagation(); // stop propagation to avoid triggering the event that closes the popover
+			this.toggleDropdown();
+		},
+	};
 
 	private readonly toggleDropdown = () => {
 		this.state = { ...this.state, _show: !this.state._show };
