@@ -42,14 +42,6 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 		return this._value;
 	}
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	public async kolFocus() {
 		await this.buttonWcRef?.kolFocus();

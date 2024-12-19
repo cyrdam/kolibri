@@ -27,11 +27,6 @@ export type CSSResize = (typeof cssResizeOptions)[number];
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	alert: boolean;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	maxLength: number;
@@ -68,8 +63,6 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 
 type OptionalStates = {
-	alert: boolean;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	maxLength: number;

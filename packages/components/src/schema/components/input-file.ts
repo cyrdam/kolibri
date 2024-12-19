@@ -22,11 +22,6 @@ import type { ButtonProps } from './button';
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	accept: string;
-	alert: boolean;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
 	msg: Stringified<MsgPropType>;
@@ -47,7 +42,6 @@ type OptionalProps = {
 type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideError;
 type OptionalStates = {
 	accept: string;
-	alert: boolean;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;

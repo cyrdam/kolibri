@@ -276,23 +276,7 @@ test.describe('kol-input-date', () => {
 		});
 	});
 
-	test.describe('when _error or _msg is set', () => {
-		test('should display and hide message based on _error value', async ({ page }) => {
-			await page.setContent(`<kol-input-date
-				_error="An error message"
-				_label="Date input"
-				_touched
-			></kol-input-date>`);
-
-			await expect(page.locator('.kol-alert')).toBeVisible();
-
-			const input = page.locator('kol-input-date');
-			await input.evaluate((element: HTMLKolInputDateElement) => {
-				element._error = undefined;
-			});
-
-			await expect(page.locator('.kol-alert')).not.toBeVisible();
-		});
+	test.describe('when _msg is set', () => {
 		test('should display and hide message based on _msg value', async ({ page }) => {
 			await page.setContent(`<kol-input-date
 				_label="Date input"

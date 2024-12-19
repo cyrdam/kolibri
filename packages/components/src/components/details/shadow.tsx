@@ -26,14 +26,6 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 		this.buttonWcRef = ref;
 	};
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

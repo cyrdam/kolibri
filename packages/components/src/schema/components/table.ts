@@ -68,6 +68,5 @@ type OptionalStates = {
 	selection: KoliBriTableSelection;
 } & StatefulPropTableCallbacks;
 
-export type TableProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TableStates = Generic.Element.Members<RequiredStates, OptionalStates>;
 export type TableAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

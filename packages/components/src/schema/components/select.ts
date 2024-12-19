@@ -22,11 +22,6 @@ import type { InputTypeOnDefault, KoliBriHorizontalIcons, SelectOption, Stringif
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
-	alert: boolean;
-	/**
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	error: string;
 	hint: string;
 	icons: Stringified<KoliBriHorizontalIcons>;
 	msg: Stringified<MsgPropType>;
@@ -55,8 +50,6 @@ type RequiredStates = {
 	PropMultiple &
 	PropLabelWithExpertSlot;
 type OptionalStates = {
-	alert: boolean;
-	error: string;
 	hint: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
