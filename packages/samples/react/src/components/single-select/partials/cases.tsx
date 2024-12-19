@@ -6,9 +6,9 @@ import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
 import type { Option, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
-import type { SingleSelectProps } from '@public-ui/components/src/schema';
+import type { Components } from '@public-ui/components';
 
-export const SingleSelectCases = (props: SingleSelectProps) => {
+export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 	return (
 		<div className="grid gap-4">
 			<KolSingleSelect

@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { SingleSelectCases } from './cases';
-import type { SingleSelectProps } from '@public-ui/components/src/schema';
+import type { Components } from '@public-ui/components';
 
-export const SingleSelectVariants = (props: SingleSelectProps) => {
+export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 	return (
 		<div className="grid md:grid-cols-2 gap-4">
 			<fieldset>
