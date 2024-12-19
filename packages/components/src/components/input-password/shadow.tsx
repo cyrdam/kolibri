@@ -58,14 +58,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		return this.inputRef?.value;
 	}
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -82,7 +74,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		const value = (event.target as HTMLInputElement).value;
+		setState(this, '_currentLength', value.length);
+		this._value = value;
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -282,7 +276,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	/**
 	 * Defines which variant should be used for presentation.

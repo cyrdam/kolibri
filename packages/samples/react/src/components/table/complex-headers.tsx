@@ -1,16 +1,16 @@
 import type { FC } from 'react';
 import React from 'react';
-import { KolTable } from '@public-ui/react';
+import { KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 export const TableComplexHeaders: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample shows KolTable using vertical and horizontal headers, applying colspan and rowspan.</p>
+			<p>This sample shows KolTableStateful using vertical and horizontal headers, applying colspan and rowspan.</p>
 		</SampleDescription>
 
 		<section className="w-full flex flex-col">
-			<KolTable
+			<KolTableStateful
 				_label="Business hours"
 				_data={[
 					{

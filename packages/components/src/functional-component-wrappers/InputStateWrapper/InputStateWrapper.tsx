@@ -38,7 +38,6 @@ function getInputProps(state: InputState): InputProps {
 		id: state._id,
 		hideLabel: state._hideLabel,
 		label: state._label,
-		value: state._value as string | number | string[],
 		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
@@ -47,6 +46,7 @@ function getInputProps(state: InputState): InputProps {
 	};
 
 	if ('_type' in state) props.type = state._type;
+	if ('_value' in state) props.value = state._value as string | number | string[];
 	if ('_required' in state) props.required = state._required;
 	if ('_maxLength' in state) props.maxlength = state._maxLength;
 	if ('_placeholder' in state) props.placeholder = state._placeholder;

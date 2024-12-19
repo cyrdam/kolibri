@@ -1,5 +1,5 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { JSX } from '@stencil/core';
 import type {
 	AccordionAPI,
@@ -15,6 +15,7 @@ import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabe
 import { nonce } from '../../utils/dev.utils';
 import { watchHeadingLevel } from '../heading/validation';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 featureHint(`[KolAccordion] Anfrage nach einer KolAccordionGroup bei dem immer nur ein Accordion geöffnet ist.
 
@@ -35,20 +36,14 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	shadow: true,
 })
 export class KolAccordion implements AccordionAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolAccordionElement;
+
 	private readonly nonce = nonce();
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolButtonWcElement) => {
 		this.buttonWcRef = ref;
 	};
-
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
 
 	@Method()
 	public async kolFocus() {
@@ -66,6 +61,9 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		 */
 		setTimeout(() => {
 			this.state._on?.onClick?.(event, this._open === true);
+			if (this.host) {
+				dispatchDomEvent(this.host, KolEvent.click, this._open === true);
+			}
 		});
 	};
 

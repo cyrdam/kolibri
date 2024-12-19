@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { KoliBriModalEventCallbacks, LabelPropType, DrawerAPI, AlignPropType, OpenPropType, ModalPropType, DrawerStates } from '../../schema';
-import { setState, validateLabel, validateOpen, validateAlign, validateModal } from '../../schema';
-import { Component, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-
+import type { AlignPropType, DrawerAPI, DrawerStates, KoliBriModalEventCallbacks, LabelPropType, ModalPropType, OpenPropType } from '../../schema';
+import { setState, validateAlign, validateLabel, validateModal, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import clsx from 'clsx';
 
 /**
@@ -17,7 +17,7 @@ import clsx from 'clsx';
 	shadow: true,
 })
 export class KolDrawer implements DrawerAPI {
-	public hostElement?: HTMLElement;
+	@Element() private readonly host?: HTMLKolDetailsElement;
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLDivElement;
 
@@ -77,7 +77,6 @@ export class KolDrawer implements DrawerAPI {
 				class={clsx('kol-drawer--modal', {
 					'kol-drawer--modal': isModal,
 				})}
-				ref={(el) => (this.hostElement = el as HTMLElement)}
 			>
 				<dialog class="kol-drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
@@ -156,13 +155,16 @@ export class KolDrawer implements DrawerAPI {
 	private handleCloseDialog() {
 		this.dialogElement?.close();
 		this._on?.onClose?.();
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.close);
+		}
 	}
 
-	private handleClose(): void {
-		async () => {
+	private handleClose() {
+		void (async () => {
 			await this.close();
 			this.handleCloseDialog();
-		};
+		})();
 	}
 
 	private handleAnimationEnd(e: Event): void {

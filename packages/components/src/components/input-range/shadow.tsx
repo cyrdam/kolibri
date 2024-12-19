@@ -46,14 +46,6 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	private refInputNumber?: HTMLInputElement;
 	private refInputRange?: HTMLInputElement;
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -99,9 +91,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		const value = (event.target as HTMLInputElement).value;
 		const floatValue = this.getSanitizedFloatValue(value);
 		this.validateValue(floatValue);
-		if (typeof this.state._on?.onChange === 'function') {
-			this.state._on?.onChange(event, floatValue);
-		}
+		this.controller.onFacade.onChange(event, floatValue);
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -312,7 +302,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: number;
+	@Prop({ mutable: true, reflect: true }) public _value?: number;
 
 	@State() public state: InputRangeStates = {
 		_autoComplete: 'off',

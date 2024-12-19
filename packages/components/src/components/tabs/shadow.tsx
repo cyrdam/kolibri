@@ -31,6 +31,7 @@ import type { JSX } from '@stencil/core';
 import type { Generic } from 'adopted-style-sheets';
 import { KolButtonWcTag } from '../../core/component-names';
 import { KeyboardKey } from '../../schema/enums';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -143,15 +144,8 @@ export class KolTabs implements TabsAPI {
 		}
 	}
 
-	// private readonly onClickClose = (event: Event, button: TabButtonProps, index: number) => {
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-	// 	this.onClose(button, event, index);
-	// };
-
 	private readonly onMouseDown = (event: Event): void => {
 		event.preventDefault();
-		event.stopPropagation();
 	};
 
 	private readonly callbacks: ButtonCallbacksPropType<number> = {
@@ -442,13 +436,15 @@ export class KolTabs implements TabsAPI {
 
 	private onSelect(event: CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, index: number): void {
 		this._on?.onSelect?.(event, index);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.select, index);
+		}
 
 		this.focusTabById(index);
 	}
 
 	private onCreate = (event: Event) => {
 		event.preventDefault();
-		event.stopPropagation();
 		if (typeof this.state._on?.onCreate === 'function') {
 			this.state._on?.onCreate(event);
 		}

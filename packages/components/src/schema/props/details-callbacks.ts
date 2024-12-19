@@ -1,11 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { Events } from '../enums';
+import type { Callback } from '../enums';
 import type { EventValueOrEventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
 /* types */
 export type DetailsCallbacksPropType<T> = {
-	[Events.onToggle]?: EventValueOrEventCallback<MouseEvent, T>;
+	[Callback.onToggle]?: EventValueOrEventCallback<MouseEvent, T>;
 };
 
 /**

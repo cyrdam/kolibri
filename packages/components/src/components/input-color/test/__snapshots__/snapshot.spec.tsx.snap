@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _accessKey="V" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -21,7 +21,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _alert=true 1`] = `
-<kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -40,7 +40,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _disabled=true 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color disabled kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -59,7 +59,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _hint="Hint" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -81,7 +81,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -106,7 +106,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -129,7 +129,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -152,7 +152,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-color _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color hidden-error kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -171,7 +171,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -190,7 +190,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _readOnly=true 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -209,7 +209,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _shortKey="S" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -229,7 +229,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -252,7 +252,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _accessKey="V" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -277,7 +277,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _alert=true 1`] = `
-<kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -301,7 +301,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _disabled=true 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color disabled kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -325,7 +325,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _hint="Hint" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -352,7 +352,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -382,7 +382,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -410,7 +410,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -438,7 +438,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-color _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color hidden-error kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -462,7 +462,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -486,7 +486,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _readOnly=true 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -510,7 +510,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _shortKey="S" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -535,7 +535,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -563,7 +563,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] _touched=true 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -587,7 +587,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _suggestions=["#F00","#0F0","#00F"] 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -611,7 +611,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" _touched=true 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -630,7 +630,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-color should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="#FFF" 1`] = `
-<kol-input-color _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-color _placeholder="Hier steht ein Platzhaltertext" _value="#FFF">
   <template shadowrootmode="open">
     <div class="color kol-input kol-input-color" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">

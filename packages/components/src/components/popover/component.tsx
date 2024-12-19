@@ -1,11 +1,11 @@
 import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverStates, ShowPropType } from '../../schema';
 import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
-
-import type { JSX } from '@stencil/core';
 import clsx from 'clsx';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -44,6 +44,9 @@ export class KolPopover implements PopoverAPI {
 		this.removeListenersToBody();
 
 		this.state._on?.onClose?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.close);
+		}
 	}
 
 	private hidePopoverByEscape = (event: KeyboardEvent): void => {
