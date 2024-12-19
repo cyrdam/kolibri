@@ -2,9 +2,9 @@
 @import '../style';
 @import '../@shared/kol-table-stateless-mixin';
 
-@layer kol-component {
-	@include kol-table-stateless-styles;
+@include kol-table-stateless-styles;
 
+@layer kol-component {
 	.kol-table-stateful {
 		font-family: var(--font-family);
 		font-size: rem(16);
