@@ -13,7 +13,9 @@
 		z-index: 200;
 	}
 
-	.close-all {
-		align-self: flex-end;
+	.kol-toast-container {
+		&__close-all {
+			align-self: flex-end;
+		}
 	}
 }
