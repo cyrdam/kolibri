@@ -4,7 +4,7 @@
 	@include kol-table-stateless-wc;
 
 	.kol-table-stateful {
-		.kol-pagination {
+		&__pagination {
 			font-family: var(--font-family);
 			hyphens: var(--hyphens);
 			line-height: var(--line-height);

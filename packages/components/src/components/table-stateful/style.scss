@@ -11,10 +11,12 @@
 			display: grid;
 			place-items: center;
 		}
+		&__pagination {
+			font-size: rem(16);
+		}
 	}
 
 	.kol-pagination {
-		font-size: rem(16);
 		display: flex;
 		flex-wrap: wrap;
 	}
