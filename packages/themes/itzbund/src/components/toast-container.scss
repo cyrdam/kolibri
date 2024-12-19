@@ -10,17 +10,15 @@
 		transform: translateX(-50%);
 	}
 
-	.kol-toast-container {
-		.kol-toast-item {
-			background-color: #fff;
-			margin-top: rem(16);
+	.kol-toast-item {
+		background-color: #fff;
+		margin-top: rem(16);
 
-			.heading {
-				width: 100%;
+		.heading {
+			width: 100%;
 
-				.heading-content {
-					flex: 1;
-				}
+			.heading-content {
+				flex: 1;
 			}
 		}
 	}

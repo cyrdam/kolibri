@@ -9,16 +9,14 @@
 		max-width: 100%;
 	}
 
-	.kol-toast-container {
-		.kol-toast-item {
-			@include kol-alert-theme;
-			display: block;
-			background-color: #fff;
-			margin-top: rem(16);
+	.kol-toast-item {
+		@include kol-alert-theme;
+		display: block;
+		background-color: #fff;
+		margin-top: rem(16);
 
-			&__alert {
-				display: block;
-			}
+		&__alert {
+			display: block;
 		}
 	}
 }
