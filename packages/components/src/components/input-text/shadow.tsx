@@ -54,15 +54,32 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	private readonly onBlur = (event: FocusEvent) => {
+		this.controller.onFacade.onBlur(event);
+		this.inputHasFocus = false;
+	};
+
 	private readonly onChange = (event: Event) => {
-		if (this.oldValue !== this.inputRef?.value) {
-			this.oldValue = this.inputRef?.value;
-			this.controller.onFacade.onChange(event);
+		const value = this.inputRef?.value;
+
+		if (this.oldValue !== value) {
+			this.oldValue = value;
 		}
+
+		this.controller.onFacade.onChange(event);
+	};
+
+	private readonly onFocus = (event: FocusEvent) => {
+		this.controller.onFacade.onFocus(event);
+		this.inputHasFocus = true;
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		const value = this.inputRef?.value ?? '';
+		setState(this, '_currentLength', value.length);
+
+		this._value = value;
+
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -104,17 +121,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			ref: this.catchRef,
 			state: this.state,
 			...this.controller.onFacade,
+			onBlur: this.onBlur,
 			onChange: this.onChange,
+			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
 		};
 	}
 
@@ -277,7 +288,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
 		_autoComplete: 'off',

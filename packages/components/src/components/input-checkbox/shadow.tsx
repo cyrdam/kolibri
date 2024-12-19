@@ -26,7 +26,6 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
 import { InputCheckboxController } from './controller';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
@@ -34,7 +33,7 @@ import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../funct
 import KolIconFc from '../../functional-components/Icon';
 
 /**
- * @slot expert - Die Beschriftung der Checkbox.
+ * @slot expert - Checkbox description.
  */
 @Component({
 	tag: 'kol-input-checkbox',
@@ -398,30 +397,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		this._indeterminate = false;
 
 		const value = this.getModelValue();
-
-		// Event handling
-		tryToDispatchKoliBriEvent('input', this.host, value);
-
-		// Callback
-		if (typeof this._on?.onInput === 'function') {
-			this._on.onInput(event, value);
-		}
+		this.controller.onFacade.onInput(event, false, value);
+		this.controller.setFormAssociatedCheckboxValue(value);
 	};
 
 	private onChange = (event: Event): void => {
-		const value = this.getModelValue();
-
-		// Event handling
-		// stopPropagation(event);
-		tryToDispatchKoliBriEvent('change', this.host, value);
-
-		// Static form handling
-		// this.controller.setFormAssociatedValue(value);
-		this.controller.setFormAssociatedCheckboxValue(value);
-
-		// Callback
-		if (typeof this._on?.onChange === 'function') {
-			this._on.onChange(event, value);
-		}
+		this.controller.onFacade.onChange(event, this.getModelValue());
 	};
 }

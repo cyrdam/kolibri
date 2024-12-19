@@ -5,6 +5,7 @@ export { bootstrap, register, isInitialized } from './core/bootstrap';
 export * from './enums/bund';
 export * from './kolibri';
 export { KoliBri, KoliBriDevHelper } from './schema';
+export { KolEvent } from './utils/events';
 export type {
 	FocusableElement,
 	KoliBriTableCell,

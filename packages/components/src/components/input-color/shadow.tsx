@@ -46,6 +46,21 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	private readonly onBlur = (event: FocusEvent) => {
+		this.controller.onFacade.onBlur(event);
+		this.inputHasFocus = false;
+	};
+
+	private readonly onFocus = (event: FocusEvent) => {
+		this.controller.onFacade.onFocus(event);
+		this.inputHasFocus = true;
+	};
+
+	private readonly onInput = (event: InputEvent) => {
+		this._value = this.inputRef?.value ?? '';
+		this.controller.onFacade.onInput(event);
+	};
+
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
@@ -75,14 +90,9 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 			slot: 'input',
 			state: this.state,
 			...this.controller.onFacade,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
+			onBlur: this.onBlur,
+			onFocus: this.onFocus,
+			onInput: this.onInput,
 		};
 	}
 
@@ -202,7 +212,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ reflect: true }) public _value?: string;
 
 	@State() public state: InputColorStates = {
 		_autoComplete: 'off',

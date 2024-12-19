@@ -44,7 +44,6 @@ type RequiredStates = {
 	PropLabelWithExpertSlot;
 type OptionalStates = {
 	hint: string;
-	value: string;
 	icons: KoliBriHorizontalIcons;
 	on: InputTypeOnDefault;
 	tabIndex: number;

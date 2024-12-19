@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _accessKey="V" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -21,7 +21,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _alert=true 1`] = `
-<kol-input-email _alert="">
+<kol-input-email _alert="" _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -40,7 +40,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _disabled=true 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="disabled email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -59,7 +59,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _hint="Hint" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -81,7 +81,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -106,7 +106,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -129,7 +129,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -152,7 +152,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-email _hide-error="">
+<kol-input-email _hide-error="" _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value hidden-error kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -171,7 +171,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -190,7 +190,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _readOnly=true 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email read-only" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -209,7 +209,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _shortKey="S" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -229,7 +229,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -252,7 +252,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _accessKey="V" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -277,7 +277,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _alert=true 1`] = `
-<kol-input-email _alert="">
+<kol-input-email _alert="" _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -301,7 +301,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _disabled=true 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="disabled email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -325,7 +325,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _hint="Hint" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -352,7 +352,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -382,7 +382,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -410,7 +410,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -438,7 +438,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-email _hide-error="">
+<kol-input-email _hide-error="" _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value hidden-error kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -462,7 +462,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -486,7 +486,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _readOnly=true 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email read-only" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -510,7 +510,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _shortKey="S" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -535,7 +535,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _smartButton={"_icons":["codicon codicon-eye"],"_hideLabel":true,"_label":"einblenden"} 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -563,7 +563,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _touched=true 1`] = `
-<kol-input-email _touched="">
+<kol-input-email _touched="" _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -587,7 +587,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -611,7 +611,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _touched=true 1`] = `
-<kol-input-email _touched="">
+<kol-input-email _touched="" _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email touched" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
@@ -630,7 +630,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" 1`] = `
-<kol-input-email>
+<kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
     <div class="email has-value kol-input kol-input-email" role="presentation">
       <label class="input-label" htmlfor="id-nonce" id="id-nonce-label">
