@@ -25,16 +25,10 @@ export class InputFileController extends InputIconController implements InputFil
 		watchBoolean(this.component, '_required', value);
 	}
 
-	public validateValue(value?: string): void {
-		watchString(this.component, '_value', value);
-		this.setFormAssociatedValue(this.component._value as string);
-	}
-
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAccept(this.component._accept);
 		this.validateMultiple(this.component._multiple);
 		this.validateRequired(this.component._required);
-		this.validateValue(this.component._value);
 	}
 }

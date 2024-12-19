@@ -46,7 +46,7 @@ import {
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -90,11 +90,6 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 				ref: this.buttonRef,
 			});
 		} else {
-			// Event handling
-			stopPropagation(event);
-
-			tryToDispatchKoliBriEvent('click', this.host, this.state._value);
-
 			// TODO: Static form handling
 			this.controller.setFormAssociatedValue(this.state._value);
 
@@ -103,6 +98,17 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 				setEventTarget(event, this.buttonRef);
 				this.state._on?.onClick(event, this.state._value);
 			}
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
+		}
+	};
+
+	private readonly onMouseDown = (event: MouseEvent) => {
+		this.state?._on?.onMouseDown?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.mousedown);
 		}
 	};
 
@@ -131,8 +137,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					disabled={this.state._disabled}
 					id={this.state._id}
 					name={this.state._name}
-					{...this.state._on}
 					onClick={this.onClick}
+					onMouseDown={this.onMouseDown}
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}

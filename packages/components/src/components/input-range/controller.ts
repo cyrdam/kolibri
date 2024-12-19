@@ -40,6 +40,7 @@ export class InputRangeController extends InputIconController implements InputRa
 
 	public validateValue(value?: number): void {
 		watchNumber(this.component, '_value', value);
+		this.component._value = value;
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
