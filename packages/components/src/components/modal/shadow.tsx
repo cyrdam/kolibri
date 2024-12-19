@@ -1,7 +1,8 @@
 import type { KoliBriModalEventCallbacks, LabelPropType, ModalAPI, ModalStates } from '../../schema';
 import { setState, validateLabel, watchString } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -16,6 +17,7 @@ import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 	shadow: true,
 })
 export class KolModal implements ModalAPI {
+	@Element() private readonly host?: HTMLKolModalElement;
 	private refDialog?: HTMLDialogElement;
 
 	public disconnectedCallback(): void {
@@ -24,6 +26,9 @@ export class KolModal implements ModalAPI {
 
 	private handleNativeCloseEvent() {
 		this.state._on?.onClose?.();
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.close);
+		}
 	}
 
 	@Method()

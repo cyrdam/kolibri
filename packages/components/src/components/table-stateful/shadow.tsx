@@ -39,8 +39,8 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
-import { Events } from '../../schema/enums';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { Callback } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -353,15 +353,16 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private onSelectionChange = (event: Event): void => {
+		/* Stop propagation for selectionChange event from table-stateless component because table-stateful emits its own selectionChange event. */
 		event.stopPropagation();
 	};
 
 	public componentDidLoad(): void {
-		this.tableWcRef?.addEventListener('kol-selection-change', this.onSelectionChange);
+		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
 	}
 
 	public disconnectedCallback(): void {
-		this.tableWcRef?.removeEventListener('kol-selection-change', this.onSelectionChange);
+		this.tableWcRef?.removeEventListener(KolEvent.selectionChange, this.onSelectionChange);
 	}
 
 	public componentWillLoad(): void {
@@ -496,10 +497,11 @@ export class KolTableStateful implements TableAPI {
 			};
 		const selectedData = this.getSelectedData(value);
 
-		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
-
-		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-			this.state._on[Events.onSelectionChange](event, selectedData);
+		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
+			this.state._on[Callback.onSelectionChange](event, selectedData);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.selectionChange, selectedData);
 		}
 	}
 

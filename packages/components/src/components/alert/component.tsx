@@ -1,9 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { alertTypeOptions, alertVariantOptions, setState, validateHasCloser, validateLabel, watchBoolean, watchValidator } from '../../schema';
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { watchHeadingLevel } from '../heading/validation';
 import type { AlertAPI, AlertStates, AlertType, AlertVariant, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Alert';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @internal
@@ -14,8 +15,13 @@ import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Al
 	shadow: false,
 })
 export class KolAlertWc implements AlertAPI {
+	@Element() private readonly host?: HTMLKolAlertWcElement;
+
 	private readonly close = () => {
 		this._on?.onClose?.(new Event('Close'));
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.close);
+		}
 	};
 
 	private readonly handleAlertTimeout = () => {

@@ -31,6 +31,18 @@ The following components have been removed:
 
 - The table header property `sort` has been removed. Use `compareFn` instead.
 
+### kol-input-file
+
+- The property `_value` has been removed as it never served a purpose. Use the `getValue()` method instead to access the FileList.
+
+### kol-table-stateful
+
+- The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
+
+### kol-table-stateless
+
+- The DOM event `kol-selection-change` has been renamed to `kolSelectionChange`.
+
 ## `focus`-methods
 
 The public `focus`-methods have been removed from all components. Use `kolFocus` instead.

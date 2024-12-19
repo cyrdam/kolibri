@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { KolButton, KolTableStateful, createReactRenderElement } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
-import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
+import type { KoliBriTableCell, KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
+import { KolEvent } from '@public-ui/components';
 import { getRoot } from '../../shares/react-roots';
-import type { KoliBriTableCell } from '@public-ui/components';
 import { useToasterService } from '../../hooks/useToasterService';
 
 const DATA = [
@@ -48,11 +48,11 @@ export const TableStatefulWithSelection: FC = () => {
 
 	useEffect(() => {
 		// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-		kolTableStatefulRef.current?.addEventListener('kol-selection-change', handleSelectionChangeEvent);
+		kolTableStatefulRef.current?.addEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
 
 		return () => {
 			// @ts-expect-error https://github.com/Microsoft/TypeScript/issues/28357
-			kolTableStatefulRef.current?.removeEventListener('kol-selection-change', handleSelectionChangeEvent);
+			kolTableStatefulRef.current?.removeEventListener(KolEvent.selectionChange, handleSelectionChangeEvent);
 		};
 	}, [kolTableStatefulRef]);
 

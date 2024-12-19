@@ -1,11 +1,11 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { Events } from '../enums';
+import type { Callback } from '../enums';
 import type { EventCallback } from '../types/callbacks';
 import { watchValidator } from '../utils';
 
 /* types */
 export type PopoverCallbacksPropType = {
-	[Events.onClose]?: EventCallback<MouseEvent | KeyboardEvent>;
+	[Callback.onClose]?: EventCallback<MouseEvent | KeyboardEvent>;
 };
 
 /**

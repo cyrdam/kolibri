@@ -25,7 +25,7 @@ export const PaginationBasic: FC = () => (
 				_siblingCount={0}
 				_boundaryCount={2}
 				_hasButtons={false}
-				_label="Test pagination 4"
+				_label="Test pagination 5"
 				_on={{}}
 				_pageSizeOptions={[10, 100]}
 			/>

@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { Events } from '../enums';
+import type { Callback } from '../enums';
 import type { PropAlign, PropDisabled, PropHideLabel, PropLabel, PropTabBehavior, PropTooltipAlign } from '../props';
 import type { EventCallback, EventValueOrEventCallback, KoliBriIconsProp, Stringified } from '../types';
 
@@ -12,11 +12,11 @@ export type KoliBriTabsCallbacks = {
 				callback: EventCallback<Event>;
 		  };
 } & {
-	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
+	[Callback.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 
 export type KoliBriTabButtonCallbacks = {
-	[Events.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
+	[Callback.onSelect]?: EventValueOrEventCallback<CustomEvent | KeyboardEvent | MouseEvent | PointerEvent, number>;
 };
 type RequiredTabButtonProps = PropLabel;
 type OptionalTabButtonProps = {
