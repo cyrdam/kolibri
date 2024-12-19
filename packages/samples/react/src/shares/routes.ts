@@ -4,7 +4,6 @@ import { ALERT_ROUTES } from '../components/alert/routes';
 import { AVATAR_ROUTES } from '../components/avatar/routes';
 import { BADGE_ROUTES } from '../components/badge/routes';
 import { BREADCRUMB_ROUTES } from '../components/breadcrumb/routes';
-import { BUTTON_GROUP_ROUTES } from '../components/button-group/routes';
 import { BUTTON_LINK_ROUTES } from '../components/button-link/routes';
 import { BUTTON_ROUTES } from '../components/button/routes';
 import { CARD_ROUTES } from '../components/card/routes';
@@ -15,7 +14,6 @@ import { HANDOUT_ROUTES } from '../components/handout/routes';
 import { HEADING_ROUTES } from '../components/heading/routes';
 import { ICON_ROUTES } from '../components/icon/routes';
 import { IMAGE_ROUTES } from '../components/image/routes';
-import { INDENTED_ROUTES } from '../components/indented-text/routes';
 import { INPUT_CHECKBOX_ROUTES } from '../components/input-checkbox/routes';
 import { INPUT_COLOR_ROUTES } from '../components/input-color/routes';
 import { INPUT_DATE_ROUTES } from '../components/input-date/routes';
@@ -28,7 +26,6 @@ import { INPUT_RANGE_ROUTES } from '../components/input-range/routes';
 import { INPUT_TEXT_ROUTES } from '../components/input-text/routes';
 import { KOLIBRI_ROUTES } from '../components/kolibri/routes';
 import { LINK_BUTTON_ROUTES } from '../components/link-button/routes';
-import { LINK_GROUP_ROUTES } from '../components/link-group/routes';
 import { LINK_ROUTES } from '../components/link/routes';
 import { MODAL_ROUTES } from '../components/modal/routes';
 import { NAV_ROUTES } from '../components/nav/routes';
@@ -59,7 +56,6 @@ export const ROUTES: Routes = {
 	...AVATAR_ROUTES,
 	...BADGE_ROUTES,
 	...BREADCRUMB_ROUTES,
-	...BUTTON_GROUP_ROUTES,
 	...BUTTON_LINK_ROUTES,
 	...BUTTON_ROUTES,
 	...CARD_ROUTES,
@@ -70,7 +66,6 @@ export const ROUTES: Routes = {
 	...HEADING_ROUTES,
 	...ICON_ROUTES,
 	...IMAGE_ROUTES,
-	...INDENTED_ROUTES,
 	...INPUT_CHECKBOX_ROUTES,
 	...INPUT_COLOR_ROUTES,
 	...INPUT_DATE_ROUTES,
@@ -83,7 +78,6 @@ export const ROUTES: Routes = {
 	...INPUT_TEXT_ROUTES,
 	...KOLIBRI_ROUTES,
 	...LINK_BUTTON_ROUTES,
-	...LINK_GROUP_ROUTES,
 	...LINK_ROUTES,
 	...MODAL_ROUTES,
 	...NAV_ROUTES,

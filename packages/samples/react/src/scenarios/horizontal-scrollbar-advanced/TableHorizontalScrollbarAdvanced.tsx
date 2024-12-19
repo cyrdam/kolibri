@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KolTable, KolTabs, KolNav } from '@public-ui/react';
+import { KolTableStateful, KolTabs, KolNav } from '@public-ui/react';
 import type { KoliBriTableHeaders, TabButtonProps } from '@public-ui/components';
 import { SampleDescription } from '../../components/SampleDescription';
 import { LINKS } from '../../components/nav/links';
@@ -62,7 +62,7 @@ function TableHorizontalScrollbarAdvanced() {
 				<div className="content">
 					<KolTabs _tabs={TABS} _align="top" _label="Demo Tabs">
 						<div style={{ overflow: 'hidden' }}>
-							<KolTable
+							<KolTableStateful
 								_label="Table for demonstration purposes with horizontal scrollbar"
 								_minWidth={tableWith}
 								_headers={HEADERS}

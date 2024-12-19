@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { createReactRenderElement, KolButton, KolInputText, KolTable } from '@public-ui/react';
+import { createReactRenderElement, KolButton, KolInputText, KolTableStateful } from '@public-ui/react';
 
 import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
@@ -112,9 +112,9 @@ const HEADERS: KoliBriTableHeaders = {
 export const TableRenderCell: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This sample shows KolTable using React render functions for the cell contents.</p>
+			<p>This sample shows KolTableStateful using React render functions for the cell contents.</p>
 		</SampleDescription>
 
-		<KolTable _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
+		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" />
 	</>
 );
