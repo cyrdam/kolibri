@@ -1,6 +1,6 @@
 import type { KoliBriProgressVariantType, LabelPropType, ProgressAPI, ProgressStates } from '../../schema';
 import { KoliBriProgressVariantEnum, validateLabel, watchNumber, watchString, watchValidator } from '../../schema';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import type { JSX } from '@stencil/core';
 const VALID_VARIANTS = Object.keys(KoliBriProgressVariantEnum);
@@ -12,14 +12,14 @@ const CycleSvg = ({ state }: { state: ProgressStates }) => {
 	const valueY = state._label ? textPositionBottom : '50%';
 
 	return (
-		<svg class="cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-			<circle class="background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
-			<circle class="whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
-			<circle class="border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle class="whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
-			<circle class="border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+		<svg class="kol-progress__cycle" width="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+			<circle class="kol-progress__cycle-background" cx="60" cy="60" r="54.5" fill="currentColor" stroke="currentColor" stroke-width="8"></circle>
+			<circle class="kol-progress__cycle-whitespace" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="3"></circle>
+			<circle class="kol-progress__cycle-border" cx="60" cy="60" r="59" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+			<circle class="kol-progress__cycle-whitespace" cx="60" cy="60" r="51" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
+			<circle class="kol-progress__cycle-border" cx="60" cy="60" r="50" fill="currentColor" stroke="currentColor" stroke-width="1"></circle>
 			<circle
-				class="progress"
+				class="kol-progress__cycle-progress"
 				fill="currentColor"
 				stroke="currentColor"
 				stroke-linecap="round"
@@ -47,11 +47,11 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 	const percentage = 100 * (state._value / state._max);
 
 	return (
-		<div class="bar">
+		<div class="kol-progress__bar">
 			{state._label && <div>{state._label}</div>}
 			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="12" overflow="visible">
 				<rect
-					class="background"
+					class="kol-progress__bar-background"
 					x="1"
 					y="1"
 					height="10"
@@ -62,7 +62,7 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 					style={{ width: `calc(100% - 2px - ${textLabelPadding})` }}
 				></rect>
 				<rect
-					class="border"
+					class="kol-progress__bar-border"
 					x="1"
 					y="1"
 					height="10"
@@ -73,7 +73,7 @@ const BarSvg = ({ state }: { state: ProgressStates }) => {
 					style={{ width: `calc(100% - 2px - ${textLabelPadding})` }}
 				></rect>
 				<rect
-					class="progress"
+					class="kol-progress__bar-progress"
 					x="2.5"
 					y="2.5"
 					height="7"
@@ -116,15 +116,20 @@ export class KolProcess implements ProgressAPI {
 	// https://dequeuniversity.com/library/aria/progress-bar-bounded
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-progress">
+			<div class="kol-progress">
 				{createProgressSVG(this.state)}
 
 				{/* https://css-tricks.com/html5-progress-element/ */}
-				<progress aria-busy={this.state._value < this.state._max ? 'true' : 'false'} max={this.state._max} value={this.state._value}></progress>
+				<progress
+					class="visually-hidden"
+					aria-busy={this.state._value < this.state._max ? 'true' : 'false'}
+					max={this.state._max}
+					value={this.state._value}
+				></progress>
 				<span aria-live="polite" aria-relevant="removals text" class="visually-hidden">
 					{this.state._liveValue} von {this.state._max} {this.state._unit}
 				</span>
-			</Host>
+			</div>
 		);
 	}
 
