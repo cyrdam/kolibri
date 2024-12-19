@@ -3,14 +3,13 @@
 @layer kol-theme-component {
 	@include kol-table-stateless-wc;
 
-	:host {
-		font-family: var(--font-family);
-	}
-
 	.kol-table-stateful {
-		hyphens: var(--hyphens);
-		line-height: var(--line-height);
-		word-break: break-word;
+		& * {
+			font-family: var(--font-family);
+			hyphens: var(--hyphens);
+			line-height: var(--line-height);
+			word-break: break-word;
+		}
 	}
 
 	@media (min-width: 1024px) {
