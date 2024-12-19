@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useState } from 'react';
 
-import { KolHeading, KolInputCheckbox, KolTable } from '@public-ui/react';
+import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react';
 import type { KoliBriTableHeaders, KoliBriTableDataType } from '@public-ui/components';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
@@ -74,7 +74,7 @@ export const MultiSortTable: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows KolTable with multi-sort functionality, allowing sorting by both &quot;order&quot; and &quot;date&quot; columns.</p>
+				<p>This sample shows KolTableStateful with multi-sort functionality, allowing sorting by both &quot;order&quot; and &quot;date&quot; columns.</p>
 			</SampleDescription>
 
 			<section className="w-full grid gap-4">
@@ -86,7 +86,7 @@ export const MultiSortTable: FC = () => {
 						_variant="switch"
 						_on={{ onChange: (_, value) => setAllowMultiSortVertical(Boolean(value)) }}
 					></KolInputCheckbox>
-					<KolTable
+					<KolTableStateful
 						_label="Sort Table with Order and Date"
 						_data={DATA.slice(0, 10)}
 						_headers={HEADERS_VERTICAL}
@@ -102,7 +102,7 @@ export const MultiSortTable: FC = () => {
 						_variant="switch"
 						_on={{ onChange: (_, value) => setAllowMultiSortHorizontal(Boolean(value)) }}
 					></KolInputCheckbox>
-					<KolTable
+					<KolTableStateful
 						_label="Sort Table with Order and Date"
 						_data={DATA}
 						_headers={HEADERS_HORIZONTAL}

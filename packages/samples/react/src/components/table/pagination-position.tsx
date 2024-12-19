@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolHeading, KolTable } from '@public-ui/react';
+import { KolHeading, KolTableStateful } from '@public-ui/react';
 
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
@@ -23,39 +23,39 @@ const PAGINATION: KoliBriTablePaginationProps = { _page: 2 };
 export const PaginationPosition: FC = () => (
 	<div className="w-full grid gap-14">
 		<SampleDescription>
-			<p>This sample shows KolTable with different pagination positions.</p>
+			<p>This sample shows KolTableStateful with different pagination positions.</p>
 		</SampleDescription>
 
 		<section className="w-full flex flex-col gap-14">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
-				<KolTable
+				<KolTableStateful
 					_label="Sample table with pagination at the bottom"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
 					_paginationPosition="bottom"
-				></KolTable>
+				></KolTableStateful>
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
-				<KolTable
+				<KolTableStateful
 					_label="Sample table with pagination at the top"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
 					_paginationPosition="top"
-				></KolTable>
+				></KolTableStateful>
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
-				<KolTable
+				<KolTableStateful
 					_label="Sample table with pagination at both top and bottom"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
 					_paginationPosition="both"
-				></KolTable>
+				></KolTableStateful>
 			</section>
 		</section>
 	</div>

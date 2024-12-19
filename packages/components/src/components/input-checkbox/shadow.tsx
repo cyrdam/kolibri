@@ -63,14 +63,6 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return this.getModelValue();
 	}
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {

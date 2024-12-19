@@ -6,12 +6,26 @@ New major versions of KoliBri are developed with the goal of simplifying mainten
 
 For more information, see the [KoliBri Maintenance and Support Strategy](https://github.com/public-ui/kolibri/blob/develop/MIGRATION.md).
 
-## Components
+## Removed Components
+
+The following components have been removed:
+
+- kol-button-group
+- kol-indented-text
+- kol-link-group
+- kol-logo
+- kol-table
+
+## Changed Components
 
 ### kol-abbr
 
 - Visually, the tooltip has been replaced by a simple label shown in parentheses after the abbreviation.
 - The property `_tooltipAlign` has been removed.
+
+## `focus`-methods
+
+The public `focus`-methods have been removed from all components. Use `kolFocus` instead.
 
 ## All Input Components
 
