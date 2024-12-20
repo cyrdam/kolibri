@@ -1,192 +1,167 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host > div {
-		display: block;
+	.kol-tabs {
 		width: 100%;
-	}
-
-	:host .tabs-button-group {
-		display: flex;
-		background-color: var(--color-petrol);
-	}
-
-	:host .tabs-button-group > div {
-		display: inline-flex;
-	}
-
-	:host .tabs-button-group > div + div {
-		margin-left: 0.25em;
-	}
-
-	.tabs-content {
-		padding: 0.25em;
-		border: rem(1) solid var(--border-color);
-	}
-
-	button {
-		box-sizing: border-box;
-		font-size: inherit;
-		line-height: 1.25;
-		cursor: pointer;
-		border-width: rem(2);
-		box-shadow: 0 0 0.25em gray;
-		width: inherit;
-		overflow: hidden;
-		border-style: solid;
-		padding: calc(4 * var(--spacing));
 		display: grid;
-		gap: 0.25em;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		transition-duration: 0.5s;
-		transition-property: background-color, color, border-color;
-	}
 
-	.kol-button-wc button.selected,
-	.kol-button-wc[aria-selected='true'] button {
-		background-color: white;
-		border-bottom-width: 0.25em;
-		border-bottom-style: solid;
-		border-bottom-color: var(--color-citrin);
-	}
+		&--tabs-align-left {
+			--order: 0;
 
-	button > .kol-span span {
-		display: flex;
-		gap: 0.25em;
-		align-items: center;
-		justify-content: center;
-	}
+			grid-template-columns: auto 1fr;
+		}
 
-	button:disabled {
-		cursor: not-allowed;
-		opacity: 0.5;
-	}
+		&--tabs-align-right {
+			--order: 1;
 
-	button.primary,
-	button.primary:disabled:hover {
-		background-color: var(--kolibri-color-primary);
-		border-color: var(--kolibri-color-primary);
-		color: white;
-	}
+			grid-template-columns: 1fr auto;
+		}
 
-	button.primary:hover,
-	button.primary:focus {
-		color: var(--kolibri-color-primary);
-	}
+		&--tabs-align-top {
+			--order: 0;
+		}
 
-	button.secondary,
-	button.secondary:disabled:hover {
-		background-color: var(--kolibri-color-secondary);
-		border-color: var(--kolibri-color-secondary);
-		color: white;
-	}
+		&--tabs-align-bottom {
+			--order: 1;
+		}
 
-	button.secondary:hover,
-	button.secondary:focus {
-		color: var(--kolibri-color-secondary);
-	}
+		&__button-group {
+			display: flex;
+			background-color: var(--color-petrol);
+			order: (--order);
+		}
 
-	button.normal,
-	button.normal:disabled:hover {
-		background-color: var(--color-petrol);
-		border-color: var(--color-petrol);
-		color: white;
-	}
+		&__tabs-content {
+			padding: 0.25em;
+			border: rem(1) solid var(--border-color);
+		}
 
-	button.normal:hover,
-	button.normal:focus {
-		color: var(--color-petrol);
-	}
+		.kol-button-wc {
+			width: 100%;
+		}
 
-	button.danger,
-	button.danger:disabled:hover {
-		background-color: var(--kolibri-color-danger);
-		border-color: var(--kolibri-color-danger);
-		color: white;
-	}
+		.kol-button {
+			box-sizing: border-box;
+			font-size: inherit;
+			line-height: 1.25;
+			cursor: pointer;
+			border-width: rem(2);
+			box-shadow: 0 0 0.25em gray;
+			width: inherit;
+			overflow: hidden;
+			border-style: solid;
+			padding: calc(4 * var(--spacing));
+			display: grid;
+			gap: 0.25em;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			transition-duration: 0.5s;
+			transition-property: background-color, color, border-color;
 
-	button.danger:hover,
-	button.danger:focus {
-		color: var(--kolibri-color-danger);
-	}
+			&:disabled {
+				cursor: not-allowed;
+				opacity: 0.5;
+			}
 
-	button.ghost,
-	button.ghost:disabled:hover {
-		background-color: white;
-		border-color: var(--kolibri-color-ghost);
-		color: var(--kolibri-color-ghost);
-	}
+			&.selected {
+				background-color: white;
+				border-bottom-width: 0.25em;
+				border-bottom-style: solid;
+				border-bottom-color: var(--color-citrin);
+			}
 
-	button.ghost:hover,
-	button.ghost:focus {
-		background-color: var(--kolibri-color-ghost);
-		color: white;
-	}
+			.kol-span_container {
+				display: flex;
+				gap: 0.25em;
+				align-items: center;
+				justify-content: center;
+			}
 
-	button:hover,
-	button:focus {
-		background-color: white;
-		box-shadow: 0 0 0.25em black;
-	}
+			&.primary,
+			&.primary:disabled:hover {
+				background-color: var(--kolibri-color-primary);
+				border-color: var(--kolibri-color-primary);
+				color: white;
+			}
 
-	button:active {
-		outline: 0;
-		box-shadow: none;
-	}
+			&.primary:hover,
+			&.primary:focus {
+				color: var(--kolibri-color-primary);
+			}
 
-	.close-button {
-		font-size: 25%;
-		height: fit-content;
-		width: 0;
-	}
+			&.secondary,
+			&.secondary:disabled:hover {
+				background-color: var(--kolibri-color-secondary);
+				border-color: var(--kolibri-color-secondary);
+				color: white;
+			}
 
-	.close-button button {
-		width: rem(16);
-		position: relative;
-		height: rem(16);
-		left: -4.25em;
-		top: 0.25em;
-	}
+			&.secondary:hover,
+			&.secondary:focus {
+				color: var(--kolibri-color-secondary);
+			}
 
-	:host > div {
-		display: grid;
-	}
+			&.normal,
+			&.normal:disabled:hover {
+				background-color: var(--color-petrol);
+				border-color: var(--color-petrol);
+				color: white;
+			}
 
-	:host > div.tabs-align-left {
-		grid-template-columns: auto 1fr;
-	}
+			&.normal:hover,
+			&.normal:focus {
+				color: var(--color-petrol);
+			}
 
-	:host > div.tabs-align-right {
-		grid-template-columns: 1fr auto;
-	}
+			&.danger,
+			&.danger:disabled:hover {
+				background-color: var(--kolibri-color-danger);
+				border-color: var(--kolibri-color-danger);
+				color: white;
+			}
 
-	:host > .tabs-align-left .tabs-button-group,
-	:host > .tabs-align-top .tabs-button-group {
-		order: 0;
-	}
+			&.danger:hover,
+			&.danger:focus {
+				color: var(--kolibri-color-danger);
+			}
 
-	:host > .tabs-align-bottom .tabs-button-group,
-	:host > .tabs-align-right .tabs-button-group {
-		order: 1;
-	}
+			&.ghost,
+			&.ghost:disabled:hover {
+				background-color: white;
+				border-color: var(--kolibri-color-ghost);
+				color: var(--kolibri-color-ghost);
+			}
 
-	:host > div.tabs-align-left .tabs-button-group > div,
-	:host > div.tabs-align-left .tabs-button-group > div > div,
-	:host > div.tabs-align-right .tabs-button-group > div,
-	:host > div.tabs-align-right .tabs-button-group > div > div {
-		display: grid;
-	}
+			&.ghost:hover,
+			&.ghost:focus {
+				background-color: var(--kolibri-color-ghost);
+				color: white;
+			}
 
-	:host > div.tabs-align-left .tabs-button-group > div > div .kol-button-wc,
-	:host > div.tabs-align-right .tabs-button-group > div > div .kol-button-wc {
-		width: 100%;
-	}
+			&:hover,
+			&:focus {
+				background-color: white;
+				box-shadow: 0 0 0.25em black;
+			}
 
-	:host > div.tabs-align-bottom .tabs-button-group div,
-	:host > div.tabs-align-top .tabs-button-group div {
-		display: flex;
-		flex-wrap: wrap;
+			&:active {
+				outline: 0;
+				box-shadow: none;
+			}
+			.close-button {
+				font-size: 25%;
+				height: fit-content;
+				width: 0;
+
+				.button {
+					width: rem(16);
+					position: relative;
+					height: rem(16);
+					left: -4.25em;
+					top: 0.25em;
+				}
+			}
+		}
 	}
 }
