@@ -21,8 +21,10 @@
 					color: var(--color-blue-130);
 				}
 			}
-			&:focus .kol-span {
-				outline: var(--color-blue-130) solid rem(2);
+			&:focus {
+				.kol-span {
+					outline: var(--color-blue-130) solid rem(2);
+				}
 			}
 
 			&.selected {
@@ -42,10 +44,6 @@
 				padding: rem(8);
 				min-height: rem(44);
 				min-width: rem(44);
-				//
-				//outline-color: var(--color-blue-130);
-				//outline-style: solid;
-				//outline-width: rem(2);
 			}
 		}
 	}
