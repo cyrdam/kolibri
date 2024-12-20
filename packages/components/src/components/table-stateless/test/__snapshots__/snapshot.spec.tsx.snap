@@ -26,7 +26,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 1
           </th>
@@ -40,7 +40,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
             Cell 1.3
           </td>
         </tr>
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 2
           </th>
@@ -54,7 +54,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
             Cell 2.3
           </td>
         </tr>
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--align-right kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 3
           </th>
@@ -96,7 +96,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 1.1
           </td>
@@ -104,7 +104,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
             Cell 1.2
           </td>
         </tr>
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 2.1
           </td>
@@ -149,7 +149,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 1
           </th>
@@ -160,7 +160,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
             Cell 1.2
           </td>
         </tr>
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 2
           </th>
@@ -205,7 +205,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" rowspan="2" scope="row">
             V-Header
           </th>
@@ -219,7 +219,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
             Cell 1.2
           </td>
         </tr>
-        <tr class="kol-table__body-row--body">
+        <tr class="kol-table__row kol-table__row--body">
           <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Sub V-Header 2
           </th>
