@@ -2,30 +2,32 @@
 @import '../mixins/kol-table-stateless-wc';
 
 @layer kol-theme-component {
-	:host {
+	@include kol-table-stateless-wc;
+
+	.kol-table-stateful {
+		$root: &;
+
 		font-family: var(--font-family);
-	}
 
-	:host > div {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-
-	.pagination {
-		gap: rem(16);
-	}
-
-	@media (min-width: 1024px) {
-		:host > div:last-child,
-		:host > div:last-child > div:last-child {
+		&__pagination-wrapper {
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
+		}
+		&__pagination {
+			overflow-x: auto;
+			overflow-y: hidden;
+			gap: rem(16);
 			grid-auto-flow: column;
 		}
 
-		:host > div:last-child .kol-pagination {
-			display: flex;
-			gap: rem(16);
+		.kol-pagination {
+			@at-root #{$root}__pagination & {
+				@media (min-width: 1024px) {
+					display: flex;
+					gap: rem(16);
+				}
+			}
 		}
 	}
 }
-
-@include kol-table-stateless-wc;
