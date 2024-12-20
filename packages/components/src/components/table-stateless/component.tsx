@@ -517,9 +517,9 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		return (
 			<tr
-				class={clsx({
-					'kol-table__body-row--body': !isFooter,
-					'kol-table__body-row--footer': isFooter,
+				class={clsx('kol-table__row', {
+					'kol-table__row--body': !isFooter,
+					'kol-table__row--footer': isFooter,
 				})}
 				key={`row-${key}`}
 			>

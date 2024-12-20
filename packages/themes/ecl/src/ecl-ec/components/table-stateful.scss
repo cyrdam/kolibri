@@ -9,12 +9,10 @@
 
 		font-family: var(--font-family);
 
-		&__pagination,
+		&__pagination:last-child,
 		&__pagination-wrapper {
-			&:last-child {
-				@media (min-width: 1024px) {
-					grid-auto-flow: column;
-				}
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
 			}
 		}
 
@@ -24,7 +22,7 @@
 		}
 
 		.kol-pagination {
-			@at-root #{$root}__pagination:last-child & {
+			@at-root #{$root}__pagination & {
 				@media (min-width: 1024px) {
 					display: flex;
 					gap: rem(16);
