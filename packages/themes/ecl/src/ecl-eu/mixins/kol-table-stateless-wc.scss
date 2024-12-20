@@ -70,8 +70,8 @@
 			}
 
 			&__body-row {
-				&:nth-child(odd) {
-					@at-root #{$root}__body & {
+				&--body {
+					&:nth-child(odd) {
 						background-color: var(--color-grey-10);
 					}
 				}

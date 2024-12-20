@@ -29,8 +29,8 @@
 			&__body-row {
 				border-top: rem(1) solid var(--color-petrol);
 
-				&:nth-child(even) {
-					@at-root #{$root}__body & {
+				&--body {
+					&:nth-child(even) {
 						background-color: #f2f2f2;
 					}
 				}

@@ -11,13 +11,13 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <td aria-hidden="true" colspan="1" rowspan="1"></td>
-          <th class="kol-table__header-cell kol-table__header-cell--align-left" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header1
           </th>
-          <th class="kol-table__header-cell kol-table__header-cell--align-center" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header2
           </th>
-          <th class="kol-table__header-cell kol-table__header-cell--align-right" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-right kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header3
           </th>
         </tr>
@@ -26,45 +26,45 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-left" data-sort="sort-undefined" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 1
           </th>
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 1.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 1.2
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-right" style="text-align: right;">
+          <td class="kol-table__cell kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
             Cell 1.3
           </td>
         </tr>
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-center" data-sort="sort-undefined" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 2
           </th>
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 2.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 2.2
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-right" style="text-align: right;">
+          <td class="kol-table__cell kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
             Cell 2.3
           </td>
         </tr>
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-right" data-sort="sort-undefined" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--align-right kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 3
           </th>
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 3.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 3.2
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-right" style="text-align: right;">
+          <td class="kol-table__cell kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
             Cell 3.3
           </td>
         </tr>
@@ -84,10 +84,10 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
       </caption>
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-left" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header 1
           </th>
-          <th class="kol-table__header-cell kol-table__header-cell--align-center" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header 2
           </th>
         </tr>
@@ -96,19 +96,19 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row">
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+        <tr class="kol-table__body-row--body">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 1.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 1.2
           </td>
         </tr>
-        <tr class="kol-table__body-row">
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+        <tr class="kol-table__body-row--body">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 2.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 2.2
           </td>
         </tr>
@@ -129,18 +129,18 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <td aria-hidden="true" colspan="1" rowspan="2"></td>
-          <th class="kol-table__header-cell kol-table__header-cell--align-left" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header 1
           </th>
-          <th class="kol-table__header-cell kol-table__header-cell--align-center" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Header 2
           </th>
         </tr>
         <tr class="kol-table__head-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-left" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Sub Header 1
           </th>
-          <th class="kol-table__header-cell kol-table__header-cell--align-center" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Sub Header 2
           </th>
         </tr>
@@ -149,25 +149,25 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-left" data-sort="sort-undefined" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--align-left kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 1
           </th>
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 1.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 1.2
           </td>
         </tr>
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell kol-table__header-cell--align-center" data-sort="sort-undefined" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--align-center kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Row 2
           </th>
-          <td class="kol-table__body-cell kol-table__body-cell--align-left" style="text-align: left;">
+          <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
             Cell 2.1
           </td>
-          <td class="kol-table__body-cell kol-table__body-cell--align-center" style="text-align: center;">
+          <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
             Cell 2.2
           </td>
         </tr>
@@ -188,15 +188,15 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
       <thead class="kol-table__head">
         <tr class="kol-table__head-row">
           <td aria-hidden="true" colspan="2" rowspan="2"></td>
-          <th class="kol-table__header-cell" colspan="2" data-sort="sort-undefined" scope="colgroup">
+          <th class="kol-table__cell kol-table__cell--header" colspan="2" data-sort="sort-undefined" scope="colgroup">
             H-Header
           </th>
         </tr>
         <tr class="kol-table__head-row">
-          <th class="kol-table__header-cell" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Sub H-Header 1
           </th>
-          <th class="kol-table__header-cell" data-sort="sort-undefined" scope="col">
+          <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="col">
             Sub H-Header 2
           </th>
         </tr>
@@ -205,28 +205,28 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
         </tr>
       </thead>
       <tbody class="kol-table__body">
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell" data-sort="sort-undefined" rowspan="2" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" rowspan="2" scope="row">
             V-Header
           </th>
-          <th class="kol-table__header-cell" data-sort="sort-undefined" scope="row">
+          <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Sub V-Header 1
           </th>
-          <td class="kol-table__body-cell">
+          <td class="kol-table__cell kol-table__cell--body">
             Cell 1.1
           </td>
-          <td class="kol-table__body-cell">
+          <td class="kol-table__cell kol-table__cell--body">
             Cell 1.2
           </td>
         </tr>
-        <tr class="kol-table__body-row">
-          <th class="kol-table__header-cell" data-sort="sort-undefined" scope="row">
+        <tr class="kol-table__body-row--body">
+          <th class="kol-table__cell kol-table__cell--header" data-sort="sort-undefined" scope="row">
             Sub V-Header 2
           </th>
-          <td class="kol-table__body-cell">
+          <td class="kol-table__cell kol-table__cell--body">
             Cell 2.1
           </td>
-          <td class="kol-table__body-cell">
+          <td class="kol-table__cell kol-table__cell--body">
             Cell 2.2
           </td>
         </tr>

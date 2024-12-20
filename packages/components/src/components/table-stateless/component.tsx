@@ -500,16 +500,29 @@ export class KolTableStateless implements TableStatelessAPI {
 	 *
 	 * @param {KoliBriTableCell[]} row  The data for the current row.
 	 * @param {number} rowIndex  The index of the current row being rendered.
+	 * @param isVertical
+	 * @param isFooter
 	 * @returns {JSX.Element}  The rendered row with its cells.
 	 */
-	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number, isVertical: boolean): JSX.Element => {
+	private readonly renderTableRow = (
+		row: (KoliBriTableCell & KoliBriTableDataType)[],
+		rowIndex: number,
+		isVertical: boolean,
+		isFooter: boolean = false,
+	): JSX.Element => {
 		let key = String(rowIndex);
 		if (this.horizontal && row[0]?.data) {
 			key = this.getDataKey(row[0].data) ?? key;
 		}
 
 		return (
-			<tr class="kol-table__body-row" key={`row-${key}`}>
+			<tr
+				class={clsx({
+					'kol-table__body-row--body': !isFooter,
+					'kol-table__body-row--footer': isFooter,
+				})}
+				key={`row-${key}`}
+			>
 				{this.renderSelectionCell(row, rowIndex)}
 				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical))}
 			</tr>
@@ -736,7 +749,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			<tfoot class="kol-table__footer">
 				{[
 					this.renderSpacer('foot', rows),
-					rows.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true)),
+					rows.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true, true)),
 				]}
 			</tfoot>
 		);
