@@ -686,7 +686,7 @@ export class KolTableStateless implements TableStatelessAPI {
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
 				class={clsx('kol-table__cell kol-table__cell--header', {
 					[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
-					[`kol-table__cell--sort-${ariaSort}`]: ariaSort,
+					[`kol-table__cell--${ariaSort}`]: ariaSort,
 				})}
 				scope={scope}
 				colSpan={cell.colSpan}
