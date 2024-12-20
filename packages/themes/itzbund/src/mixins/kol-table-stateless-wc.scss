@@ -2,109 +2,109 @@
 
 @mixin kol-table-stateless-wc {
 	@layer kol-theme-component {
-		.table {
+		.kol-table {
+			$root: &;
+
 			padding: 0.5em;
-		}
 
-		.table:has(.focus-element:focus) {
-			outline-color: var(--color-petrol);
-			outline-offset: rem(2);
-			outline-style: solid;
-			outline-width: rem(3);
-			transition: outline-offset 0.2s linear;
-		}
-
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			border-spacing: 0;
-			border: rem(1) solid var(--color-petrol);
-			border-width: 0 rem(1) rem(1) rem(1);
-		}
-
-		tr {
-			border-top: rem(1) solid var(--color-petrol);
-		}
-
-		th,
-		td {
-			border-right: rem(1) solid var(--color-petrol);
-
-			&:last-child {
-				border-right-width: 0;
-			}
-		}
-
-		tr:nth-child(even) {
-			background-color: #f2f2f2;
-		}
-
-		th,
-		td {
-			padding: 0.25em 0.5em;
-		}
-
-		th {
-			background-color: #eee;
-		}
-
-		.table-sort-button .kol-button {
-			font-weight: bold;
-		}
-
-		.input {
-			// CHECKBOX
-			input[type='checkbox'] {
-				&:checked {
-					background-color: var(--color-petrol);
-					border-color: var(--color-petrol);
-				}
-
+			&__focus-element {
 				&:focus {
-					border-color: var(--color-petrol);
 					outline-color: var(--color-petrol);
-					outline-style: solid;
 					outline-offset: rem(2);
+					outline-style: solid;
 					outline-width: rem(3);
+					transition: outline-offset 0.2s linear;
 				}
 			}
 
-			.icon {
-				color: var(--color-weiss);
+			&__container {
+				width: 100%;
+				border-collapse: collapse;
+				border-spacing: 0;
+				border: rem(1) solid var(--color-petrol);
+				border-width: 0 rem(1) rem(1) rem(1);
 			}
 
-			&.indeterminate {
-				input {
-					background-color: var(--color-weiss);
-				}
+			&__head-row,
+			&__row {
+				border-top: rem(1) solid var(--color-petrol);
 
-				.icon {
-					color: var(--color-petrol);
+				&--body {
+					&:nth-child(even) {
+						background-color: #f2f2f2;
+					}
 				}
 			}
 
-			// RADIO
-			input[type='radio'] {
-				display: flex;
+			&__cell {
+				padding: 0.25em 0.5em;
+				border-right: rem(1) solid var(--color-petrol);
 
-				&:hover {
-					border-color: var(--color-achat);
+				&--header {
+					background-color: #eee;
 				}
+				&:last-child {
+					border-right-width: 0;
+				}
+			}
 
-				&:checked {
-					border-color: var(--color-anthrazit);
+			&__sort-button {
+				.kol-button {
+					font-weight: bold;
+				}
+			}
 
-					&:before {
+			&__selection-input {
+				// CHECKBOX
+				&--checkbox {
+					&:checked {
 						background-color: var(--color-petrol);
+						border-color: var(--color-petrol);
+					}
+
+					&:focus {
+						border-color: var(--color-petrol);
+						outline-color: var(--color-petrol);
+						outline-style: solid;
+						outline-offset: rem(2);
+						outline-width: rem(3);
 					}
 				}
 
-				&:focus {
-					border-color: var(--color-petrol);
-					border-color: var(--color-anthrazit);
-					outline-style: solid;
-					outline-offset: rem(2);
-					outline-width: rem(2);
+				// RADIO
+				&--radio {
+					display: flex;
+
+					&:hover {
+						border-color: var(--color-achat);
+					}
+
+					&:checked {
+						border-color: var(--color-anthrazit);
+
+						&:before {
+							background-color: var(--color-petrol);
+						}
+					}
+
+					&:focus {
+						border-color: var(--color-petrol);
+						border-color: var(--color-anthrazit);
+						outline-style: solid;
+						outline-offset: rem(2);
+						outline-width: rem(2);
+					}
+				}
+				@at-root #{$root}__selection--indeterminate & {
+					background-color: var(--color-weiss);
+				}
+			}
+
+			&__selection-icon {
+				color: var(--color-weiss);
+
+				@at-root #{$root}__selection--indeterminate & {
+					color: var(--color-petrol);
 				}
 			}
 		}

@@ -2,28 +2,34 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host > div {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
+	@include kol-table-stateless-wc;
 
-	:host > div:last-child {
-		border-style: solid;
-		border-width: rem(1);
-		border-color: var(--border-color);
-	}
+	.kol-table-stateful {
+		font-family: var(--font-family);
 
-	@media (min-width: 1024px) {
-		:host > div.pagination,
-		:host > div.pagination > div:last-child {
-			grid-auto-flow: column;
+		&__pagination,
+		&__pagination-wrapper {
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
 		}
 
-		:host > div.pagination .kol-pagination {
-			display: flex;
-			gap: rem(16);
+		&__pagination {
+			overflow-x: auto;
+			overflow-y: hidden;
+
+			&--bottom {
+				border-style: solid;
+				border-width: rem(1);
+				border-color: var(--border-color);
+			}
+		}
+
+		.kol-pagination {
+			@media (min-width: 1024px) {
+				display: flex;
+				gap: rem(16);
+			}
 		}
 	}
 }
-
-@include kol-table-stateless-wc;

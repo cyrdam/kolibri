@@ -2,38 +2,33 @@
 @import '../style';
 @import '../@shared/kol-table-stateless-mixin';
 
+@include kol-table-stateless-styles;
+
 @layer kol-component {
-	:root {
+	:host {
 		font-size: rem(16);
 	}
 
-	div.pagination .kol-pagination {
+	.kol-table-stateful {
+		&__pagination,
+		&__pagination-wrapper {
+			display: grid;
+			place-items: center;
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
+		}
+	}
+
+	.kol-pagination {
 		display: flex;
 		flex-wrap: wrap;
-	}
+		@media (min-width: 1024px) {
+			display: flex;
+		}
 
-	div.pagination,
-	div.pagination > div:last-child {
-		display: grid;
-		place-items: center;
-	}
-
-	@media (max-width: 1024px) {
-		div.pagination .kol-pagination {
+		@media (max-width: 1024px) {
 			flex-direction: column;
 		}
 	}
-
-	@media (min-width: 1024px) {
-		div.pagination,
-		div.pagination > div:last-child {
-			grid-auto-flow: column;
-		}
-
-		div.pagination .kol-pagination {
-			display: flex;
-		}
-	}
 }
-
-@include kol-table-stateless-styles;
