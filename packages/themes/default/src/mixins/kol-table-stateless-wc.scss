@@ -41,19 +41,15 @@
 				}
 			}
 
-			&__selection-cell,
-			&__header-cell,
-			&__body-cell {
+			&__cell {
 				padding: rem(8);
-			}
-
-			&__header-cell {
-				font-weight: normal;
-				color: var(--color-primary);
-				background-color: var(--color-light);
-
-				&[aria-sort='ascending'],
-				&[aria-sort='descending'] {
+				&--header {
+					font-weight: normal;
+					color: var(--color-primary);
+					background-color: var(--color-light);
+				}
+				&--ascending,
+				&--descending {
 					font-weight: 700;
 					.kol-button {
 						font-weight: 700;

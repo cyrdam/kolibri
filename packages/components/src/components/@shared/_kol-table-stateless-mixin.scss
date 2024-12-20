@@ -47,12 +47,14 @@
 				}
 			}
 
-			&__header-cell {
-				&--align-left {
-					text-align: left;
+			&__cell {
+				&--header {
+					&--align-left {
+						text-align: left;
 
-					& .kol-button__text {
-						justify-items: start;
+						.kol-button__text {
+							justify-items: start;
+						}
 					}
 				}
 
@@ -67,20 +69,22 @@
 				&--align-right {
 					text-align: right;
 
-					& .kol-button__text {
+					.kol-button__text {
 						justify-items: end;
 					}
 				}
 			}
 
-			&__spacer {
-				display: none;
+			&__cell {
+				&--selection {
+					width: var(--a11y-min-size);
+					height: var(--a11y-min-size);
+					white-space: nowrap;
+				}
 			}
 
-			&__selection-cell {
-				width: var(--a11y-min-size);
-				height: var(--a11y-min-size);
-				white-space: nowrap;
+			&__spacer {
+				display: none;
 			}
 
 			&__selection-label {

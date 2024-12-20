@@ -36,19 +36,16 @@
 				}
 			}
 
-			&__selection-cell,
-			&__header-cell,
-			&__body-cell {
+			&__cell {
 				padding: 0.25em 0.5em;
 				border-right: rem(1) solid var(--color-petrol);
 
+				&--header {
+					background-color: #eee;
+				}
 				&:last-child {
 					border-right-width: 0;
 				}
-			}
-
-			&__header-cell {
-				background-color: #eee;
 			}
 
 			&__sort-button {

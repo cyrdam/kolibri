@@ -5,36 +5,30 @@
 @include kol-table-stateless-styles;
 
 @layer kol-component {
+	:host {
+		font-size: rem(16);
+	}
+
 	.kol-table-stateful {
 		&__pagination,
-		&__pagination-wrapper:last-child {
+		&__pagination-wrapper {
 			display: grid;
 			place-items: center;
-		}
-		&__pagination {
-			font-size: rem(16);
+			@media (min-width: 1024px) {
+				grid-auto-flow: column;
+			}
 		}
 	}
 
 	.kol-pagination {
 		display: flex;
 		flex-wrap: wrap;
-	}
-
-	@media (max-width: 1024px) {
-		.kol-pagination {
-			flex-direction: column;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.kol-table-stateful__pagination,
-		.kol-table-stateful__pagination-wrapper:last-child {
-			grid-auto-flow: column;
-		}
-
-		.kol-pagination {
+		@media (min-width: 1024px) {
 			display: flex;
+		}
+
+		@media (max-width: 1024px) {
+			flex-direction: column;
 		}
 	}
 }

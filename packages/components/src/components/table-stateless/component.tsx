@@ -452,7 +452,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			['aria-label']: label,
 		};
 		return (
-			<td key={`tbody-${rowIndex}-selection`} class="kol-table__selection-cell">
+			<td key={`tbody-${rowIndex}-selection`} class="kol-table__cell kol-table__cell--selection">
 				<div class={clsx('kol-table__selection', { 'kol-table__selection--checked': selected })}>
 					{isMultiple ? (
 						<label class="kol-table__selection-label">
@@ -538,8 +538,8 @@ export class KolTableStateless implements TableStatelessAPI {
 			return (
 				<td
 					key={`cell-${key}`}
-					class={clsx('kol-table__body-cell', {
-						[`kol-table__body-cell--align-${cell.textAlign}`]: cell.textAlign,
+					class={clsx('kol-table__cell kol-table__cell--body', {
+						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
 					})}
 					colSpan={cell.colSpan}
 					rowSpan={cell.rowSpan}
@@ -571,7 +571,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
-		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th class="kol-table__header-cell" key={`thead-0`}></th>;
+		if (!selection || (!selection.multiple && selection.multiple !== undefined))
+			return <th class="kol-table__cell kol-table__cell--header" key={`thead-0`}></th>;
 		const keyPropertyName = selection.keyPropertyName ?? 'id';
 		const selectedKeyLength = selection.selectedKeys?.length;
 		const dataLength = this.state._data.length;
@@ -586,7 +587,7 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="kol-table__header-cell">
+			<th key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header">
 				<div
 					class={clsx('kol-table__selection', {
 						'kol-table__selection--indeterminate': indeterminate,
@@ -670,7 +671,10 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={clsx('kol-table__header-cell', { [`kol-table__header-cell--align-${cell.textAlign}`]: cell.textAlign })}
+				class={clsx('kol-table__cell kol-table__cell--header', {
+					[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
+					[`kol-table__cell--sort-${ariaSort}`]: ariaSort,
+				})}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}

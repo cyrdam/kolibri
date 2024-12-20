@@ -16,28 +16,40 @@
 				padding: 0.5em;
 			}
 
-			&__header-cell {
-				font-weight: normal;
-				color: var(--color-midnight);
-			}
+			&__cell {
+				padding: 0.5em;
 
-			&__selection-cell,
-			&__header-cell {
-				@at-root #{$root}__head-row:first-child & {
-					border-width: 0;
-					border-top-width: rem(2);
-					border-style: solid;
-					border-color: var(--color-ice);
+				&--selection,
+				&--header {
+					@at-root #{$root}__head-row:first-child & {
+						border-width: 0;
+						border-top-width: rem(2);
+						border-style: solid;
+						border-color: var(--color-ice);
+					}
+
+					@at-root #{$root}__head-row:last-child & {
+						border-width: 0;
+						border-bottom-width: rem(2);
+						border-style: solid;
+						border-color: var(--color-ice);
+					}
 				}
 
-				@at-root #{$root}__head-row:last-child & {
-					border-width: 0;
-					border-bottom-width: rem(2);
-					border-style: solid;
-					border-color: var(--color-ice);
+				&--header {
+					background-color: var(--color-white);
+					font-weight: normal;
+					color: var(--color-midnight);
+				}
+				&--ascending,
+				&--descending {
+					font-weight: 700;
+
+					.kol-button {
+						font-weight: 700;
+					}
 				}
 			}
-
 			&__focus-element {
 				&:focus {
 					outline-color: var(--color-blue);
@@ -56,30 +68,12 @@
 				border-color: var(--color-ice);
 			}
 
-			&__header-cell {
-				background-color: var(--color-white);
-
-				&[aria-sort='ascending'],
-				&[aria-sort='descending'] {
-					font-weight: 700;
-					.kol-button {
-						font-weight: 700;
-					}
-				}
-			}
-
 			&__body-row {
 				&:nth-child(odd) {
 					@at-root #{$root}__body & {
 						background-color: var(--color-grey-10);
 					}
 				}
-			}
-
-			&__selection-cell,
-			&__header-cell,
-			&__body-cell {
-				padding: 0.5em;
 			}
 
 			&__selection {
