@@ -48,13 +48,11 @@
 			}
 
 			&__cell {
-				&--header {
-					&--align-left {
-						text-align: left;
+				&--align-left {
+					text-align: left;
 
-						.kol-button__text {
-							justify-items: start;
-						}
+					.kol-button__text {
+						justify-items: start;
 					}
 				}
 
