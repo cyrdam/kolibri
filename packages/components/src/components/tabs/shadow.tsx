@@ -23,7 +23,7 @@ import {
 	watchJsonArrayString,
 	watchNumber,
 } from '../../schema';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
@@ -32,6 +32,7 @@ import type { Generic } from 'adopted-style-sheets';
 import { KolButtonWcTag } from '../../core/component-names';
 import { KeyboardKey } from '../../schema/enums';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import clsx from 'clsx';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
 @Component({
@@ -157,7 +158,7 @@ export class KolTabs implements TabsAPI {
 		return (
 			// Rule is disabled, because KolButtonWc is focusable.
 			// eslint-disable-next-line jsx-a11y/interactive-supports-focus
-			<div aria-label={this.state._label} class="tabs-button-group kol-button-group-wc" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
+			<div aria-label={this.state._label} class="kol-tabs__button-group" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
 						_disabled={button._disabled}
@@ -178,7 +179,7 @@ export class KolTabs implements TabsAPI {
 				))}
 				{this.showCreateTab && (
 					<KolButtonWcTag
-						class="create-button"
+						class="kol-tabs_button-create"
 						_label={this.onCreateLabel}
 						_on={{
 							onClick: this.onCreate,
@@ -197,21 +198,17 @@ export class KolTabs implements TabsAPI {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-tabs">
-				<div
-					ref={(el) => {
-						this.tabPanelsElement = el as HTMLElement;
-					}}
-					class={{
-						[`tabs-align-${this.state._align}`]: true,
-					}}
-				>
-					{this.renderButtonGroup()}
-					<div class="tabs-content" ref={this.catchTabPanelHost}>
-						{/* <slot /> */}
-					</div>
+			<div
+				ref={(el) => {
+					this.tabPanelsElement = el as HTMLElement;
+				}}
+				class={clsx('kol-tabs', `kol-tabs--align-${this.state._align}`)}
+			>
+				{this.renderButtonGroup()}
+				<div class="kol-tabs__content" ref={this.catchTabPanelHost}>
+					{/* <slot /> */}
 				</div>
-			</Host>
+			</div>
 		);
 	}
 
@@ -398,6 +395,7 @@ export class KolTabs implements TabsAPI {
 		if (this.tabPanelHost instanceof HTMLDivElement) {
 			for (let i = this.tabPanelHost.children.length; i < this.state._tabs.length; i++) {
 				const div = document.createElement('div');
+				div.setAttribute('class', 'kol-tab__panel');
 				div.setAttribute('aria-labelledby', `${this.state._label.replace(/\s/g, '-')}-tab-${i}`);
 				div.setAttribute('id', `tabpanel-${i}`);
 				div.setAttribute('role', 'tabpanel');
