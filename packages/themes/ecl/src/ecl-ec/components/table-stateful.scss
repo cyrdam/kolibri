@@ -18,11 +18,7 @@
 		&__pagination {
 			overflow-x: auto;
 			overflow-y: hidden;
-			&__pagination--bottom {
-				@media (min-width: 1024px) {
-					grid-auto-flow: column;
-				}
-			}
+			grid-auto-flow: column;
 		}
 
 		.kol-pagination {
