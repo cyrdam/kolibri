@@ -420,7 +420,7 @@ export class KolTableStateful implements TableAPI {
 	 */
 	private renderPagination(): JSX.Element {
 		return (
-			<div class="kol-table-stateful__pagination">
+			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
 				<span>
 					{translate('kol-table-visible-range', {
 						placeholders: {

@@ -9,7 +9,6 @@
 
 		font-family: var(--font-family);
 
-		&__pagination:last-child,
 		&__pagination-wrapper {
 			@media (min-width: 1024px) {
 				grid-auto-flow: column;
@@ -20,7 +19,7 @@
 			overflow-y: hidden;
 			gap: rem(16);
 
-			&:last-child {
+			&--bottom {
 				@media (min-width: 1024px) {
 					grid-auto-flow: column;
 				}
