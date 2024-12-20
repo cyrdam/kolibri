@@ -6,7 +6,7 @@ import { KolHeading, KolTableStateful } from '@public-ui/react';
 import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }];
-const genericNonSorter = <T,>(data: T): T => data;
+const genericNonSorter = () => 0;
 
 export const TableColumnAlignment: FC = () => (
 	<>
@@ -38,9 +38,9 @@ export const TableColumnAlignment: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left', sort: genericNonSorter },
-							{ label: 'center', key: 'center', textAlign: 'center', sort: genericNonSorter },
-							{ label: 'right', key: 'right', textAlign: 'right', sort: genericNonSorter },
+							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
+							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter },
+							{ label: 'right', key: 'right', textAlign: 'right', compareFn: genericNonSorter },
 						],
 					],
 				}}
@@ -55,8 +55,8 @@ export const TableColumnAlignment: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ label: 'left', key: 'left', textAlign: 'left', sort: genericNonSorter },
-							{ label: 'center', key: 'center', textAlign: 'center', sort: genericNonSorter },
+							{ label: 'left', key: 'left', textAlign: 'left', compareFn: genericNonSorter },
+							{ label: 'center', key: 'center', textAlign: 'center', compareFn: genericNonSorter },
 							{ label: 'right', key: 'right', textAlign: 'right' },
 						],
 					],

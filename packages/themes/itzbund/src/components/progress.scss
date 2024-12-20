@@ -1,31 +1,19 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
+	.kol-progress {
 		--kolibri-text-label-padding: #{rem(60)};
-	}
 
-	:host progress,
-	:host span {
-		display: block;
-		height: 0;
-		overflow: hidden;
-		width: 0;
-	}
+		&__bar-progress {
+			fill: var(--color-achat);
+		}
 
-	svg line:first-child,
-	svg circle:first-child {
-		fill: transparent;
-		stroke: var(--color-fluorit);
-	}
+		&__cycle-background {
+			stroke: var(--color-fluorit);
+		}
 
-	svg line:last-child,
-	svg circle:last-child {
-		stroke: var(--color-achat);
-		fill: transparent;
-	}
-
-	progress {
-		display: none;
+		&__cycle-progress {
+			stroke: var(--color-achat);
+		}
 	}
 }
