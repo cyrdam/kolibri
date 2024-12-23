@@ -5,13 +5,9 @@ import { watchString } from '../utils';
 /* types */
 /**
  * Defines which elements are being controlled. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
- * @deprecated
  */
 type AriaControlsPropType = string;
 
-/**
- * @deprecated
- */
 export type PropAriaControls = {
 	ariaControls: AriaControlsPropType;
 };
