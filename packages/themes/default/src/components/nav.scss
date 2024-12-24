@@ -2,83 +2,88 @@
 @import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
+	.kol-nav {
+		$root: &;
+
 		font-family: var(--font-family);
-	}
 
-	nav {
-		background-color: var(--color-mute);
-	}
-
-	ul {
-		list-style: none;
-	}
-
-	.kol-button__text {
-		display: flex;
-	}
-
-	.entry-item a,
-	.entry-item .kol-button {
-		align-items: center;
-		color: var(--color-primary);
-		display: flex;
-		gap: rem(8);
-		min-height: var(--a11y-min-size);
-		text-decoration: none;
-
-		.vertical & {
-			border-left: rem(2) solid transparent;
-			padding-left: rem(8);
+		&__navigation {
+			background-color: var(--color-mute);
 		}
 
-		.horizontal & {
-			padding: 0 rem(16);
+		&__list {
+			list-style: none;
+
+			// nested lists
+			&--nested {
+				padding-left: rem(16);
+
+				.kol-link,
+				.kol-button {
+					font-weight: normal !important;
+					border-left-color: transparent !important;
+				}
+			}
 		}
 
-		.vertical .active & {
-			border-left-color: var(--color-primary);
+		&__entry {
+			&--link {
+				display: flex;
+			}
+
+			.kol-link:hover {
+				text-decoration: underline;
+			}
+
+			.kol-link,
+			.kol-button {
+				align-items: center;
+				color: var(--color-primary);
+				display: flex;
+				gap: rem(8);
+				min-height: var(--a11y-min-size);
+				text-decoration: none;
+
+				&:focus-visible {
+					@include focus-outline;
+				}
+
+				#{$root}__list--vertical & {
+					border-left: rem(2) solid transparent;
+					padding-left: rem(8);
+				}
+
+				#{$root}--horizontal & {
+					padding: 0 rem(16);
+				}
+
+				#{$root}--vertical #{$root}__list-item--active & {
+					border-left-color: var(--color-primary);
+				}
+
+				#{$root}__list-item--active & {
+					font-weight: bold;
+				}
+			}
 		}
 
-		&:focus-visible {
-			@include focus-outline;
-		}
-	}
+		&__expand-button {
+			margin-left: rem(8);
 
-	.entry-item a:hover {
-		text-decoration: underline;
-	}
+			.kol-button {
+				&:hover {
+					background-color: var(--color-primary);
+					color: var(--color-light);
+				}
 
-	// nested lists
-	.list .list {
-		padding-left: rem(16);
-	}
+				&:focus-visible {
+					@include focus-outline;
+				}
 
-	.active .entry-item a,
-	.active .entry-item .kol-button {
-		font-weight: bold;
-	}
-
-	.active .list .entry-item a,
-	.active .list .entry-item .kol-button {
-		font-weight: normal;
-		border-left-color: transparent;
-	}
-
-	.expand-button {
-		margin-left: rem(8);
-
-		.kol-button &:hover {
-			background-color: var(--color-primary);
-			color: var(--color-light);
-		}
-
-		&:focus-visible {
-			@include focus-outline;
-		}
-
-		.kol-button__text {
-			justify-content: center;
+				&__text {
+					justify-content: center;
+				}
+			}
 		}
 	}
 }

@@ -23,13 +23,14 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
 import { KolButtonTag, KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import type { StencilUnknown } from '../../schema';
+import clsx from 'clsx';
 
 const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
 	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
@@ -100,12 +101,12 @@ export class KolNav implements NavAPI {
 				: undefined;
 
 		return (
-			<div class={{ entry: true, 'hide-label': hideLabel }}>
+			<div class="kol-nav__entry-wrapper">
 				{entryIsLink(entry) ? (
-					<KolLinkWcTag class="entry-item" {...entry} _hideLabel={hideLabel} _icons={icons} />
+					<KolLinkWcTag class="kol-nav__entry kol-nav__entry--link" {...entry} _hideLabel={hideLabel} _icons={icons} />
 				) : (
 					<KolButtonWcTag
-						class="entry-item"
+						class="kol-nav__entry kol-nav__entry--button"
 						_label={entry._label}
 						_hideLabel={hideLabel}
 						_icons={icons}
@@ -129,7 +130,9 @@ export class KolNav implements NavAPI {
 	private expandButton(collapsible: boolean, link: ButtonWithChildrenProps, expanded: boolean): JSX.Element {
 		return (
 			<KolButtonWcTag
-				class="expand-button"
+				class={clsx('kol-nav__expand-button', {
+					'kol-nav__expand-button--expanded': expanded,
+				})}
 				_ariaExpanded={expanded}
 				_disabled={!collapsible}
 				_icons={'codicon codicon-' + (expanded ? 'remove' : 'add')}
@@ -153,11 +156,11 @@ export class KolNav implements NavAPI {
 		const expanded = Boolean(link._children && this.state._expandedChildren.includes(link._children));
 		return (
 			<li
-				class={{
-					active,
-					expanded,
-					'has-children': hasChildren,
-				}}
+				class={clsx('kol-nav__list-item', {
+					'kol-nav__list-item--active': active,
+					'kol-nav__list-item--expanded': expanded,
+					'kol-nav__list-item--has-children': hasChildren,
+				})}
 				key={index}
 			>
 				{this.entry(collapsible, hideLabel, hasChildren, link, expanded)}
@@ -174,7 +177,14 @@ export class KolNav implements NavAPI {
 		orientation: Orientation;
 	}): JSX.Element => {
 		return (
-			<ul class={`list ${props.deep === 0 && props.orientation === 'horizontal' ? ' horizontal' : ' vertical'}`} data-deep={props.deep}>
+			<ul
+				class={clsx('kol-nav__list', {
+					'kol-nav__list--nested': props.deep > 0,
+					'kol-nav__list--horizontal': props.deep === 0 && props.orientation === 'horizontal',
+					'kol-nav__list--vertical': props.deep !== 0 || props.orientation === 'vertical',
+				})}
+				data-deep={props.deep}
+			>
 				{props.links.map((link, index: number) => {
 					return this.li(props.collapsible, props.hideLabel, props.deep, index, link, props.orientation);
 				})}
@@ -217,40 +227,36 @@ export class KolNav implements NavAPI {
 		const hideLabel = this.state._hideLabel === true;
 		const orientation = this.state._orientation;
 		return (
-			<Host class="kol-nav">
-				<div
-					class={{
-						nav: true,
-						[orientation]: true,
-						'is-compact': this.state._hideLabel,
-					}}
-				>
-					<nav aria-label={this.state._label} id="nav">
-						<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
-					</nav>
-					{hasCompactButton && (
-						<div class="compact">
-							<KolButtonTag
-								_ariaControls="nav"
-								_ariaExpanded={!hideLabel}
-								_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
-								_hideLabel
-								_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
-								_on={{
-									onClick: (): void => {
-										this.state = {
-											...this.state,
-											_hideLabel: this.state._hideLabel === false,
-										};
-									},
-								}}
-								_tooltipAlign="right"
-								_variant="ghost"
-							></KolButtonTag>
-						</div>
-					)}
-				</div>
-			</Host>
+			<div
+				class={clsx('kol-nav', `kol-nav--${orientation}`, {
+					'kol-nav--is-compact': this.state._hideLabel,
+				})}
+			>
+				<nav class="kol-nav__navigation" aria-label={this.state._label} id="nav">
+					<this.linkList collapsible={collapsible} hideLabel={hideLabel} deep={0} links={this.state._links} orientation={orientation}></this.linkList>
+				</nav>
+				{hasCompactButton && (
+					<div class="kol-nav__compact">
+						<KolButtonTag
+							_ariaControls="nav"
+							_ariaExpanded={!hideLabel}
+							_icons={hideLabel ? 'codicon codicon-chevron-right' : 'codicon codicon-chevron-left'}
+							_hideLabel
+							_label={translate(hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+							_on={{
+								onClick: (): void => {
+									this.state = {
+										...this.state,
+										_hideLabel: this.state._hideLabel === false,
+									};
+								},
+							}}
+							_tooltipAlign="right"
+							_variant="ghost"
+						></KolButtonTag>
+					</div>
+				)}
+			</div>
 		);
 	}
 

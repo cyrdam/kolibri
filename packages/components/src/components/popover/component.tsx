@@ -1,10 +1,10 @@
 import type { AlignPropType, PopoverAPI, PopoverCallbacksPropType, PopoverStates, ShowPropType } from '../../schema';
 import { getDocument, validateAlign, validatePopoverCallbacks, validateShow } from '../../schema';
+import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { alignFloatingElements } from '../../utils/align-floating-elements';
-
-import type { JSX } from '@stencil/core';
+import clsx from 'clsx';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -98,8 +98,12 @@ export class KolPopover implements PopoverAPI {
 	public render(): JSX.Element {
 		return (
 			<Host ref={this.catchHostAndTriggerElement} class="kol-popover">
-				<div class={{ popover: true, show: this.state._visible }} ref={this.catchPopoverElement} hidden={!this.state._show}>
-					<div class={`arrow ${this.state._align}`} ref={this.catchArrowElement} />
+				<div
+					class={clsx('kol-popover__content', { 'kol-popover__content--visible': this.state._visible })}
+					ref={this.catchPopoverElement}
+					hidden={!this.state._show}
+				>
+					<div class={clsx('kol-popover__arrow', `kol-popover__arrow--${this.state._align}`)} ref={this.catchArrowElement} />
 					<slot />
 				</div>
 			</Host>
