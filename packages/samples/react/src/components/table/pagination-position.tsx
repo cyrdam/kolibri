@@ -30,7 +30,7 @@ export const PaginationPosition: FC = () => (
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
 				<KolTableStateful
-					_label="Tabellenbeschreibung"
+					_label="Sample table with pagination at the bottom"
 					_data={DATA}
 					_headers={HEADERS}
 					_pagination={PAGINATION}
@@ -39,11 +39,23 @@ export const PaginationPosition: FC = () => (
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
-				<KolTableStateful _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="top"></KolTableStateful>
+				<KolTableStateful
+					_label="Sample table with pagination at the top"
+					_data={DATA}
+					_headers={HEADERS}
+					_pagination={PAGINATION}
+					_paginationPosition="top"
+				></KolTableStateful>
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
-				<KolTableStateful _label="Tabellenbeschreibung" _data={DATA} _headers={HEADERS} _pagination={PAGINATION} _paginationPosition="both"></KolTableStateful>
+				<KolTableStateful
+					_label="Sample table with pagination at both top and bottom"
+					_data={DATA}
+					_headers={HEADERS}
+					_pagination={PAGINATION}
+					_paginationPosition="both"
+				></KolTableStateful>
 			</section>
 		</section>
 	</div>

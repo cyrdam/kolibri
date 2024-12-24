@@ -1,13 +1,14 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { KolSingleSelect } from '@public-ui/react';
 
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 
-import type { Components, Option, StencilUnknown } from '@public-ui/components';
+import type { Option, StencilUnknown } from '@public-ui/components';
 import { COUNTRY_OPTIONS } from '../../../shares/country';
+import type { Components } from '@public-ui/components';
 
-export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Components.KolSingleSelect>(function SingleSelectCases(props) {
+export const SingleSelectCases = (props: Components.KolSingleSelect) => {
 	return (
 		<div className="grid gap-4">
 			<KolSingleSelect
@@ -38,4 +39,4 @@ export const SingleSelectCases = forwardRef<HTMLKolSingleSelectElement, Componen
 			<KolSingleSelect {...props} _label="With short key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _shortKey="s" />
 		</div>
 	);
-});
+};

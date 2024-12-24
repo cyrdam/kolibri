@@ -17,7 +17,7 @@ export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.
 			</fieldset>
 			<fieldset>
 				<legend>Date (with min/max)</legend>
-				<InputDateMinMaxCases ref={ref} {...props} />
+				<InputDateMinMaxCases {...props} />
 			</fieldset>
 		</div>
 	);

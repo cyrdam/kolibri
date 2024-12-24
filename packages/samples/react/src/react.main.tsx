@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 import { setTagNameTransformer } from '@public-ui/react';
 
-import { bootstrap, isInitialized, KoliBriDevHelper } from '@public-ui/components';
+import { bootstrap, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
 import { DEFAULT, ECL_EC, ECL_EU, ITZBund } from '@public-ui/themes';
 
@@ -40,9 +40,6 @@ const getThemes = async () => {
 
 void (async () => {
 	try {
-		console.info('bootstap is initialized: ', isInitialized());
-		console.info('start kolibri bootstrap');
-
 		await bootstrap(
 			await getThemes(),
 			() => {
@@ -107,8 +104,6 @@ void (async () => {
 				},
 			);
 		}
-
-		console.info('bootstap is initialized: ', isInitialized());
 	} catch (error) {
 		console.warn('Theme registration failed:', error);
 	}
@@ -133,7 +128,7 @@ void (async () => {
 		const root = createRoot(htmlDivElement);
 		root.render(
 			<StrictMode>
-				<Router>
+				<Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
 					<App />
 				</Router>
 			</StrictMode>,

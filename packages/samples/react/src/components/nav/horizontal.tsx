@@ -13,11 +13,11 @@ export const NavHorizontal: FC = () => (
 		<section className="grid gap-8">
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Navigation without submenu" />
-				<KolNav _label="Main navigation" _links={LINKS_WITHOUT_SUBMENU} _orientation="horizontal" />
+				<KolNav _label="Navigation without submenu" _links={LINKS_WITHOUT_SUBMENU} _orientation="horizontal" />
 			</section>
 			<section className="grid gap-4">
 				<KolHeading _level={2} _label="Navigation with submenu" />
-				<KolNav _label="Main navigation" _links={LINKS} _orientation="horizontal" />
+				<KolNav _label="Navigation with submenu" _links={LINKS} _orientation="horizontal" />
 			</section>
 		</section>
 	</>

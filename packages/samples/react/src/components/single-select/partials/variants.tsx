@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { SingleSelectCases } from './cases';
-
 import type { Components } from '@public-ui/components';
-export const SingleSelectVariants = forwardRef<HTMLKolSingleSelectElement, Components.KolSingleSelect>(function SingleSelectVariant(props, ref) {
+
+export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 	return (
 		<div className="grid md:grid-cols-2 gap-4">
 			<fieldset>
@@ -12,8 +12,8 @@ export const SingleSelectVariants = forwardRef<HTMLKolSingleSelectElement, Compo
 			</fieldset>
 			<fieldset>
 				<legend>Text (hideLabel)</legend>
-				<SingleSelectCases ref={ref} {...props} _hideLabel />
+				<SingleSelectCases {...props} _hideLabel />
 			</fieldset>
 		</div>
 	);
-});
+};
