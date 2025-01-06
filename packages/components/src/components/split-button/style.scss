@@ -4,29 +4,29 @@
 @import '../tooltip/style.scss';
 
 @layer kol-component {
-	:host {
+	.kol-split-button {
 		display: flex;
 		font-size: rem(16);
 		position: relative;
-	}
 
-	.split-button-root {
-		display: flex;
-		position: relative;
-	}
-
-	.main-button {
-		flex-grow: 1;
-		text-align: left;
-	}
-
-	.kol-popover {
-		.popover {
-			margin-top: rem(2);
+		&__root {
+			display: flex;
+			position: relative;
 		}
 
-		.arrow {
-			display: none;
+		&__button {
+			flex-grow: 1;
+			text-align: left;
+		}
+
+		.kol-popover {
+			&__content {
+				margin-top: rem(2);
+			}
+
+			&__arrow {
+				display: none;
+			}
 		}
 	}
 }
