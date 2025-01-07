@@ -27,7 +27,7 @@ export const ModalBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="flex">
-				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }}>
+				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }} _variant="card">
 					<KolCard _label="I am a modal.">
 						<KolButton
 							_label="Open stacked modal"
