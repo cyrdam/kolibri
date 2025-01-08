@@ -10,7 +10,7 @@ export const ModalBasic: FC = () => {
 	const modalState = searchParams.get('show-modal') as string;
 	const modalElement = useRef<HTMLKolModalElement>(null);
 	const stackedModalElement = useRef<HTMLKolModalElement>(null);
-	const [variant, setVariant] = useState('blank');
+	const [variant, setVariant] = useState<'card' | 'blank'>('blank');
 	useEffect(() => {
 		if (modalState === 'true') {
 			modalElement.current?.openModal();
