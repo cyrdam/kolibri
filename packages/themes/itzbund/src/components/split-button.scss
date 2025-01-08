@@ -2,76 +2,74 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	:host {
+	.kol-split-button {
 		border-radius: rem(32);
 		border-style: solid;
 		border-width: var(--spacing);
-	}
 
-	.popover {
-		background-color: #fff;
-	}
+		.kol-popover__content {
+			background-color: #fff;
+		}
 
-	.horizontal-line {
-		background-color: var(--border-color);
-		border-radius: rem(2);
-		width: rem(1);
-	}
+		&__horizontal-line {
+			background-color: var(--border-color);
+			border-radius: rem(2);
+			width: rem(1);
+		}
 
-	.secondary-button button {
-		height: 100%;
-	}
+		&__button .kol-button {
+			border-top-left-radius: rem(32);
+			border-bottom-left-radius: rem(32);
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			font-family: var(--font-family-sans);
+			/* text-transform: uppercase; */
 
-	.secondary-button > button > .kol-span {
-		border-top-right-radius: rem(32);
-		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-	}
+			.kol-span {
+				border-top-left-radius: rem(32);
+				border-bottom-left-radius: rem(32);
+				font-size: inherit;
+				padding: 0 rem(16);
+				min-width: rem(44);
+				min-height: rem(44);
+			}
+		}
 
-	.secondary-button > button > :active > .kol-span {
-		border-top-right-radius: rem(32);
-		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-	}
+		&__secondary-button .kol-button {
+			height: 100%;
+			border-top-right-radius: rem(32);
+			border-bottom-right-radius: rem(32);
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			font-family: var(--font-family-sans);
+			/* text-transform: uppercase; */
 
-	.secondary-button > button > :focus > .kol-span {
-		border-top-right-radius: rem(32);
-		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-	}
+			.kol-span {
+				border-top-right-radius: rem(32);
+				border-bottom-right-radius: rem(32);
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				font-size: inherit;
+				padding: 0 rem(16);
+				min-width: rem(44);
+				min-height: rem(44);
+			}
 
-	.secondary-button > a,
-	.secondary-button > button {
-		border-top-right-radius: rem(32);
-		border-bottom-right-radius: rem(32);
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0;
-		font-family: var(--font-family-sans);
-		/* text-transform: uppercase; */
-	}
+			:active .kol-span {
+				border-top-right-radius: rem(32);
+				border-bottom-right-radius: rem(32);
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
 
-	a,
-	button {
-		border-top-left-radius: rem(32);
-		border-bottom-left-radius: rem(32);
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0;
-		font-family: var(--font-family-sans);
-		/* text-transform: uppercase; */
-	}
+			:focus .kol-span {
+				border-top-right-radius: rem(32);
+				border-bottom-right-radius: rem(32);
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+			}
+		}
 
-	a > .kol-span,
-	button > .kol-span {
-		border-top-left-radius: rem(32);
-		border-bottom-left-radius: rem(32);
-		font-size: inherit;
-		padding: 0 rem(16);
-		min-width: rem(44);
-		min-height: rem(44);
+		@include kol-button('kol-button');
 	}
-
-	@include kol-button('kol-button');
 }
