@@ -6,6 +6,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { ModalVariantPropType, validateModalVariant } from '../../schema/props/variant/modal';
 import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import clsx from 'clsx';
 
 /**
  * https://en.wikipedia.org/wiki/Modal_window
@@ -56,7 +57,7 @@ export class KolModal implements ModalAPI {
 	public render(): JSX.Element {
 		return (
 			<dialog
-				class="kol-modal"
+				class={clsx('kol-modal', { 'kol-modal__card': this.state._variant === 'card' && true })}
 				ref={(el) => {
 					this.refDialog = el;
 				}}

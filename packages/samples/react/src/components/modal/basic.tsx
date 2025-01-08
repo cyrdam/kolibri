@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { KolButton, KolCard, KolModal } from '@public-ui/react';
@@ -10,7 +10,7 @@ export const ModalBasic: FC = () => {
 	const modalState = searchParams.get('show-modal') as string;
 	const modalElement = useRef<HTMLKolModalElement>(null);
 	const stackedModalElement = useRef<HTMLKolModalElement>(null);
-
+	const [variant, setVariant] = useState('blank');
 	useEffect(() => {
 		if (modalState === 'true') {
 			modalElement.current?.openModal();
@@ -27,7 +27,7 @@ export const ModalBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="flex">
-				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }} _variant="card">
+				<KolModal _label="Primary modal" _width="80%" ref={modalElement} _on={{ onClose: () => console.log('Modal closed') }} _variant={variant}>
 					<KolCard _label="I am a modal.">
 						<KolButton
 							_label="Open stacked modal"
@@ -62,15 +62,27 @@ export const ModalBasic: FC = () => {
 						/>
 					</KolCard>
 				</KolModal>
+				<div className="grid gap-4">
+					<KolButton
+						_label="Open modal"
+						_on={{
+							onClick: () => {
+								setVariant('blank');
+								modalElement.current?.openModal();
+							},
+						}}
+					/>
 
-				<KolButton
-					_label="Open modal"
-					_on={{
-						onClick: () => {
-							modalElement.current?.openModal();
-						},
-					}}
-				/>
+					<KolButton
+						_label="Open card modal"
+						_on={{
+							onClick: () => {
+								setVariant('card');
+								modalElement.current?.openModal();
+							},
+						}}
+					/>
+				</div>
 			</div>
 		</>
 	);
