@@ -398,11 +398,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	@Watch('_value')
 	public validateValue(value?: number | Iso8601 | null): void {
-		this.controller.validateValueEx(value, (v) => {
-			if (v === '' && this.inputRef) {
-				this.inputRef.value = '';
-			}
-		});
+		this.controller.validateValueEx(value);
 	}
 
 	public componentWillLoad(): void {
