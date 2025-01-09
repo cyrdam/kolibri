@@ -68,7 +68,7 @@ export class KolModal implements ModalAPI {
 				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
 				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
-				<div>
+				<div tabindex="-1">
 					<slot />
 				</div>
 				{this.state._variant === 'card' && (
