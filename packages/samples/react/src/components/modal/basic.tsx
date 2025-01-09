@@ -8,6 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 export const ModalBasic: FC = () => {
 	const [searchParams] = useSearchParams();
 	const modalState = searchParams.get('show-modal') as string;
+	const defaultVariant = searchParams.get('variant') as string;
 	const modalElement = useRef<HTMLKolModalElement>(null);
 	const stackedModalElement = useRef<HTMLKolModalElement>(null);
 	const [variant, setVariant] = useState<'card' | 'blank'>('blank');
@@ -15,7 +16,10 @@ export const ModalBasic: FC = () => {
 		if (modalState === 'true') {
 			modalElement.current?.openModal();
 		}
-	}, [modalState]);
+		if (defaultVariant === 'card') {
+			setVariant(defaultVariant);
+		}
+	}, [modalState, defaultVariant]);
 
 	return (
 		<>

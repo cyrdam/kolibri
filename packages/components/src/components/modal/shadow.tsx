@@ -57,7 +57,7 @@ export class KolModal implements ModalAPI {
 	public render(): JSX.Element {
 		return (
 			<dialog
-				class={clsx('kol-modal', { 'kol-modal__card': this.state._variant === 'card' && true })}
+				class={clsx('kol-modal', { 'kol-modal__card': this.state._variant === 'card' })}
 				ref={(el) => {
 					this.refDialog = el;
 				}}
@@ -67,10 +67,14 @@ export class KolModal implements ModalAPI {
 				aria-label={this.state._label}
 				onClose={this.handleNativeCloseEvent.bind(this)}
 			>
+				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
+				<div>
+					<slot />
+				</div>
 				{this.state._variant === 'card' && (
 					<KolButtonWcTag
 						class="kol-modal__close-button"
-						data-testid="card-close-button"
+						data-testid="modal-close-button"
 						_hideLabel
 						_icons={{
 							left: {
@@ -82,10 +86,6 @@ export class KolModal implements ModalAPI {
 						_tooltipAlign="left"
 					></KolButtonWcTag>
 				)}
-				{/* It's necessary to have a block element container for cross-browser compatibility. The display property for the slot content is unknown and could be inline. */}
-				<div>
-					<slot />
-				</div>
 			</dialog>
 		);
 	}
@@ -139,10 +139,12 @@ export class KolModal implements ModalAPI {
 			defaultValue: '100%',
 		});
 	}
+
 	@Watch('_variant')
 	public validateVariant(value?: ModalVariantPropType): void {
 		validateModalVariant(this, value);
 	}
+
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
 		this.validateOn(this._on);
