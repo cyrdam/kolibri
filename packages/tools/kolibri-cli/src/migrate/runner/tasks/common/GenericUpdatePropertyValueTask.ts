@@ -53,7 +53,6 @@ export class GenericUpdatePropertyValueTask extends AbstractTask {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
 			const newContent = updateAttributeValue(content, this.componentRegExp, this.oldValue, this.newValue);
-			console.log('RUN transpileComponentFileUpdate');
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
@@ -65,7 +64,6 @@ export class GenericUpdatePropertyValueTask extends AbstractTask {
 		filterFilesByExt(baseDir, CUSTOM_ELEMENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
 			const newContent = updateAttributeValue(content, this.customElementRegExp, this.oldValue, this.newValue);
-			console.log('RUN transpileCustomElementFileUpdate');
 			if (content !== newContent) {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
