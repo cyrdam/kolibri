@@ -7,10 +7,10 @@
 @include kol-alert-styles;
 
 @layer kol-component {
-	:host {
+	.kol-select {
 		font-size: rem(16);
 
-		option:checked::before {
+		&__option:checked::before {
 			content: '✓ ';
 		}
 	}

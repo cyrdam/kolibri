@@ -13,7 +13,7 @@
 			overflow: auto;
 		}
 
-		.kol-option {
+		&__option {
 			margin: rem(1) 0;
 			border-radius: var(--border-radius);
 			cursor: pointer;
@@ -31,7 +31,7 @@
 			}
 		}
 
-		&:not([multiple]) option {
+		&:not([multiple]) &__option {
 			padding: 0.5em;
 		}
 	}
