@@ -27,11 +27,11 @@ export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
 		value: 'default',
 	},
 	{
-		label: 'European Commission (Draft)',
+		label: 'European Commission (in progress)',
 		value: 'ecl-ec',
 	},
 	{
-		label: 'European Union (Draft)',
+		label: 'European Union (in progress)',
 		value: 'ecl-eu',
 	},
 ];
