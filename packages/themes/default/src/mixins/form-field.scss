@@ -20,8 +20,6 @@
 				&.kol-alert--error {
 					@include kol-input-error-with-kol-alert-wc-error(--color-danger);
 				}
-
-				margin-left: -0.25em;
 			}
 		}
 
