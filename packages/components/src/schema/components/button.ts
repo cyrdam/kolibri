@@ -27,9 +27,6 @@ export type RequiredButtonProps = PropLabelWithExpertSlot;
 export type OptionalButtonProps = {
 	tabIndex: number;
 	value: Stringified<StencilUnknown>;
-	/**
-	 * @deprecated
-	 */
 	ariaExpanded: AriaExpandedPropType;
 } & PropAccessKey &
 	PropAlternativeButtonLinkRole &

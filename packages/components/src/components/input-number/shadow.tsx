@@ -56,19 +56,16 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		return this.inputRef?.value;
 	}
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
 		this.inputRef?.focus();
 	}
+
+	private readonly onInput = (event: InputEvent) => {
+		this._value = Number(this.inputRef?.value);
+		this.controller.onFacade.onInput(event);
+	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
@@ -97,6 +94,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 			state: this.state,
 			type: 'number',
 			...this.controller.onFacade,
+			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
 			onFocus: (event: Event) => {
 				this.controller.onFacade.onFocus(event);
@@ -127,12 +125,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
@@ -142,12 +134,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -269,7 +255,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: number | Iso8601 | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | Iso8601 | null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',
@@ -287,20 +273,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
 	}
 
 	@Watch('_autoComplete')
@@ -311,11 +289,6 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideError')
@@ -425,11 +398,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	@Watch('_value')
 	public validateValue(value?: number | Iso8601 | null): void {
-		this.controller.validateValueEx(value, (v) => {
-			if (v === '' && this.inputRef) {
-				this.inputRef.value = '';
-			}
-		});
+		this.controller.validateValueEx(value);
 	}
 
 	public componentWillLoad(): void {

@@ -1,12 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { validateErrorList, watchBoolean, watchString } from '../../schema';
-import { Component, h, Host, Prop, State, Watch, Method } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State, Watch, Method } from '@stencil/core';
 
 import { translate } from '../../i18n';
 
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { KolLinkWcTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * @slot - Inhalt der Form.
@@ -19,22 +20,28 @@ import KolAlertFc from '../../functional-components/Alert';
 	shadow: true,
 })
 export class KolForm implements FormAPI {
+	@Element() private readonly host?: HTMLKolTextareaElement;
 	errorListElement?: HTMLElement;
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
 		event.preventDefault();
-		event.stopPropagation();
+
 		if (typeof this.state._on?.onSubmit === 'function') {
 			this.state._on?.onSubmit(event as SubmitEvent);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.submit);
 		}
 	};
 
 	private readonly onReset = (event: Event) => {
 		event.preventDefault();
-		event.stopPropagation();
 		if (typeof this.state._on?.onReset === 'function') {
 			this.state._on?.onReset(event);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.reset);
 		}
 	};
 

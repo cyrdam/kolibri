@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 import { KolTableStatelessWcTag } from '../../core/component-names';
 import type {
@@ -56,17 +56,15 @@ export class KolTableStateless implements TableStatelessProps {
 
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-table-stateless">
-				<KolTableStatelessWcTag
-					_data={this._data}
-					_dataFoot={this._dataFoot}
-					_headerCells={this._headerCells}
-					_label={this._label}
-					_minWidth={this._minWidth}
-					_on={this._on}
-					_selection={this._selection}
-				/>
-			</Host>
+			<KolTableStatelessWcTag
+				_data={this._data}
+				_dataFoot={this._dataFoot}
+				_headerCells={this._headerCells}
+				_label={this._label}
+				_minWidth={this._minWidth}
+				_on={this._on}
+				_selection={this._selection}
+			/>
 		);
 	}
 }

@@ -19,8 +19,8 @@
 		"typeRoots": ["node_modules/@types"],
 		"strict": true,
 		"skipLibCheck": true,
-		"resolveJsonModule": true,
+		"resolveJsonModule": true
 	},
-	"include": ["stencil.config.ts", ".eslintrc.js", "test-env.js"],
+	"include": [".eslintrc.js", "playwright.config.ts", "stencil.config.ts", "test-env.js", "scripts/vaadin.js"],
 	"exclude": ["node_modules"]
 }

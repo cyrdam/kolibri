@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { KolButtonWcTag, KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
@@ -12,6 +12,7 @@ import type {
 	KoliBriTableHeaders,
 	KoliBriTableRender,
 	LabelPropType,
+	SelectionChangeEventPayload,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
@@ -29,9 +30,10 @@ import {
 	validateTableSelection,
 	watchString,
 } from '../../schema';
-import { Events } from '../../schema/enums';
+import { Callback } from '../../schema/enums';
 import { nonce } from '../../utils/dev.utils';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import clsx from 'clsx';
 
 /**
  * @internal
@@ -404,6 +406,15 @@ export class KolTableStateless implements TableStatelessAPI {
 		return dataField;
 	}
 
+	private handleSelectionChangeCallbackAndEvent(event: Event, payload: SelectionChangeEventPayload) {
+		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
+			this.state._on[Callback.onSelectionChange](event, payload);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.selectionChange, payload);
+		}
+	}
+
 	public componentWillLoad(): void {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -441,12 +452,13 @@ export class KolTableStateless implements TableStatelessAPI {
 			['aria-label']: label,
 		};
 		return (
-			<td key={`tbody-${rowIndex}-selection`} class="selection-cell">
-				<div class={`input ${selected ? 'checked' : ''}`}>
+			<td key={`tbody-${rowIndex}-selection`} class="kol-table__cell kol-table__cell--selection">
+				<div class={clsx('kol-table__selection', { 'kol-table__selection--checked': selected })}>
 					{isMultiple ? (
-						<label class="checkbox-container">
-							<KolIconTag class="icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
+						<label class="kol-table__selection-label">
+							<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${selected ? 'codicon-check' : ''}`} _label="" />
 							<input
+								class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 								ref={(el) => el && this.checkboxRefs.push(el)}
 								{...props}
 								type="checkbox"
@@ -454,28 +466,29 @@ export class KolTableStateless implements TableStatelessAPI {
 									const updatedSelectedKeys = !selected
 										? [...(selection?.selectedKeys ?? []), keyProperty]
 										: selection?.selectedKeys?.filter((key) => key !== keyProperty);
-									tryToDispatchKoliBriEvent('selection-change', this.host, updatedSelectedKeys);
-									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-										this.state._on[Events.onSelectionChange](event, updatedSelectedKeys ?? []);
-									}
+									this.handleSelectionChangeCallbackAndEvent(event, updatedSelectedKeys ?? []);
 								}}
 							/>
 						</label>
 					) : (
-						<label class="radio-container">
+						<label class="kol-table__selection-label">
 							<input
+								class={clsx('kol-table__selection-input kol-table__selection-input--radio')}
 								{...props}
 								type="radio"
 								onInput={(event: Event) => {
-									tryToDispatchKoliBriEvent('selection-change', this.host, keyProperty);
-									if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-										this.state._on[Events.onSelectionChange](event, keyProperty);
-									}
+									this.handleSelectionChangeCallbackAndEvent(event, keyProperty);
 								}}
 							/>
 						</label>
 					)}
-					<KolTooltipWcTag aria-hidden="true" class="input-tooltip" _align="right" _id={`${keyProperty}-label`} _label={label}></KolTooltipWcTag>
+					<KolTooltipWcTag
+						aria-hidden="true"
+						class="kol-table__selection-input-tooltip"
+						_align="right"
+						_id={`${keyProperty}-label`}
+						_label={label}
+					></KolTooltipWcTag>
 				</div>
 			</td>
 		);
@@ -487,16 +500,29 @@ export class KolTableStateless implements TableStatelessAPI {
 	 *
 	 * @param {KoliBriTableCell[]} row  The data for the current row.
 	 * @param {number} rowIndex  The index of the current row being rendered.
+	 * @param isVertical
+	 * @param isFooter
 	 * @returns {JSX.Element}  The rendered row with its cells.
 	 */
-	private readonly renderTableRow = (row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number, isVertical: boolean): JSX.Element => {
+	private readonly renderTableRow = (
+		row: (KoliBriTableCell & KoliBriTableDataType)[],
+		rowIndex: number,
+		isVertical: boolean,
+		isFooter: boolean = false,
+	): JSX.Element => {
 		let key = String(rowIndex);
 		if (this.horizontal && row[0]?.data) {
 			key = this.getDataKey(row[0].data) ?? key;
 		}
 
 		return (
-			<tr key={`row-${key}`}>
+			<tr
+				class={clsx('kol-table__row', {
+					'kol-table__row--body': !isFooter,
+					'kol-table__row--footer': isFooter,
+				})}
+				key={`row-${key}`}
+			>
 				{this.renderSelectionCell(row, rowIndex)}
 				{row.map((cell, colIndex) => this.renderTableCell(cell, rowIndex, colIndex, isVertical))}
 			</tr>
@@ -525,9 +551,9 @@ export class KolTableStateless implements TableStatelessAPI {
 			return (
 				<td
 					key={`cell-${key}`}
-					class={{
-						[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-					}}
+					class={clsx('kol-table__cell kol-table__cell--body', {
+						[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
+					})}
 					colSpan={cell.colSpan}
 					rowSpan={cell.rowSpan}
 					style={{
@@ -558,7 +584,8 @@ export class KolTableStateless implements TableStatelessAPI {
 	 */
 	private renderHeadingSelectionCell(): JSX.Element {
 		const selection = this.state._selection;
-		if (!selection || (!selection.multiple && selection.multiple !== undefined)) return <th key={`thead-0`}></th>;
+		if (!selection || (!selection.multiple && selection.multiple !== undefined))
+			return <th class="kol-table__cell kol-table__cell--header" key={`thead-0`}></th>;
 		const keyPropertyName = selection.keyPropertyName ?? 'id';
 		const selectedKeyLength = selection.selectedKeys?.length;
 		const dataLength = this.state._data.length;
@@ -573,11 +600,17 @@ export class KolTableStateless implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="selection-cell selection-control">
-				<div class={`input ${indeterminate ? 'indeterminate' : isChecked ? 'checked' : ''}`}>
-					<label class="checkbox-container">
-						<KolIconTag class="icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
+			<th key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header">
+				<div
+					class={clsx('kol-table__selection', {
+						'kol-table__selection--indeterminate': indeterminate,
+						'kol-table__selection--checked': isChecked,
+					})}
+				>
+					<label class="kol-table__selection-label">
+						<KolIconTag class="kol-table__selection-icon" _icons={`codicon ${indeterminate ? 'codicon-remove' : isChecked ? 'codicon-check' : ''}`} _label="" />
 						<input
+							class={clsx('kol-table__selection-input kol-table__selection-input--checkbox')}
 							ref={(el) => el && this.checkboxRefs.push(el)}
 							name="selection"
 							checked={isChecked && !indeterminate}
@@ -585,14 +618,17 @@ export class KolTableStateless implements TableStatelessAPI {
 							type="checkbox"
 							onInput={(event: Event) => {
 								const selections = !isChecked ? this.state._data.map((el) => el?.[keyPropertyName] as string) : [];
-								tryToDispatchKoliBriEvent('selection-change', this.host, selections);
-								if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-									this.state._on[Events.onSelectionChange](event, selections);
-								}
+								this.handleSelectionChangeCallbackAndEvent(event, selections);
 							}}
 						/>
 					</label>
-					<KolTooltipWcTag aria-hidden="true" class="input-tooltip" _align="right" _id={`${translationKey}-label`} _label={label}></KolTooltipWcTag>
+					<KolTooltipWcTag
+						aria-hidden="true"
+						class="kol-table__selection-input-tooltip"
+						_align="right"
+						_id={`${translationKey}-label`}
+						_label={label}
+					></KolTooltipWcTag>
 				</div>
 			</th>
 		);
@@ -648,7 +684,10 @@ export class KolTableStateless implements TableStatelessAPI {
 		return (
 			<th
 				key={`${rowIndex}-${colIndex}-${cell.label}`}
-				class={cell.textAlign ? `align-${cell.textAlign}` : undefined}
+				class={clsx('kol-table__cell kol-table__cell--header', {
+					[`kol-table__cell--align-${cell.textAlign}`]: cell.textAlign,
+					[`kol-table__cell--${ariaSort}`]: ariaSort,
+				})}
 				scope={scope}
 				colSpan={cell.colSpan}
 				rowSpan={cell.rowSpan}
@@ -660,7 +699,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			>
 				{cell.sortDirection ? (
 					<KolButtonWcTag
-						class="table-sort-button"
+						class="kol-table__sort-button"
 						exportparts="icon"
 						_icons={{ right: sortButtonIcon }}
 						_label={cell.label}
@@ -668,6 +707,12 @@ export class KolTableStateless implements TableStatelessAPI {
 							onClick: (event: MouseEvent) => {
 								if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
 									this.state._on.onSort(event, {
+										key: cell.key,
+										currentSortDirection: cell.sortDirection,
+									});
+								}
+								if (this.host) {
+									dispatchDomEvent(this.host, KolEvent.sort, {
 										key: cell.key,
 										currentSortDirection: cell.sortDirection,
 									});
@@ -688,8 +733,8 @@ export class KolTableStateless implements TableStatelessAPI {
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
-			<tr aria-hidden="true" class={`${variant}-spacer`}>
-				<td colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
+			<tr aria-hidden="true" class={clsx('kol-table__spacer', `kol-table__spacer--${variant}`)}>
+				<td class={clsx(`kol-table__spacer-line kol-table__spacer-line--${variant}`)} colSpan={verticalHeaderColpan + colspan + selectionCell}></td>
 			</tr>
 		);
 	}
@@ -701,10 +746,10 @@ export class KolTableStateless implements TableStatelessAPI {
 
 		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
 		return (
-			<tfoot>
+			<tfoot class="kol-table__footer">
 				{[
 					this.renderSpacer('foot', rows),
-					rows.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true)),
+					rows.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true, true)),
 				]}
 			</tfoot>
 		);
@@ -715,77 +760,80 @@ export class KolTableStateless implements TableStatelessAPI {
 		this.checkboxRefs = [];
 
 		return (
-			<Host class="kol-table-stateless-wc">
-				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
-				 */}
-				{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-				<div ref={(element) => (this.tableDivElement = element)} class="table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
-					<table
-						style={{
-							minWidth: this.state._minWidth,
-						}}
-					>
-						{/*
-						 * The following element allows the table to receive focus without providing redundant content to screen readers.
-						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
-						 * prevent screen readers from just reading "blank".
-						 */}
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<div class="focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
-							&nbsp;
-						</div>
+			/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
+			 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+			 */
+			/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+			<div ref={(element) => (this.tableDivElement = element)} class="kol-table" tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}>
+				<table
+					class="kol-table__table"
+					style={{
+						minWidth: this.state._minWidth,
+					}}
+				>
+					{/*
+					 * The following element allows the table to receive focus without providing redundant content to screen readers.
+					 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
+					 * prevent screen readers from just reading "blank".
+					 */}
+					{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+					<div class="kol-table__focus-element" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined} aria-describedby="caption">
+						&nbsp;
+					</div>
 
-						<caption id="caption">{this.state._label}</caption>
+					<caption class="kol-table__caption" id="caption">
+						{this.state._label}
+					</caption>
 
-						{Array.isArray(this.state._headerCells.horizontal) && (
-							<thead>
-								{[
-									this.state._headerCells.horizontal.map((cols, rowIndex) => (
-										<tr key={`thead-${rowIndex}`}>
-											{this.state._selection && this.renderHeadingSelectionCell()}
-											{rowIndex === 0 && this.renderHeaderTdCell()}
-											{Array.isArray(cols) &&
-												cols.map((cell, colIndex) => {
-													if (cell.asTd === true) {
-														return (
-															<td
-																key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
-																class={{
-																	[cell.textAlign as string]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
-																}}
-																colSpan={cell.colSpan}
-																rowSpan={cell.rowSpan}
-																style={{
-																	textAlign: cell.textAlign,
-																	width: cell.width,
-																}}
-																ref={
-																	typeof cell.render === 'function'
-																		? (el) => {
-																				this.cellRender(cell, el);
-																			}
-																		: undefined
-																}
-															>
-																{typeof cell.render !== 'function' ? cell.label : ''}
-															</td>
-														);
-													} else {
-														return this.renderHeadingCell(cell, rowIndex, colIndex, false);
-													}
-												})}
-										</tr>
-									)),
-									this.renderSpacer('head', this.state._headerCells.horizontal),
-								]}
-							</thead>
-						)}
-						<tbody>{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}</tbody>
-						{this.renderFoot()}
-					</table>
-				</div>
-			</Host>
+					{Array.isArray(this.state._headerCells.horizontal) && (
+						<thead class="kol-table__head">
+							{[
+								this.state._headerCells.horizontal.map((cols, rowIndex) => (
+									<tr class="kol-table__head-row" key={`thead-${rowIndex}`}>
+										{this.state._selection && this.renderHeadingSelectionCell()}
+										{rowIndex === 0 && this.renderHeaderTdCell()}
+										{Array.isArray(cols) &&
+											cols.map((cell, colIndex) => {
+												if (cell.asTd === true) {
+													return (
+														<td
+															key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
+															class={clsx({
+																[`kol-table__head--${cell.textAlign}`]: typeof cell.textAlign === 'string' && cell.textAlign.length > 0,
+															})}
+															colSpan={cell.colSpan}
+															rowSpan={cell.rowSpan}
+															style={{
+																textAlign: cell.textAlign,
+																width: cell.width,
+															}}
+															ref={
+																typeof cell.render === 'function'
+																	? (el) => {
+																			this.cellRender(cell, el);
+																		}
+																	: undefined
+															}
+														>
+															{typeof cell.render !== 'function' ? cell.label : ''}
+														</td>
+													);
+												} else {
+													return this.renderHeadingCell(cell, rowIndex, colIndex, false);
+												}
+											})}
+									</tr>
+								)),
+								this.renderSpacer('head', this.state._headerCells.horizontal),
+							]}
+						</thead>
+					)}
+					<tbody class="kol-table__body">
+						{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
+					</tbody>
+					{this.renderFoot()}
+				</table>
+			</div>
 		);
 	}
 }

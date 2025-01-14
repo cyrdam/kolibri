@@ -5,12 +5,10 @@ import type { KoliBriModalEventCallbacks } from '../types';
 
 type RequiredProps = PropLabel;
 type OptionalProps = {
-	activeElement: HTMLElement | null;
 	on: KoliBriModalEventCallbacks;
 	width: string;
 };
 type RequiredStates = {
-	activeElement: HTMLElement | null;
 	width: string;
 } & PropLabel;
 type OptionalStates = {

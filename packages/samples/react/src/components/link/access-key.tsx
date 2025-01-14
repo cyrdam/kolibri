@@ -7,9 +7,7 @@ import { SampleDescription } from '../SampleDescription';
 export const LinkAccessKey: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				<p>This sample shows KolLink with access key. The access keys can be used to trigger the buttons using the keyboard.</p>
-			</p>
+			<p>This sample shows KolLink with access key. The access keys can be used to trigger the buttons using the keyboard.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">

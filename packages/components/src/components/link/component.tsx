@@ -1,4 +1,4 @@
-import {
+import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
@@ -46,10 +46,10 @@ import {
 	validateTooltipAlign,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
-import { preventDefaultAndStopPropagation } from '../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { nonce } from '../../utils/dev.utils';
 import { KolIconTag, KolTooltipWcTag } from '../../core/component-names';
 
@@ -66,6 +66,8 @@ import clsx from 'clsx';
 	shadow: false,
 })
 export class KolLinkWc implements LinkAPI, FocusableElement {
+	@Element() private readonly host?: HTMLKolLinkElement;
+
 	private anchorRef?: HTMLAnchorElement;
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
@@ -83,12 +85,16 @@ export class KolLinkWc implements LinkAPI, FocusableElement {
 
 	private readonly onClick = (event: Event) => {
 		if (this.state._disabled === true) {
-			preventDefaultAndStopPropagation(event);
-		} else if (typeof this.state._on?.onClick === 'function') {
 			event.preventDefault();
-			event.stopPropagation();
-			setEventTarget(event, this.anchorRef);
-			this.state._on?.onClick(event, this.state._href);
+		} else {
+			if (typeof this.state._on?.onClick === 'function') {
+				event.preventDefault();
+				setEventTarget(event, this.anchorRef);
+				this.state._on?.onClick(event, this.state._href);
+			}
+			if (this.host) {
+				dispatchDomEvent(this.host, KolEvent.click, this.state._href);
+			}
 		}
 	};
 

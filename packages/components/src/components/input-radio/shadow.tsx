@@ -13,17 +13,16 @@ import type {
 	MsgPropType,
 	NamePropType,
 	Orientation,
+	RadioOption,
 	RadioOptionsPropType,
+	ShortKeyPropType,
 	StencilUnknown,
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
-	ShortKeyPropType,
-	RadioOption,
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { InputRadioController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
 
@@ -45,8 +44,6 @@ import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../funct
 })
 export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
-	private currentValue?: StencilUnknown;
-
 	private inputRef?: HTMLInputElement;
 
 	private readonly catchRef = (ref?: HTMLInputElement) => {
@@ -56,15 +53,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown | undefined> {
-		return this.currentValue;
-	}
-
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
+		return this._value;
 	}
 
 	@Method()
@@ -171,22 +160,10 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -278,7 +255,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Defines the value of the input.
 	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
 	 */
-	@Prop() public _value?: StencilUnknown;
+	@Prop({ mutable: true, reflect: true }) public _value?: StencilUnknown;
 
 	@State() public state: InputRadioStates = {
 		_hideError: false,
@@ -295,33 +272,22 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
 	}
+
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		this.controller.validateTooltipAlign(value);
-	}
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
 	}
 
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideLabel')
@@ -406,7 +372,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
-		this.currentValue = this._value;
 		this.controller.componentWillLoad();
 	}
 
@@ -414,13 +379,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
-				// Event handling
-				tryToDispatchKoliBriEvent('input', this.host, option.value);
-
-				// Callback
-				if (typeof this.state._on?.onInput === 'function') {
-					this.state._on.onInput(event, option.value);
-				}
+				this.controller.onFacade.onInput(event, true, option.value);
 			}
 		}
 	};
@@ -429,19 +388,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		if (event.target instanceof HTMLInputElement) {
 			const option = this.controller.getOptionByKey(event.target.value);
 			if (option !== undefined) {
-				// Event handling
-				stopPropagation(event);
-				tryToDispatchKoliBriEvent('change', this.host, option.value);
+				this.controller.onFacade.onChange(event, option.value);
 
-				// Static form handling
-				this.controller.setFormAssociatedValue(option.value);
-
-				// Callback
-				if (typeof this.state._on?.onChange === 'function') {
-					this.state._on.onChange(event, option.value);
-				}
-
-				this.currentValue = option.value;
+				this._value = option.value;
 			}
 		}
 	};

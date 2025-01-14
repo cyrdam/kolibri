@@ -13,10 +13,6 @@ export type Toast = {
 	render?: ToastRenderFunction;
 	label: LabelPropType;
 	type: AlertType;
-	/**
-	 * @deprecated Use variant instead
-	 */
-	alertVariant?: AlertVariant;
 	variant?: AlertVariant;
 };
 
@@ -27,10 +23,6 @@ export type ToastState = {
 };
 
 export type ToasterOptions = {
-	/**
-	 * @deprecated Use defaultVariant instead
-	 */
-	defaultAlertVariant: AlertVariant;
 	defaultVariant: AlertVariant;
 };
 

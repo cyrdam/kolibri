@@ -23,7 +23,6 @@ import type {
 } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { SelectController } from './controller';
 import { propagateSubmitEventToForm } from '../form/controller';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
@@ -52,14 +51,6 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<Stringified<W3CInputValue[]> | undefined> {
 		return this.state._value;
-	}
-
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
 	}
 
 	@Method()
@@ -127,22 +118,10 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -244,7 +223,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Stringified<W3CInputValue[]>;
+	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<W3CInputValue[]>;
 
 	@State() public state: SelectStates = {
 		_hasValue: false,
@@ -263,10 +242,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
@@ -274,19 +250,9 @@ export class KolSelect implements SelectAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
-	}
-
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideError')
@@ -392,22 +358,10 @@ export class KolSelect implements SelectAPI, FocusableElement {
 			.filter((option) => option.selected === true)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 
-		// Event handling
-		tryToDispatchKoliBriEvent('input', this.host, this._value);
-
-		// Callback
-		this.state._on?.onInput?.(event, this._value);
+		this.controller.onFacade.onInput(event, true, this._value);
 	}
 
 	private onChange(event: Event): void {
-		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('change', this.host, this._value);
-
-		// Static form handling
-		this.controller.setFormAssociatedValue(this._value as unknown as string);
-
-		// Callback
-		this.state._on?.onChange?.(event, this._value);
+		this.controller.onFacade.onChange(event, this._value);
 	}
 }

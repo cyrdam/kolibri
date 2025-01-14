@@ -29,7 +29,7 @@ import {
 	KolNav,
 	KolProgress,
 	KolSelect,
-	KolTable,
+	KolTableStateful,
 	KolTabs,
 	KolTextarea,
 	KolVersion,
@@ -73,16 +73,14 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolButtonWrapper _label={cell.label} style={{ fontSize: '75%' }} />);
 				},
-				sort: (data) => {
-					return data.sort((first, second) => {
-						if ((first as TableDataType).monday < (second as TableDataType).monday) {
-							return -1;
-						}
-						if ((first as TableDataType).monday > (second as TableDataType).monday) {
-							return 1;
-						}
-						return 0;
-					});
+				compareFn: (first, second) => {
+					if ((first as TableDataType).monday < (second as TableDataType).monday) {
+						return -1;
+					}
+					if ((first as TableDataType).monday > (second as TableDataType).monday) {
+						return 1;
+					}
+					return 0;
 				},
 				sortDirection: 'ASC',
 				textAlign: 'right',
@@ -97,16 +95,14 @@ const TABLE_HEADERS: KoliBriTableHeaders = {
 					el.appendChild(renderElement);
 					getRoot(renderElement).render(<KolBadge _color="#060" _label={cell.label}></KolBadge>);
 				},
-				sort: (data) => {
-					return data.sort((first, second) => {
-						if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
-							return -1;
-						}
-						if ((first as TableDataType).tuesday > (second as TableDataType).tuesday) {
-							return 1;
-						}
-						return 0;
-					});
+				compareFn: (first, second) => {
+					if ((first as TableDataType).tuesday < (second as TableDataType).tuesday) {
+						return -1;
+					}
+					if ((first as TableDataType).tuesday > (second as TableDataType).tuesday) {
+						return 1;
+					}
+					return 0;
 				},
 				sortDirection: 'DESC',
 			},
@@ -430,7 +426,6 @@ export const HandoutBasic: FC = () => {
 							/>
 						</div>
 						{/* <KolSkipNav></KolSkipNav> */}
-						{/* <KolLinkGroup _label=""></KolLinkGroup> */}
 						<div>
 							<KolBreadcrumb
 								_label="Breadcrumb aus Text-Links"
@@ -476,7 +471,7 @@ export const HandoutBasic: FC = () => {
 				</KolCard>
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-5" _label="Table with Pagination" _level={2}>
 					<div slot="" className="grid gap-2 p-2">
-						<KolTable _label="Table" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTable>
+						<KolTableStateful _label="Table" _headers={TABLE_HEADERS} _data={TABLE_DATA} _pagination></KolTableStateful>
 					</div>
 				</KolCard>
 			</div>

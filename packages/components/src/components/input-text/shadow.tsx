@@ -4,7 +4,6 @@ import clsx from 'clsx';
 
 import type {
 	AccessKeyPropType,
-	AlertPropType,
 	ButtonProps,
 	FocusableElement,
 	HideErrorPropType,
@@ -25,7 +24,7 @@ import type {
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setState, validateAlert } from '../../schema';
+import { setState } from '../../schema';
 
 import { nonce } from '../../utils/dev.utils';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -55,15 +54,32 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.inputRef = ref;
 	};
 
+	private readonly onBlur = (event: FocusEvent) => {
+		this.controller.onFacade.onBlur(event);
+		this.inputHasFocus = false;
+	};
+
 	private readonly onChange = (event: Event) => {
-		if (this.oldValue !== this.inputRef?.value) {
-			this.oldValue = this.inputRef?.value;
-			this.controller.onFacade.onChange(event);
+		const value = this.inputRef?.value;
+
+		if (this.oldValue !== value) {
+			this.oldValue = value;
 		}
+
+		this.controller.onFacade.onChange(event);
+	};
+
+	private readonly onFocus = (event: FocusEvent) => {
+		this.controller.onFacade.onFocus(event);
+		this.inputHasFocus = true;
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		setState(this, '_currentLength', (event.target as HTMLInputElement).value.length);
+		const value = this.inputRef?.value ?? '';
+		setState(this, '_currentLength', value.length);
+
+		this._value = value;
+
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -80,14 +96,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
 		return this.inputRef?.value;
-	}
-
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
 	}
 
 	@Method()
@@ -113,17 +121,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			ref: this.catchRef,
 			state: this.state,
 			...this.controller.onFacade,
+			onBlur: this.onBlur,
 			onChange: this.onChange,
+			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
 		};
 	}
 
@@ -145,12 +147,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
@@ -160,12 +156,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Shows the character count on the lower border of the input.
@@ -298,7 +288,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: InputTextStates = {
 		_autoComplete: 'off',
@@ -318,20 +308,12 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: AccessKeyPropType): void {
 		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_alert')
-	public validateAlert(value?: AlertPropType): void {
-		validateAlert(this, value);
 	}
 
 	@Watch('_autoComplete')
@@ -342,11 +324,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hasCounter')

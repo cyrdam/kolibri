@@ -3,21 +3,20 @@ import type {
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
 	KoliBriSortDirection,
-	KoliBriSortFunction,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
-	KoliBriTableSelectedHead,
 	LabelPropType,
 	PaginationPositionPropType,
+	SortEventPayload,
 	Stringified,
 	TableAPI,
-	TableStatefulCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
 	TableHeaderCells,
 	TableSelectionPropType,
+	TableStatefulCallbacksPropType,
 	TableStates,
 } from '../../schema';
 import {
@@ -36,13 +35,12 @@ import {
 	watchValidator,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolPaginationTag, KolTableStatelessWcTag } from '../../core/component-names';
-import type { SortEventPayload } from '../../schema';
-import { tryToDispatchKoliBriEvent } from '../../utils/events';
-import { Events } from '../../schema/enums';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { Callback } from '../../schema/enums';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
@@ -70,24 +68,11 @@ export class KolTableStateful implements TableAPI {
 		this.tableWcRef = ref;
 	};
 
-	/**
-	 * @deprecated only for backward compatibility
-	 */
-	private sortFunction?: KoliBriSortFunction;
-	/**
-	 * @deprecated only for backward compatibility
-	 */
-	private sortDirections: Map<KoliBriSortFunction, KoliBriSortDirection> = new Map();
 	private sortData: SortData[] = [];
 	private showPagination = false;
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
-
-	/**
-	 * @deprecated only for backward compatibility
-	 */
-	private sortedColumnHead: KoliBriTableSelectedHead = { label: '', key: '', sortDirection: 'NOS' };
 
 	/**
 	 * Defines whether to allow multi sort.
@@ -186,28 +171,10 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	/**
-	 * @deprecated only for backward compatibility
-	 */
-	private setSortDirection = (sort: KoliBriSortFunction, direction: KoliBriSortDirection) => {
-		/**
-		 * Durch des Clearen, ist es nicht möglich eine Mehr-Spalten-Sortierung
-		 * darzustellen. Das wäre der Fall, wenn man ggf. Daten in außerhalb der
-		 * Komponente sortiert und diese sortiert von außen rein gibt und der
-		 * Sortierungsalgorithmus mehrere Spalten zusammen sortierte.
-		 *
-		 * Beachte auch col.sort !== this.sortFunction
-		 */
-		this.sortDirections.clear();
-		this.sortDirections.set(sort, direction);
-		this.sortFunction = sort;
-	};
-
-	/**
 	 * Handles sorting logic for table columns.
 	 * If multi-sort is enabled (`_allowMultiSort`), multiple columns can be sorted at once.
 	 * Otherwise, sorting is cleared when switching between columns.
 	 */
-
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
 		if (typeof headerCell.compareFn === 'function') {
 			if (!this.state._allowMultiSort && headerCell.key != this.sortData[0]?.key) {
@@ -238,20 +205,7 @@ export class KolTableStateful implements TableAPI {
 				});
 			}
 
-			this.updateSortedData(headerCell as KoliBriTableSelectedHead);
-		} else if (typeof headerCell.sort === 'function') {
-			this.sortFunction = headerCell.sort;
-			switch (this.sortDirections.get(this.sortFunction)) {
-				case 'ASC':
-					this.setSortDirection(this.sortFunction, 'DESC');
-					break;
-				case 'DESC':
-					this.setSortDirection(this.sortFunction, 'NOS');
-					break;
-				default:
-					this.setSortDirection(this.sortFunction, 'ASC');
-			}
-			this.updateSortedData(headerCell as KoliBriTableSelectedHead);
+			this.updateSortedData();
 		}
 	}
 
@@ -292,9 +246,6 @@ export class KolTableStateful implements TableAPI {
 												this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
 											}
 											hasSortedCells = true;
-										} else if (typeof cell.sort === 'function') {
-											this.setSortDirection(cell.sort, sortDirection);
-											setTimeout(() => this.updateSortedData({ key, label: cell.label, sortDirection }));
 										}
 									}
 								});
@@ -402,15 +353,16 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private onSelectionChange = (event: Event): void => {
+		/* Stop propagation for selectionChange event from table-stateless component because table-stateful emits its own selectionChange event. */
 		event.stopPropagation();
 	};
 
 	public componentDidLoad(): void {
-		this.tableWcRef?.addEventListener('kol-selection-change', this.onSelectionChange);
+		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
 	}
 
 	public disconnectedCallback(): void {
-		this.tableWcRef?.removeEventListener('kol-selection-change', this.onSelectionChange);
+		this.tableWcRef?.removeEventListener(KolEvent.selectionChange, this.onSelectionChange);
 	}
 
 	public componentWillLoad(): void {
@@ -438,11 +390,7 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
-	/**
-	 *
-	 * @param cell only used for old single sort. Can be removed when sort is removed.
-	 */
-	private updateSortedData = (cell: KoliBriTableSelectedHead = this.sortedColumnHead) => {
+	private updateSortedData = () => {
 		if (this.disableSort) {
 			setState(this, '_sortedData', this.state._data);
 			return;
@@ -460,21 +408,6 @@ export class KolTableStateful implements TableAPI {
 				}
 				return 0;
 			});
-		} else if (typeof this.sortFunction === 'function') {
-			switch (this.sortDirections.get(this.sortFunction)) {
-				case 'ASC':
-					sortedData = this.sortFunction([...this.state._data]);
-					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'ASC' };
-					break;
-				case 'DESC':
-					sortedData = this.sortFunction([...this.state._data]).reverse();
-					this.sortedColumnHead = { label: cell.label, key: cell.key, sortDirection: 'DESC' };
-					break;
-				case 'NOS':
-				default:
-					sortedData = [...this.state._data];
-					this.sortedColumnHead = { label: '', key: '', sortDirection: 'NOS' };
-			}
 		}
 		setState(this, '_sortedData', sortedData);
 	};
@@ -487,7 +420,7 @@ export class KolTableStateful implements TableAPI {
 	 */
 	private renderPagination(): JSX.Element {
 		return (
-			<div class="pagination">
+			<div class={`kol-table-stateful__pagination kol-table-stateful__pagination--${this.state._paginationPosition}`}>
 				<span>
 					{translate('kol-table-visible-range', {
 						placeholders: {
@@ -502,8 +435,9 @@ export class KolTableStateful implements TableAPI {
 						},
 					})}
 				</span>
-				<div>
+				<div class="kol-table-stateful__pagination-wrapper">
 					<KolPaginationTag
+						class="test"
 						_boundaryCount={this.state._pagination._boundaryCount}
 						_customClass={this.state._pagination._customClass}
 						_on={this.handlePagination}
@@ -521,10 +455,7 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private getHeaderCellSortState(headerCell: KoliBriTableHeaderCellWithLogic): KoliBriSortDirection | undefined {
-		if (!this.disableSort && (typeof headerCell.compareFn === 'function' || typeof headerCell.sort === 'function')) {
-			if (headerCell.key === this.sortedColumnHead.key) {
-				return this.sortedColumnHead.sortDirection;
-			}
+		if (!this.disableSort && typeof headerCell.compareFn === 'function') {
 			if (headerCell.key) {
 				const data = this.sortData.find((value) => value.key === headerCell.key);
 				if (data?.direction) {
@@ -567,10 +498,11 @@ export class KolTableStateful implements TableAPI {
 			};
 		const selectedData = this.getSelectedData(value);
 
-		tryToDispatchKoliBriEvent('selection-change', this.host, selectedData);
-
-		if (typeof this.state._on?.[Events.onSelectionChange] === 'function') {
-			this.state._on[Events.onSelectionChange](event, selectedData);
+		if (typeof this.state._on?.[Callback.onSelectionChange] === 'function') {
+			this.state._on[Callback.onSelectionChange](event, selectedData);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.selectionChange, selectedData);
 		}
 	}
 

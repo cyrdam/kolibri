@@ -6,8 +6,8 @@ test.describe('kol-split-button', () => {
 		await page.setContent(` <kol-split-button _label="Sample Button">Dropdown contents</kol-split-button> `);
 		const splitButton = page.locator('kol-split-button ');
 
-		const mainButton = splitButton.locator('.main-button');
-		const popover = splitButton.locator('kol-popover-wc .popover');
+		const mainButton = splitButton.locator('.kol-split-button__button');
+		const popover = splitButton.locator('kol-popover-wc .kol-popover__content');
 
 		await expect(popover).not.toBeVisible();
 		await mainButton.click();
@@ -20,8 +20,8 @@ test.describe('kol-split-button', () => {
 		await page.setContent(` <kol-split-button _label="Sample Button">Dropdown contents</kol-split-button> `);
 		const splitButton = page.locator('kol-split-button ');
 
-		const secondaryButton = splitButton.locator('.secondary-button');
-		const popover = splitButton.locator('kol-popover-wc .popover');
+		const secondaryButton = splitButton.locator('.kol-split-button__secondary-button');
+		const popover = splitButton.locator('kol-popover-wc .kol-popover__content');
 
 		await expect(popover).not.toBeVisible();
 		await secondaryButton.click();

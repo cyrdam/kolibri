@@ -6,8 +6,6 @@ import { KolAvatarWc } from './avatar/component';
 import { KolAvatar } from './avatar/shadow';
 import { KolBadge } from './badge/shadow';
 import { KolBreadcrumb } from './breadcrumb/shadow';
-import { KolButtonGroupWc } from './button-group/component';
-import { KolButtonGroup } from './button-group/shadow';
 import { KolButtonLink } from './button-link/shadow';
 import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
@@ -18,7 +16,6 @@ import { KolForm } from './form/shadow';
 import { KolHeading } from './heading/shadow';
 import { KolIcon } from './icon/shadow';
 import { KolImage } from './image/shadow';
-import { KolIndentedText } from './indented-text/shadow';
 import { KolInputCheckbox } from './input-checkbox/shadow';
 import { KolInputColor } from './input-color/shadow';
 import { KolInputDate } from './input-date/shadow';
@@ -32,10 +29,8 @@ import { KolInputText } from './input-text/shadow';
 import { KolInputWc } from './input/component';
 import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/shadow';
-import { KolLinkGroup } from './link-group/shadow';
 import { KolLinkWc } from './link/component';
 import { KolLink } from './link/shadow';
-import { KolLogo } from './logo/shadow';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
@@ -48,7 +43,6 @@ import { KolSpin } from './spin/shadow';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSplitButton } from './split-button/shadow';
 import { KolSymbol } from './symbol/component';
-import { KolTable } from './table/shadow';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
@@ -71,8 +65,6 @@ export const COMPONENTS = [
 	KolBadge,
 	KolBreadcrumb,
 	KolButton,
-	KolButtonGroup,
-	KolButtonGroupWc,
 	KolButtonLink,
 	KolButtonWc,
 	KolCard,
@@ -83,7 +75,6 @@ export const COMPONENTS = [
 	KolHeading,
 	KolIcon,
 	KolImage,
-	KolIndentedText,
 	KolInputWc,
 	KolInputCheckbox,
 	KolInputColor,
@@ -98,9 +89,7 @@ export const COMPONENTS = [
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkGroup,
 	KolLinkWc,
-	KolLogo,
 	KolModal,
 	KolNav,
 	KolPagination,
@@ -113,7 +102,6 @@ export const COMPONENTS = [
 	KolSingleSelect,
 	KolSplitButton,
 	KolSymbol,
-	KolTable,
 	KolTabs,
 	KolTextarea,
 	KolToastContainer,

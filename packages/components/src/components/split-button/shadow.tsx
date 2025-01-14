@@ -15,10 +15,11 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Method, Prop, State } from '@stencil/core';
+import { Component, h, Method, Prop, State } from '@stencil/core';
 
 import { translate } from '../../i18n';
 import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
+import clsx from 'clsx';
 
 /**
  * @slot - Ermöglicht das Einfügen beliebigen HTMLs in das dropdown.
@@ -34,16 +35,23 @@ import { KolButtonWcTag, KolPopoverWcTag } from '../../core/component-names';
 })
 export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	private readonly clickButtonHandler = {
-		onClick: (e: MouseEvent) => {
+		onClick: (event: MouseEvent) => {
+			event.stopPropagation(); // stop propagation to avoid triggering the event that closes the popover
+
 			if (typeof this._on?.onClick === 'function') {
 				// TODO: this._on is not validated
-				this._on?.onClick(e, this._value);
+				this._on?.onClick(event, this._value);
 			} else {
 				this.toggleDropdown();
 			}
 		},
 	};
-	private readonly clickToggleHandler = { onClick: () => this.toggleDropdown() };
+	private readonly clickToggleHandler = {
+		onClick: (event: MouseEvent) => {
+			event.stopPropagation(); // stop propagation to avoid triggering the event that closes the popover
+			this.toggleDropdown();
+		},
+	};
 
 	private readonly toggleDropdown = () => {
 		this.state = { ...this.state, _show: !this.state._show };
@@ -56,15 +64,13 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 	public render(): JSX.Element {
 		const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 		return (
-			<Host class="kol-split-button">
-				<div class="split-button-root">
+			<div class="kol-split-button">
+				<div class="kol-split-button__root">
 					<KolButtonWcTag
-						class={{
-							'main-button': true,
-							button: true,
+						class={clsx('kol-split-button__button', {
 							[this._variant as string]: this._variant !== 'custom',
 							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-						}}
+						})}
 						_ariaControls={this._ariaControls}
 						_ariaExpanded={this._ariaExpanded}
 						_ariaSelected={this._ariaSelected}
@@ -83,9 +89,9 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 						_value={this._value}
 						_variant={this._variant}
 					></KolButtonWcTag>
-					<div class="horizontal-line"></div>
+					<div class="kol-split-button__horizontal-line"></div>
 					<KolButtonWcTag
-						class="secondary-button"
+						class="kol-split-button__secondary-button"
 						_disabled={this._disabled}
 						_hideLabel
 						_icons="codicon codicon-triangle-down"
@@ -96,7 +102,7 @@ export class KolSplitButton implements SplitButtonProps /*, SplitButtonAPI*/ {
 				<KolPopoverWcTag _show={this.state._show} _on={{ onClose: this.handleOnClose }} _align="bottom">
 					<slot />
 				</KolPopoverWcTag>
-			</Host>
+			</div>
 		);
 	}
 

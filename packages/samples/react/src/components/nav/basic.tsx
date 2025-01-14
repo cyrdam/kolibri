@@ -31,11 +31,17 @@ export const NavBasic: FC = () => {
 				</section>
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Navigation without submenu" />
-					<KolNav class="block w-fit" _label="Main navigation" _links={LINKS_WITHOUT_SUBMENU} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
+					<KolNav
+						class="block w-fit"
+						_label="Navigation without submenu"
+						_links={LINKS_WITHOUT_SUBMENU}
+						_hasCompactButton
+						_hasIconsWhenExpanded={hasIconsWhenExpanded}
+					/>
 				</section>
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Navigation with submenu" />
-					<KolNav class="block w-fit" _label="Main navigation" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
+					<KolNav class="block w-fit" _label="Navigation with submenu" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
 				</section>
 			</section>
 		</>

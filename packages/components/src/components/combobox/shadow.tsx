@@ -20,7 +20,6 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { nonce } from '../../utils/dev.utils';
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
 import { KolIconTag, KolInputTag } from '../../core/component-names';
 import { InternalUnderlinedBadgeText } from '../../functional-components';
@@ -85,6 +84,7 @@ export class KolCombobox implements ComboboxAPI {
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
 		this.state._value = target.value;
+		this._value = target.value;
 		this.controller.onFacade.onInput(event);
 		this.setFilteredSuggestionsByQuery(target.value);
 		this._focusedOptionIndex = -1;
@@ -377,12 +377,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -476,7 +470,7 @@ export class KolCombobox implements ComboboxAPI {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
@@ -495,10 +489,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_placeholder')
@@ -509,11 +500,6 @@ export class KolCombobox implements ComboboxAPI {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
 	}
 
 	@Watch('_disabled')
@@ -639,16 +625,9 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	private onChange(event: Event): void {
-		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('change', this.host, this.state._value);
+		this.controller.onFacade.onChange(event);
 
 		// Static form handling
 		this.controller.setFormAssociatedValue(this.state._value as unknown as string);
-
-		// Callback
-		if (typeof this.state._on?.onChange === 'function' && !this._isOpen) {
-			this.state._on.onChange(event, this.state._value);
-		}
 	}
 }

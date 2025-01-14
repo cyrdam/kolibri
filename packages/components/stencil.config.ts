@@ -18,7 +18,6 @@ const TAGS = [
 	'kol-badge',
 	'kol-breadcrumb',
 	'kol-button',
-	'kol-button-group',
 	'kol-button-link',
 	'kol-card',
 	'kol-details',
@@ -27,7 +26,6 @@ const TAGS = [
 	'kol-heading',
 	'kol-icon',
 	'kol-image',
-	'kol-indented-text',
 	'kol-input-checkbox',
 	'kol-input-color',
 	'kol-input-date',
@@ -40,8 +38,6 @@ const TAGS = [
 	'kol-kolibri',
 	'kol-link',
 	'kol-link-button',
-	'kol-link-group',
-	'kol-logo',
 	'kol-modal',
 	'kol-nav',
 	'kol-pagination',
@@ -52,7 +48,6 @@ const TAGS = [
 	'kol-spin',
 	'kol-split-button',
 	'kol-symbol',
-	'kol-table',
 	'kol-table-stateless',
 	'kol-table-stateful',
 	'kol-tabs',
@@ -67,7 +62,6 @@ const EXCLUDE_TAGS = [
 	'kol-alert-wc',
 	'kol-all',
 	'kol-avatar-wc',
-	'kol-button-group-wc',
 	'kol-button-link-text-switch',
 	'kol-button-wc',
 	'kol-color',
@@ -156,6 +150,9 @@ async function generateCustomElementsJson(docsData: JsonDocs) {
 let outputTargets: OutputTarget[] = [
 	{
 		type: 'dist',
+
+		/* Prevent E2E tests from overriding the existing components build. This avoids conflicts when running the Sample App at the same time. */
+		dir: process.env.E2E === '1' ? 'dist-e2e' : undefined,
 		copy: [
 			{
 				src: 'assets',

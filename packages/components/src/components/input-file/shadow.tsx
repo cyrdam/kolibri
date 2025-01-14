@@ -52,14 +52,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		return this.inputRef?.files;
 	}
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -120,22 +112,10 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Makes the element not focusable and ignore all events.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -229,11 +209,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
-	/**
-	 * Defines the value of the input.
-	 */
-	@Prop() public _value?: string;
-
 	@State() public state: InputFileStates = {
 		_hideError: false,
 		_id: `id-${nonce()}`,
@@ -247,10 +222,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accept')
@@ -263,19 +235,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
-	}
-
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideError')
@@ -358,11 +320,6 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.controller.validateTouched(value);
 	}
 
-	@Watch('_value')
-	public validateValue(value?: string): void {
-		this.controller.validateValue(value);
-	}
-
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
@@ -381,8 +338,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private onInput = (event: Event): void => {
 		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
-			const value = this.inputRef.files;
-			this.controller.onFacade.onInput(event, false, value);
+			const files = this.inputRef.files;
+			this.controller.onFacade.onInput(event, false, files);
 		}
 	};
 }

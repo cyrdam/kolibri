@@ -26,14 +26,14 @@ import {
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
+	validateShortKey,
 	validateTabIndex,
 	validateTooltipAlign,
 	watchBoolean,
 	watchString,
-	validateShortKey,
 } from '../../../schema';
 
-import { stopPropagation, tryToDispatchKoliBriEvent } from '../../../utils/events';
+import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
@@ -69,20 +69,6 @@ export class InputController extends ControlledInputController implements Watche
 	}
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		validateTooltipAlign(this.component, value);
-	}
-
-	/**
-	 * @deprecated
-	 */
-	public validateError(value?: string): void {
-		if (typeof value === 'string' && value.length > 0) {
-			this.validateMsg({
-				_description: value,
-				_type: 'error',
-			});
-		} else {
-			this.validateMsg(undefined);
-		}
 	}
 
 	public validateHideError(value?: HideErrorPropType): void {
@@ -161,11 +147,7 @@ export class InputController extends ControlledInputController implements Watche
 		super.componentWillLoad();
 		this.validateAccessKey(this.component._accessKey);
 		this.validateAdjustHeight(this.component._adjustHeight);
-		this.validateError(this.component._error);
-		// _msg should only override _error if it is also defined.
-		if (this.component._msg) {
-			this.validateMsg(this.component._msg);
-		}
+		this.validateMsg(this.component._msg);
 		this.validateDisabled(this.component._disabled);
 		this.validateHideError(this.component._hideError);
 		this.validateHideLabel(this.component._hideLabel);
@@ -179,12 +161,17 @@ export class InputController extends ControlledInputController implements Watche
 		validateAccessAndShortKey(this.component._accessKey, this.component._shortKey);
 	}
 
+	private emitEvent(type: KolEvent, value?: unknown): void {
+		if (this.host) {
+			dispatchDomEvent(this.host, type, value);
+		}
+	}
+
 	protected onBlur(event: Event): void {
 		this.component._touched = true;
 
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('blur', this.host);
+		this.emitEvent(KolEvent.blur);
 
 		// Callback
 		if (typeof this.component._on?.onBlur === 'function') {
@@ -197,10 +184,12 @@ export class InputController extends ControlledInputController implements Watche
 	 * @param value - Optional value. Taken from event if not defined.
 	 */
 	protected onChange(event: Event, value?: StencilUnknown): void {
-		value = value ?? (event.target as HTMLInputElement).value;
+		if (typeof value === 'undefined') {
+			value = (event.target as HTMLInputElement).value;
+		}
 
 		// Event handling
-		tryToDispatchKoliBriEvent('change', this.host, value);
+		this.emitEvent(KolEvent.change, value);
 
 		// Callback
 		if (typeof this.component._on?.onChange === 'function') {
@@ -226,11 +215,12 @@ export class InputController extends ControlledInputController implements Watche
 	 * @param value - Optional value. Taken from event if not defined.
 	 */
 	protected onInput(event: Event, shouldSetFormAssociatedValue = true, value?: StencilUnknown): void {
-		value = value ?? (event.target as HTMLInputElement).value;
+		if (typeof value === 'undefined') {
+			value = (event.target as HTMLInputElement).value;
+		}
 
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('input', this.host, value);
+		this.emitEvent(KolEvent.input, value);
 
 		// Static form handling
 		if (shouldSetFormAssociatedValue) {
@@ -245,8 +235,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onClick(event: Event): void {
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('click', this.host);
+		this.emitEvent(KolEvent.click);
 
 		// Callback
 		if (typeof this.component._on?.onClick === 'function') {
@@ -256,8 +245,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	protected onFocus(event: Event): void {
 		// Event handling
-		stopPropagation(event);
-		tryToDispatchKoliBriEvent('focus', this.host);
+		this.emitEvent(KolEvent.focus);
 
 		// Callback
 		if (typeof this.component._on?.onFocus === 'function') {

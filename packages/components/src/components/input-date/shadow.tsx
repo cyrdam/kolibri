@@ -61,14 +61,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		return this.inputRef && this.remapValue(this.inputRef?.value);
 	}
 
-	/**
-	 * @deprecated Use kolFocus instead.
-	 */
-	@Method()
-	public async focus() {
-		await this.kolFocus();
-	}
-
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async kolFocus() {
@@ -100,9 +92,19 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			this._initialValueType = null;
 		}
 	}
-	private remapValue(newValue: string): Date | string {
-		return this._initialValueType === 'Date' ? new Date(newValue) : newValue;
+	private remapValue(newValue: string): Date | Iso8601 {
+		return this._initialValueType === 'Date' ? new Date(newValue) : (newValue as Iso8601);
 	}
+
+	private readonly onBlur = (event: Event) => {
+		this.controller.onFacade.onBlur(event);
+		this.inputHasFocus = false;
+	};
+
+	private readonly onFocus = (event: Event) => {
+		this.controller.onFacade.onFocus(event);
+		this.inputHasFocus = true;
+	};
 
 	private readonly onChange = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement).value;
@@ -113,6 +115,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	private readonly onInput = (event: Event) => {
 		const newValue = (event.target as HTMLInputElement).value;
 		const remappedValue = this.remapValue(newValue);
+		this._value = remappedValue;
 		this.controller.onFacade.onInput(event, true, remappedValue);
 	};
 
@@ -142,17 +145,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			ref: this.catchRef,
 			state: this.state,
 			...this.controller.onFacade,
+			onBlur: this.onBlur,
+			onFocus: this.onFocus,
+			onKeyDown: this.onKeyDown,
 			onChange: this.onChange,
 			onInput: this.onInput,
-			onKeyDown: this.onKeyDown,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
 		};
 	}
 
@@ -174,12 +171,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
-	 * Defines whether the screen-readers should read out the notification.
-	 * @deprecated Will be removed in v3. Use automatic behaviour instead.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _alert?: boolean;
-
-	/**
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: InputTypeOnOff;
@@ -189,12 +180,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Defines the error message text.
-	 * @deprecated Will be removed in v3. Use `msg` instead.
-	 */
-	@Prop() public _error?: string;
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
@@ -316,7 +301,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true }) public _value?: Iso8601 | Date | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
 	@State() public state: InputDateStates = {
 		_autoComplete: 'off',
@@ -335,20 +320,12 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	}
 
 	private showAsAlert(): boolean {
-		if (this.state._alert === undefined) {
-			return Boolean(this.state._touched) && !this.inputHasFocus;
-		}
-		return this.state._alert;
+		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
-	}
-
-	@Watch('_alert')
-	public validateAlert(value?: boolean): void {
-		this.controller.validateAlert(value);
 	}
 
 	@Watch('_autoComplete')
@@ -359,11 +336,6 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Watch('_disabled')
 	public validateDisabled(value?: boolean): void {
 		this.controller.validateDisabled(value);
-	}
-
-	@Watch('_error')
-	public validateError(value?: string): void {
-		this.controller.validateError(value);
 	}
 
 	@Watch('_hideError')

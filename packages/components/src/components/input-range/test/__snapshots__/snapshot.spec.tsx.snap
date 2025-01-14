@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _accessKey="V" 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -28,7 +28,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _alert=true 1`] = `
-<kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -54,7 +54,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _disabled=true 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -80,7 +80,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _hint="Hint" 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -109,7 +109,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -141,7 +141,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -171,7 +171,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -201,7 +201,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-range _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hidden-error kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -227,7 +227,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -253,7 +253,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _readOnly=true 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -279,7 +279,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _shortKey="S" 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -306,7 +306,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _accessKey="V" 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -345,7 +345,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _alert=true 1`] = `
-<kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -383,7 +383,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _disabled=true 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -421,7 +421,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _hint="Hint" 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -462,7 +462,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -506,7 +506,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -548,7 +548,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -590,7 +590,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-input-range _hide-error="" _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _hide-error="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hidden-error kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -628,7 +628,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -666,7 +666,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _readOnly=true 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -704,7 +704,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _shortKey="S" 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -743,7 +743,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] _touched=true 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -781,7 +781,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _suggestions=[1,2,3,4,5,6,7,8,9,10] 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -819,7 +819,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 _touched=true 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
@@ -845,7 +845,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 `;
 
 exports[`kol-input-range should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value=5 _min=1 _max=10 _step=1 1`] = `
-<kol-input-range _placeholder="Hier steht ein Platzhaltertext">
+<kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range" role="presentation">
       <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">

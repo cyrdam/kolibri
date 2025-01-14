@@ -6,40 +6,45 @@
 		--kolibri-spacing: #{rem(4)};
 	}
 
-	.tabs-button-group {
-		border-bottom: rem(1) solid var(--color-grey-25);
-		margin-bottom: rem(-1);
-	}
+	.kol-tabs {
+		&__button-group {
+			border-bottom: rem(1) solid var(--color-grey-25);
+			margin-bottom: rem(-1);
+		}
 
-	.tabs-button-group button {
-		border: none;
-		margin-bottom: rem(-1);
-	}
+		.kol-button {
+			border: none;
+			margin-bottom: rem(-1);
 
-	.tabs-button-group button .kol-span {
-		padding: rem(8);
-		min-height: rem(44);
-		min-width: rem(44);
-	}
+			&:hover:not(:disabled) {
+				.kol-span {
+					color: var(--color-blue-130);
+				}
+			}
+			&:focus {
+				.kol-span {
+					outline: var(--color-blue-130) solid rem(2);
+				}
+			}
 
-	.tabs-button-group button.selected .kol-span {
-		border-color: var(--color-grey-25);
-		border-style: solid;
-		border-width: rem(1);
-		border-bottom-color: white;
-		border-top-color: var(--color-blue);
-		box-shadow: 0 rem(-3) var(--color-blue);
-		font-weight: var(--font-weight-bold);
-		color: var(--color-blue);
-	}
+			&.selected {
+				.kol-span {
+					border-color: var(--color-grey-25);
+					border-style: solid;
+					border-width: rem(1);
+					border-bottom-color: white;
+					border-top-color: var(--color-blue);
+					box-shadow: 0 rem(-3) var(--color-blue);
+					font-weight: var(--font-weight-bold);
+					color: var(--color-blue);
+				}
+			}
 
-	.tabs-button-group button:hover:not(:disabled) .kol-span {
-		color: var(--color-blue-130);
-	}
-
-	.tabs-button-group button:focus .kol-span {
-		outline-color: var(--color-blue-130);
-		outline-style: solid;
-		outline-width: rem(2);
+			.kol-span {
+				padding: rem(8);
+				min-height: rem(44);
+				min-width: rem(44);
+			}
+		}
 	}
 }
