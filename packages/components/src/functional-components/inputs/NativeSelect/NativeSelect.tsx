@@ -50,7 +50,7 @@ const NativeSelectFc: FC<SelectProps> = (props) => {
 
 	return (
 		<select {...inputProps}>
-			<NativeOptionListFc baseClassNaame="kol-select" options={options} value={value} OptionGroupProps={OptionGroupProps} OptionProps={OptionProps} />
+			<NativeOptionListFc baseClassName="kol-select" options={options} value={value} OptionGroupProps={OptionGroupProps} OptionProps={OptionProps} />
 		</select>
 	);
 };

@@ -91,7 +91,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		<KolFieldControlLabelFc
 			{...(fieldControlLabelProps || {})}
 			id={id}
-			baseClassNaame="kol-field-control"
+			baseClassName="kol-field-control"
 			class={clsx(fieldControlLabelProps?.class, {
 				['kol-field-control__label--visually-hidden']: Boolean(hideLabel),
 			})}
@@ -120,7 +120,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 	return (
 		<div class={clsx('kol-field-control', stateCssClasses, classNames)} {...other}>
 			{components}
-			{canShowHint && <KolFieldControlHintFc {...(fieldControlHintProps || {})} baseClassNaame="kol-field-control" id={id} hint={hint} />}
+			{canShowHint && <KolFieldControlHintFc {...(fieldControlHintProps || {})} baseClassName="kol-field-control" id={id} hint={hint} />}
 		</div>
 	);
 };

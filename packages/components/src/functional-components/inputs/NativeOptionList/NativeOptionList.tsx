@@ -13,11 +13,11 @@ export type NativeOptionListProps = {
 	OptionProps?: Omit<JSXBase.OptionHTMLAttributes<HTMLOptionElement>, 'value' | 'label'>;
 	OptionGroupProps?: Omit<JSXBase.OptgroupHTMLAttributes<HTMLOptGroupElement>, 'label'>;
 
-	baseClassNaame?: 'kol-select';
+	baseClassName?: 'kol-select';
 };
 
 const NativeOptionListFc: FC<NativeOptionListProps> = ({
-	baseClassNaame,
+	baseClassName,
 	preKey,
 	options,
 	disabled,
@@ -43,14 +43,14 @@ const NativeOptionListFc: FC<NativeOptionListProps> = ({
 
 					return (
 						<optgroup
-							class={clsx(`${baseClassNaame}__optgroup`, { [`${baseClassNaame}__optgroup--disabled`]: disabled })}
+							class={clsx(`${baseClassName}__optgroup`, { [`${baseClassName}__optgroup--disabled`]: disabled })}
 							key={key}
 							{...OptionGroupProps}
 							label={label?.toString()}
 							disabled={disabled}
 						>
 							<NativeOptionListFc
-								baseClassNaame={baseClassNaame}
+								baseClassName={baseClassName}
 								OptionGroupProps={OptionGroupProps}
 								OptionProps={OptionProps}
 								value={selectedValue}
@@ -62,7 +62,7 @@ const NativeOptionListFc: FC<NativeOptionListProps> = ({
 				}
 
 				if ('value' in option) {
-					return <NativeOptionFc key={key} baseClassNaame={baseClassNaame} {...OptionProps} index={key} selectedValue={selectedValue} {...option} />;
+					return <NativeOptionFc key={key} baseClassName={baseClassName} {...OptionProps} index={key} selectedValue={selectedValue} {...option} />;
 				}
 
 				return null;

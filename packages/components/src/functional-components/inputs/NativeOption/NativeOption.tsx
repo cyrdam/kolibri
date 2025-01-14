@@ -8,11 +8,11 @@ export type NativeOptionProps = Omit<JSXBase.OptionHTMLAttributes<HTMLOptionElem
 	value: W3CInputValue;
 	label: W3CInputValue;
 	index?: string | number;
-	baseClassNaame?: 'kol-select' | 'kol-datalist';
+	baseClassName?: 'kol-select' | 'kol-datalist';
 };
 
 const NativeOptionFc: FC<NativeOptionProps> = ({
-	baseClassNaame = 'kol-select',
+	baseClassName = 'kol-select',
 	class: classNames,
 	index,
 	selectedValue,
@@ -33,10 +33,10 @@ const NativeOptionFc: FC<NativeOptionProps> = ({
 	return (
 		<option
 			class={clsx(
-				`${baseClassNaame}__option`,
+				`${baseClassName}__option`,
 				{
-					[`${baseClassNaame}__option--selected`]: isSelected,
-					[`${baseClassNaame}__option--disabled`]: disabled,
+					[`${baseClassName}__option--selected`]: isSelected,
+					[`${baseClassName}__option--disabled`]: disabled,
 				},
 				classNames,
 			)}
