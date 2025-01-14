@@ -1,10 +1,10 @@
 import { SelectOption } from '@public-ui/components';
 
-export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'itzbund', 'unstyled'] as const;
+export const THEMES = ['default', 'ecl-ec', 'ecl-eu', 'unstyled'] as const;
 export type Theme = (typeof THEMES)[number];
 export type ThemeAndUnstyled = Theme | 'unstyled';
 
-const drafts: ThemeAndUnstyled[] = ['ecl-ec', 'ecl-eu', 'itzbund'];
+const drafts: ThemeAndUnstyled[] = ['ecl-ec', 'ecl-eu'];
 
 export const isDraftTheme = (theme: ThemeAndUnstyled) => drafts.includes(theme);
 
@@ -33,9 +33,5 @@ export const THEME_OPTIONS: SelectOption<ThemeAndUnstyled>[] = [
 	{
 		label: 'European Union (Draft)',
 		value: 'ecl-eu',
-	},
-	{
-		label: 'Informationstechnikzentrum Bund (Draft)',
-		value: 'itzbund',
 	},
 ];
