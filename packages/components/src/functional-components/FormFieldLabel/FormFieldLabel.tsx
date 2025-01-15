@@ -59,14 +59,14 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	hasExpertSlot,
 	...other
 }) => {
-	const useTooltopInsteadOfLabel = !hasExpertSlot && hideLabel;
+	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 
 	return (
 		<Component
 			{...other}
 			class={clsx(`${baseClassName}__label`, classNames)}
-			id={!useTooltopInsteadOfLabel ? `${id}-label` : undefined}
-			hidden={useTooltopInsteadOfLabel}
+			id={!useTooltipInsteadOfLabel ? `${id}-label` : undefined}
+			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}
 		>
 			{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}

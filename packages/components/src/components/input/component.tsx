@@ -67,7 +67,7 @@ export class KolInputWc implements Props {
 
 		const hasExpertSlot = showExpertSlot(this._label);
 		const hasHint = typeof this._hint === 'string' && this._hint.length > 0;
-		const useTooltopInsteadOfLabel = !hasExpertSlot && this._hideLabel;
+		const useTooltipInsteadOfLabel = !hasExpertSlot && this._hideLabel;
 
 		return (
 			<Host
@@ -80,7 +80,7 @@ export class KolInputWc implements Props {
 					'hidden-error': this._hideError === true,
 				})}
 			>
-				<label class="input-label" id={!useTooltopInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltopInsteadOfLabel} htmlFor={this._id}>
+				<label class="input-label" id={!useTooltipInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltipInsteadOfLabel} htmlFor={this._id}>
 					{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
 					<span class="input-label-span">
 						{/* INFO: label comes with any html tag or as plain text! */}
@@ -120,7 +120,7 @@ export class KolInputWc implements Props {
 						<KolIconTag _label="" _icons={(this._icons?.right as KoliBriCustomIcon).icon} style={this.getIconStyles(this._icons?.right)}></KolIconTag>
 					)}
 				</div>
-				{useTooltopInsteadOfLabel && (
+				{useTooltipInsteadOfLabel && (
 					<KolTooltipWcTag
 						/**
 						 * Dieses Aria-Hidden verhindert das doppelte Vorlesen des Labels,
