@@ -45,7 +45,6 @@ export class GenericRenameTagNameTask extends AbstractTask {
 	private transpileComponentFileRename(baseDir: string): void {
 		filterFilesByExt(baseDir, COMPONENT_FILE_EXTENSIONS).forEach((file) => {
 			const content = fs.readFileSync(file, 'utf8');
-			console.log('CONTENT: ', content);
 			const newContent = content
 				// Replacements
 				.replace(this.componentRegExp, `$1${this.newTagNameInCamelCase}$2`)
@@ -54,8 +53,6 @@ export class GenericRenameTagNameTask extends AbstractTask {
 				MODIFIED_FILES.add(file);
 				fs.writeFileSync(file, newContent);
 			}
-
-			console.log('NEW CONTENT: ', newContent);
 		});
 	}
 
