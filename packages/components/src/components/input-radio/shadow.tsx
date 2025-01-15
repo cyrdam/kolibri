@@ -96,6 +96,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 			hint: option.hint,
 			label: option.label as string,
 			required: false,
+			fieldControlLabelProps: {
+				showBadge: false,
+			},
 		};
 
 		if (option.disabled) {

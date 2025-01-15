@@ -28,7 +28,8 @@
 	.kol-form-field-radio {
 		& .kol-form-field {
 			&__label {
-				display: contents;
+				display: inline-block;
+				padding: 0;
 			}
 
 			&__input {
@@ -104,6 +105,10 @@
 	.kol-field-control__hint,
 	.kol-form-field__hint {
 		@include kol-typography-hint;
+	}
+
+	.kol-alert.error {
+		margin-left: -0.25em;
 	}
 }
 

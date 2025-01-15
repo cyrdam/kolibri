@@ -26,7 +26,10 @@ export type FieldControlProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> 
 	renderNoHint?: boolean;
 	renderNoTooltip?: boolean;
 
-	fieldControlLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
+	fieldControlLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
+		component?: 'label' | 'legend';
+		showBadge?: boolean;
+	};
 	fieldControlInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 	fieldControlTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
 	fieldControlHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
