@@ -1,9 +1,0 @@
-@import './rem';
-
-@mixin indented-text {
-	font-family: var(--font-family);
-	border-left: rem(4) solid var(--color-petrol);
-	padding: 0.25em 0.5em;
-	margin-left: rem(-4);
-	width: 100%;
-}
