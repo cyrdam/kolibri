@@ -34,7 +34,7 @@ export const DrawerControlled: FC = () => {
 					</div>
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => setOpen(true) }} />
-				<KolDrawer _open={modalOpen} _modal _align={align} _label="I'm a controlled modal drawer" _on={{ onClose: () => setModalOpen(false) }}>
+				<KolDrawer _open={modalOpen} _align={align} _label="I'm a controlled modal drawer" _on={{ onClose: () => setModalOpen(false) }}>
 					<div>
 						<p>Lorem ipsum dolor sit amet,</p>
 						<KolButton _label="Close drawer" _on={{ onClick: () => setModalOpen(false) }} />

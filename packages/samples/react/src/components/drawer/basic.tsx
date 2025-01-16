@@ -41,13 +41,7 @@ export const DrawerBasic: FC = () => {
 					<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
-				<KolDrawer
-					ref={drawerModalElement}
-					_modal
-					_align={align}
-					_label="I am a Drawer Modal"
-					_on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}
-				>
+				<KolDrawer ref={drawerModalElement} _align={align} _label="I am a Drawer Modal" _on={{ onClose: () => console.log('Drawer Modal onClose triggered!') }}>
 					<p>
 						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 						voluptua.
