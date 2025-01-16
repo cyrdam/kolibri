@@ -2,13 +2,9 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.kol-input-color {
-		.kol-input-container {
-			input[type='color'] {
-				border: none;
-				min-height: rem(40);
-				background-color: transparent;
-			}
-		}
+	.kol-input {
+		border: none;
+		min-height: rem(40);
+		background-color: transparent;
 	}
 }

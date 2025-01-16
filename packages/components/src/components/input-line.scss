@@ -1,4 +1,4 @@
-@import './input';
+@import './legacy-input';
 
 @layer kol-component {
 	input:not([type='checkbox'], [type='radio']),
