@@ -33,6 +33,7 @@ export type FieldControlStateWrapperProps = Partial<FieldControlProps> & {
 function getFieldControlProps(state: InputState): FieldControlProps {
 	const props: FieldControlProps = {
 		accessKey: state._accessKey,
+		shortKey: state._shortKey,
 		id: state._id,
 		disabled: state._disabled,
 		msg: convertMsgToInternMsg(state._msg),
