@@ -1,7 +1,10 @@
-@import '../@shared/mixins';
 @import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../@shared/mixins';
 @import '../input-line';
-@import '../form-field';
-@import '../input-container';
 
-@include kol-alert-styles;
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;

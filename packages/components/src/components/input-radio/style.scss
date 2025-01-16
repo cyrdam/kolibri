@@ -1,12 +1,15 @@
 @import '../@shared/mixins';
 @import '../../styles/global';
-@import '../input';
+@import '../legacy-input';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-field-control-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
 
-@import '../form-field';
-@import '../input-container';
-@import '../field-control';
-
-@include kol-alert-styles;
+@include kol-alert;
+@include kol-field-control;
+@include kol-form-field;
+@include kol-input-container;
 
 @layer kol-component {
 	.kol-form-field {
