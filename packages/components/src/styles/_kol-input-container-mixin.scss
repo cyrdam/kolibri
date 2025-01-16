@@ -3,26 +3,14 @@
 		.kol-input-container {
 			$root: &;
 
-			min-height: var(--a11y-min-size);
-			min-width: var(--a11y-min-size);
-			width: 100%;
-			display: grid;
 			align-items: center;
 			background-color: white;
 			cursor: pointer;
-
-			@at-root #{$root}__adornment {
-				display: flex;
-				align-items: center;
-
-				.kol-icon {
-					display: grid;
-					height: var(--a11y-min-size);
-					place-items: center;
-				}
-			}
-
+			display: grid;
 			grid-template-columns: 1fr;
+			min-height: var(--a11y-min-size);
+			min-width: var(--a11y-min-size);
+			width: 100%;
 
 			&:has(> #{$root}__adornment--start) {
 				grid-template-columns: auto 1fr;
@@ -34,6 +22,17 @@
 
 			&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
 				grid-template-columns: auto 1fr auto;
+			}
+
+			&__adornment {
+				display: flex;
+				align-items: center;
+
+				.kol-icon {
+					display: grid;
+					height: var(--a11y-min-size);
+					place-items: center;
+				}
 			}
 		}
 	}

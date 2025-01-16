@@ -1,47 +1,32 @@
 @mixin kol-form-field {
 	@layer kol-component {
-		/**
-	 * Normalize Form Field
-	 */
-		.kol-form-field {
-			font-size: rem(16);
-		}
-
 		.kol-form-field {
 			$root: &;
 
 			display: grid;
+			font-size: rem(16);
 
-			&--disabled & {
-				&__label,
-				&__hint {
+			&__label {
+				#{$root}--disabled & {
 					opacity: 0.5;
 				}
 			}
 
-			&--required & {
-				&__label-text {
-					&::after {
-						content: '*';
-					}
-				}
-
-				&__tooltip {
-					.span-label::after {
-						content: '*';
-					}
+			&__label-text::after {
+				#{$root}--required & {
+					content: '*';
 				}
 			}
 
-			.kol-alert {
-				display: grid;
-
-				&__container {
-					place-items: center;
-					display: flex;
+			&__hint {
+				#{$root}--disabled & {
+					opacity: 0.5;
 				}
-				&__container-content {
-					flex-grow: 1;
+			}
+
+			&__tooltip .span-label::after {
+				#{$root}--required & {
+					content: '*';
 				}
 			}
 		}
