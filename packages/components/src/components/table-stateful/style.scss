@@ -1,5 +1,5 @@
 @import '../@shared/mixins';
-@import '../style';
+@import '../../styles/global';
 @import '../@shared/kol-table-stateless-mixin';
 
 @include kol-table-stateless-styles;
