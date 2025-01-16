@@ -8,8 +8,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -271,8 +272,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -355,8 +357,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -618,8 +621,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -696,8 +700,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -959,8 +964,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -1031,8 +1037,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -1294,8 +1301,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
         <div class="kol-field-control kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -1378,8 +1386,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -1641,8 +1650,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -1719,8 +1729,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -1982,8 +1993,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -2060,8 +2072,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -2323,8 +2336,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
@@ -2401,8 +2415,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                V
               </span>
             </span>
           </label>
@@ -2664,8 +2679,9 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
           </div>
           <label class="kol-field-control__label" htmlfor="id-nonce" id="id-nonce-label">
             <span class="kol-field-control__label-text">
-              <span>
-                Label
+              Label
+              <span aria-hidden="true" class="access-key-hint">
+                S
               </span>
             </span>
           </label>
