@@ -36,6 +36,10 @@ export default defineConfig({
 		trace: 'on-first-retry',
 	},
 
+	expect: {
+		timeout: process.env.KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT ? Number(process.env.KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT) : undefined,
+	},
+
 	/* Configure projects for major browsers */
 	projects: [
 		// {
