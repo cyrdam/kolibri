@@ -8,13 +8,13 @@
 @include kol-field-control;
 
 @layer kol-component {
+	$root: '.kol-checkbox';
+
 	.kol-form-field {
 		display: grid;
 	}
 
-	.kol-checkbox {
-		$base: &;
-
+	#{$root} {
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -45,7 +45,7 @@
 	/**
 	 * Variant: Checkbox
 	 */
-	.kol-checkbox--variant-default {
+	#{$root}--variant-default {
 		height: var(--a11y-min-size);
 		justify-content: center;
 		position: relative;
@@ -68,8 +68,8 @@
 			height: rem(22);
 		}
 
-		&.kol-checkbox--checked,
-		&.kol-checkbox--indeterminate {
+		&#{$root}--checked,
+		&#{$root}--indeterminate {
 			.kol-icon::part(icon) {
 				display: block;
 			}
@@ -79,7 +79,7 @@
 	/**
 	 * Variant: Switch
 	 */
-	.kol-checkbox--variant-switch {
+	#{$root}--variant-switch {
 		position: relative;
 
 		.kol-input {
@@ -124,11 +124,11 @@
 			color: #000;
 		}
 
-		&.kol-checkbox--checked .kol-icon {
+		&#{$root}--checked .kol-icon {
 			transform: translate(1.5em, -50%);
 		}
 
-		&.kol-checkbox--indeterminate .kol-icon {
+		&#{$root}--indeterminate .kol-icon {
 			transform: translate(0.75em, -50%);
 		}
 	}
@@ -136,7 +136,7 @@
 	/**
 	 * Variant: Button
 	 */
-	.kol-checkbox--variant-button {
+	#{$root}--variant-button {
 		width: var(--a11y-min-size);
 
 		.kol-icon {
