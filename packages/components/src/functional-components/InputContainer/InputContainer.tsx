@@ -2,7 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import clsx from 'clsx';
 import type { JSXBase, VNode } from '@stencil/core/internal';
 import InputAdornment from '../InputAdornment';
-import type { InternMsgPropType } from '../../schema';
+import { checkHasError, type InternMsgPropType } from '../../schema';
 
 type InputAdornmentType = VNode | VNode[] | null;
 
@@ -24,26 +24,6 @@ function hasItems(items?: InputAdornmentType): boolean {
 	}
 
 	return Array.isArray(items) ? items.length > 0 : Boolean(items);
-}
-
-function checkHasError(msg?: InternMsgPropType, touched?: boolean): boolean {
-	/**
-	 * We support 5 types of messages:
-	 * - default
-	 * - info
-	 * - success
-	 * - warning
-	 * - error
-	 *
-	 * The message is shown if:
-	 * - the message text is not an empty string
-	 * - we show only one message at a time
-	 * - by error messages the input must be touched
-	 */
-	const hasValidMsg = Boolean(msg?.description && msg?.description.length > 0);
-	const showMsg = hasValidMsg && (touched === true || msg?.type !== 'error');
-
-	return showMsg;
 }
 
 const Container: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: className, ...other }, children) => {

@@ -51,7 +51,6 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		label,
 		hideLabel,
 		labelAlign,
-		//	renderNoLabel,
 		renderNoTooltip,
 		hint,
 		renderNoHint,
@@ -69,7 +68,6 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		...other
 	} = props;
 
-	//const canShowLabel = !renderNoLabel;
 	const canShowHint = !renderNoHint;
 	const canShowTooltip = !renderNoTooltip;
 	const showMsg = checkHasError(msg, touched);
@@ -99,7 +97,6 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 				['kol-field-control__label--visually-hidden']: Boolean(hideLabel),
 			})}
 			hasExpertSlot={hasExpertSlot}
-			// hideLabel={hideLabel}
 			label={label}
 			accessKey={accessKey}
 			shortKey={shortKey}
