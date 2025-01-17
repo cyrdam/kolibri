@@ -23,6 +23,10 @@
 
 		&__input {
 			flex-grow: 1;
+
+			&:focus {
+				outline: none;
+			}
 		}
 
 		&__button {
