@@ -2,6 +2,7 @@
 @import '../../styles/global';
 @import '../input-line';
 @import '../@shared/kol-link-mixin';
+@import '../../styles/kol-alert-mixin';
 
 @layer kol-component {
 	@include kol-link-styles('kol-link');

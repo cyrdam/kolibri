@@ -1,14 +1,1 @@
 @import './legacy-input';
-
-@layer kol-component {
-	input:not([type='checkbox'], [type='radio']) {
-		height: 2.75em;
-	}
-
-	input:focus,
-	option:focus,
-	select:focus,
-	textarea:focus {
-		outline: 0;
-	}
-}
