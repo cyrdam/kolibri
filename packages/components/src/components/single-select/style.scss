@@ -1,6 +1,7 @@
-@import '../@shared/mixins';
 @import '../../styles/global';
+@import '../@shared/mixins';
 @import '../host-display-block';
+@import '../tooltip/style';
 
 @layer kol-component {
 	:host {
