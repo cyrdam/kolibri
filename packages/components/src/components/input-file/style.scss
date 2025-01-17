@@ -1,15 +1,17 @@
 @import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
 @import '../../styles/kol-form-field-mixin';
 @import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
 @import '../@shared/mixins';
-@import '../input-line';
 
 @include kol-alert;
 @include kol-form-field;
 @include kol-input-container;
+@include kol-input;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
+	.kol-input {
+		padding: calc((var(--a11y-min-size) - rem(16)) / 10) 0.5em;
 	}
 }

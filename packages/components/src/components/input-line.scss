@@ -1,8 +1,7 @@
 @import './legacy-input';
 
 @layer kol-component {
-	input:not([type='checkbox'], [type='radio']),
-	select:not([multiple], [size]) {
+	input:not([type='checkbox'], [type='radio']) {
 		height: 2.75em;
 	}
 

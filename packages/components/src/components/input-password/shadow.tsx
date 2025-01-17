@@ -119,7 +119,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		return (
 			<KolIconButtonFc
 				componentName="button"
-				class="password-toggle-button"
+				class="kol-input-password__password-toggle-button"
 				label={this._passwordVisible ? translate('kol-hide-password') : translate('kol-show-password')}
 				variant="ghost"
 				onClick={(): void => {
