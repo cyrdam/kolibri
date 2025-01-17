@@ -3,8 +3,19 @@
 @import '../../styles/kol-form-field-mixin';
 @import '../../styles/kol-input-container-mixin';
 @import '../@shared/mixins';
-@import '../input-line';
+@import '../host-display-block';
 
 @include kol-alert;
 @include kol-form-field;
 @include kol-input-container;
+
+@layer kol-component {
+	.kol-textarea {
+		font-size: rem(16);
+		width: 100%;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}

@@ -7,6 +7,10 @@
 			font-size: rem(16);
 
 			&__label {
+				#{$root}:not(#{$root}--disabled) & {
+					cursor: pointer;
+				}
+
 				#{$root}--disabled & {
 					opacity: 0.5;
 				}

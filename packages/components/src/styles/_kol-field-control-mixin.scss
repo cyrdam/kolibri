@@ -38,11 +38,12 @@
 			}
 
 			&__label {
-				grid-area: label;
-				flex-grow: 1;
-				display: flex;
-				min-height: var(--a11y-min-size);
 				align-items: center;
+				cursor: pointer;
+				display: flex;
+				flex-grow: 1;
+				grid-area: label;
+				min-height: var(--a11y-min-size);
 
 				&--visually-hidden {
 					height: 0;
