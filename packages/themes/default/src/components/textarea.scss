@@ -8,22 +8,17 @@
 
 	@include kol-form-field-order-textarea-theme;
 
-	.kol-input-container {
-		textarea {
-			border: none;
+	.kol-textarea {
+		border: none;
+		display: block;
+		overflow: auto;
+
+		&:disabled {
+			cursor: not-allowed;
 		}
 
-		input::placeholder {
+		&::placeholder {
 			color: var(--color-subtle);
-		}
-
-		textarea {
-			overflow: auto;
-			display: block;
-
-			&:disabled {
-				cursor: not-allowed;
-			}
 		}
 	}
 }

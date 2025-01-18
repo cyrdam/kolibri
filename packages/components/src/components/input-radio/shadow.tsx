@@ -66,7 +66,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		return {
 			state: this.state,
 			component: 'fieldset',
-			class: clsx('kol-form-field-radio'),
+			class: clsx('kol-form-field--radio'),
 			formFieldLabelProps: {
 				component: 'legend',
 				class: 'kol-form-field__label--legend',
