@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import type { AlignPropType, DrawerAPI, DrawerStates, KoliBriModalEventCallbacks, LabelPropType, ModalPropType, OpenPropType } from '../../schema';
-import { setState, validateAlign, validateLabel, validateModal, validateOpen } from '../../schema';
+import type { AlignPropType, DrawerAPI, DrawerStates, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
+import { setState, validateAlign, validateLabel, validateOpen } from '../../schema';
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -28,11 +28,7 @@ export class KolDrawer implements DrawerAPI {
 			...this.state,
 			_open: true,
 		};
-		if (this.state._modal) {
-			this.dialogElement?.showModal();
-		} else {
-			this.dialogElement?.show();
-		}
+		this.dialogElement?.showModal();
 	}
 
 	@Method()
@@ -71,13 +67,8 @@ export class KolDrawer implements DrawerAPI {
 
 	private getRef = (el: HTMLDialogElement | undefined) => (this.dialogElement = el as HTMLDialogElement);
 	public render(): JSX.Element {
-		const isModal = this.state._modal;
 		return (
-			<Host
-				class={clsx('kol-drawer--modal', {
-					'kol-drawer--modal': isModal,
-				})}
-			>
+			<Host class="kol-drawer">
 				<dialog class="kol-drawer__dialog" ref={this.getRef}>
 					{this.renderDialogContent()}
 				</dialog>
@@ -101,11 +92,6 @@ export class KolDrawer implements DrawerAPI {
 	@Prop() public _label!: LabelPropType;
 
 	/**
-	 * Indicates whether the drawer is a modal.
-	 */
-	@Prop() public _modal?: ModalPropType;
-
-	/**
 	 * Specifies the EventCallback function to be called when the drawer is closing.
 	 */
 	@Prop() public _on?: KoliBriModalEventCallbacks;
@@ -126,11 +112,6 @@ export class KolDrawer implements DrawerAPI {
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
 		validateAlign(this, value);
-	}
-
-	@Watch('_modal')
-	public validateModal(value?: ModalPropType): void {
-		validateModal(this, value);
 	}
 
 	@Watch('_open')
@@ -188,7 +169,6 @@ export class KolDrawer implements DrawerAPI {
 		this.validateLabel(this._label);
 		await this.validateOpen(this._open);
 		this.validateAlign(this._align);
-		this.validateModal(this._modal);
 		this.validateOn(this._on);
 	}
 }
