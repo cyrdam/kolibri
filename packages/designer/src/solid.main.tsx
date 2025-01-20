@@ -2,7 +2,8 @@ import { render } from 'solid-js/web';
 
 import { register } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/dist/loader';
-import { DEFAULT, ECL_EC, ECL_EU } from '@public-ui/themes';
+import { DEFAULT } from '@public-ui/theme-default';
+import { ECL_EC, ECL_EU } from '@public-ui-/theme-ecl';
 import { AppComponent } from './components/app/component.solid';
 
 register([DEFAULT, ECL_EC, ECL_EU], defineCustomElements, {
