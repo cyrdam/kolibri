@@ -5,7 +5,7 @@ import { KolEvent } from '../../utils/events';
 test.describe('kol-drawer', () => {
 	test.describe('Callbacks', () => {
 		test(`should call 'onClose' callback when drawer is closed`, async ({ page }) => {
-			await page.setContent('<kol-drawer _label="Details" _modal>Drawer content</kol-drawer>');
+			await page.setContent('<kol-drawer _label="Details" >Drawer content</kol-drawer>');
 			const kolDrawer = page.locator('kol-drawer');
 
 			const callbackPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
@@ -27,7 +27,7 @@ test.describe('kol-drawer', () => {
 
 	test.describe('DOM events', () => {
 		test(`should emit 'close' when drawer is closed`, async ({ page }) => {
-			await page.setContent('<kol-drawer _label="Details" _modal>Drawer content</kol-drawer>');
+			await page.setContent('<kol-drawer _label="Details" >Drawer content</kol-drawer>');
 			const kolDrawer = page.locator('kol-drawer');
 
 			const eventPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement, KolEvent) => {
