@@ -11,7 +11,6 @@
 		"packages/adapters/solid",
 		"packages/adapters/vue",
 		"packages/components",
-		"packages/designer",
 		"packages/samples/react",
 		"packages/schema",
 		"packages/themes/default",
