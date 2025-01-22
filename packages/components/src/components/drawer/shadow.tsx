@@ -65,7 +65,12 @@ export class KolDrawer implements DrawerAPI {
 		);
 	}
 
-	private getRef = (el: HTMLDialogElement | undefined) => (this.dialogElement = el as HTMLDialogElement);
+	private getRef = (el: HTMLDialogElement | undefined) => {
+		this.dialogElement = el as HTMLDialogElement;
+		setTimeout(() => {
+			void this.openOrCloseBasedOnState(); // handle initial state as soon as element is ready
+		});
+	};
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-drawer">
@@ -115,10 +120,22 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	@Watch('_open')
-	public async validateOpen(value?: OpenPropType): Promise<void> {
+	public validateOpen(value?: OpenPropType) {
 		if (typeof value === 'boolean') {
 			validateOpen(this, value);
-			value ? await this.open() : await this.close();
+
+			if (this.dialogElement) {
+				// handle property changes but not the initial validateOpen call
+				void this.openOrCloseBasedOnState();
+			}
+		}
+	}
+
+	private async openOrCloseBasedOnState() {
+		if (this.state._open) {
+			await this.open();
+		} else {
+			await this.close();
 		}
 	}
 
@@ -165,9 +182,9 @@ export class KolDrawer implements DrawerAPI {
 		this.dialogElement?.removeEventListener('close', this.handleClose.bind(this));
 	}
 
-	public async componentWillLoad(): Promise<void> {
+	public componentWillLoad() {
 		this.validateLabel(this._label);
-		await this.validateOpen(this._open);
+		this.validateOpen(this._open);
 		this.validateAlign(this._align);
 		this.validateOn(this._on);
 	}
