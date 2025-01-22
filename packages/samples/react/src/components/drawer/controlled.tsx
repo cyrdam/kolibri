@@ -14,7 +14,6 @@ export const DrawerControlled: FC = () => {
 	const defaultAlign = searchParams.get('align') as AlignPropType;
 	const hideMenus = useContext(HideMenusContext);
 	const [open, setOpen] = useState(false);
-	const [modalOpen, setModalOpen] = useState(false);
 	const [align, setAlign] = useState<AlignPropType>(defaultAlign || 'left');
 	return (
 		<div>
@@ -34,13 +33,6 @@ export const DrawerControlled: FC = () => {
 					</div>
 				</KolDrawer>
 				<KolButton _label="Open drawer" _on={{ onClick: () => setOpen(true) }} />
-				<KolDrawer _open={modalOpen} _modal _align={align} _label="I'm a controlled modal drawer" _on={{ onClose: () => setModalOpen(false) }}>
-					<div>
-						<p>Lorem ipsum dolor sit amet,</p>
-						<KolButton _label="Close drawer" _on={{ onClick: () => setModalOpen(false) }} />
-					</div>
-				</KolDrawer>
-				<KolButton _label="Open drawer as modal" _on={{ onClick: () => setModalOpen(true) }} />
 			</div>
 		</div>
 	);
