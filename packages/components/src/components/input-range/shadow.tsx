@@ -168,7 +168,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const inputsWrapperStyle = {
-			'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
+			// use number of digits in max value plus some space for the number input arrow buttons
+			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max ?? 1000).length}ch + 1.5em)`,
 		};
 
 		return (
