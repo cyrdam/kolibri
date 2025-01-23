@@ -14,7 +14,7 @@ type FormFieldMsgProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 
 const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, hideError, id, class: classNames, ...other }) => (
 	<KolAlertFc
-		id={`${id}-error`}
+		id={`${id}-msg`}
 		alert={alert}
 		type="error"
 		class={clsx(

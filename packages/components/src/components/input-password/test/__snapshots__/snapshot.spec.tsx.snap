@@ -163,7 +163,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
         </span>
       </label>
       <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+        <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
       </div>
     </div>
   </template>
@@ -182,7 +182,7 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
         </span>
       </label>
       <div class="input">
-        <input autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+        <input aria-describedby="id-nonce-msg" autocapitalize="off" autocomplete="off" autocorrect="off" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
       </div>
     </div>
   </template>

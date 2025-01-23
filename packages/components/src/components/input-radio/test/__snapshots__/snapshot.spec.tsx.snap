@@ -381,7 +381,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </legend>
       <div class="disabled hidden-error kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
           <label class="radio-label" htmlfor="id-nonce-0">
             <span>
               <span class="radio-label-span-inner">
@@ -393,7 +393,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="hidden-error kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
           <label class="radio-label" htmlfor="id-nonce-1">
             <span>
               <span class="radio-label-span-inner">
@@ -405,7 +405,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="hidden-error kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
           <label class="radio-label" htmlfor="id-nonce-2">
             <span>
               <span class="radio-label-span-inner">
@@ -433,7 +433,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </legend>
       <div class="disabled kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
           <label class="radio-label" htmlfor="id-nonce-0">
             <span>
               <span class="radio-label-span-inner">
@@ -445,7 +445,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
           <label class="radio-label" htmlfor="id-nonce-1">
             <span>
               <span class="radio-label-span-inner">
@@ -457,7 +457,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
           <label class="radio-label" htmlfor="id-nonce-2">
             <span>
               <span class="radio-label-span-inner">
@@ -853,7 +853,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </legend>
       <div class="disabled hidden-error kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
           <label class="radio-label" htmlfor="id-nonce-0">
             <span>
               <span class="radio-label-span-inner">
@@ -865,7 +865,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="hidden-error kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
           <label class="radio-label" htmlfor="id-nonce-1">
             <span>
               <span class="radio-label-span-inner">
@@ -877,7 +877,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="hidden-error kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
           <label class="radio-label" htmlfor="id-nonce-2">
             <span>
               <span class="radio-label-span-inner">
@@ -905,7 +905,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </legend>
       <div class="disabled kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="disabled radio" disabled="" id="id-nonce" name="field" type="radio" value="-0">
           <label class="radio-label" htmlfor="id-nonce-0">
             <span>
               <span class="radio-label-span-inner">
@@ -917,7 +917,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-1">
           <label class="radio-label" htmlfor="id-nonce-1">
             <span>
               <span class="radio-label-span-inner">
@@ -929,7 +929,7 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
       </div>
       <div class="kol-input" role="presentation">
         <div class="radio-input-wrapper">
-          <input autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
+          <input aria-describedby="id-nonce-msg" autocapitalize="off" autocorrect="off" class="radio" id="id-nonce" name="field" type="radio" value="-2">
           <label class="radio-label" htmlfor="id-nonce-2">
             <span>
               <span class="radio-label-span-inner">
