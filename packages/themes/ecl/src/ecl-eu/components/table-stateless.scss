@@ -1,3 +1,5 @@
 @import '../mixins/kol-table-stateless-wc';
 
-@include kol-table-stateless-wc;
+@layer kol-theme-component {
+	@include kol-table-stateless-wc;
+}
