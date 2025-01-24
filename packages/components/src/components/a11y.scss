@@ -1,3 +1,5 @@
+@import '@shared/mixins';
+
 /*
  * This file contains all rules for accessibility.
  */
@@ -47,8 +49,7 @@
 	/* select, */
 	/* textarea, */
 	[role='button'],
-	button:not([role='link']),
-	.kol-input .input {
+	button:not([role='link']) {
 		min-height: var(--a11y-min-size);
 		min-width: var(--a11y-min-size);
 	}

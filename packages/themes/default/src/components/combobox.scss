@@ -83,7 +83,7 @@ $visible-options: 5;
 		gap: rem(4);
 	}
 
-	.kol-input .error:not(.hidden-error) {
+	.kol-input:not(.hidden-error) .kol-alert {
 		order: 1;
 	}
 

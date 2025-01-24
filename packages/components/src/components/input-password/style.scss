@@ -1,20 +1,17 @@
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
 @import '../@shared/mixins';
-@import '../style';
-@import '../input-line';
 
-@include kol-alert-styles;
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;
+@include kol-input;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-
-	.password-toggle-button {
-		position: absolute;
-		transform: translateX(-100%);
-	}
-
-	.kol-tooltip-wc {
+	.kol-input-password {
 		--kol-tooltip-width: #{rem(160)};
 	}
 }

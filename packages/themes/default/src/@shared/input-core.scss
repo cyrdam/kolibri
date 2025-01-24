@@ -1,97 +1,15 @@
-@import '../mixins/rem';
 @import '../mixins/alert-wc';
-@import '../mixins/input-error';
-@import '../mixins/typography';
+@import '../mixins/form-field';
+@import '../mixins/form-field-order';
+@import '../mixins/input';
 
 @layer kol-theme-component {
 	:host {
 		font-family: var(--font-family);
 	}
 
-	.kol-input {
-		gap: rem(4);
-
-		&.disabled .input {
-			background-color: var(--color-mute);
-			border-color: var(--color-mute-variant);
-			color: var(--color-text);
-		}
-
-		&.error:not(.hidden-error) {
-			@include input-error;
-		}
-
-		.kol-alert {
-			order: 1;
-		}
-
-		label {
-			order: 2;
-		}
-
-		.input {
-			order: 3;
-
-			background-color: var(--color-light);
-			border-color: var(--color-subtle);
-			border-radius: var(--border-radius);
-			border-style: solid;
-			border-width: rem(2);
-			padding: 0 rem(8);
-			gap: rem(6);
-
-			.inputAdornment-start,
-			.inputAdornment-end {
-				display: flex;
-				align-items: center;
-				min-width: rem(8);
-
-				.kol-icon {
-					min-width: rem(16);
-					display: flex;
-					justify-content: center;
-				}
-			}
-
-			.inputAdornment-start {
-				> .kol-icon {
-					margin-left: rem(8);
-				}
-			}
-
-			.inputAdornment-end {
-				> .kol-icon {
-					margin-right: rem(8);
-				}
-			}
-
-			input {
-				border: none;
-
-				&::placeholder {
-					color: var(--color-subtle);
-				}
-
-				&:disabled {
-					cursor: not-allowed;
-				}
-			}
-		}
-
-		.hint {
-			order: 4;
-			@include kol-typography-hint;
-		}
-	}
-
-	:not(.disabled) .input:hover {
-		border-color: var(--color-primary);
-	}
-
-	.required label > span::after {
-		content: '*';
-		padding-left: 0.125em;
-	}
-
 	@include kol-alert-theme;
+	@include kol-form-field-theme;
+	@include kol-form-field-order-theme;
+	@include kol-input-theme;
 }

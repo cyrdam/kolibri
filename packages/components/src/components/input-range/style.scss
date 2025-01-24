@@ -1,67 +1,66 @@
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
 @import '../@shared/mixins';
-@import '../style';
-@import '../input-line';
 
-@include kol-alert-styles;
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;
+@include kol-input;
 
 @layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
+	.kol-input-range {
+		&__inputs-wrapper {
+			align-items: center;
+			display: flex;
+			flex-direction: row;
+			flex-grow: 1;
+		}
 
-	.inputs-wrapper {
-		align-items: center;
-		display: flex;
-		flex-direction: row;
-	}
+		&__input {
+			&--number {
+				width: var(--kolibri-input-range--input-number--width);
+			}
 
-	input[type='number'] {
-		min-height: var(--a11y-min-size);
-		min-width: var(--a11y-min-size);
-		width: var(--kolibri-input-range--input-number--width);
-	}
+			&--range {
+				appearance: none;
+				background-color: #d3d3d3;
+				border: rem(1) solid #000;
+				display: inline-block;
+				flex-grow: 1;
+				height: rem(8);
+				line-height: 1.5;
+				padding: 0;
+				margin: 0;
+				/* Design-Hack - related with flex-grow */
+				width: 0;
 
-	/*
-   * For Chrome and Firefox is it needed to use redundant style definitions with separate selectors. The reason is unknown.
-   */
-	input[type='range'] {
-		appearance: none;
-		background-color: #d3d3d3;
-		border: rem(1) solid #000;
-		display: inline-block;
-		flex-grow: 1;
-		height: rem(8);
-		line-height: 1.5;
-		padding: 0;
-		margin: 0;
-		/* Design-Hack - related with flex-grow */
-		width: 0;
-	}
+				&::-webkit-slider-thumb {
+					box-sizing: border-box;
+					background-color: #000;
+					height: rem(20);
+					width: rem(20);
+					border-radius: rem(20);
+					cursor: pointer;
+					-webkit-appearance: none;
 
-	input[type='range']::-webkit-slider-thumb {
-		box-sizing: border-box;
-		background-color: #000;
-		height: rem(20);
-		width: rem(20);
-		border-radius: rem(20);
-		cursor: pointer;
-		-webkit-appearance: none;
-	}
+					@media (prefers-contrast: more) or (forced-colors: active) {
+						outline: rem(1) solid currentColor;
+					}
+				}
 
-	input[type='range']::-moz-range-thumb {
-		box-sizing: border-box;
-		background-color: #000;
-		height: rem(20);
-		width: rem(20);
-		border-radius: rem(20);
-		cursor: pointer;
-		-moz-appearance: none;
-	}
-}
-
-/* Fix missing outline in Chromium-based browsers on Windows in high contrast mode. */
-@media (prefers-contrast: more) {
-	::-webkit-slider-thumb {
-		outline: rem(1) solid currentColor;
+				&::-moz-range-thumb {
+					box-sizing: border-box;
+					background-color: #000;
+					height: rem(20);
+					width: rem(20);
+					border-radius: rem(20);
+					cursor: pointer;
+					-moz-appearance: none;
+				}
+			}
+		}
 	}
 }

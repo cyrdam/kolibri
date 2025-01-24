@@ -2,7 +2,7 @@
 
 exports[`NativeOptionListFc should render and match snapshot 1`] = `
 <div id="jest-test">
-  <option value="-0">
+  <option class="kol-select__option" value="-0">
     Option 1
   </option>
 </div>
@@ -10,7 +10,7 @@ exports[`NativeOptionListFc should render and match snapshot 1`] = `
 
 exports[`NativeOptionListFc should render with a single option 1`] = `
 <div id="jest-test">
-  <option value="-0">
+  <option class="kol-select__option" value="-0">
     Option 1
   </option>
 </div>
@@ -18,10 +18,10 @@ exports[`NativeOptionListFc should render with a single option 1`] = `
 
 exports[`NativeOptionListFc should render with multiple options 1`] = `
 <div id="jest-test">
-  <option value="-0">
+  <option class="kol-select__option" value="-0">
     Option 1
   </option>
-  <option value="-1">
+  <option class="kol-select__option" value="-1">
     Option 2
   </option>
 </div>
@@ -29,10 +29,10 @@ exports[`NativeOptionListFc should render with multiple options 1`] = `
 
 exports[`NativeOptionListFc should render with multiple options with selected value 1`] = `
 <div id="jest-test">
-  <option value="-0">
+  <option class="kol-select__option" value="-0">
     Option 1
   </option>
-  <option selected="" value="-1">
+  <option class="kol-select__option kol-select__option--selected" selected="" value="-1">
     Option 2
   </option>
 </div>
@@ -40,11 +40,11 @@ exports[`NativeOptionListFc should render with multiple options with selected va
 
 exports[`NativeOptionListFc should render with nested option groups 1`] = `
 <div id="jest-test">
-  <optgroup label="Group 1">
-    <option value="-0-0">
+  <optgroup class="undefined__optgroup" label="Group 1">
+    <option class="kol-select__option" value="-0-0">
       Option 1
     </option>
-    <option value="-0-1">
+    <option class="kol-select__option" value="-0-1">
       Option 2
     </option>
   </optgroup>
@@ -53,11 +53,11 @@ exports[`NativeOptionListFc should render with nested option groups 1`] = `
 
 exports[`NativeOptionListFc should render with nested option groups with selected value 1`] = `
 <div id="jest-test">
-  <optgroup label="Group 1">
-    <option value="-0-0">
+  <optgroup class="undefined__optgroup" label="Group 1">
+    <option class="kol-select__option" value="-0-0">
       Option 1
     </option>
-    <option selected="" value="-0-1">
+    <option class="kol-select__option kol-select__option--selected" selected="" value="-0-1">
       Option 2
     </option>
   </optgroup>

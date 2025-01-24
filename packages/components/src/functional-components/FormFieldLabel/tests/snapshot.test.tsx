@@ -39,7 +39,7 @@ describe('KolFormFieldLabelFc', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldLabelFc label={label} id={id} class={classNames} />);
 
 		expect(page.root?.id).toBe(`${id}-label`);
-		expect(page.root?.className).toContain('input-label');
+		expect(page.root?.className).toContain('kol-form-field__label');
 		expect(page.root?.className).toContain(classNames);
 	});
 

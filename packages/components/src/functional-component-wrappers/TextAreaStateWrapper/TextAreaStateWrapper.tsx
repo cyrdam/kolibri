@@ -1,7 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolTextAreaFc, { type TextAreaProps } from '../../functional-components/inputs/TextArea';
 
-import type { TextareaStates } from '../../schema';
+import { convertMsgToInternMsg, type TextareaStates } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 
 export type TextAreaStateWrapperProps = Partial<TextAreaProps> & {
@@ -21,10 +21,12 @@ function getTextAreaProps(state: TextareaStates): TextAreaProps {
 		name: state._name,
 		ariaDescribedBy: ariaDescribedBy,
 		rows: state._rows,
-		readOnly: state._readOnly,
+		readonly: state._readOnly,
 		required: state._required,
 		placeholder: state._placeholder,
 		maxLength: state._maxLength,
+		touched: state._touched,
+		msg: convertMsgToInternMsg(state._msg),
 	};
 
 	return props;

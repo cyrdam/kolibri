@@ -1,16 +1,13 @@
-@import '../@shared/input-core';
+@import '../@shared/input-text';
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.kol-input .input input[type='file'] {
-		padding-top: calc(0.5em + rem(2));
-	}
-
-	.kol-input-file .input {
+	.kol-input-container {
 		gap: initial;
 	}
 
-	input[type='file'] {
+	.kol-input {
+		padding-top: calc(0.5em + rem(2));
 		background-color: transparent;
 	}
 }
