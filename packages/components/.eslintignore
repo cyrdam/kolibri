@@ -1,4 +1,4 @@
 **/assets/**
+scripts/*.js
 src/**/*.js
 src/**/*.html
-scripts/vaadin.js
