@@ -17,5 +17,9 @@
 		&__icon:before {
 			font-size: inherit !important;
 		}
+
+		&__icon:before {
+			line-height: normal;
+		}
 	}
 }

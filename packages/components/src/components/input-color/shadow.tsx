@@ -76,7 +76,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: 'kol-input-color color',
+			class: 'kol-input-color',
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),

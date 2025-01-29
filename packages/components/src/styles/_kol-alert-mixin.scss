@@ -1,8 +1,8 @@
-@import '../@shared/mixins';
-@import '../host-display-block';
-@import '../tooltip/style.scss';
+@import '../components/@shared/mixins';
+@import '../components/host-display-block';
+@import '../components/tooltip/style';
 
-@mixin kol-alert-styles {
+@mixin kol-alert {
 	@layer kol-component {
 		.kol-alert {
 			display: grid;

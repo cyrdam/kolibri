@@ -213,7 +213,7 @@ export class KolTabs implements TabsAPI {
 	}
 
 	/**
-	 * Defines the position of the tab captions.
+	 * Defines the visual orientation of the component.
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 
