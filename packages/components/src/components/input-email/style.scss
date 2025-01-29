@@ -1,11 +1,11 @@
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
+@import '../../styles/kol-form-field-mixin';
+@import '../../styles/kol-input-container-mixin';
+@import '../../styles/kol-input-mixin';
 @import '../@shared/mixins';
-@import '../style';
-@import '../input-line';
 
-@include kol-alert-styles;
-
-@layer kol-component {
-	:host {
-		font-size: rem(16);
-	}
-}
+@include kol-alert;
+@include kol-form-field;
+@include kol-input-container;
+@include kol-input;

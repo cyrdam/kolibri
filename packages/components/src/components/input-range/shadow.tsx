@@ -168,19 +168,18 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const inputsWrapperStyle = {
-			'--kolibri-input-range--input-number--width': `${this.state._max}`.length + 0.5 + 'em',
+			// use number of digits in max value plus some space for the number input arrow buttons
+			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max ?? 1000).length}ch + 1.5em)`,
 		};
 
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
-					<div id="input" class="input-slot">
-						<div class="inputs-wrapper" style={inputsWrapperStyle}>
-							<KolInputStateWrapperFc {...this.getInputRangeProps()} />
-							<KolInputStateWrapperFc {...this.getInputNumberProps()} />
-						</div>
-						{this.hasSuggestions && <KolSuggestionsFc id={this.state._id} suggestions={this.state._suggestions} />}
+					<div class="kol-input-range__inputs-wrapper" style={inputsWrapperStyle}>
+						<KolInputStateWrapperFc class="kol-input-range__input kol-input-range__input--range" {...this.getInputRangeProps()} />
+						<KolInputStateWrapperFc class="kol-input-range__input kol-input-range__input--number" {...this.getInputNumberProps()} />
 					</div>
+					{this.hasSuggestions && <KolSuggestionsFc id={this.state._id} suggestions={this.state._suggestions} />}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);

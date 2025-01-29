@@ -17,13 +17,7 @@ const FormFieldMsgFc: FunctionalComponent<FormFieldMsgProps> = ({ alert, msg, hi
 		id={`${id}-msg`}
 		alert={alert}
 		type="error"
-		class={clsx(
-			{
-				error: true,
-				'visually-hidden': hideError === true,
-			},
-			classNames,
-		)}
+		class={clsx('kol-form-field__msg', { 'visually-hidden': hideError === true }, classNames)}
 		{...msg}
 		{...other}
 		aria-hidden="true"

@@ -1,11 +1,13 @@
 @import '../@shared/mixins';
-@import '../style';
-@import '../input-line';
+@import '../../styles/global';
+@import '../host-display-block';
 @import '../@shared/kol-link-mixin';
+@import '../../styles/kol-alert-mixin';
 
 @layer kol-component {
 	@include kol-link-styles('kol-link');
-	@include kol-alert-styles;
+	@include kol-alert;
+
 	.kol-form {
 		font-size: rem(16);
 	}

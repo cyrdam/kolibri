@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolFormFieldLabelFc should render the correct component tag "label"  1`] = `
-<label class="input-label" htmlfor="test-id" id="test-id-label">
-  <span class="input-label-span">
+<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+  <span class="kol-form-field__label-text">
     <span>
       Test Label
     </span>
@@ -11,8 +11,8 @@ exports[`KolFormFieldLabelFc should render the correct component tag "label"  1`
 `;
 
 exports[`KolFormFieldLabelFc should render the correct component tag "legend"  1`] = `
-<legend class="input-label" htmlfor="test-id" id="test-id-label">
-  <span class="input-label-span">
+<legend class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+  <span class="kol-form-field__label-text">
     <span>
       Test Label
     </span>
@@ -21,8 +21,8 @@ exports[`KolFormFieldLabelFc should render the correct component tag "legend"  1
 `;
 
 exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
-<label class="input-label" htmlfor="test-id" id="test-id-label">
-  <span class="input-label-span">
+<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+  <span class="kol-form-field__label-text">
     Test Label
     <span aria-hidden="true" class="access-key-hint">
       A
@@ -32,14 +32,14 @@ exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
 `;
 
 exports[`KolFormFieldLabelFc should render with expert slot 1`] = `
-<label class="input-label" htmlfor="test-id" id="test-id-label">
-  <span class="input-label-span"></span>
+<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+  <span class="kol-form-field__label-text"></span>
 </label>
 `;
 
 exports[`KolFormFieldLabelFc should render with label 1`] = `
-<label class="input-label" htmlfor="test-id" id="test-id-label">
-  <span class="input-label-span">
+<label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+  <span class="kol-form-field__label-text">
     <span>
       Test Label
     </span>

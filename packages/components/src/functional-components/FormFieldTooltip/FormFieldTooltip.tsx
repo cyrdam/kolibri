@@ -20,7 +20,7 @@ const FormFieldTooltipFc: FC<FormFieldTooltipProps> = ({ id, align, badgeText, h
 			 * verhindert aber nicht das Aria-Labelledby vorgelesen wird.
 			 */
 			aria-hidden="true"
-			class={clsx('input-tooltip', classNames)}
+			class={clsx('kol-form-field__tooltip', classNames)}
 			_badgeText={badgeText}
 			_align={align}
 			_id={hideLabel ? `${id}-label` : undefined}

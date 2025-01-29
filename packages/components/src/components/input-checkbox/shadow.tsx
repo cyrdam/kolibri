@@ -29,8 +29,8 @@ import { nonce } from '../../utils/dev.utils';
 import { InputCheckboxController } from './controller';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper';
-import KolIconFc from '../../functional-components/Icon';
+import KolFieldControlStateWrapperFc, { type FieldControlStateWrapperProps } from '../../functional-component-wrappers/FieldControlStateWrapper';
+import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper';
 
 /**
  * @slot expert - Checkbox description.
@@ -71,40 +71,52 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-input-checkbox', 'checkbox', this.state._variant, {
-				'hide-label': !!this.state._hideLabel,
-				checked: this.state._checked,
-				indeterminate: this.state._indeterminate,
+			class: clsx('kol-input-checkbox', {
+				[`kol-input-checkbox--checked`]: this.state._checked,
+				[`kol-input-checkbox--indeterminate`]: this.state._indeterminate,
+				[`kol-input-checkbox--variant-${this.state._variant || 'default'}`]: true,
+				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			'data-label-align': this.state._labelAlign || 'right',
 			'data-role': this.state._variant === 'button' ? 'button' : undefined,
 			alert: this.showAsAlert(),
-			reverseLabelInput: this.state._labelAlign === 'right',
+			renderNoTooltip: true,
 		};
 	}
 
-	private getInputProps(): InputStateWrapperProps {
+	private getFieldControlProps(): FieldControlStateWrapperProps {
 		return {
-			class: clsx('checkbox-input-element', {
-				'visually-hidden': this.state._variant === 'button',
+			class: clsx('kol-input-checkbox__field-control', {
+				[`kol-input-checkbox__field-control--checked`]: this.state._checked,
+				[`kol-input-checkbox__field-control--indeterminate`]: this.state._indeterminate,
+				[`kol-input-checkbox__field-control--variant-${this.state._variant || 'default'}`]: true,
 			}),
-			ref: this.catchRef,
-			type: 'checkbox',
-			slot: 'input',
 			state: this.state,
-			...this.controller.onFacade,
-			onInput: this.onInput,
-			onChange: this.onChange,
-			onFocus: (event: Event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
+		};
+	}
+
+	private getInputProps(): CheckboxStateWrapperProps {
+		return {
+			state: this.state,
+			icon: this.getIcon(),
+			inputProps: {
+				class: clsx({
+					'visually-hidden': this.state._variant === 'button',
+				}),
+				ref: this.catchRef,
+				...this.controller.onFacade,
+				onInput: this.onInput,
+				onChange: this.onChange,
+				onFocus: (event: Event) => {
+					this.controller.onFacade.onFocus(event);
+					this.inputHasFocus = true;
+				},
+				onBlur: (event: Event) => {
+					this.controller.onFacade.onBlur(event);
+					this.inputHasFocus = false;
+				},
+				onClick: undefined, // onClick is not needed since onChange already triggers the correct event
 			},
-			onBlur: (event: Event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
-			onClick: undefined, // onClick is not needed since onChange already triggers the correct event
 		};
 	}
 
@@ -114,23 +126,12 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return this.state._icons.unchecked;
 	}
 
-	private getIconProps() {
-		return {
-			class: 'icon',
-			icons: this.getIcon(),
-			label: '',
-		};
-	}
-
 	public render(): JSX.Element {
 		return (
-			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<div class="input">
-					<label class="checkbox-container">
-						<KolIconFc {...this.getIconProps()} />
-						<KolInputStateWrapperFc {...this.getInputProps()} />
-					</label>
-				</div>
+			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()} renderNoLabel>
+				<KolFieldControlStateWrapperFc {...this.getFieldControlProps()} renderNoHint>
+					<KolCheckboxStateWrapperFc {...this.getInputProps()} />
+				</KolFieldControlStateWrapperFc>
 			</KolFormFieldStateWrapperFc>
 		);
 	}

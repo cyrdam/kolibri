@@ -1,13 +1,10 @@
 @import '../../mixins/rem';
-@import '../mixins/alert-wc';
+@import '../@shared/input-core';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-		@include kol-alert-theme;
-	}
-
-	.inputs-wrapper {
-		gap: rem(16);
+	.kol-input-range {
+		&__inputs-wrapper {
+			gap: rem(16);
+		}
 	}
 }
