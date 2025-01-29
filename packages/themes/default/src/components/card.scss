@@ -1,7 +1,6 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	/* https://www.figma.com/file/56JbmrssCRpjpfxoAFeHqT/Design-System-EPLF-(in-progress)?node-id=8225%3A5945 */
 	.kol-card {
 		font-family: var(--font-family);
 		display: grid;
@@ -9,7 +8,7 @@
 		height: 100%;
 		background-color: var(--color-light);
 		grid-template-rows: min-content 2fr min-content;
-		box-shadow: 0 0 rem(4) var(--color-subtle);
+		box-shadow: 0 0 rem(4) color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
 		border-radius: var(--border-radius);
 
 		&__header {
