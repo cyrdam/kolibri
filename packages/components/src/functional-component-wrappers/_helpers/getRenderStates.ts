@@ -17,15 +17,16 @@ export const getRenderStates = (state: {
 	hasHint: boolean;
 	ariaDescribedBy: string[];
 } => {
-	const isMessageValidError = Boolean(state._msg?._type === 'error' && state._msg._description && state._msg._description?.length > 0);
+	const hasMessage = Boolean(state?._msg?._description && state._msg._description?.length > 0);
+	const isMessageValidError = state._msg?._type === 'error' && hasMessage;
 	const hasError = isMessageValidError && state._touched === true;
 	const hasHint = typeof state._hint === 'string' && state._hint.length > 0;
 
 	const ariaDescribedBy: string[] = [];
-	if (hasError === true) {
-		ariaDescribedBy.push(`${state._id}-error`);
+	if (hasMessage) {
+		ariaDescribedBy.push(`${state._id}-msg`);
 	}
-	if (hasHint === true) {
+	if (hasHint) {
 		ariaDescribedBy.push(`${state._id}-hint`);
 	}
 	return { hasError, hasHint, ariaDescribedBy };
