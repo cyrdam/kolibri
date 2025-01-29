@@ -2,18 +2,14 @@
 @import '../mixins/rem';
 
 @layer kol-theme-component {
-	.input > .kol-icon {
-		width: rem(32);
-	}
-
-	select {
+	.kol-select {
 		border: none;
 
 		&[multiple] {
 			overflow: auto;
 		}
 
-		option {
+		&__option {
 			margin: rem(1) 0;
 			border-radius: var(--border-radius);
 			cursor: pointer;
@@ -31,7 +27,7 @@
 			}
 		}
 
-		&:not([multiple]) option {
+		&:not([multiple]) &__option {
 			padding: 0.5em;
 		}
 	}
