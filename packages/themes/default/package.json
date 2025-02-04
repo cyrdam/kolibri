@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "3.0.0-rc.2",
+	"version": "3.0.0-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -47,7 +47,6 @@
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "pnpm build",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start": "npm-run-all --parallel dev serve",
 		"serve": "cross-env THEME_MODULE=\"`pwd`/dist\" THEME_EXPORT=DEFAULT npm --prefix \"node_modules/@public-ui/sample-react/\" start",
@@ -71,8 +70,8 @@
 		"postcss": "8.4.49",
 		"rollup": "4.28.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.83.0",
-		"typescript": "5.7.2",
+		"sass": "1.83.4",
+		"typescript": "5.7.3",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {

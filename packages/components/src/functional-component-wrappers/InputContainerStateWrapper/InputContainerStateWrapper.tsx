@@ -1,17 +1,19 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
-import type {
-	ButtonProps,
-	IconOrIconClass,
-	InputColorStates,
-	InputEmailStates,
-	InputFileStates,
-	InputNumberStates,
-	InputPasswordStates,
-	InputRangeStates,
-	InputTextStates,
-	KoliBriHorizontalIcons,
-	TextareaStates,
-	SelectStates,
+import type { InternMsgPropType } from '../../schema';
+import {
+	type ButtonProps,
+	type IconOrIconClass,
+	type InputColorStates,
+	type InputEmailStates,
+	type InputFileStates,
+	type InputNumberStates,
+	type InputPasswordStates,
+	type InputRangeStates,
+	type InputTextStates,
+	type KoliBriHorizontalIcons,
+	type TextareaStates,
+	type SelectStates,
+	convertMsgToInternMsg,
 } from '../../schema';
 
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
@@ -33,7 +35,13 @@ export type InputContainerStateWrapperProps = Partial<InputContainerProps> & {
 	state: InputState;
 };
 
-function getInputContainerProps(state: InputState): { icons?: KoliBriHorizontalIcons; smartButton?: ButtonProps; disabled?: boolean } {
+function getInputContainerProps(state: InputState): {
+	icons?: KoliBriHorizontalIcons;
+	smartButton?: ButtonProps;
+	disabled?: boolean;
+	msg?: InternMsgPropType;
+	touched?: boolean;
+} {
 	let icons: KoliBriHorizontalIcons | undefined = undefined;
 	let smartButton: ButtonProps | undefined;
 
@@ -45,11 +53,17 @@ function getInputContainerProps(state: InputState): { icons?: KoliBriHorizontalI
 		smartButton = state._smartButton;
 	}
 
-	return { icons, smartButton, disabled: state._disabled };
+	return {
+		icons,
+		smartButton,
+		disabled: state._disabled,
+		msg: convertMsgToInternMsg(state._msg),
+		touched: state._touched,
+	};
 }
 
 const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ state, endAdornment: defaultEndAdornment }, children) => {
-	const { icons, smartButton, disabled } = getInputContainerProps(state);
+	const { icons, smartButton, disabled, msg, touched } = getInputContainerProps(state);
 
 	let leftIconProps: IconOrIconClass | undefined = icons?.left;
 	if (isString(leftIconProps)) {
@@ -85,7 +99,7 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = ({ sta
 	}
 
 	return (
-		<KolInputContainerFc startAdornment={startAdornment} endAdornment={endAdornment}>
+		<KolInputContainerFc disabled={disabled} msg={msg} touched={touched} startAdornment={startAdornment} endAdornment={endAdornment}>
 			{children}
 		</KolInputContainerFc>
 	);

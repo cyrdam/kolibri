@@ -10,15 +10,18 @@ type LabelProps = {
 	accessKey?: string;
 	shortKey?: string;
 	hasExpertSlot?: boolean;
+	showBadge?: boolean;
 };
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';
 	id: string;
 	hideLabel?: boolean;
+	baseClassName?: string;
+	showBadge?: boolean;
 } & LabelProps;
 
-const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label }) => {
+const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label, showBadge = true }) => {
 	if (hasExpertSlot) {
 		return <slot name="expert"></slot>;
 	}
@@ -29,7 +32,7 @@ const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label }) 
 
 	const hasBadgeText = isString(accessKey) || isString(shortKey);
 
-	if (!hasBadgeText) {
+	if (!showBadge || !hasBadgeText) {
 		return <span>{label}</span>;
 	}
 
@@ -49,28 +52,30 @@ const LabelFc: FC<LabelProps> = ({ hasExpertSlot, accessKey, shortKey, label }) 
 const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	component: Component = 'label',
 	id,
+	baseClassName = 'kol-form-field',
 	class: classNames,
 	accessKey,
 	shortKey,
 	label,
 	hideLabel,
 	hasExpertSlot,
+	showBadge,
 	...other
 }) => {
-	const useTooltopInsteadOfLabel = !hasExpertSlot && hideLabel;
+	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 
 	return (
 		<Component
 			{...other}
-			class={clsx('input-label', classNames)}
-			id={!useTooltopInsteadOfLabel ? `${id}-label` : undefined}
-			hidden={useTooltopInsteadOfLabel}
+			class={clsx(`${baseClassName}__label`, classNames)}
+			id={!useTooltipInsteadOfLabel ? `${id}-label` : undefined}
+			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}
 		>
 			{/* INFO: span is needed for css styling :after content like a star (*) or optional text ! */}
-			<span class="input-label-span">
+			<span class={clsx(`${baseClassName}__label-text`)}>
 				{/* INFO: label comes with any html tag or as plain text! */}
-				<LabelFc hasExpertSlot={hasExpertSlot} accessKey={accessKey} shortKey={shortKey} label={label} />
+				<LabelFc hasExpertSlot={hasExpertSlot} accessKey={accessKey} shortKey={shortKey} label={label} showBadge={showBadge} />
 			</span>
 		</Component>
 	);

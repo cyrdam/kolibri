@@ -10,7 +10,7 @@ type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 
 const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, maxLength, class: classNames, ...other }) => {
 	return (
-		<span class={clsx('counter', classNames)} {...other} aria-atomic="true" aria-live="polite" data-testid="input-counter">
+		<span class={clsx('kol-form-field__counter', classNames)} {...other} aria-atomic="true" aria-live="polite" data-testid="input-counter">
 			{currentLength}
 			{maxLength && (
 				<>

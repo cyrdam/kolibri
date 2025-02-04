@@ -9,7 +9,6 @@
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "pnpm build",
 		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"start:ec": "npm-run-all --parallel dev serve:ec",
 		"start:eu": "npm-run-all --parallel dev serve:eu",
@@ -38,8 +37,8 @@
 		"postcss": "8.4.49",
 		"rollup": "4.28.1",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass": "1.83.0",
-		"typescript": "5.7.2",
+		"sass": "1.83.4",
+		"typescript": "5.7.3",
 		"unbuild": "1.2.1"
 	},
 	"peerDependencies": {

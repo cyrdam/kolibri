@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/kolibri-cli",
-	"version": "3.0.0-rc.2",
+	"version": "3.0.0-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -20,10 +20,10 @@
 	},
 	"description": "CLI for executing some helpful commands for KoliBri projects.",
 	"scripts": {
+		"build": "tsc",
 		"reset": "pnpm i @public-ui/components@1.1.7",
 		"format": "prettier -c src",
 		"lint": "tsc --noemit && eslint src",
-		"prepack": "tsc",
 		"start": "rimraf test && cpy \"../../samples/react/src/components\" test/src && cpy \"../../samples/react/public/*.html\" test/ && ts-node src/index.ts migrate --ignore-uncommitted-changes --test-tasks test",
 		"restart": "pnpm reset && pnpm start",
 		"unused": "knip",
@@ -48,16 +48,16 @@
 		"eslint": "8.57.1",
 		"eslint-config-prettier": "9.1.0",
 		"eslint-plugin-html": "8.1.2",
-		"eslint-plugin-jsdoc": "50.6.1",
+		"eslint-plugin-jsdoc": "50.6.3",
 		"eslint-plugin-json": "3.1.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
-		"eslint-plugin-react": "7.37.2",
-		"knip": "5.40.0",
+		"eslint-plugin-react": "7.37.4",
+		"knip": "5.43.6",
 		"mocha": "10.8.2",
 		"nodemon": "3.1.9",
 		"rimraf": "6.0.1",
 		"ts-node": "10.9.2",
-		"typescript": "5.7.2"
+		"typescript": "5.7.3"
 	},
 	"files": [
 		"dist"

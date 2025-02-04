@@ -1,169 +1,98 @@
 @import '../mixins/rem';
 @import '../mixins/alert-wc';
-@import '../mixins/input-error';
 @import '../mixins/typography';
+@import '../mixins/form-field';
+@import '../mixins/field-control';
+@import '../mixins/focus-outline';
 
 @layer kol-theme-component {
-	:host {
-		font-family: var(--font-family);
-	}
+	@include kol-alert-theme;
+	@include kol-form-field-theme;
+	@include kol-field-control-theme;
 
-	label {
-		cursor: pointer;
+	.kol-form-field {
+		border: 0;
 		display: grid;
-		line-height: 1.25;
-		gap: calc(var(--spacing) * 2);
-		width: 100%;
+		font-family: var(--font-family);
+		margin: 0;
+		padding: 0;
+
+		&--error {
+			color: var(--color-danger);
+			font-weight: 700;
+		}
+
+		&__label {
+			display: inline-block;
+			padding: 0;
+		}
+
+		&__input {
+			gap: rem(4);
+
+			&--orientation-horizontal {
+				margin-top: calc(var(--spacing) / 2);
+				gap: var(--spacing) calc(var(--spacing) * 2);
+			}
+		}
 	}
 
-	input {
+	.kol-field-control {
+		&__wrapper {
+			gap: rem(8);
+		}
+
+		&__label {
+			padding-top: 0.1em;
+		}
+	}
+
+	.kol-input-radio {
 		cursor: pointer;
 		width: 100%;
 		border-color: var(--color-subtle);
 		border-width: rem(2);
 		border-style: solid;
-		border-radius: rem(5);
+		border-radius: 50%;
 		line-height: 1.5;
-	}
 
-	input:hover {
-		border-color: var(--color-primary);
-		box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
-	}
-
-	input:focus:hover {
-		box-shadow: none;
-	}
-
-	input:hover {
-		border-color: var(--color-primary);
-	}
-
-	.kol-alert {
-		@include kol-alert;
-	}
-
-	.required legend > span::after {
-		content: '*';
-		padding-left: 0.125em;
-	}
-
-	/* RADIO */
-	fieldset {
-		border: 0;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		gap: 0.25em;
-	}
-
-	.radio-input-wrapper {
-		align-items: center;
-		cursor: pointer;
-		display: flex;
-		flex-direction: row;
-		gap: rem(8);
-		margin: 0;
-		min-height: var(--a11y-min-size);
-		position: relative;
-	}
-
-	.radio-input-wrapper label {
-		cursor: pointer;
-		display: flex;
-		padding-left: calc(var(--spacing) / 2);
-		width: 100%;
-	}
-
-	.radio-input-wrapper label span {
-		margin-top: 0.125em;
-	}
-
-	.radio-input-wrapper input[type='radio'] {
-		appearance: none;
-		transition: 0.5s;
-		border-radius: 100%;
-		height: calc(6 * rem(4));
-		min-width: calc(6 * rem(4));
-		width: calc(6 * rem(4));
-	}
-
-	.radio-input-wrapper input[type='radio']:before {
-		content: '';
-		cursor: pointer;
-		border-radius: 100%;
-		display: block;
-	}
-
-	.radio-input-wrapper input[type='radio']:checked:before {
-		background-color: var(--color-primary);
-	}
-
-	.radio-input-wrapper input[type='radio']:disabled {
-		cursor: not-allowed;
-		background-color: var(--color-mute-variant);
-	}
-
-	.kol-alert.error {
-		order: 3;
-	}
-
-	.hint {
-		order: 4;
-		@include kol-typography-hint;
-	}
-
-	fieldset legend {
-		order: 2;
-		display: contents;
-	}
-
-	fieldset .kol-input {
-		display: grid;
-		order: 2;
-	}
-
-	.kol-input .hint {
-		order: 3;
-		@include kol-typography-hint;
-	}
-
-	fieldset.error:not(.hidden-error) {
-		@include input-error;
-
-		color: var(--color-danger);
-		font-weight: 700;
-
-		input:focus,
-		select:focus,
-		textarea:focus {
-			outline-color: var(--color-danger);
+		&:hover {
+			border-color: var(--color-primary);
+			box-shadow: 0 rem(2) rem(8) rem(2) rgba(8, 35, 48, 0.24);
 		}
 
-		.kol-alert.error {
-			margin-left: -0.25em;
+		&:focus {
+			outline-offset: rem(2);
+			outline: var(--color-primary-variant) solid rem(3);
+			transition: 200ms outline-offset linear;
+
+			&:hover {
+				box-shadow: none;
+			}
+		}
+
+		&:checked {
+			&:before {
+				background-color: var(--color-primary);
+			}
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+			background-color: var(--color-mute-variant);
 		}
 	}
 
-	fieldset.horizontal {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--spacing) calc(var(--spacing) * 2);
-		align-items: flex-start;
+	.kol-input--error:focus {
+		outline-color: var(--color-danger);
 	}
 
-	fieldset.horizontal legend {
-		display: inline-block;
-		margin-bottom: calc(var(--spacing) / 2);
+	.kol-field-control__hint,
+	.kol-form-field__hint {
+		@include kol-typography-hint;
 	}
 
-	fieldset .input-slot {
-		gap: var(--spacing);
+	.kol-alert--error {
+		margin-left: -0.25em;
 	}
-
-	.radio-input-wrapper label {
-		padding-left: 0;
-	}
-
-	@include kol-alert-theme;
 }

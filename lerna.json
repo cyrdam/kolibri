@@ -17,10 +17,9 @@
 		"packages/themes",
 		"packages/themes/default",
 		"packages/themes/ecl",
-		"packages/themes/itzbund",
 		"packages/tools/kolibri-cli",
 		"packages/tools/visual-tests"
 	],
 	"useNx": true,
-	"version": "3.0.0-rc.2"
+	"version": "3.0.0-rc.3"
 }

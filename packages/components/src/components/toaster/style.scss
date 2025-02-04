@@ -1,8 +1,8 @@
+@import '../../styles/global';
+@import '../../styles/kol-alert-mixin';
 @import '../@shared/mixins';
-@import '../style';
-@import '../@shared/kol-alert-mixin';
 
-@include kol-alert-styles;
+@include kol-alert;
 
 @layer kol-component {
 	:host {

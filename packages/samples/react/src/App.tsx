@@ -137,7 +137,7 @@ export const App: FC = () => {
 				)}
 
 				<main className="flex flex-col items-stretch p-4" id="route-container">
-					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="DRAFT" _color="#db5461" />}
+					{!hideMenus && isDraftTheme(theme) && <KolBadge className="block mb-3" _label="In progress" _color="#db5461" />}
 					<Routes>
 						{ROUTE_TREE}
 						<Route path="*" element={<Navigate to={ROUTE_LIST[0]} replace />} />

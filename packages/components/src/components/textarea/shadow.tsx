@@ -28,7 +28,7 @@ import { setState } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper';
+import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper';
 import { TextareaController } from './controller';
 
 /**
@@ -79,9 +79,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: clsx('kol-textarea', 'textarea', {
-				'has-value': this.state._hasValue,
-				'has-counter': !!this.state._hasCounter,
+			class: clsx('kol-form-field-textarea', {
+				'kol-form-field--has-value': this.state._hasValue,
+				'kol-form-field--has-counter': !!this.state._hasCounter,
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.textareaRef?.focus(),
@@ -112,9 +112,9 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state}>
+				<KolInputContainerStateWrapperFc state={this.state}>
 					<KolTextAreaStateWrapperFc {...this.getTextAreaProps()} />
-				</KolInputContainerFc>
+				</KolInputContainerStateWrapperFc>
 			</KolFormFieldStateWrapperFc>
 		);
 	}

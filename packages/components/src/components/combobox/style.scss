@@ -1,6 +1,7 @@
+@import '../../styles/global';
 @import '../@shared/mixins';
-@import '../style';
-@import '../input-line';
+@import '../host-display-block';
+@import '../tooltip/style';
 
 @layer kol-component {
 	:host {
@@ -28,6 +29,10 @@
 
 		&__input {
 			flex-grow: 1;
+
+			&:focus {
+				outline: none;
+			}
 		}
 
 		&__icon {
@@ -58,5 +63,9 @@
 				cursor: none !important;
 			}
 		}
+	}
+
+	.kol-input {
+		display: grid;
 	}
 }
