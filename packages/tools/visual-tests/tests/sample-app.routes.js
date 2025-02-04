@@ -231,7 +231,12 @@ ROUTES.set('modal/basic?show-modal=true', {
 		height: 600,
 	},
 });
-
+ROUTES.set('modal/basic?show-modal=true&variant=card', {
+	viewportSize: {
+		width: 1920,
+		height: 600,
+	},
+});
 ROUTES.set('nav/aria-current', {
 	axe: {
 		skipFailures: false,
