@@ -24,7 +24,7 @@ type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	placeholder: string;
-} & OptionalInputProps<number | Iso8601> &
+} & OptionalInputProps<number | Iso8601, number> &
 	PropHideError &
 	PropSuggestions;
 

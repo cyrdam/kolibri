@@ -255,7 +255,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | Iso8601 | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',
@@ -397,7 +397,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: number | Iso8601 | null): void {
+	public validateValue(value?: number | null): void {
 		this.controller.validateValueEx(value);
 	}
 
