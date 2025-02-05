@@ -6,7 +6,7 @@ import type { InputTypeOnDefault, InputTypeOnOff } from '../types';
 export const inputDateTypeOptions = ['date', 'datetime-local', 'month', 'time', 'week'] as const;
 export type InputDateType = (typeof inputDateTypeOptions)[number];
 
-export type OptionalInputProps<T, TValue = T> = {
+export type OptionalInputProps<T> = {
 	accessKey: string;
 	autoComplete: InputTypeOnOff;
 	disabled: boolean;
@@ -23,5 +23,5 @@ export type OptionalInputProps<T, TValue = T> = {
 	step: number;
 	tabIndex: number;
 	touched: boolean;
-	value: TValue | null;
+	value: T | null;
 };
