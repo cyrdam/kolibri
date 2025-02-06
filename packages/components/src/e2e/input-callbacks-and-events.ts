@@ -26,13 +26,7 @@ const testInputCallbacksAndEvents = <ElementType extends { _on?: InputTypeOnDefa
 		];
 
 		EVENTS.filter(([eventName]) => !omittedEvents.includes(eventName)).forEach(([nativeEventName, callbackName, kolEventName, testValue]) => {
-			test(`should call ${callbackName} callback when internal input emits ${nativeEventName}`, async ({ page, browserName }) => {
-				/* See https://github.com/microsoft/playwright/issues/33864 */
-				test.skip(
-					componentName === 'kol-input-color' && nativeEventName === 'click' && browserName === 'firefox',
-					'Clicking on an input[type=color] in Firefox currently makes the page close itself.',
-				);
-
+			test(`should call ${callbackName} callback when internal input emits ${nativeEventName}`, async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" ${additionalProperties}></${componentName}>`);
 				const component = page.locator(componentName);
 				const input = selectInput ? selectInput(page) : page.locator(INPUTS_SELECTOR);
