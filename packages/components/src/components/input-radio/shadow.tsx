@@ -75,7 +75,6 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				class: `kol-form-field__input--orientation-${this.state._orientation}`,
 			},
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.inputRef?.focus(),
 			alert: this.showAsAlert(),
 			hideLabel: false,
 		};
