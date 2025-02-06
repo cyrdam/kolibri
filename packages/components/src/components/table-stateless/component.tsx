@@ -321,7 +321,7 @@ export class KolTableStateless implements TableStatelessAPI {
 					if (typeof rows === 'object') {
 						dataRow.push({
 							...rows,
-							asTd: false,
+							headerCell: true,
 							data: {},
 						});
 						let rowSpan = 1;
@@ -545,7 +545,7 @@ export class KolTableStateless implements TableStatelessAPI {
 			key = dataKey ? `${dataKey}-${this.horizontal ? colIndex : rowIndex}` : key;
 		}
 
-		if (cell.asTd === false) {
+		if (cell.headerCell) {
 			return this.renderHeadingCell(cell, rowIndex, colIndex, isVertical);
 		} else {
 			return (
@@ -794,7 +794,7 @@ export class KolTableStateless implements TableStatelessAPI {
 										{rowIndex === 0 && this.renderHeaderTdCell()}
 										{Array.isArray(cols) &&
 											cols.map((cell, colIndex) => {
-												if (cell.asTd === true) {
+												if (cell.headerCell === false) {
 													return (
 														<td
 															key={`thead-${rowIndex}-${colIndex}-${cell.label}`}
