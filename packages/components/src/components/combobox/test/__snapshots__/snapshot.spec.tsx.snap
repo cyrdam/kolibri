@@ -169,11 +169,11 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 </kol-combobox>
 `;
 
-exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-combobox _hide-error="" _value="Herr" class="kol-combobox">
+exports[`kol-combobox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" _suggestions=["Frau","Herr","Divers"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-combobox _hide-msg="" _value="Herr" class="kol-combobox">
   <template shadowrootmode="open">
     <div class="combobox">
-      <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+      <kol-input _hidemsg="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
         <span slot="label">
           <span>
             Label
