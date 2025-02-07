@@ -3,12 +3,12 @@ import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
-export const InputTextHideErrors: FC = () => (
+export const InputTextHideMsg: FC = () => (
 	<div className="grid gap-4">
 		<SampleDescription>
 			<p>
-				This sample shows the <code>_hideMsg</code> feature for KolInputText. It allows to hide the error message from an input field and can be used, when the
-				error is already shown somewhere else, e.g. for a group of inputs.
+				This sample shows the <code>_hideMsg</code> feature for KolInputText. It allows to hide the message from an input field and can be used, when the
+				message (e.g. error) is already shown somewhere else, e.g. for a group of inputs.
 			</p>
 		</SampleDescription>
 
