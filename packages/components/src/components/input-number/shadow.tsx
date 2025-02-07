@@ -11,7 +11,6 @@ import type {
 	InputNumberStates,
 	InputTypeOnDefault,
 	InputTypeOnOff,
-	Iso8601,
 	KoliBriHorizontalIcons,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -171,12 +170,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the largest possible input value.
 	 */
-	@Prop() public _max?: number | Iso8601;
+	@Prop() public _max?: number;
 
 	/**
 	 * Defines the smallest possible input value.
 	 */
-	@Prop() public _min?: number | Iso8601;
+	@Prop() public _min?: number;
 
 	/**
 	 * Defines the properties for a message rendered as Alert component.
@@ -255,7 +254,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	/**
 	 * Defines the value of the input.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | Iso8601 | null;
+	@Prop({ mutable: true, reflect: true }) public _value?: number | null;
 
 	@State() public state: InputNumberStates = {
 		_autoComplete: 'off',
@@ -322,12 +321,12 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_max')
-	public validateMax(value?: number | Iso8601): void {
+	public validateMax(value?: number): void {
 		this.controller.validateMax(value);
 	}
 
 	@Watch('_min')
-	public validateMin(value?: number | Iso8601): void {
+	public validateMin(value?: number): void {
 		this.controller.validateMin(value);
 	}
 
@@ -397,7 +396,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	@Watch('_value')
-	public validateValue(value?: number | Iso8601 | null): void {
+	public validateValue(value?: number | null): void {
 		this.controller.validateValueEx(value);
 	}
 
