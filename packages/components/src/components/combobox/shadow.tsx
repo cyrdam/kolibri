@@ -1,7 +1,7 @@
 import type {
 	ComboboxAPI,
 	ComboboxStates,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
@@ -508,7 +508,7 @@ export class KolCombobox implements ComboboxAPI {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

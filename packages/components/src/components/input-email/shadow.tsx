@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import type {
 	ButtonProps,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputEmailAPI,
 	InputEmailStates,
@@ -308,7 +308,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

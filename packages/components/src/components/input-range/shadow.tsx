@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputRangeAPI,
 	InputRangeStates,
@@ -337,7 +337,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

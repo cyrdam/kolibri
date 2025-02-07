@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import type {
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
@@ -256,7 +256,7 @@ export class KolSelect implements SelectAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

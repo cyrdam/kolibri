@@ -7,7 +7,7 @@ import type {
 	CSSResize,
 	FocusableElement,
 	HasCounterPropType,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
@@ -303,7 +303,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

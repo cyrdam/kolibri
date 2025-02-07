@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import type {
 	ButtonProps,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputFileAPI,
 	InputFileStates,
@@ -241,7 +241,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

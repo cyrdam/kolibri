@@ -4,7 +4,7 @@ import type {
 	AccessKeyPropType,
 	AdjustHeightPropType,
 	ButtonProps,
-	HideErrorPropType,
+	HideMsgPropType,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -22,7 +22,7 @@ import {
 	setState,
 	validateAccessKey,
 	validateAdjustHeight,
-	validateHideError,
+	validateHideMsg,
 	validateHideLabel,
 	validateLabelWithExpertSlot,
 	validateMsg,
@@ -71,8 +71,8 @@ export class InputController extends ControlledInputController implements Watche
 		validateTooltipAlign(this.component, value);
 	}
 
-	public validateHideError(value?: HideErrorPropType): void {
-		validateHideError(this.component, value, {
+	public validateHideError(value?: HideMsgPropType): void {
+		validateHideMsg(this.component, value, {
 			hooks: {
 				afterPatch: () => {
 					if (this.component.state._hideError) {

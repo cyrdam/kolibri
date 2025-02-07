@@ -1,5 +1,5 @@
 import type {
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputTypeOnDefault,
 	KoliBriHorizontalIcons,
@@ -577,7 +577,7 @@ export class KolSingleSelect implements SingleSelectAPI {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

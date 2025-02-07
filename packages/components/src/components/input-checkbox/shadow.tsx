@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import type {
 	CheckedPropType,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	IndeterminatePropType,
 	InputCheckboxAPI,
@@ -299,7 +299,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

@@ -6,7 +6,7 @@ import type {
 	AccessKeyPropType,
 	ButtonProps,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputTextAPI,
 	InputTextStates,
@@ -332,7 +332,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 

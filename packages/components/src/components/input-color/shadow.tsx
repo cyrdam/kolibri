@@ -1,7 +1,7 @@
 import type {
 	ButtonProps,
 	FocusableElement,
-	HideErrorPropType,
+	HideMsgPropType,
 	IdPropType,
 	InputColorAPI,
 	InputColorStates,
@@ -248,7 +248,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	}
 
 	@Watch('_hideError')
-	public validateHideError(value?: HideErrorPropType): void {
+	public validateHideError(value?: HideMsgPropType): void {
 		this.controller.validateHideError(value);
 	}
 
