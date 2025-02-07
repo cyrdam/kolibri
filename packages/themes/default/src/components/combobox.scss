@@ -83,7 +83,7 @@ $visible-options: 5;
 		gap: rem(4);
 	}
 
-	.kol-input:not(.hidden-error) .kol-alert {
+	.kol-input:not(.hide-msg) .kol-alert {
 		order: 1;
 	}
 
@@ -149,7 +149,7 @@ $visible-options: 5;
 		padding-left: 0.125em;
 	}
 
-	.kol-input.error:not(.hidden-error) {
+	.kol-input.error:not(.hide-msg) {
 		@include input-error;
 	}
 

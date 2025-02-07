@@ -112,7 +112,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		['kol-form-field--touched']: Boolean(touched),
 		['kol-form-field--hide-label']: Boolean(hideLabel),
 		['kol-form-field--read-only']: Boolean(readOnly),
-		['kol-form-field--hidden-error']: Boolean(hideMsg),
+		['kol-form-field--hidden-msg']: Boolean(hideMsg),
 	};
 
 	if (showMsg) {

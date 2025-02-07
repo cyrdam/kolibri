@@ -77,7 +77,7 @@ export class KolInputWc implements Props {
 					'read-only': this._readOnly === true,
 					required: this._required === true,
 					touched: this._touched === true,
-					'hidden-error': this._hideMsg === true,
+					'hidden-msg': this._hideMsg === true,
 				})}
 			>
 				<label class="input-label" id={!useTooltipInsteadOfLabel ? `${this._id}-label` : undefined} hidden={useTooltipInsteadOfLabel} htmlFor={this._id}>
