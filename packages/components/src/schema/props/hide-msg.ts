@@ -10,10 +10,10 @@ export type HideMsgPropType = boolean;
  * Hides the message but leaves it in the DOM for the input's aria-describedby.
  */
 export type PropHideMsg = {
-	hideError: HideMsgPropType;
+	hideMsg: HideMsgPropType;
 };
 
 /* validator */
 export const validateHideMsg = (component: Generic.Element.Component, value?: HideMsgPropType, options?: WatchBooleanOptions): void => {
-	watchBoolean(component, '_hideError', value, options);
+	watchBoolean(component, '_hideMsg', value, options);
 };

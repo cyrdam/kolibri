@@ -169,11 +169,11 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
 </kol-single-select>
 `;
 
-exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
-<kol-single-select _hide-error="" class="kol-single-select">
+exports[`kol-single-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
+<kol-single-select _hide-msg="" class="kol-single-select">
   <template shadowrootmode="open">
     <div class="single-select">
-      <kol-input _hideerror="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
+      <kol-input _hidemsg="" _hint="" _id="id-nonce" _label="Label" _tooltipalign="top" role="presentation">
         <span slot="label">
           <span>
             Label

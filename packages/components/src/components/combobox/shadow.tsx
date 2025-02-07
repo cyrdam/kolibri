@@ -159,7 +159,7 @@ export class KolCombobox implements ComboboxAPI {
 						_accessKey={this.state._accessKey}
 						_alert={this.showAsAlert()}
 						_disabled={this.state._disabled}
-						_hideError={this.state._hideError}
+						_hideMsg={this.state._hideMsg}
 						_hideLabel={this.state._hideLabel}
 						_hint={this.state._hint}
 						_icons={this.state._icons}
@@ -383,9 +383,9 @@ export class KolCombobox implements ComboboxAPI {
 
 	/**
 	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideErrorPropType` after Stencil#4663 has been resolved.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _hideError?: boolean = false;
+	@Prop({ mutable: true, reflect: true }) public _hideMsg?: boolean = false;
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -474,7 +474,7 @@ export class KolCombobox implements ComboboxAPI {
 
 	@State() public state: ComboboxStates = {
 		_hasValue: false,
-		_hideError: false,
+		_hideMsg: false,
 		_id: `id-${nonce()}`,
 		_label: '', // ⚠ required
 		_suggestions: [],
@@ -507,9 +507,9 @@ export class KolCombobox implements ComboboxAPI {
 		this.controller.validateDisabled(value);
 	}
 
-	@Watch('_hideError')
-	public validateHideError(value?: HideMsgPropType): void {
-		this.controller.validateHideError(value);
+	@Watch('_hideMsg')
+	public validateHideMsg(value?: HideMsgPropType): void {
+		this.controller.validateHideMsg(value);
 	}
 
 	@Watch('_hideLabel')

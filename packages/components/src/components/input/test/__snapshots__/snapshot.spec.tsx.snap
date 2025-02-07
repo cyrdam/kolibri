@@ -91,7 +91,7 @@ exports[`kol-input should render with _label="Label" _name="field" _placeholder=
 </kol-input>
 `;
 
-exports[`kol-input should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideError=true 1`] = `
+exports[`kol-input should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true 1`] = `
 <kol-input _name="field" _placeholder="Hier steht ein Platzhaltertext" class="hidden-error kol-input">
   <!---->
   <label class="input-label" id="undefined-label">
